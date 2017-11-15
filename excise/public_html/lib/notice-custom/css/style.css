@@ -13,6 +13,10 @@
     font-size: 16px !important;
 }
 
+.card .body .control-label {
+    margin-bottom: 10px;
+}
+
  .toggle-popup-list {
      position: absolute;
      width: 30px;
@@ -38,8 +42,14 @@
      position: absolute;
  }
 
- .row .input-group {
-     margin-bottom: 0px;
+
+ .row , .form-horizontal .form-group {
+     margin-right: 0;
+     margin-left: 0;
+ }
+
+ .row .input-group{
+     margin-bottom: 0;
  }
 
  .list-tags {
@@ -55,6 +65,7 @@
      color: #9E9E9E !important;
      border-radius: 10px;
      margin-right: 5px;
+     margin-bottom: 10px;
  }
 
  .list-tags li a {

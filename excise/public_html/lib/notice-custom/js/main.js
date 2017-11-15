@@ -7,9 +7,8 @@ function onToggleCardBody(e) {
 }
 
 // checkbox, col(index)
-function checkedBox(e, col) {
+function checkedBox(e, table, col) {
     //Check All checkbox in table
-    var table = $(e).closest('table');
     $(table).find('tbody tr').each(function (i, ele) {
         $(ele)
             .find('td:eq(' + col + ') input[type=checkbox]')

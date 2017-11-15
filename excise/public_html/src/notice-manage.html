@@ -44,7 +44,6 @@
 
     <link href="../lib/selectize.js-master/dist/css/selectize.css" rel="stylesheet" type="text/css" />
     <script src="../lib/selectize.js-master/dist/js/standalone/selectize.min.js" type="text/javascript"></script>
-
 </head>
 
 <body>
@@ -60,6 +59,8 @@
                 create: true,
                 sortField: 'text'
             });
+
+            $('#listStaffModal .card .body').load('staff-list.html')
         })    
     </script>
 
@@ -94,7 +95,7 @@
                                 <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="sle_nmDepartmentName">เขียนที่หน่วยงาน:</label>
                                 <div class="col-lg-3 col-md-4 col-sm-9 col-xs-12">
                                     <div class="input-group">
-                                        <select name="department" id="sle_nmDepartmentName" class="form-control" aria-describedby="spn_nmDepartmentName"></select>
+                                        <select name="department" id="sle_nmDepartmentName" class="form-control" style="z-index:0;"></select>
                                         <span class="input-group-addon" id="spn_nmDepartmentName">
                                             <span class="red-star">*</span>
                                         </span>
@@ -104,7 +105,7 @@
                                 <div class="col-lg-2 col-md-3 col-sm-5 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="date" name="noticeDate" id="txt_nmNoticeDate" class="form-control" aria-describedby="spn_nmNoticeDate">
+                                            <input type="date" name="noticeDate" id="txt_nmNoticeDate" class="form-control" style="z-index:0;">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmNoticeDate">
                                             <i class="material-icons">event</i>
@@ -124,7 +125,7 @@
                                 <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="number" class="form-control" name="getDate" id="txt_nmGetDate" aria-describedby="spn_nmGetDate">
+                                            <input type="number" class="form-control zindex-0" name="getDate" id="txt_nmGetDate" style="z-index:0;">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmGetDate">วัน</span>
                                     </div>
@@ -141,7 +142,7 @@
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" name="staff" id="txt_nmStaff" aria-describedby="spn_nmStaff">
+                                            <input type="text" class="form-control" name="staff" id="txt_nmStaff" style="z-index:0;">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmStaff">
                                             <div class="box-group-addon">
@@ -196,7 +197,7 @@
                                 <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmInfrom">ผู้แจ้งความ:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
-                                        <select name="infrom" id="sle_nmInfrom" class="form-control" aria-describedby="spn_nmInfrom"></select>
+                                        <select name="infrom" id="sle_nmInfrom" class="form-control" style="z-index:0;"></select>
                                         <span class="input-group-addon" id="spn_nmInfrom">
                                             <span class="red-star">*</span>
                                         </span>
@@ -206,7 +207,7 @@
                                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="infromAlies" id="sle_nmInfromAlies" class="form-control" aria-describedby="spn_nmInfromAlies">
+                                            <input type="text" name="infromAlies" id="sle_nmInfromAlies" class="form-control" style="z-index:0;">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmInfromAlies">
                                             <span class="red-star">*</span>
@@ -217,7 +218,7 @@
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="number" name="informAge" id="txt_nmInfromAge" class="form-control" aria-describedby="spn_nmInfromAge">
+                                            <input type="number" name="informAge" id="txt_nmInfromAge" class="form-control" style="z-index:0;">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmInfromAge">
                                             <span>ปี</span>
@@ -379,7 +380,7 @@
                                 <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmGoodName">สินค้า:</label>
                                 <div class="col-lg-4 col-md-10 col-sm-10 col-xs-12">
                                     <div class="input-group">
-                                        <select name="" id="sle_nmGoodName" class="form-control" aria-describedby="spn_nmGoodName"></select>
+                                        <select name="" id="sle_nmGoodName" class="form-control" style="z-index:0;" onchange="onChangGoodName(this)"></select>
                                         <span class="input-group-addon" id="spn_nmGoodName">
                                             <span class="red-star">*</span>
                                         </span>
@@ -391,17 +392,46 @@
                                     function onDelGoodNameTag(e) {
                                         $(e).closest('li').remove();
                                     }
+
+                                    function onChangGoodName(e) {
+                                        var goodName = $(e).find('option:selected').text()
+                                        if (goodName !== '') {
+                                            var checkItem = false;
+                                            $('#ul_nmGoodName li .good-name-tag').each(function (i, el) {
+                                                if (goodName == $(el).text()) {
+                                                    checkItem = true;
+                                                    return false;
+                                                }
+                                            })
+
+                                            if (checkItem === false) {
+                                                var li = '<li><span class="good-name-tag">' + goodName
+                                                li += '</span><a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a></li>'
+
+                                                $('#ul_nmGoodName').append(li)
+                                            } else {
+                                                alert('รายการสินค้า ' + goodName + ' ถูกเลือกแล้ว!')
+                                            }
+
+                                            var $select = $(e).selectize();
+                                            var control = $select[0].selectize;
+                                            control.clear();
+                                        }
+                                    }
                                 </script>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                     <ul class="list-tags" id="ul_nmGoodName">
-                                        <li>ยาสูบ
+                                        <li>
+                                            <span class="good-name-tag">ยาสูบ</span>
                                             <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
                                         </li>
-                                        <li>สุรา
+                                        <li>
+                                            <span class="good-name-tag">สุรา</span>
                                             <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
                                         </li>
-                                        <li>รถยนต์
+                                        <li>
+                                            <span class="good-name-tag">รถยนต์</span>
                                             <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
                                         </li>
                                     </ul>
@@ -448,7 +478,28 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="body"></div>
+                        <div class="body">
+                        </div>
+                        <script>
+                            function onSelectStaff() {
+                                $('#tableStaffList tbody tr').each(function (i, el) {
+                                    if ($(el).find('input[type=checkbox]').is(':checked')) {
+                                        $('#txt_nmStaff').val(unescape($(el).find('td.staff-name').html()))
+                                        $('#txt_nmPosition').val($(el).find('td.staff-position').html())
+                                        $('#txt_nmDepartment').val($(el).find('td.staff-department').html())
+
+                                        $('#tableStaffList').find('input[type=checkbox]').prop('checked', false);
+
+                                        $('#listStaffModal').modal('hide');
+                                        return false;
+                                    }
+                                })
+                            }
+                            function onCancelSelectStaff() {
+                                $('#tableStaffList tbody tr').find('input[type=checkbox]').prop('checked', false)
+                                $('#listStaffModal').modal('hide');
+                            }
+                        </script>
                     </div>
                 </div>
             </div>
@@ -456,8 +507,8 @@
     </div>
 
     <script>
-        function openListStaffModal(e){
-            $(e).modal({backdrop: 'static', keyboard: false});
+        function openListStaffModal(e) {
+            $(e).modal({ backdrop: 'static', keyboard: false });
         }
 
         function onSaveNotice() {
@@ -469,7 +520,12 @@
         function onCancelNotice() {
             if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
                 $('input').val('');
-                $('select').find('option:eq(0)')
+                $('body select').each(function (i, e) {
+                    var $select = $(e).selectize();
+                    var control = $select[0].selectize;
+                    control.clear();
+                })
+
             }
         }
     </script>
@@ -503,6 +559,21 @@
         <!-- Demo Js -->
         <!-- <script src="../lib/adminbsb-materialdesign/js/demo.js"></script> -->
 
+
+
+
+
+        <!-- Jquery DataTable Plugin Js -->
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+        <script src="../lib/adminbsb-materialdesign/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+        <script src="https://cdn.datatables.net/fixedcolumns/3.2.3/js/dataTables.fixedColumns.min.js"></script>
     </div>
 </body>
 

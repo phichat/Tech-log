@@ -1,0 +1,81 @@
+.notice-list .row,
+.notice-list .form-group {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.bg-dark-blue-custom {
+    background-color: rgba(6, 51, 121, 0.79);
+    color: #fff !important;
+}
+
+.card .header h2{
+    font-size: 16px !important;
+}
+
+ .toggle-popup-list {
+     position: absolute;
+     width: 30px;
+     height: 20px;
+     border-radius: 10px;
+     background-color: #009688 !important;
+     color: #fff !important;
+     text-decoration: none !important;
+     right: 17px;
+     top: 12px;
+ }
+
+ .red-star {
+     color: red !important;
+ }
+
+ .box-group-addon {
+     width: 50px;
+ }
+
+ .box-group-addon>.red-star {
+     right: 0px;
+     position: absolute;
+ }
+
+ .row .input-group {
+     margin-bottom: 0px;
+ }
+
+ .list-tags {
+     margin: 0;
+     padding: 0;
+     list-style: none;
+ }
+
+ .list-tags li {
+     display: inline-block;
+     padding: 3px 10px;
+     background-color: #EEEEEE;
+     color: #9E9E9E !important;
+     border-radius: 10px;
+     margin-right: 5px;
+ }
+
+ .list-tags li a {
+     color: #009688 !important;
+     text-decoration: none !important;
+ }
+
+ .fixed-botton-bottom{
+    position:fixed;
+    bottom:0px;
+ }
+
+ ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    font-size: 13px !important;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    font-size: 13px !important;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    font-size: 13px !important;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    font-size: 13px !important;
+  }

@@ -165,8 +165,9 @@
                                         </div>
                                         <span class="input-group-addon" id="spn_nmStaff">
                                             <div class="box-group-addon">
-                                                <a href="javascript:void(0);" onclick="openListStaffModal($('#listStaffModal'));" class="toggle-popup-list">....</a>
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#listStaffModal" class="toggle-popup-list">....</a>
                                                 <span class="red-star">*</span>
+                                                <!-- onclick="$('#listStaffModal').modal();" -->
                                             </div>
                                         </span>
                                     </div>
@@ -484,7 +485,8 @@
         </div>
 
         <!-- List staff modal -->
-        <div id="listStaffModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+        <div id="listStaffModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" 
+        data-toggle="modal" data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="card">
@@ -530,7 +532,7 @@
 
     <script>
         function openListStaffModal(e) {
-            $(e).modal({ backdrop: 'static', keyboard: false });
+            // $(e).modal({ backdrop: 'static', keyboard: false });
         }
 
         function onSaveNotice() {

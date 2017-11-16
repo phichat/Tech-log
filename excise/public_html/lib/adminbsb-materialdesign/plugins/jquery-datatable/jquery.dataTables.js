@@ -11395,8 +11395,10 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
-	
+
+			// 1. edit 16/11/2017
+			// "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "รายการที่ _START_ - _END_ จาก _TOTAL_ รายการ",
 	
 			/**
 			 * Display information string for when the table is empty. Typically the

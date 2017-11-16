@@ -1,0 +1,14 @@
+			----- jquery.dataTables.js -----
+			// 1. edit 16/11/2017
+            // "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "รายการที่ _START_ - _END_ จาก _TOTAL_ รายการ",
+
+
+			----- select.js -----
+			// 1. edit 16/11/2017
+			// nPage.innerHTML = "Page ";
+			nPage.innerHTML = "หน้า ";
+
+			// 2. edit 16/11/2017
+			// spans[1].innerHTML = "&nbsp;of&nbsp;" + iPages;
+			spans[1].innerHTML = "&nbsp;จาก&nbsp;" + iPages + "หน้า";

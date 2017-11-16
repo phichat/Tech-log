@@ -73,6 +73,10 @@
      text-decoration: none !important;
  }
 
+ .good-name-tag{
+     padding: 4px;
+ }
+
  .fixed-botton-bottom{
     position:fixed;
     bottom:0px;
@@ -89,4 +93,12 @@
   }
   :-moz-placeholder { /* Firefox 18- */
     font-size: 13px !important;
+  }
+
+
+  /* Datatable */
+.paging_listbox_select {
+    padding: 4px 8px 4px !important;
+    border: 1px solid #E0E0E0 !important;
+    border-radius: 4px !important;
   }

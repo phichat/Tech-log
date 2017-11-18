@@ -17,6 +17,39 @@ function checkedBox(e, table, col) {
 
 }
 
+// ลบข้อมูล Tag สินค้า
+function onDelGoodNameTag(e) {
+    $(e).closest('li').remove();
+}
+
+// เพิ่มสินค้าเข้าไปใน Tag
+function onChangGoodName(e) {
+    var x = event.which || event.keyCode;
+    if (x === 13) {
+        var goodName = $(e).val()
+        if (goodName !== '') {
+            var checkItem = false;
+            $('.good-name li .good-name-tag').each(function (i, el) {
+                if (goodName == $(el).text()) {
+                    checkItem = true;
+                    return false;
+                }
+            })
+
+            if (checkItem === false) {
+                var li = '<li><span class="good-name-tag">' + goodName
+                li += '</span><a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a></li>'
+
+                $('.good-name').append(li)
+            } else {
+                alert('รายการสินค้า ' + goodName + ' ถูกเลือกแล้ว!')
+            }
+
+            $(e).val('')
+        }
+    }
+}
+
 $(document).ready(function () {
     $('input.datepicker').bootstrapMaterialDatePicker({
         format: 'DD/MM/YYYY',

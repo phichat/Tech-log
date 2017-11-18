@@ -107,4 +107,12 @@
       .card .body {
           padding: 20px 0;
       }
+      
+  }
+
+  @media screen and (min-width: 768px) {
+    .between-item{
+      padding-left:0 !important;
+    }
+
   }

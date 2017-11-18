@@ -17,7 +17,31 @@ function checkedBox(e, table, col) {
 
 }
 
+$(document).ready(function () {
+    $('input.datepicker').bootstrapMaterialDatePicker({
+        format: 'DD/MM/YYYY',
+        weekStart: 0,
+        time: false
+    });
 
+    var option = '<option disabled selected></option>';
+    for (var i = 1; i < 50; i++) {
+        option += '<option value="value' + i + '">Item ' + i + '</option>'
+    }
+    $('select').html(option);
+
+    $("input.time24").inputmask('hh:mm');
+
+    $("input.number").inputmask({
+        'alias': 'numeric',
+        'groupSeparator': ',',
+        'autoGroup': true,
+        'digits': 2,
+        'digitsOptional': false,
+        'placeholder': '0'
+    });
+
+ })
 
 // //แปลงข้อมูลที่แสดงในแถบด้านท้ายตารางให้เป็น ภาษาที่ต้องการ
 // function regExpStringDatatable(mapObj, str) {

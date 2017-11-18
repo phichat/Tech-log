@@ -28,7 +28,11 @@ $(document).ready(function () {
     for (var i = 1; i < 50; i++) {
         option += '<option value="value' + i + '">Item ' + i + '</option>'
     }
-    $('select').html(option);
+    $('select').not('.paging_listbox_select').html(option);
+    $('select').not('.paging_listbox_select').selectize({
+        create: true,
+        sortField: 'text'
+    });
 
     $("input.time24").inputmask('hh:mm');
 

@@ -35,7 +35,7 @@ $.fn.dataTableExt.oPagination.listbox = {
 		nInput.style.display = "inline";
 		// 1. edit 16/11/2017
 		// nPage.innerHTML = "Page ";
-		nPage.innerHTML = "หน้า ";
+		nPage.innerHTML = "หน้าที่ ";
 		nPaging.appendChild(nPage);
 		nPaging.appendChild(nInput);
 		nPaging.appendChild(nOf);

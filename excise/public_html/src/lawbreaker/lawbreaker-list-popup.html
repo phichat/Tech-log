@@ -1,12 +1,331 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Lawbreaker list popup</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet">
+
+    <!-- Animation Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/animate-css/animate.css" rel="stylesheet">
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+        rel="stylesheet">
+
+    <!-- Custom Css -->
+    <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
+
+    <!--Custom notice-->
+    <link href="../../lib/notice-custom/css/style.css" rel="stylesheet">
+
+    <!-- Selectize.js-master -->
+    <link href="../../lib/selectize.js-master/dist/css/selectize.css" rel="stylesheet" type="text/css" />
+
+    <!-- Jquery Js-->
+    <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script>
 </head>
+
 <body>
-    
+
+    <div class="lawbreaker-list-popup">
+        <br>
+        <!-- Form search -->
+        <form class="form-horizontal search">
+            <div class="row form-group">
+                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="btn_liLawbreakerSearch">ค้นหา:</label>
+                <div class="col-lg-7 col-md-7 col-sm-11 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="ชื่อ/นามสกุล/ชื่อผู้ประกอบการ/บัตรปชช./Passport/จังหวัด">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <button type="button" id="btn_liLawbreakerSearch" class="btn bg-dark-blue-custom waves-effect form-control">
+                        <span>
+                            <i class="material-icons">search</i>
+                            ค้นหา
+                        </span>
+                    </button>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+                    <button type="button" id="btn_liLawbreakerClear" class="btn bg-grey waves-effect form-control" onclick="onClearFormSearch();">
+                        <span>
+                            <i class="material-icons">clear</i>
+                            เคลียร์
+                        </span>
+                    </button>
+                    <script>
+                        function onClearFormSearch() {
+                            $('.lawbreaker-list-popup .search input[type=text]').val('');
+                        }
+                    </script>
+                </div>
+            </div>
+        </form>
+
+        <!-- Form -->
+        <form action="" class="form-horizontal">
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ประเภทผู้กระทำผิด:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <select name="" id="" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">เลขที่บัตรประชาชน:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">Passport:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">เลขทะเบียนสรรพสามิต:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">เลขทะเบียนนิติบุคคล:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ชื่อ:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-5">
+                    <select name="" id="" class="form-control"></select>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-7">
+                    <div class="input-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ชื่อกลาง:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">นามสกุล:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ชื่อผู้ประกอบการ:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ชื่ออื่น:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">บ้านเลขที่:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">หมู่:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ซอย:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ถนน:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ตำบล/อำเภอ/จังหวัด</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">เชื่อชาติ:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <select name="" id="" class="form-control"></select>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">สัญชาติ:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <select name="" id="" class="form-control"></select>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">อาชีพ:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">วันเกิด:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <div class="form-line">
+                            <input type="text" class="datepicker form-control">
+                        </div>
+                        <sapn class="input-group-addon">
+                            <i class="material-icons">event</i>
+                        </sapn>
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">อายุ:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="input-group">
+                        <div class="form-line">
+                            <input type="text" class="form-control">
+                        </div>
+                        <sapn class="input-group-addon">ปี</sapn>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ชื่อบิดา:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-12 col-sm-12 col-xs-12">ชื่อมารดา:</label>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <!-- button -->
+        <div class="row">
+            <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12">
+                <button type="button" class="btn bg-dark-blue-custom waves-effect form-control" id="clearLawbreaker" onclick="onClearLawbreaker();">
+                    <i class="material-icons">clear_all</i>
+                    เคลียร์
+                </button>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <button type="button" class="btn bg-red waves-effect form-control" id="saveLawbreaker" onclick="onSaveLawbreaker();">
+                    <i class="material-icons">save</i>
+                    ยืนยัน
+                </button>
+            </div>
+            <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                <button type="button" class="btn bg-grey waves-effect form-control" id="cancelLawbreaker" data-dismiss="modal" onclick="onCancelLawbreaker();">
+                    <i class="material-icons">close</i>
+                    ยกเลิก
+                </button>
+                <script>
+                    function onClearLawbreaker() {
+                        $('.lawbreaker-list-popup input').val('');
+                        $('.lawbreaker-list-popup select').each(function (i, e) {
+                            var $select = $(e).selectize();
+                            var control = $select[0].selectize;
+                            control.clear();
+                        });
+                    }
+
+                    function onCancelSelectNotice() {
+
+                    }
+                </script>
+            </div>
+        </div>
+
+        <div class="script">
+            <!-- Bootstrap Core Js -->
+            <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
+
+            <!-- Selectize Js -->
+            <script src="../../lib/selectize.js-master/dist/js/standalone/selectize.min.js" type="text/javascript"></script>
+
+            <!-- Input Mask Plugin Js -->
+            <script src="../../lib/adminbsb-materialdesign/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+            <!-- Notice custom Js -->
+            <script src="../../lib/notice-custom/js/main.js" type="text/javascript"></script>
+
+            <!-- Waves Effect Plugin Js -->
+            <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
+
+            <!-- Autosize Plugin Js -->
+            <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script>
+
+            <!-- Moment Plugin Js -->
+            <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/moment.js"></script>
+
+            <!-- Bootstrap Material Datetime Picker Plugin Js -->
+            <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+
+            <!--Custom-->
+            <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script>
+            <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script>
+
+        </div>
+    </div>
+
 </body>
+
 </html>

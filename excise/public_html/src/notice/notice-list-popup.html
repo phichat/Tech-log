@@ -17,24 +17,11 @@
     <!-- Waves Effect Css -->
     <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet">
 
-    <!-- Animation Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/animate-css/animate.css" rel="stylesheet">
-
-    <!-- Wait Me Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/waitme/waitMe.css" rel="stylesheet">
-
-    <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-        rel="stylesheet">
-
     <!-- jquery-datatable bootstrap -->
     <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
-
-    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
-    <link href="../../lib/adminbsb-materialdesign/css/themes/all-themes.css" rel="stylesheet">
 
     <!--Custom notice-->
     <link href="../../lib/notice-custom/css/style.css" rel="stylesheet">
@@ -44,7 +31,7 @@
 </head>
 
 <body>
-    <div class="staff-list">
+    <div class="notice-list-popup">
         <style>
             .btn-default-notice {
                 background-color: transparent !important;
@@ -78,7 +65,7 @@
                     </button>
                     <script>
                         function onClearFormSearch() {
-                            $('.staff-list input[type=text]').val('');
+                            $('.notice-list-popup input[type=text]').val('');
                         }
                     </script>
                 </div>
@@ -96,17 +83,17 @@
                     var tr = '';
                     for (var i = 1; i < 87; i++) {
                         tr += '<tr>'
-                        tr += '<td><input type="checkbox" id="staffCheckboxTd' + i + '" name="staffCheckboxTd' + i + '" class="filled-in";">';
-                        tr += '<label for="staffCheckboxTd' + i + '"></label></td>'
+                        tr += '<td><input type="checkbox" id="noticeCheckboxTd' + i + '" name="noticeCheckboxTd' + i + '" class="filled-in";">';
+                        tr += '<label for="noticeCheckboxTd' + i + '"></label></td>'
                         tr += '<td>' + i + '</td>'
-                        tr += '<td class="notice-code">LS000000000'+i+'<s/td>'
+                        tr += '<td class="notice-code">LS000000000'+i+'</td>'
                         tr += '<td class="notice-name">สายลับ(ขอปิดนาม)</td>'
                         tr += '<td class="notice-date">dd/mm/yyyy</td>'
                         tr += "<td class=''><input type='button' value='ดูใบแจ้งความนำจับ' class='btn-default-notice' onclick=getNotice('LS000000000"+i+"')></td>"
                         tr += '</tr>'
                     }
-                    $('#tableStaffList tbody').html(tr)
-                    $('#tableStaffList').DataTable({
+                    $('#tableNoticeByCon tbody').html(tr)
+                    $('#tableNoticeByCon').DataTable({
                         // scrollY: "300px",
                         scrollX: true,
                         scrollCollapse: true,
@@ -127,12 +114,12 @@
 
             <!-- table staff list -->
             <div class="form-group">
-                <table id="tableStaffList" class="table table-striped table-hover">
+                <table id="tableNoticeByCon" class="table table-striped table-hover">
                     <thead>
                         <tr>
                             <th style="min-width:30px;">
-                                <input type="checkbox" id="staffCheckboxTh" name="staffCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableStaffList', 0);">
-                                <label for="staffCheckboxTh"></label>
+                                <input type="checkbox" id="noticeCheckboxTh" name="noticeCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableNoticeByCon', 0);">
+                                <label for="noticeCheckboxTh"></label>
                             </th>
                             <th style="min-width:50px;">ลำดับ</th>
                             <th style="min-width:170px;">เลขที่การแจ้ง</th>
@@ -150,19 +137,19 @@
             <div class="row">
                 <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <button type="button" class="btn bg-red form-control" id="saveNotice" onclick="onSelectStaff();">
+                    <button type="button" class="btn bg-red form-control" id="saveNotice" onclick="onSelectNotice();">
                         <i class="material-icons">done</i>
                         ยืนยัน
                     </button>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <button type="button" class="btn bg-grey form-control" id="cancelNotice" data-dismiss="modal" onclick="onCancelSelectStaff();">
+                    <button type="button" class="btn bg-grey form-control" id="cancelNotice" data-dismiss="modal" onclick="onCancelSelectNotice();">
                         <i class="material-icons">close</i>
                         ยกเลิก
                     </button>
                     <script>
-                        function onCancelSelectStaff() {
-                            $('#tableStaffList tr').find('input[type=checkbox]').prop('checked', false);
+                        function onCancelSelectNotice() {
+                            $('#tableNoticeByCon tr').find('input[type=checkbox]').prop('checked', false);
                         }
                     </script>
                 </div>
@@ -179,15 +166,6 @@
 
         <!-- Waves Effect Plugin Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
-
-        <!-- Autosize Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script>
-
-        <!-- Moment Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/moment.js"></script>
-
-        <!-- Bootstrap Material Datetime Picker Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
 
         <!--Custom-->
         <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script>

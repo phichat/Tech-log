@@ -54,7 +54,9 @@
                 $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
                 $('#exhibitModal .card .body').load('../exhibit/exhibit-popup.html');
                 $('#lawbreakerModal .card .body').load('../lawbreaker/lawbreaker-list-popup.html');
-                $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html');
+                $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html', function(){
+                    $('.indictment-list-popup').fadeTo();
+                });
 
 
 

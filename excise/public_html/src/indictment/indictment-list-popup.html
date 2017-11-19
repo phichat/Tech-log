@@ -8,26 +8,39 @@
     <title>Indictment list popup</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"> -->
 
     <!-- Bootstrap Core Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet"> -->
 
     <!-- Waves Effect Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet"> -->
+
+    <!-- Animation Css -->
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/animate-css/animate.css" rel="stylesheet"> -->
+
+    <!-- Wait Me Css -->
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/waitme/waitMe.css" rel="stylesheet"> -->
+
+    <!-- Bootstrap Material Datetime Picker Css -->
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
+        rel="stylesheet"> -->
 
     <!-- jquery-datatable bootstrap -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet"> -->
 
     <!-- Custom Css -->
-    <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet"> -->
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <!-- <link href="../../lib/adminbsb-materialdesign/css/themes/all-themes.css" rel="stylesheet"> -->
 
     <!--Custom notice-->
-    <link href="../../lib/notice-custom/css/style.css" rel="stylesheet">
+    <!-- <link href="../../lib/notice-custom/css/style.css" rel="stylesheet"> -->
 
     <!-- Jquery Js-->
-    <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script> -->
 </head>
 
 <body>
@@ -71,11 +84,11 @@
                     var tr = '';
                     for (var i = 1; i < 87; i++) {
                         tr += '<tr>'
-                        tr += '<td>'+ i +'</td>'
+                        tr += '<td>' + i + '</td>'
                         tr += '<td class="caselawid">20' + i + '</td>'
-                        tr += '<td class="penality-caselawid">20'+i+'</td>'
+                        tr += '<td class="penality-caselawid">20' + i + '</td>'
                         tr += '<td class="built-base-name">มีไว้ในครอบครอง.......</td>'
-                        tr += '<td class="exhibit-wild"><input type="checkbox" id="indictmentCheckboxTd' + i + '" name="indictmentCheckboxTd' + i + '" class="filled-in";">';
+                        tr += '<td class="exhibit-wild"><input type="checkbox" id="indictmentCheckboxTd' + i + '" name="indictmentCheckboxTd' + i + '" class="filled-in">';
                         tr += '<label for="indictmentCheckboxTd' + i + '"></label></td>'
                         tr += '</tr>'
                     }
@@ -111,7 +124,7 @@
                             <th style="min-width:80px;">ของกลางเถื่อน</th>
                         </tr>
                     </thead>
-                    
+
                     <tbody></tbody>
                 </table>
             </div>
@@ -120,13 +133,13 @@
             <div class="row">
                 <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <button type="button" class="btn bg-red form-control" id="saveIndictment" onclick="onSelectIndictment();">
+                    <button type="button" class="btn bg-red waves-effect form-control" id="saveIndictment" onclick="onSelectIndictment();">
                         <i class="material-icons">done</i>
                         ยืนยัน
                     </button>
                 </div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <button type="button" class="btn bg-grey form-control" id="cancelIndictment" data-dismiss="modal" onclick="">
+                    <button type="button" class="btn bg-grey waves-effect form-control" id="cancelIndictment" data-dismiss="modal" onclick="">
                         <i class="material-icons">close</i>
                         ยกเลิก
                     </button>
@@ -137,18 +150,34 @@
 
     <div class="script">
         <!-- Bootstrap Core Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script> -->
 
         <!-- Notice custom Js -->
-        <script src="../../lib/notice-custom/js/main.js" type="text/javascript"></script>
+        <!-- <script src="../../lib/notice-custom/js/main.js" type="text/javascript"></script> -->
+
+        <!-- Input Mask Plugin Js -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script> -->
 
         <!-- Waves Effect Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script> -->
+
+        <!-- Autosize Plugin Js -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script> -->
+
+        <!-- Moment Plugin Js -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/moment.js"></script> -->
+
+        <!-- Bootstrap Material Datetime Picker Plugin Js -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> -->
+
+        <!--Custom-->
+        <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script> -->
 
         <!-- Jquery DataTable Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
     </div>
 </body>
 

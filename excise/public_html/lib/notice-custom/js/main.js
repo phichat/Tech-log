@@ -22,6 +22,30 @@ function onDelGoodNameTag(e) {
     $(e).closest('li').remove();
 }
 
+// ลบข้อมูลในตาราง
+function onRemoveItemInTable(table) {
+    if (confirm('ยืนยันการทำรายการหรือไม่?')) {
+        var checked = false;
+        $(table).find('tbody tr').each(function (i, e) {
+            var checkbox = $(e).find('td:eq(0) input[type=checkbox]');
+            if ($(checkbox).is(':checked')) {
+                $(e).remove();
+                checked = true;
+            }
+        })
+
+        if (checked === false) {
+            alert('กรุณาเลือกรายการที่ต้องการลบ');
+        } else {
+            $(table).find('tbody tr').each(function (i, e) {
+                $(e).find('td:eq(1)').html(++i);
+            })
+        }
+
+        $(table).find('input[type=checkbox]').prop('checked', false)
+    }
+}
+
 // เพิ่มสินค้าเข้าไปใน Tag
 function onChangGoodName(e) {
     var x = event.which || event.keyCode;
@@ -50,21 +74,11 @@ function onChangGoodName(e) {
     }
 }
 
-$(document).ready(function () {
+$(document).ready(function(){
     $('input.datepicker').bootstrapMaterialDatePicker({
         format: 'DD/MM/YYYY',
         weekStart: 0,
         time: false
-    });
-
-    var option = '<option disabled selected></option>';
-    for (var i = 1; i < 50; i++) {
-        option += '<option value="value' + i + '">Item ' + i + '</option>'
-    }
-    $('select').not('.paging_listbox_select').html(option);
-    $('select').not('.paging_listbox_select').selectize({
-        create: true,
-        sortField: 'text'
     });
 
     $("input.time24").inputmask('hh:mm');
@@ -77,8 +91,7 @@ $(document).ready(function () {
         'digitsOptional': false,
         'placeholder': '0'
     });
-
- })
+})
 
 // //แปลงข้อมูลที่แสดงในแถบด้านท้ายตารางให้เป็น ภาษาที่ต้องการ
 // function regExpStringDatatable(mapObj, str) {

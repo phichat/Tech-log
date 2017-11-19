@@ -8,26 +8,26 @@
     <title>Notice list popup</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css"> -->
 
     <!-- Bootstrap Core Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet"> -->
 
     <!-- Waves Effect Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet"> -->
 
     <!-- jquery-datatable bootstrap -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet"> -->
 
     <!-- Custom Css -->
-    <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
+    <!-- <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet"> -->
 
     <!--Custom notice-->
-    <link href="../../lib/notice-custom/css/style.css" rel="stylesheet">
+    <!-- <link href="../../lib/notice-custom/css/style.css" rel="stylesheet"> -->
 
     <!-- Jquery Js-->
-    <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+    <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script> -->
 </head>
 
 <body>
@@ -75,8 +75,8 @@
         <div class="">
             <script>
 
-                function getNotice(noticeCode){
-                    window.open('notice-manage.html?notice-code='+noticeCode, '_blank')
+                function getNotice(noticeCode) {
+                    window.open('../notice/notice-manage.html?notice-code=' + noticeCode, '_blank')
                 }
 
                 $(document).ready(function () {
@@ -86,10 +86,10 @@
                         tr += '<td><input type="checkbox" id="noticeCheckboxTd' + i + '" name="noticeCheckboxTd' + i + '" class="filled-in";">';
                         tr += '<label for="noticeCheckboxTd' + i + '"></label></td>'
                         tr += '<td>' + i + '</td>'
-                        tr += '<td class="notice-code">LS000000000'+i+'</td>'
+                        tr += '<td class="notice-code">LS000000000' + i + '</td>'
                         tr += '<td class="notice-name">สายลับ(ขอปิดนาม)</td>'
                         tr += '<td class="notice-date">dd/mm/yyyy</td>'
-                        tr += "<td class=''><input type='button' value='ดูใบแจ้งความนำจับ' class='btn-default-notice' onclick=getNotice('LS000000000"+i+"')></td>"
+                        tr += "<td class=''><input type='button' value='ดูใบแจ้งความนำจับ' class='btn-default-notice' onclick=getNotice('LS000000000" + i + "')></td>"
                         tr += '</tr>'
                     }
                     $('#tableNoticeByCon tbody').html(tr)
@@ -128,7 +128,7 @@
                             <th style="min-width:170px;"></th>
                         </tr>
                     </thead>
-                    
+
                     <tbody></tbody>
                 </table>
             </div>
@@ -137,7 +137,7 @@
             <div class="row">
                 <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <button type="button" class="btn bg-red form-control" id="saveNotice" onclick="onSelectNotice();">
+                    <button type="button" class="btn bg-red form-control" id="saveNotice" data-dismiss="modal" onclick="onSelectNotice();">
                         <i class="material-icons">done</i>
                         ยืนยัน
                     </button>
@@ -159,22 +159,31 @@
 
     <div class="script">
         <!-- Bootstrap Core Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script> -->
 
         <!-- Notice custom Js -->
-        <script src="../../lib/notice-custom/js/main.js" type="text/javascript"></script>
+        <!-- <script src="../../lib/notice-custom/js/main.js" type="text/javascript"></script> -->
+
+        <!-- Input Mask Plugin Js -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script> -->
+
+        <!-- Selectize Js -->
+        <!-- <script src="../../lib/selectize.js-master/dist/js/standalone/selectize.min.js" type="text/javascript"></script> -->
 
         <!-- Waves Effect Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script> -->
+
+        <!-- Bootstrap Material Datetime Picker Plugin Js -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> -->
 
         <!--Custom-->
-        <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
+        <!-- <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script> -->
 
         <!-- Jquery DataTable Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
     </div>
 </body>
 

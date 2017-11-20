@@ -52,12 +52,26 @@
     <div class="arrest-manage container">
         <script>
             $(document).ready(function () {
-                $('#noticeByConModal .card .body').load('../notice/notice-list-popup.html');
-                $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
-                $('#arrestTeamModal .card .body').load('../staff/arrest-team-list-popup.html');
-                $('#exhibitModal .card .body').load('../exhibit/exhibit-popup.html')
-                $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html');
-                $('#lawbreakerModal .card .body').load('../lawbreaker/lawbreaker-list-popup.html');
+                // $('#noticeByConModal .card .body').load('../notice/notice-list-popup.html');
+                // $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
+                // $('#arrestTeamModal .card .body').load('../staff/arrest-team-list-popup.html');
+                // $('#exhibitModal .card .body').load('../exhibit/exhibit-popup.html')
+                // $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html');
+                // $('#lawbreakerModal .card .body').load('../lawbreaker/lawbreaker-list-popup.html');
+
+                var loadMultiFile = {
+                    '#noticeByConModal .card .body': '../notice/notice-list-popup.html',
+                    '#listStaffModal .card .body': '../staff/staff-list-popup.html',
+                    '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html',
+                    '#exhibitModal .card .body': '../exhibit/exhibit-popup.html',
+                    '#indictmentModal .card .body': '../indictment/indictment-list-popup.html',
+                    '#lawbreakerModal .card .body': '../lawbreaker/lawbreaker-list-popup.html'
+                }
+
+                $.each(loadMultiFile, function (tag, url) {
+                    $(tag).load(url);
+                })
+
 
                 // $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
                 // $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');

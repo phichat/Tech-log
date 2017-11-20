@@ -74,38 +74,60 @@
             </div>
         </form>
 
+        <script>
+            $(document).ready(function () {
+                var option = '<option disabled selected></option>';
+                for (var i = 1; i < 50; i++) {
+                    option += '<option value="value' + i + '">Item ' + i + '</option>'
+                }
+                $('select').not('.paging_listbox_select').html(option);
+                $('select').not('.paging_listbox_select').selectize({
+                    create: true,
+                    sortField: 'text'
+                });
+
+                $('input.datepicker').bootstrapMaterialDatePicker({
+                    format: 'DD/MM/YYYY',
+                    weekStart: 0,
+                    time: false
+                });
+
+                $("input.time24").inputmask('hh:mm');
+            })
+        </script>
+
         <!-- Form -->
         <form action="" class="form-manage form-horizontal form-group">
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ประเภทผู้กระทำผิด:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ประเภทผู้กระทำผิด:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <select name="" id="" class="form-control"></select>
                 </div>
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">เลขที่บัตรประชาชน:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
+                <label for="cardID" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">เลขที่บัตรประชาชน:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="cardID">
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12">Passport:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
+                <label for="passport" class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">Passport:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="passport">
                     </div>
                 </div>
             </div>
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">เลขทะเบียนสรรพสามิต:</label>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">เลขทะเบียนสรรพสามิต:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เลขทะเบียนนิติบุคคล:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label for="" class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">เลขทะเบียนนิติบุคคล:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
@@ -113,11 +135,11 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ชื่อ:</label>
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ชื่อ:</label>
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                     <select name="" id="" class="form-control"></select>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-7">
+                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-7">
                     <div class="input-group">
                         <div class="form-line">
                             <input type="text" class="form-control">
@@ -128,13 +150,46 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ชื่อกลาง:</label>
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ชื่อกลาง:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+                <label for="" class="control-label col-md-2 col-sm-4 col-xs-12">นามสกุล:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ชื่อผู้ประกอบการ:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ชื่ออื่น:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">บ้านเลขที่:</label>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <label for="" class="control-label col-md-2 col-sm-2 col-xs-12">นามสกุล:</label>
+                <label for="" class="control-label col-lg-2 col-md-2 col-sm-1 col-xs-12">หมู่:</label>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
@@ -143,31 +198,13 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ชื่อผู้ประกอบการ:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                    <div class="form-line">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ชื่ออื่น:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
-                    <div class="form-line">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">บ้านเลขที่:</label>
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ซอย:</label>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">หมู่:</label>
+                <label for="" class="control-label col-lg-2 col-md-2 col-sm-1 col-xs-12">ถนน:</label>
                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
@@ -176,14 +213,8 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ซอย:</label>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="form-line">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ถนน:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ตำบล/อำเภอ/จังหวัด</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
@@ -191,28 +222,19 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ตำบล/อำเภอ/จังหวัด</label>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                    <div class="form-line">
-                        <input type="text" class="form-control">
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">เชื่อชาติ:</label>
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">เชื่อชาติ:</label>
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <select name="" id="" class="form-control"></select>
                 </div>
                 <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สัญชาติ:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <select name="" id="" class="form-control"></select>
                 </div>
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">อาชีพ:</label>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">อาชีพ:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
@@ -220,8 +242,8 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">วันเกิด:</label>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">วันเกิด:</label>
+                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                     <div class="input-group">
                         <div class="form-line">
                             <input type="text" class="datepicker form-control">
@@ -231,8 +253,8 @@
                         </sapn>
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">อายุ:</label>
-                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                <label for="" class="control-label col-lg-2 col-md-2 col-sm-1 col-xs-12">อายุ:</label>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                     <div class="input-group">
                         <div class="form-line">
                             <input type="text" class="form-control">
@@ -243,14 +265,14 @@
             </div>
 
             <div class="row">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12">ชื่อบิดา:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
+                <label for="" class="control-label col-lg-3 col-md-3 col-sm-4 col-xs-12">ชื่อบิดา:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12">ชื่อมารดา:</label>
-                <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
+                <label for="" class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">ชื่อมารดา:</label>
+                <div class="col-lg-3 col-md-3 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control">
                     </div>
@@ -260,7 +282,7 @@
 
         <!-- button -->
         <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-3 col-xs-12"></div>
+            <div class="col-lg-6 col-md-6 col-sm-3 col-xs-12"></div>
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                 <button type="button" class="btn bg-dark-blue-custom waves-effect form-control" id="clearLawbreaker" onclick="onClearLawbreaker();">
                     <i class="material-icons">clear_all</i>
@@ -270,7 +292,7 @@
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                 <button type="button" class="btn bg-red waves-effect form-control" id="saveLawbreaker" onclick="onSaveLawbreaker();">
                     <i class="material-icons">save</i>
-                    ยืนยัน
+                    บันทึก
                 </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">

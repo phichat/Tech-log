@@ -47,19 +47,18 @@
 </head>
 
 <body>
-    <div class="arrest-manage">
+    <div class="arrest-manage container">
         <script>
             $(document).ready(function () {
                 $('#noticeByConModal .card .body').load('../notice/notice-list-popup.html');
                 $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
+                $('#arrestTeamModal .card .body').load('../staff/arrest-team-list-popup.html');
                 $('#exhibitModal .card .body').load('../exhibit/exhibit-popup.html');
+                $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html');
                 $('#lawbreakerModal .card .body').load('../lawbreaker/lawbreaker-list-popup.html');
-                $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html', function(){
-                    $('.indictment-list-popup').fadeTo();
-                });
 
-
-
+                $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
+                $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
 
                 var option = '<option disabled selected></option>';
                 for (var i = 1; i < 50; i++) {
@@ -70,10 +69,6 @@
                     create: true,
                     sortField: 'text'
                 });
-
-
-
-
             })
         </script>
 
@@ -382,7 +377,7 @@
                                 <a href="javasctipt:void();" data-toggle="modal" data-target="#indictmentModal">
                                     <i class="material-icons col-teal">add_circle</i>
                                 </a>
-                                <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableIndictmentAll');" class="remove-item-from-table">
+                                <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableIndictmentByCon');" class="remove-item-from-table">
                                     <i class="material-icons col-pink">delete</i>
                                 </a>
                             </div>
@@ -394,24 +389,58 @@
                                         var tr = '';
                                         for (var i = 1; i < 4; i++) {
                                             tr += '<tr>'
-                                            tr += '<td><input type="checkbox" id="indictmentCheckboxTd' + i + '" name="indictmentCheckboxTd' + i + '" class="filled-in";">';
-                                            tr += '<label for="indictmentCheckboxTd' + i + '"></label></td>'
+                                            tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + i + '" name="indictmentByConCheckboxTd' + i + '" class="filled-in";">';
+                                            tr += '<label for="indictmentByConCheckboxTd' + i + '"></label></td>'
                                             tr += '<td>' + i + '</td>'
-                                            tr += '<td>.....</td>'
-                                            tr += '<td>.....</td>'
-                                            tr += '<td>.....</td>'
+                                            tr += '<td class="caselawid">' + i + '</td>'
+                                            tr += '<td class="penality-caselawid">.....</td>'
+                                            tr += '<td class="built-base-name">.....</td>'
                                             tr += '</tr>'
                                         }
 
-                                        $('#tableIndictmentAll tbody').html(tr);
+                                        $('#tableIndictmentByCon tbody').html(tr);
                                     })
+
+                                    function onSelectIndictment(table) {
+                                        $(table).find('tbody tr').each(function (i, e) {
+                                                var mach = false;
+                                                var s_caseLawId = $(e).find('td.caselawid').html();
+                                                var s_penalityCaseLawId = $(e).find('td.penality-caselawid').html();
+                                                var s_buildBaseName = $(e).find('td.built-base-name').html();
+
+                                                $('#tableIndictmentByCon tbody tr').each(function (j, el) {
+                                                    // ตรวจสอบข้อมูลจากตารางปลายทาง และต้นทางว่ามีข้อมูลที่ซ้ำกันหรือไม่
+                                                    if (s_caseLawId == $(el).find('td.caselawid').html()) {
+                                                        mach = true
+                                                        return false;
+                                                    }
+                                                })
+
+                                                // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
+                                                if (mach === false) {
+                                                    var index = $('#tableIndictmentByCon tbody tr:last').index() + 2
+                                                    var tr = ''
+                                                    tr += '<tr>'
+                                                    tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + index + '" name="indictmentByConCheckboxTd' + index + '" class="filled-in";">';
+                                                    tr += '<label for="indictmentByConCheckboxTd' + index + '"></label></td>'
+                                                    tr += '<td>' + index + '</td>'
+                                                    tr += '<td class="caselawid">' + s_caseLawId + '</td>'
+                                                    tr += '<td class="penality-caselawid">'+ s_penalityCaseLawId +'</td>'
+                                                    tr += '<td class="built-base-name">'+ s_buildBaseName +'</td>'
+                                                    tr += '</tr>'
+                                                    $('#tableIndictmentByCon tbody').append(tr);
+                                                }
+                                            
+                                        })
+                                        $(table).find('input[type=checkbox]').prop('checked', false);
+                                    }
                                 </script>
-                                <table id="tableIndictmentAll" class="table table-hover table-striped">
+                                <table id="tableIndictmentByCon" class="table table-hover table-striped">
                                     <thead>
                                         <tr>
                                             <th style="min-width:30px;">
-                                                <input type="checkbox" id="indictmentCheckboxTh" name="indictmentCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableIndictmentAll', 0);">
-                                                <label for="indictmentCheckboxTh"></label>
+                                                <input type="checkbox" id="indictmentByConCheckboxTh" name="indictmentByConCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableIndictmentByCon', 0);">
+                                                <label for="indictmentByConCheckboxTh"></label>
                                             </th>
                                             <th style="min-width:30px;">ลำดับ</th>
                                             <th style="min-width:170px;">มาตรา</th>
@@ -421,43 +450,6 @@
                                     </thead>
                                     <tbody></tbody>
                                 </table>
-
-                                <script>
-                                    function onSelectIndictment(table) {
-                                        // var checkItem = false;
-                                        // $(table).find('tbody tr').each(function (i, el) {
-                                        //     if (a === $(el).find('td:eq(2)').html()) {
-                                        //         checkItem = false;
-                                        //         alert('ขอภัย "' + $(el).find('td:eq(2)').html() + '" มีอยู่ในรายการแล้ว!');
-                                        //         return false;
-                                        //     } else {
-                                        //         checkItem = true;
-                                        //     }
-                                        // });
-
-                                        // if ($(table).find('tbody tr').length == 0) {
-                                        //     checkItem = true
-                                        // }
-
-                                        // if (checkItem) {
-                                        //     var list = $(table).find('tbody').find('tr').length + 1;
-                                        //     var tr = '<tr>';
-                                        //     tr += '<td>' + list + '</td>';
-                                        //     tr += '<td>';
-                                        //     tr += '<div class="text-center">';
-                                        //     tr += '<input type="checkbox" id="duty_checkbox_td' + list + '" name="duty_checkbox_td' + list + '" class="filled-in duty_checkbox">';
-                                        //     tr += '<label for="duty_checkbox_td' + list + '"></label>';
-                                        //     tr += '</div>';
-                                        //     tr += '</td>';
-                                        //     tr += '<td>' + a + '</td>';
-                                        //     tr += '</tr>';
-                                        //     $(table).find('tbody').append(tr);
-                                        // }
-
-                                    }
-
-
-                                </script>
                             </div>
                         </div>
                     </div>
@@ -495,7 +487,7 @@
                                 var tr = '';
                                 for (var i = 1; i < 4; i++) {
                                     tr += '<tr>'
-                                    tr += '<td><input type="checkbox" id="productCheckboxTd' + i + '" name="exhibitCheckboxTd' + i + '" class="filled-in";">';
+                                    tr += '<td><input type="checkbox" id="exhibitCheckboxTd' + i + '" name="exhibitCheckboxTd' + i + '" class="filled-in";">';
                                     tr += '<label for="exhibitCheckboxTd' + i + '"></label></td>'
                                     tr += '<td>' + i + '</td>'
                                     tr += '<td>.....</td>'
@@ -636,7 +628,7 @@
                 <div class="body">
                     <div class="row">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <a href="javasctipt:void();" class="mr-5">
+                            <a href="javasctipt:void();" data-toggle="modal" data-target="#arrestTeamModal" class="mr-5">
                                 <i class="material-icons col-teal">add_circle</i>
                             </a>
                             <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableArrestTeam')" class="mr-5">
@@ -653,16 +645,63 @@
                                     tr += '<td><input type="checkbox" id="arrestteamCheckboxTd' + i + '" name="arrestteamCheckboxTd' + i + '" class="filled-in";">';
                                     tr += '<label for="arrestteamCheckboxTd' + i + '"></label></td>'
                                     tr += '<td>' + i + '</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
+                                    tr += '<td class="arrestTeam-code hidden">code' + i + '</td>'
+                                    tr += '<td class="arrestTeam-name">.....</td>'
+                                    tr += '<td class="arrestTeam-position">.....</td>'
+                                    tr += '<td class="arrestTeam-department">.....</td>'
+                                    tr += '<td><select name="arrestBy' + i + '" id="sle_arrestBy' + i + '"><option value="ผู้ร่วมจับกุม" selected></option></select></td>'
                                     tr += '</tr>'
                                 }
 
                                 $('#tableArrestTeam tbody').html(tr);
                             })
+
+                            function onSelectArrestTeam(table) {
+                                $(table).find('tbody tr').each(function (i, e) {
+                                    var checkbox = $(e).find('td:eq(0) input[type=checkbox]').is(':checked');
+                                    // ตรวจสอบว่ามีรายการใดที่ถูกเลือกหรือไม่
+                                    // ถ้ามีรายการที่ถูกเลือกให้ทำงานต่อไป
+                                    if (checkbox) {
+                                        var mach = false;
+                                        var s_arrestTeamCode = $(e).find('td.arrestTeam-code').html();
+                                        var s_arrestTeamName = $(e).find('td.arrestTeam-name').html();
+                                        var s_arrestTeamPosition = $(e).find('td.arrestTeam-position').html();
+                                        var s_arrestTeamDepartment = $(e).find('td.arrestTeam-department').html();
+
+                                        $('#tableArrestTeam tbody tr').each(function (j, el) {
+                                            // ตรวจสอบว่ามีข้อมูลที่ซ้ำกันหรือไม่
+                                            if (s_arrestTeamCode == $(el).find('td.arrestTeam-code').html()) {
+                                                mach = true
+                                                return false;
+                                            }
+                                        })
+
+                                        // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
+                                        if (mach === false) {
+                                            var index = $('#tableArrestTeam tbody tr:last').index() + 2
+                                            var tr = ''
+                                            tr += '<tr>'
+                                            tr += '<td><input type="checkbox" id="arrestteamCheckboxTd' + index + '" name="arrestteamCheckboxTd' + index + '" class="filled-in";">';
+                                            tr += '<label for="arrestteamCheckboxTd' + index + '"></label></td>'
+                                            tr += '<td>' + index + '</td>'
+                                            tr += '<td class="arrestTeam-code hidden">' + s_arrestTeamCode + '</td>'
+                                            tr += '<td class="arrestTeam-name">' + s_arrestTeamName + '</td>'
+                                            tr += '<td class="arrestTeam-position">' + s_arrestTeamPosition + '</td>'
+                                            tr += '<td class="arrestTeam-department">' + s_arrestTeamDepartment + '</td>'
+                                            tr += '<td><select name="arrestBy' + index + '" id="sle_arrestBy' + index + '"><option value="ผู้ร่วมจับกุม" selected>ผู้ร่วมจับกุม</option></select></td>'
+                                            tr += '</tr>'
+                                            $('#tableArrestTeam tbody').append(tr);
+                                            $('select#sle_arrestBy' + index).selectize({
+                                                create: true,
+                                                sortField: 'text'
+                                            })
+                                        }
+                                    }
+                                })
+                                $(table).find('input[type=checkbox]').prop('checked', false);
+                            }
                         </script>
+
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
                                 <table id="tableArrestTeam" class="table table-striped table-hover">
@@ -673,10 +712,10 @@
                                                 <label for="arrestteamCheckboxTh"></label>
                                             </th>
                                             <th style="min-width: 30px;">ลำดับ</th>
-                                            <th style="min-width: 170px;">สินค้า</th>
-                                            <th style="min-width: 170px;">จำนวน</th>
-                                            <th style="min-width: 170px;">ปริมาตรสุทธิ</th>
-                                            <th style="min-width: 170px;">ทะเบียน</th>
+                                            <th style="min-width: 170px;">ชื่อ</th>
+                                            <th style="min-width: 170px;">ตำแหน่ง</th>
+                                            <th style="min-width: 170px;">สังกัด</th>
+                                            <th style="min-width: 170px;">ในฐานะ</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -762,7 +801,7 @@
             </script>
         </div>
 
-        <!-- NoticeteByCon Modal-->
+        <!-- NoticeteByCon Modal // รายการแจ้งความนำจับ -->
         <div id="noticeByConModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
             data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
@@ -783,8 +822,8 @@
                         <div class="body">
                         </div>
                         <script>
-                            function onSelectNotice() {
-                                $('#tableNoticeByCon tbody tr').each(function (i, el) {
+                            function onSelectNotice(table) {
+                                $(table).find('tbody tr').each(function (i, el) {
                                     if ($(el).find('input[type=checkbox]').is(':checked')) {
                                         $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
                                         $('#txt_noticeName').val($(el).find('td.notice-name').html())
@@ -792,7 +831,7 @@
                                     }
                                 })
 
-                                $('#tableNoticeByCon').find('input[type=checkbox]').prop('checked', false);
+                                $(table).find('tr input[type=checkbox]').prop('checked', false);
                             }
 
                         </script>
@@ -801,7 +840,7 @@
             </div>
         </div>
 
-        <!-- List staff modal -->
+        <!-- List staff Modal // รายชื่อพนักงาน -->
         <div id="listStaffModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
             data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
@@ -840,7 +879,7 @@
             </div>
         </div>
 
-        <!-- Indictment modal -->
+        <!-- Indictment Modal // ข้อกล่าวหา -->
         <div id="indictmentModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
             data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
@@ -858,25 +897,13 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class="body">
-                        </div>
-                        <script>
-                            function onSelectIndictment() {
-                                $('#tableIndictmentByCon tbody tr').each(function (i, el) {
-                                    if ($(el).find('input[type=checkbox]').is(':checked')) {
-
-                                    }
-                                })
-
-                                $('#tableIndictmentByCon').find('input[type=checkbox]').prop('checked', false);
-                            }
-                        </script>
+                        <div class="body"></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Exhibit modal -->
+        <!-- Exhibit Modal // บัญชีสิ่งของ -->
         <div id="exhibitModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
             data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
@@ -901,7 +928,7 @@
             </div>
         </div>
 
-        <!-- Lawbreaker Modal -->
+        <!-- Lawbreaker Modal // รายชื่อผู้กระทำความผิด -->
         <div id="lawbreakerModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
             data-backdrop="static" data-keyboard="false">
             <div class="modal-dialog modal-lg" role="document">
@@ -926,6 +953,31 @@
             </div>
         </div>
 
+        <!-- Arrest team Modal // คณะผู้จับกุม -->
+        <div id="arrestTeamModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
+            data-backdrop="static" data-keyboard="false">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="card">
+                        <div class="header bg-teal">
+                            <h2>
+                                คณะผู้จับกุม
+                            </h2>
+                            <ul class="header-dropdown m-r--5">
+                                <li>
+                                    <a href="javascript:void(0);" data-dismiss="modal">
+                                        <i class="material-icons">close</i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="script">
@@ -961,7 +1013,6 @@
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-    </div>
     </div>
 </body>
 

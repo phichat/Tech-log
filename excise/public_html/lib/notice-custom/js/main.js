@@ -74,7 +74,7 @@ function onChangGoodName(e) {
     }
 }
 
-$(document).ready(function(){
+$(document).ready(function () {
     $('input.datepicker').bootstrapMaterialDatePicker({
         format: 'DD/MM/YYYY',
         weekStart: 0,
@@ -91,6 +91,12 @@ $(document).ready(function(){
         'digitsOptional': false,
         'placeholder': '0'
     });
+
+    // $('select').not('.paging_listbox_select').selectize({
+    //     create: true,
+    //     sortField: 'text'
+    // });
+
 })
 
 // //แปลงข้อมูลที่แสดงในแถบด้านท้ายตารางให้เป็น ภาษาที่ต้องการ

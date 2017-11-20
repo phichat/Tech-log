@@ -1,0 +1,20 @@
+// <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">
+// <soapenv:Header/>
+// <soapenv:Body>
+//    <inf:insNoticeProductlistAll>
+//       <!--Optional:-->
+//       <arg0>
+//          <!--Optional:-->
+//          <groupCode>?</groupCode>
+//          <!--Optional:-->
+//          <noticeCode>?</noticeCode>
+//          <!--Optional:-->
+//          <groupName>?</groupName>
+//          <!--Optional:-->
+//          <lawsuitCode>?</lawsuitCode>
+//          <!--Optional:-->
+//          <createUser>?</createUser>
+//       </arg0>
+//    </inf:insNoticeProductlistAll>
+// </soapenv:Body>
+// </soapenv:Envelope>

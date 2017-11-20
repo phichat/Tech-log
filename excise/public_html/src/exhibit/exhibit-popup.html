@@ -35,88 +35,113 @@
 
 <body>
     <div class="exhibit-popup">
+        <script>
+            $(document).ready(function () {
+                $("input.number").inputmask({
+                    'alias': 'numeric',
+                    'groupSeparator': ',',
+                    'autoGroup': true,
+                    'digits': 2,
+                    'digitsOptional': false,
+                    'placeholder': '0'
+                });
+            })    
+        </script>
         <form action="" class="form-horizontal form-group">
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ของกลาง</label>
+                <label for="txt_productName" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ของกลาง</label>
                 <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="txt_productName">
                     </div>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">จำนวน:</label>
+                <label for="txt_qty" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">จำนวน:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="number form-control" id="txt_qty" placeholder="0.00">
                     </div>
                 </div>
 
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">หน่วย:</label>
+                <label for="sle_qtyUnit" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">หน่วย:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <select name="" id="" class="form-control"></select>
+                    <select name="" id="sle_qtyUnit" class="form-control"></select>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ปริมาตรสุทธิ:</label>
+                <label for="txt_netWeight" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ปริมาตรสุทธิ:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="number form-control" id="txt_netWeight" placeholder="0.00">
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">หน่วย:</label>
+                <label for="sle_weightUnit" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">หน่วย:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <select name="" id="" class="form-control"></select>
+                    <select name="" id="sle_weightUnit" class="form-control"></select>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">สถานะของกลาง:</label>
+                <label for="sle_isDomestic" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ในประเทศ/ต่างประเทศ:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                    <select name="" id="" class="form-control"></select>
+                    <select name="" id="sle_isDomestic" class="form-control">
+                        <option value="" selected></option>
+                        <option value="I">ในประเทศ</option>
+                        <option value="O">ต่างประเทศ</option>
+                        <option value="Z">ไม่ระบุ</option>
+                    </select>
+                </div>
+                <label for="sle_isStatusExhibit" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สถานะของกลาง:</label>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <select name="" id="sle_isStatusExhibit" class="form-control">
+                        <option value="" selected></option>
+                        <option value="1">ยืด</option>
+                        <option value="2">คืน</option>
+                    </select>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">รายการของกลาง:</label>
+                <label for="txt_exhibitItem" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">รายการของกลาง:</label>
                 <div class="col-lg-6 col-md-8 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="txt_exhibitItem">
                     </div>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ทะเบียนรถ:</label>
+                <label for="txt_carNo" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">ทะเบียนรถ:</label>
                 <div class="col-lg-6 col-md-8 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="txt_carNo">
                     </div>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">หมายเหตุ:</label>
+                <label for="txt_exhibitRemark" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">หมายเหตุ:</label>
                 <div class="col-lg-6 col-md-8 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="txt_exhibitRemark">
                     </div>
                 </div>
             </div>
 
             <div class="row form-group">
-                <label for="" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">อัตราภาษี:</label>
+                <label for="txt_exhibitVatRate" class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12">อัตราภาษี:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control">
+                        <input type="text" class="form-control" id="txt_exhibitVatRate">
                     </div>
                 </div>
-                <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">มูลค้าภาษี:</label>
+                <label for="txt_exhibitVat" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">มูลค้าภาษี:</label>
                 <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control" style="z-index:0 !important;">
+                        <input type="text" class="form-control" id="txt_exhibitVat" style="z-index:0 !important;">
                     </div>
                 </div>
             </div>
@@ -126,30 +151,61 @@
         <div class="row">
             <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12"></div>
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                <button type="button" class="btn bg-red form-control" id="saveExhibit" onclick="onSaveExhibit();">
+                <button type="button" class="btn bg-red form-control" id="saveExhibit" onclick="onSaveExhibit('.exhibit-popup');">
                     <i class="material-icons">save</i>
                     บันทึก
                 </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                <button type="button" class="btn bg-grey form-control" id="cancelExhibit" data-dismiss="modal" onclick="onCancelExhibit();">
+                <button type="button" class="btn bg-grey form-control" id="cancelExhibit" onclick="confirmCancelExhibit();">
                     <i class="material-icons">close</i>
                     ยกเลิก
                 </button>
                 <script>
                     $(document).ready(function () {
-                        var option = '<option disabled selected></option>';
-                        for (var i = 1; i < 50; i++) {
-                            option += '<option value="value' + i + '">Item ' + i + '</option>'
-                        }
-                        $('select').not('.paging_listbox_select').html(option);
                         $('select').not('.paging_listbox_select').selectize({
                             create: true,
                             sortField: 'text'
                         });
                     })
-                    function onCancelExhibit() {
 
+                    function onSaveExhibit(form) {
+                        var isSave = false
+                        if (
+                            $(form).find('input#txt_productName').val() == '' &&
+                            $(form).find('input#txt_qty').val() == '' &&
+                            $(form).find('input#txt_netWeight').val() == '' &&
+                            $(form).find('input#txt_carNo').val() == '' &&
+                            $(form).find('select#sle_isDomestic option:selected').text() == '' &&
+                            $(form).find('select#sle_isStatusExhibit option:selected').text() == ''
+                        ) {
+                            alert('กรุณาระบุรายการบัญชีสิ่งของ')
+                            return false;
+                        } else {
+                            isSave = true;
+                        }
+
+                        if (isSave) {
+                            // เรียกใช้งาน ฟังชั่นก์ ในหน้า arrest-manage.html
+                            onSetExhibit(form);
+                            onCancelExhibit();
+                        }
+                    }
+
+                    function confirmCancelExhibit() {
+                        if (confirm('ยืนยันการทำรายการหรือไม่?')) {
+                            onCancelExhibit();
+                        }
+                    }
+
+                    function onCancelExhibit() {
+                        $('.exhibit-popup input').val('');
+                        $('.exhibit-popup select').each(function (i, e) {
+                            var $select = $(e).selectize();
+                            var control = $select[0].selectize;
+                            control.clear();
+                        })
+                        $('.modal').modal('hide');
                     }
                 </script>
             </div>

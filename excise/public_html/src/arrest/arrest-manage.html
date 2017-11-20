@@ -57,14 +57,14 @@
                 $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html');
                 $('#lawbreakerModal .card .body').load('../lawbreaker/lawbreaker-list-popup.html');
 
-                $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
-                $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
+                // $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
+                // $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
 
-                var option = '<option disabled selected></option>';
-                for (var i = 1; i < 50; i++) {
-                    option += '<option value="value' + i + '">Item ' + i + '</option>'
-                }
-                $('select').not('.paging_listbox_select').html(option);
+                // var option = '<option disabled selected></option>';
+                // for (var i = 1; i < 50; i++) {
+                //     option += '<option value="value' + i + '">Item ' + i + '</option>'
+                // }
+                // $('select').not('.paging_listbox_select').html(option);
                 $('select').not('.paging_listbox_select').selectize({
                     create: true,
                     sortField: 'text'
@@ -88,9 +88,9 @@
                 <div class="body">
                     <form class="form-horizontal form-group">
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ใบเลขที่แจ้งความนำจับ:</label>
+                            <label for="sle_isNotice" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ใบเลขที่แจ้งความนำจับ:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <select name="" id="" class="form-control"></select>
+                                <select name="isNotice" id="sle_isNotice" class="form-control"></select>
                             </div>
                         </div>
 
@@ -122,20 +122,20 @@
 
                         <div class="row">
                             <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 0 !important;"> -->
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เลขที่งาน:</label>
+                            <label for="txt_lawsuitCode" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เลขที่งาน:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="lawsuitCode" id="txt_lawsuitCode" class="form-control">
                                 </div>
                             </div>
                             <!-- </div> -->
 
                             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
-                                <label for="" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">วันที่เขียนบันทึกจับกุม:</label>
+                                <label for="txt_lawsuitDate" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">วันที่เขียนบันทึกจับกุม:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="" id="" class="datepicker form-control">
+                                            <input type="text" name="lawsuitDate" id="txt_lawsuitDate" class="datepicker form-control">
                                         </div>
                                         <span class="input-group-addon">
                                             <i class="material-icons">event</i>
@@ -147,19 +147,19 @@
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เขียนที่:</label>
+                            <label for="txt_lawsuitLocation" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เขียนที่:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="lawsuitLocation" id="txt_lawsuitLocation" class="form-control">
                                 </div>
                             </div>
 
                             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
-                                <label for="" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">วันที่เกิดเหตุ:</label>
+                                <label for="txt_occurenceDate" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">วันที่เกิดเหตุ:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="" id="" class="datepicker form-control">
+                                            <input type="text" name="occurenceDate" id="txt_occurenceDate" class="datepicker form-control">
                                         </div>
                                         <span class="input-group-addon">
                                             <i class="material-icons">event</i>
@@ -167,10 +167,10 @@
                                     </div>
                                 </div>
 
-                                <label for="" class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12">เวลา:</label>
+                                <label for="txt_occurenceTime" class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12">เวลา:</label>
                                 <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="time24 form-control">
+                                        <input type="text" name="occurenceTime" id="txt_occurenceTime" class="time24 form-control">
                                     </div>
                                 </div>
                             </div>
@@ -179,16 +179,20 @@
 
                         <div class="row">
 
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">พื้นที่:</label>
+                            <label for="sle_lawsuitArea" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">พื้นที่:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                <select name="" id="" class="form-control"></select>
+                                <select name="" id="sle_lawsuitArea" class="form-control"></select>
                             </div>
 
 
                             <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
-                                <label for="" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">ผู้กระทำผิด:</label>
+                                <label for="sle_isLawbreaker" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">ผู้กระทำผิด:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                    <select name="" id="" class="form-control"></select>
+                                    <select name="" id="sle_isLawbreaker" class="form-control">
+                                        <option value="" selected></option>
+                                        <option value="0">ไม่มีตัวตน</option>
+                                        <option value="1">มีตัวตน</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
                                     <div class="demo-checkbox">
@@ -201,17 +205,17 @@
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สินค้า:</label>
+                            <label for="txt_groupName" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สินค้า:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control" onkeypress="onChangGoodName(this);">
+                                    <input type="text" name="" id="txt_groupName" class="form-control" onkeypress="onChangGoodName(this);">
                                 </div>
                             </div>
                             <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
-                                <label for="" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ประมาณการค่าปรับ:</label>
+                                <label for="txt_fine" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ประมาณการค่าปรับ:</label>
                                 <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="number form-control" placeholder="0.00">
+                                        <input type="texttxt_fine" name="" id="" class="number form-control" placeholder="0.00">
                                     </div>
                                 </div>
                             </div>
@@ -219,7 +223,7 @@
 
                         <div class="row">
                             <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
-                                <label for="" class="control-label col-lg-5 col-md-4 col-sm-4 col-xs-12"></label>
+                                <label for="ul_nmGoodName" class="control-label col-lg-5 col-md-4 col-sm-4 col-xs-12"></label>
                                 <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12">
                                     <ul class="list-tags good-name" id="ul_nmGoodName">
                                         <li>
@@ -276,93 +280,93 @@
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สถานที่เกิดเหตุ:</label>
+                            <label for="txt_locationName" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สถานที่เกิดเหตุ:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="" id="txt_locationName" class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">บ้านเลขที่:</label>
+                            <label for="txt_address" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">บ้านเลขที่:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="input-group">
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="" id="txt_address" class="form-control">
                                     </div>
                                     <span class="input-group-addon">หมู่ที่:</span>
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="" id="txt_village" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">อาคาร/สถานที่:</label>
+                            <label for="txt_building" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">อาคาร/สถานที่:</label>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="" id="txt_building" class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ห้อง:</label>
+                            <label for="txt_room" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ห้อง:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="input-group">
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="" id="txt_room" class="form-control">
                                     </div>
                                     <span class="input-group-addon">ชั้น:</span>
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="" id="txt_floor" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ตรอก/ซอย:</label>
+                            <label for="txt_alley" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ตรอก/ซอย:</label>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="" id="txt_alley" class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ถนน:</label>
+                            <label for="txt_road" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ถนน:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="" id="txt_road" class="form-control">
                                 </div>
                             </div>
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
+                            <label for="txt_region" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="" id="txt_region" class="form-control">
                                 </div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ละติจูด:</label>
+                            <label for="txt_arrestCoordinateX" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ละติจูด:</label>
                             <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                 <div class="form-line">
-                                    <input type="text" name="" id="" class="form-control">
+                                    <input type="text" name="" id="txt_arrestCoordinateX" class="form-control">
                                 </div>
                             </div>
 
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ลองติจูด:</label>
+                            <label for="txt_arrestCoordinateY" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ลองติจูด:</label>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="input-group">
                                     <div class="form-line">
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="txt_arrestCoordinateY" class="form-control">
                                     </div>
                                 </div>
                             </div>
 
-                            <label for="" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สถานีตำรวจท้องที่เกิดเหตุ:</label>
+                            <label for="txt_localPolishStation" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สถานีตำรวจท้องที่เกิดเหตุ:</label>
                             <div class="col-lg-4 col-md-4 col-sm-5 col-xs-12">
                                 <div class="input-group">
                                     <div class="form-line">
-                                        <input type="text" name="" id="" class="form-control">
+                                        <input type="text" name="" id="txt_localPolishStation" class="form-control">
                                     </div>
                                     <span class="input-group-addon">(ส.ส. 2/54)</span>
                                 </div>
@@ -403,34 +407,34 @@
 
                                     function onSelectIndictment(table) {
                                         $(table).find('tbody tr').each(function (i, e) {
-                                                var mach = false;
-                                                var s_caseLawId = $(e).find('td.caselawid').html();
-                                                var s_penalityCaseLawId = $(e).find('td.penality-caselawid').html();
-                                                var s_buildBaseName = $(e).find('td.built-base-name').html();
+                                            var matching = false;
+                                            var s_caseLawId = $(e).find('td.caselawid').html();
+                                            var s_penalityCaseLawId = $(e).find('td.penality-caselawid').html();
+                                            var s_buildBaseName = $(e).find('td.built-base-name').html();
 
-                                                $('#tableIndictmentByCon tbody tr').each(function (j, el) {
-                                                    // ตรวจสอบข้อมูลจากตารางปลายทาง และต้นทางว่ามีข้อมูลที่ซ้ำกันหรือไม่
-                                                    if (s_caseLawId == $(el).find('td.caselawid').html()) {
-                                                        mach = true
-                                                        return false;
-                                                    }
-                                                })
-
-                                                // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
-                                                if (mach === false) {
-                                                    var index = $('#tableIndictmentByCon tbody tr:last').index() + 2
-                                                    var tr = ''
-                                                    tr += '<tr>'
-                                                    tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + index + '" name="indictmentByConCheckboxTd' + index + '" class="filled-in";">';
-                                                    tr += '<label for="indictmentByConCheckboxTd' + index + '"></label></td>'
-                                                    tr += '<td>' + index + '</td>'
-                                                    tr += '<td class="caselawid">' + s_caseLawId + '</td>'
-                                                    tr += '<td class="penality-caselawid">'+ s_penalityCaseLawId +'</td>'
-                                                    tr += '<td class="built-base-name">'+ s_buildBaseName +'</td>'
-                                                    tr += '</tr>'
-                                                    $('#tableIndictmentByCon tbody').append(tr);
+                                            $('#tableIndictmentByCon tbody tr').each(function (j, el) {
+                                                // ตรวจสอบข้อมูลจากตารางปลายทาง และต้นทางว่ามีข้อมูลที่ซ้ำกันหรือไม่
+                                                if (s_caseLawId == $(el).find('td.caselawid').html()) {
+                                                    matching = true
+                                                    return false;
                                                 }
-                                            
+                                            })
+
+                                            // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
+                                            if (matching === false) {
+                                                var index = $('#tableIndictmentByCon tbody tr:last').index() + 2
+                                                var tr = ''
+                                                tr += '<tr>'
+                                                tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + index + '" name="indictmentByConCheckboxTd' + index + '" class="filled-in";">';
+                                                tr += '<label for="indictmentByConCheckboxTd' + index + '"></label></td>'
+                                                tr += '<td>' + index + '</td>'
+                                                tr += '<td class="caselawid">' + s_caseLawId + '</td>'
+                                                tr += '<td class="penality-caselawid">' + s_penalityCaseLawId + '</td>'
+                                                tr += '<td class="built-base-name">' + s_buildBaseName + '</td>'
+                                                tr += '</tr>'
+                                                $('#tableIndictmentByCon tbody').append(tr);
+                                            }
+
                                         })
                                         $(table).find('input[type=checkbox]').prop('checked', false);
                                     }
@@ -476,7 +480,7 @@
                             <a href="javasctipt:void();" data-toggle="modal" data-target="#exhibitModal">
                                 <i class="material-icons col-teal">add_circle</i>
                             </a>
-                            <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableExhibitAll')" class="remove-item-from-table">
+                            <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableExhibitByCon')" class="remove-item-from-table">
                                 <i class="material-icons col-pink">delete</i>
                             </a>
                         </div>
@@ -490,25 +494,61 @@
                                     tr += '<td><input type="checkbox" id="exhibitCheckboxTd' + i + '" name="exhibitCheckboxTd' + i + '" class="filled-in";">';
                                     tr += '<label for="exhibitCheckboxTd' + i + '"></label></td>'
                                     tr += '<td>' + i + '</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
+                                    tr += '<td class="exhibit-product-name">.....</td>'
+                                    tr += '<td class="exhibit-qty">.....</td>'
+                                    tr += '<td class="exhibit-net-weight">.....</td>'
+                                    tr += '<td class="exhibit-carsn">.....</td>'
+                                    tr += '<td class="exhibit-i-o">.....</td>'
+                                    tr += '<td class="exhibit-is-status">.....</td>'
                                     tr += '</tr>'
                                 }
 
-                                $('#tableExhibitAll tbody').html(tr);
+                                $('#tableExhibitByCon tbody').html(tr);
+
                             })
+
+                            function onSetExhibit(form) {
+                                var matching = false;
+                                var productName = $(form).find('input#txt_productName').val();
+                                var qty = $(form).find('input#txt_qty').val();
+                                var netWeight = $(form).find('input#txt_netWeight').val();
+                                var carNo = $(form).find('input#txt_carNo').val();
+                                var isDomestic = $(form).find('select#sle_isDomestic option:selected').text()
+                                var isStatusExhibit = $(form).find('select#sle_isStatusExhibit option:selected').text();
+
+                                $('#tableExhibitByCon tbody tr').each(function (i, e) {
+                                    // ตรวจสอบว่ามีข้อมูลที่ซ้ำกัน กับตารางปลายทางหรือไม่
+                                    if (productName == $(e).find('td.exhibit-product-name').html()) {
+                                        matching = true;
+                                        return false;
+                                    }
+                                })
+
+                                if (matching === false) {
+                                    var index = $('#tableExhibitByCon tbody tr:last').index() + 2
+                                    var tr = '';
+                                    tr += '<tr>'
+                                    tr += '<td><input type="checkbox" id="exhibitCheckboxTd' + index + '" name="exhibitCheckboxTd' + index + '" class="filled-in";">';
+                                    tr += '<label for="exhibitCheckboxTd' + index + '"></label></td>'
+                                    tr += '<td>' + index + '</td>'
+                                    tr += '<td class="exhibit-product-name">' + productName + '</td>'
+                                    tr += '<td class="exhibit-qty">' + qty + '</td>'
+                                    tr += '<td class="exhibit-net-weight">' + netWeight + '</td>'
+                                    tr += '<td class="exhibit-carsn">' + carNo + '</td>'
+                                    tr += '<td class="exhibit-i-o">' + isDomestic + '</td>'
+                                    tr += '<td class="exhibit-is-status">' + isStatusExhibit + '</td>'
+                                    tr += '</tr>'
+                                    $('#tableExhibitByCon tbody').append(tr)
+                                }
+                            }
                         </script>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
-                                <table id="tableExhibitAll" class="table table-striped table-hover">
+                                <table id="tableExhibitByCon" class="table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th style="min-width: 30px;">
-                                                <input type="checkbox" id="exhibitCheckboxTh" name="exhibitCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableExhibitAll', 0);">
+                                                <input type="checkbox" id="exhibitCheckboxTh" name="exhibitCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableExhibitByCon', 0);">
                                                 <label for="exhibitCheckboxTh"></label>
                                             </th>
                                             <th style="min-width: 30px;">ลำดับ</th>
@@ -548,7 +588,7 @@
                             <a href="javasctipt:void();" data-toggle="modal" data-target="#lawbreakerModal">
                                 <i class="material-icons col-teal">add_circle</i>
                             </a>
-                            <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableLawbreakerAll')" class="remove-item-from-table">
+                            <a href="javasctipt:void();" onclick="onRemoveItemInTable('#tableLawbreakerByCon')" class="remove-item-from-table">
                                 <i class="material-icons col-pink">delete</i>
                             </a>
                         </div>
@@ -562,30 +602,84 @@
                                     tr += '<td><input type="checkbox" id="lawBreakerCheckboxTd' + i + '" name="lawBreakerCheckboxTd' + i + '" class="filled-in";">';
                                     tr += '<label for="lawBreakerCheckboxTd' + i + '"></label></td>'
                                     tr += '<td>' + i + '</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
-                                    tr += '<td>.....</td>'
+                                    tr += '<td class="law-name">.....</td>'
+                                    tr += '<td class="law-type">.....</td>'
+                                    tr += '<td class="law-creer">.....</td>'
+                                    tr += '<td class="law-birthday">.....</td>'
+                                    tr += '<td class="law-idcard">.....</td>'
+                                    tr += '<td class="law-passpord">.....</td>'
+                                    tr += '<td class="law-reac">.....</td>'
+                                    tr += '<td class="law-nationllity">.....</td>'
+                                    tr += '<td class="law-address">.....</td>'
+                                    tr += '<td class="law-father-name">.....</td>'
+                                    tr += '<td class="law-mather-name">.....</td>'
                                     tr += '</tr>'
                                 }
 
-                                $('#tableLawbreakerAll tbody').html(tr);
+                                $('#tableLawbreakerByCon tbody').html(tr);
+
                             })
+
+                            function onSetLawbreaker(form) {
+                                var matching = false;
+                                var lawName = $(form).find('select#sle_titleName option:selected').text();
+                                lawName += ' ' + $(form).find('input#txt_firstName').val();
+                                lawName += ' ' + $(form).find('input#txt_lastName').val();
+                                var lawType = $(form).find('select#sle_lawbreakerType option:selected').text();
+                                var lawCreer = $(form).find('input#txt_lawCreer').val();
+                                var lawBirthDay = $(form).find('input#txt_lawBirthDay').val();
+                                var lawIdCard = $(form).find('input#txt_idCard').val()
+                                var lawPassport = $(form).find('input#txt_passport').val();
+                                var lawReac = $(form).find('select#sle_lawRace option:selected').text();
+                                var lawNationllity = $(form).find('select#sle_lawNationallity option:selected').text();
+                                var lawAddress = $(form).find('input#txt_lawAddress').val();
+                                lawAddress += ' ' + $(form).find('input#txt_lawVillage').val();
+                                lawAddress += ' ' + $(form).find('input#txt_lawAlley').val();
+                                lawAddress += ' ' + $(form).find('input#txt_lawRoad').val();
+                                lawAddress += ' ' + $(form).find('select#sle_lawRegion option:selected').text();
+                                var lawFatherName = $(form).find('input#txt_lawFatherName').val();
+                                var lawMatherName = $(form).find('input#txt_lawMatherName').val();
+
+                                $('#tableLawbreakerByCon tbody tr').each(function (i, e) {
+                                    // ตรวจสอบว่ามีข้อมูลที่ซ้ำกัน กับตารางปลายทางหรือไม่
+                                    // IdCard, Passport, BirthDay
+                                    if ((lawIdCard == $(e).find('td.law-idcard').html() || lawPassport == $(e).find('td.law-passpord').html()) &&
+                                        lawBirthDay == $(e).find('td.law-birthday').html()) {
+                                        matching = true;
+                                        return false;
+                                    }
+                                })
+
+                                if (matching === false) {
+                                    var no = $('#tableLawbreakerByCon tbody tr:last').index() + 2
+                                    var tr = '';
+                                    tr += '<tr>'
+                                    tr += '<td><input type="checkbox" id="lawBreakerCheckboxTd' + no + '" name="lawBreakerCheckboxTd' + no + '" class="filled-in";">';
+                                    tr += '<label for="lawBreakerCheckboxTd' + no + '"></label></td>'
+                                    tr += '<td>' + no + '</td>'
+                                    tr += '<td class="law-name">' + lawName + '</td>'
+                                    tr += '<td class="law-type">' + lawType + '</td>'
+                                    tr += '<td class="law-creer">' + lawCreer + '</td>'
+                                    tr += '<td class="law-birthday">' + lawBirthDay + '</td>'
+                                    tr += '<td class="law-idcard">' + lawIdCard + '</td>'
+                                    tr += '<td class="law-passpord">' + lawPassport + '</td>'
+                                    tr += '<td class="law-reac">' + lawReac + '</td>'
+                                    tr += '<td class="law-nationllity">' + lawNationllity + '</td>'
+                                    tr += '<td class="law-address">' + lawAddress + '</td>'
+                                    tr += '<td class="law-father-name">' + lawFatherName + '</td>'
+                                    tr += '<td class="law-mather-name">' + lawMatherName + '</td>'
+                                    tr += '</tr>'
+                                    $('#tableLawbreakerByCon tbody').append(tr)
+                                }
+                            }
                         </script>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="table-responsive">
-                                <table id="tableLawbreakerAll" class="table table-striped table-hover">
+                                <table id="tableLawbreakerByCon" class="table table-striped table-hover">
                                     <thead>
                                         <tr>
                                             <th style="min-width: 30px;">
-                                                <input type="checkbox" id="lawBreakerCheckboxTh" name="lawBreakerCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableLawbreakerAll', 0);">
+                                                <input type="checkbox" id="lawBreakerCheckboxTh" name="lawBreakerCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableLawbreakerByCon', 0);">
                                                 <label for="lawBreakerCheckboxTh"></label>
                                             </th>
                                             <th style="min-width: 30px;">ลำดับ</th>
@@ -662,7 +756,7 @@
                                     // ตรวจสอบว่ามีรายการใดที่ถูกเลือกหรือไม่
                                     // ถ้ามีรายการที่ถูกเลือกให้ทำงานต่อไป
                                     if (checkbox) {
-                                        var mach = false;
+                                        var matching = false;
                                         var s_arrestTeamCode = $(e).find('td.arrestTeam-code').html();
                                         var s_arrestTeamName = $(e).find('td.arrestTeam-name').html();
                                         var s_arrestTeamPosition = $(e).find('td.arrestTeam-position').html();
@@ -671,13 +765,13 @@
                                         $('#tableArrestTeam tbody tr').each(function (j, el) {
                                             // ตรวจสอบว่ามีข้อมูลที่ซ้ำกันหรือไม่
                                             if (s_arrestTeamCode == $(el).find('td.arrestTeam-code').html()) {
-                                                mach = true
+                                                matching = true
                                                 return false;
                                             }
                                         })
 
                                         // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
-                                        if (mach === false) {
+                                        if (matching === false) {
                                             var index = $('#tableArrestTeam tbody tr:last').index() + 2
                                             var tr = ''
                                             tr += '<tr>'
@@ -742,27 +836,27 @@
                 </div>
                 <div class="body">
                     <div class="row">
-                        <label for="" class="control-label col-lg-12 col-md-12 col-sm-3 col-xs-12">พฤติกรรมในการจับ</label>
+                        <label for="txta_behaviour" class="control-label col-lg-12 col-md-12 col-sm-3 col-xs-12">พฤติกรรมในการจับ</label>
                         <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12">
                             <div class="form-line">
-                                <textarea name="" id="" rows="5" class="form-control"></textarea>
+                                <textarea name="" id="txta_behaviour" rows="5" class="form-control"></textarea>
                             </div>
 
                         </div>
                     </div>
                     <div class="row">
-                        <label for="" class="control-label col-lg-12 col-md-12 col-sm-3 col-xs-12">คำให้การของผู้ต้องหา</label>
+                        <label for="txta_testimony " class="control-label col-lg-12 col-md-12 col-sm-3 col-xs-12">คำให้การของผู้ต้องหา</label>
                         <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12">
                             <div class="form-line">
-                                <textarea name="" id="" rows="5" class="form-control"></textarea>
+                                <textarea name="" id="txta_testimony " rows="5" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <label for="" class="control-label col-lg-12 col-md-12 col-sm-3 col-xs-12">การแจ้งสิทธิ</label>
+                        <label for="txta_prompt" class="control-label col-lg-12 col-md-12 col-sm-3 col-xs-12">การแจ้งสิทธิ</label>
                         <div class="col-lg-12 col-md-12 col-sm-9 col-xs-12">
                             <div class="form-line">
-                                <textarea name="" id="" rows="5" class="form-control"></textarea>
+                                <textarea name="" id="txta_prompt" rows="5" class="form-control"></textarea>
                             </div>
                         </div>
                     </div>

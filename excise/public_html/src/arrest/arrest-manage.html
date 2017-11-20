@@ -44,6 +44,8 @@
 
     <!--Jquery Js-->
     <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+
+    <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -53,7 +55,7 @@
                 $('#noticeByConModal .card .body').load('../notice/notice-list-popup.html');
                 $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
                 $('#arrestTeamModal .card .body').load('../staff/arrest-team-list-popup.html');
-                $('#exhibitModal .card .body').load('../exhibit/exhibit-popup.html');
+                $('#exhibitModal .card .body').load('../exhibit/exhibit-popup.html')
                 $('#indictmentModal .card .body').load('../indictment/indictment-list-popup.html');
                 $('#lawbreakerModal .card .body').load('../lawbreaker/lawbreaker-list-popup.html');
 
@@ -65,6 +67,26 @@
                 //     option += '<option value="value' + i + '">Item ' + i + '</option>'
                 // }
                 // $('select').not('.paging_listbox_select').html(option);
+
+
+                // var commonWsUrl = 'http://103.233.193.62:8888/TLEXCWeb/CommonWS?wsdl'
+                // getSubdistrictByKeyword(commonWsUrl, '', function callback(xml) {
+                //     var sleRegion = '<option value="" selected></option>'
+                //     $(xml).find('subDistrictDTOList')
+                //         .each(function (i, e) {
+                //             sleRegion += '<option value="';
+                //             sleRegion += $(e).find('subDistrictNameTh').text();
+                //             sleRegion += $(e).find('districtNameTh').text();
+                //             sleRegion += $(e).find('provinceNameTh').text();
+                //             sleRegion += '">'
+                //             sleRegion += $(e).find('subDistrictNameTh').text() + '/';
+                //             sleRegion += $(e).find('districtNameTh').text() + '/';
+                //             sleRegion += $(e).find('provinceNameTh').text() + '</option>';
+                //         })
+
+                //     $('select.region').html(sleRegion);
+                // })
+
                 $('select').not('.paging_listbox_select').selectize({
                     create: true,
                     sortField: 'text'
@@ -337,11 +359,9 @@
                                     <input type="text" name="" id="txt_road" class="form-control">
                                 </div>
                             </div>
-                            <label for="txt_region" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
+                            <label for="sle_region" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                <div class="form-line">
-                                    <input type="text" name="" id="txt_region" class="form-control">
-                                </div>
+                                <select name="" id="sle_region" class="region form-control"></select>
                             </div>
                         </div>
 

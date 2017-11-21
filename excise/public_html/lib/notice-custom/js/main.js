@@ -53,7 +53,7 @@ function onChangGoodName(e) {
         var goodName = $(e).val()
         if (goodName !== '') {
             var checkItem = false;
-            $('.good-name li .good-name-tag').each(function (i, el) {
+            $('.list-tags li.good-name-tag').each(function (i, el) {
                 if (goodName == $(el).text()) {
                     checkItem = true;
                     return false;
@@ -64,7 +64,7 @@ function onChangGoodName(e) {
                 var li = '<li><span class="good-name-tag">' + goodName
                 li += '</span><a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a></li>'
 
-                $('.good-name').append(li)
+                $('.list-tags').append(li)
             } else {
                 alert('รายการสินค้า ' + goodName + ' ถูกเลือกแล้ว!')
             }
@@ -94,27 +94,27 @@ $(document).ready(function () {
     //     $('select.region').html(sleRegion);
     // })
 
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
-    });
+    // $('input.datepicker').bootstrapMaterialDatePicker({
+    //     format: 'DD/MM/YYYY',
+    //     weekStart: 0,
+    //     time: false
+    // });
 
-    $("input.time24").inputmask('hh:mm');
+    // $("input.time24").inputmask('hh:mm');
 
-    $("input.number").inputmask({
-        'alias': 'numeric',
-        'groupSeparator': ',',
-        'autoGroup': true,
-        'digits': 2,
-        'digitsOptional': false,
-        'placeholder': '0'
-    });
+    // $("input.number").inputmask({
+    //     'alias': 'numeric',
+    //     'groupSeparator': ',',
+    //     'autoGroup': true,
+    //     'digits': 2,
+    //     'digitsOptional': false,
+    //     'placeholder': '0'
+    // });
 
-    $('select').not('.paging_listbox_select').selectize({
-        create: true,
-        sortField: 'text'
-    });
+    // $('select').not('.paging_listbox_select').selectize({
+    //     create: true,
+    //     sortField: 'text'
+    // });
 
 
 })

@@ -48,14 +48,14 @@
         <br>
         <form class="form-horizontal">
             <div class="row form-group">
-                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
+                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_stSearch">ค้นหา:</label>
                 <div class="col-lg-7 col-md-7 col-sm-11 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="ชื่อ/นามสกุล/ตำแหน่ง/สังกัด">
+                        <input type="text" class="form-control" id="txt_stSearch" onkeypress="onkeypressSearchFormStaff(this);" placeholder="ชื่อ/นามสกุล/ตำแหน่ง/สังกัด">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control">
+                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control" onclick="onSearchFormStaff('#txt_stSearch');">
                         <span>
                             <i class="material-icons">search</i>
                             ค้นหา
@@ -69,51 +69,11 @@
                             เคลียร์
                         </span>
                     </button>
-                    <script>
-                        function onClearFormSearch() {
-                            $('.staff-list input[type=text]').val('');
-                        }
-                    </script>
                 </div>
             </div>
         </form>
 
         <div class="">
-            <script>
-                $(document).ready(function () {
-                    var tr = '';
-                    for (var i = 1; i < 87; i++) {
-                        tr += '<tr>'
-                        tr += '<td><input type="checkbox" id="staffCheckboxTd' + i + '" name="staffCheckboxTd' + i + '" class="filled-in";">';
-                        tr += '<label for="staffCheckboxTd' + i + '"></label></td>'
-                        tr += '<td>' + i + '</td>'
-                        tr += '<td class="staff-code">Staff code'+ i +'</td>'
-                        tr += '<td class="staff-name">Staff first name & last name</td>'
-                        tr += '<td class="staff-position">Position</td>'
-                        tr += '<td class="staff-department">Department</td>'
-                        tr += '<td class="staff-pertype">Staff pertype</td>'
-                        tr += '</tr>'
-                    }
-                    $('#tableStaffList tbody').html(tr)
-                    $('#tableStaffList').DataTable({
-                        // scrollY: "300px",
-                        scrollX: true,
-                        scrollCollapse: true,
-                        "ordering": false,
-                        "searching": false,
-                        "lengthChange": false,
-                        "pageLength": 5,
-                        "sPaginationType": "listbox",
-                        "dom": '<<"row form-group"<"col-lg-12 col-md-12 col-sm-12 col-xs-12"t>><"row form-group"<"col-lg-6 col-sm-6"p><"col-lg-6 col-sm-6 text-right"i>>>'
-                    });
-
-                    // dataTables pagination style
-                    $('.paging_listbox').find('select').addClass('paging_listbox_select');
-                });
-
-
-            </script>
-
             <!-- table staff list -->
             <div class="form-group">
                 <table id="tableStaffList" class="tableStaffList table table-striped table-hover">
@@ -149,11 +109,6 @@
                         <i class="material-icons">close</i>
                         ยกเลิก
                     </button>
-                    <script>
-                        function onCancelSelectStaff() {
-                            $('#tableStaffList tr').find('input[type=checkbox]').prop('checked', false);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -182,10 +137,14 @@
         <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
         <!-- <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script> -->
 
+        <script src="../../ws/common-ws/getStaffByKeyword.js"></script>
+
+        <script src="../js/staff/staff-list-popup.js"></script>
+
         <!-- Jquery DataTable Plugin Js -->
-        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
     </div>
 </body>
 

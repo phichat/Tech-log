@@ -44,7 +44,7 @@
 </head>
 
 <body>
-    <div class="staff-list">
+    <div class="arrest-team-list-popup">
         <br>
         <form class="form-horizontal">
             <div class="row form-group">
@@ -69,51 +69,11 @@
                             เคลียร์
                         </span>
                     </button>
-                    <script>
-                        function onClearFormSearch() {
-                            $('.staff-list input[type=text]').val('');
-                        }
-                    </script>
                 </div>
             </div>
         </form>
 
         <div class="">
-            <script>
-                $(document).ready(function () {
-                    var tr = '';
-                    for (var i = 1; i < 87; i++) {
-                        tr += '<tr>'
-                        tr += '<td><input type="checkbox" id="arrestTeamCheckboxTd' + i + '" name="arrestTeamCheckboxTd' + i + '" class="filled-in";">';
-                        tr += '<label for="arrestTeamCheckboxTd' + i + '"></label></td>'
-                        tr += '<td>' + i + '</td>'
-                        tr += '<td class="arrestTeam-code">Arrest(staff) code'+ i +'</td>'
-                        tr += '<td class="arrestTeam-name">Arrest(staff' + i + ') first name & last name</td>'
-                        tr += '<td class="arrestTeam-position">Position</td>'
-                        tr += '<td class="arrestTeam-department">Department</td>'
-                        tr += '<td class="arrestTeam-pertype">Staff pertype</td>'
-                        tr += '</tr>'
-                    }
-                    $('#tableArrestTeamList tbody').html(tr)
-                    $('#tableArrestTeamList').DataTable({
-                        // scrollY: "300px",
-                        scrollX: true,
-                        scrollCollapse: true,
-                        "ordering": false,
-                        "searching": false,
-                        "lengthChange": false,
-                        "pageLength": 5,
-                        "sPaginationType": "listbox",
-                        "dom": '<<"row form-group"<"col-lg-12 col-md-12 col-sm-12 col-xs-12"t>><"row form-group"<"col-lg-6 col-sm-6"p><"col-lg-6 col-sm-6 text-right"i>>>'
-                    });
-
-                    // dataTables pagination style
-                    $('.paging_listbox').find('select').addClass('paging_listbox_select');
-                });
-
-
-            </script>
-
             <!-- table staff list -->
             <div class="form-group">
                 <table id="tableArrestTeamList" class="table table-striped table-hover">
@@ -149,11 +109,6 @@
                         <i class="material-icons">close</i>
                         ยกเลิก
                     </button>
-                    <script>
-                        function onCancelSelectArrestTeam() {
-                            $('#tableArrestTeamList').find('input[type=checkbox]').prop('checked', false);
-                        }
-                    </script>
                 </div>
             </div>
         </div>
@@ -182,10 +137,12 @@
         <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
         <!-- <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script> -->
 
+        <script src="../js/staff/arrest-team-list-popup.js"></script>
+        
         <!-- Jquery DataTable Plugin Js -->
-        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
     </div>
 </body>
 

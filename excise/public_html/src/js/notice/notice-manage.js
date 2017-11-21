@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    // โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
+    โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
     var sleRegion = '<option value="" selected></option>'
     getSubdistrictByKeyword('', function callback(xml) {
         $(xml).find('subDistrictDTOList')
@@ -21,27 +21,7 @@ $(document).ready(function () {
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion);
-    $('select').not('.paging_listbox_select').selectize({
-        create: true,
-        sortField: 'text'
-    });
 
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
-    });
-
-    $("input.time24").inputmask('hh:mm');
-    
-        $("input.number").inputmask({
-            'alias': 'numeric',
-            'groupSeparator': ',',
-            'autoGroup': true,
-            'digits': 2,
-            'digitsOptional': false,
-            'placeholder': '0'
-        });
 })
 
 function onSelectStaff() {

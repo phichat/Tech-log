@@ -1,9 +1,8 @@
 
 $(document).ready(function () {
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
+   
+    $('#txt_nlNoticeDateFrom').bootstrapMaterialDatePicker().on('change', function (e, date) {
+        $('#txt_nlNoticeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
     });
 
     var tr = '';
@@ -11,7 +10,6 @@ $(document).ready(function () {
         tr += '<tr>'
         tr += '<td>' + i + '</td>'
         tr += '<td><a href="javascript:void(0);">Notice code</a></td>'
-        tr += '<td>.....</td>'
         tr += '<td>.....</td>'
         tr += '<td>.....</td>'
         tr += '<td>.....</td>'
@@ -52,7 +50,6 @@ $(document).ready(function () {
 });
 
 function onDelRecord(e) {
-
     if (confirm("ต้องการลบใบแจ้งความนำจับเลขที่ " + e + " หรือไม่?")) {
         alert(e)
     }
@@ -66,9 +63,13 @@ $('#btn_nlAddNotice').on('click', function () {
 
 function onToggleAdvancedSearch() {
     $('.advanced-search').slideToggle();
+    $('#txt_nlSearch').prop('disabled', function (i, v) { return !v; });
 }
 
 function onClearFormSearch() {
-    $('input[type=text]').val('');
-    $('input[type=date]').val('');
+    $('.notice-list input[type=text]').val('');
+    $('.notice-list input[type=date]').val('');
 }
+
+
+

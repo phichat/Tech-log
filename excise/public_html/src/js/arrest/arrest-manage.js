@@ -21,7 +21,7 @@ $(document).ready(function () {
         '#listStaffModal .card .body': '../staff/staff-list-popup.html',
         '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html',
         '#indictmentModal .card .body': '../indictment/indictment-list-popup.html',
-        
+
         // โหลดเฉพาะ tag class และ element ที่อยู่ภายใน
         '#exhibitModal .card .body': '../exhibit/exhibit-popup.html .exhibit-popup',
         '#lawbreakerModal .card .body': '../lawbreaker/lawbreaker-list-popup.html .lawbreaker-list-popup'
@@ -35,12 +35,19 @@ $(document).ready(function () {
 
             $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
             $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
-            
+
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
                 create: true,
                 sortField: 'text'
+            });
+
+            $('input.datepicker').bootstrapMaterialDatePicker({
+                format: 'DD/MM/YYYY',
+                weekStart: 0,
+                lang: 'th',
+                time: false
             });
 
             $("input.number").inputmask({
@@ -56,18 +63,7 @@ $(document).ready(function () {
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion);
-    $('select').not('.paging_listbox_select').selectize({
-        create: true,
-        sortField: 'text'
-    });
 
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
-    });
-
-    $("input.time24").inputmask('hh:mm');
     //==========================
 
 

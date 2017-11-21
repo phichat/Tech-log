@@ -74,47 +74,50 @@ function onChangGoodName(e) {
     }
 }
 
+// function checkMaxlength(e) {
+//     if ($(e).val().length == 2) return false;
+//     $(e).val($(e).val().match(/[0-9]*/));
+// }
+
+function checkBetweenDate(f, t) {
+    if ($(f).val() !== '' && $(t).val() !== '') {
+        var df = replaceAll($(f).val(), '/', '');
+        var dt = replaceAll($(t).val(), '/', '');
+        if (Number(df) > Number(dt)) {
+            alert('"วันที่สิ้นสุด" ต้องไม่น้อยกว่า "วันที่เริ่มต้น"')
+            $(f).val($(t).val())
+        }
+    }
+}
+
+function replaceAll(str, find, replace) {
+    return str.replace(new RegExp(find, 'g'), replace);
+}
+
 $(document).ready(function () {
 
-    // var commonWsUrl = 'http://103.233.193.62:8888/TLEXCWeb/CommonWS?wsdl'
-    // getSubdistrictByKeyword(commonWsUrl, '', function callback(xml) {
-    //     var sleRegion = '<option value="" selected></option>'
-    //     $(xml).find('subDistrictDTOList')
-    //         .each(function (i, e) {
-    //             sleRegion += '<option value="';
-    //             sleRegion += $(e).find('subDistrictNameTh').text();
-    //             sleRegion += $(e).find('districtNameTh').text(); 
-    //             sleRegion += $(e).find('provinceNameTh').text();
-    //             sleRegion += '">'
-    //             sleRegion += $(e).find('subDistrictNameTh').text() +'/' ;
-    //             sleRegion += $(e).find('districtNameTh').text() +'/';
-    //             sleRegion += $(e).find('provinceNameTh').text() +'</option>';
-    //         })
+    $('input.datepicker').bootstrapMaterialDatePicker({
+        format: 'DD/MM/YYYY',
+        weekStart: 0,
+        lang: 'th',
+        time: false
+    });
 
-    //     $('select.region').html(sleRegion);
-    // })
+    $("input.time24").inputmask('hh:mm');
 
-    // $('input.datepicker').bootstrapMaterialDatePicker({
-    //     format: 'DD/MM/YYYY',
-    //     weekStart: 0,
-    //     time: false
-    // });
+    $('select').not('.paging_listbox_select').selectize({
+        create: true,
+        sortField: 'text'
+    });
 
-    // $("input.time24").inputmask('hh:mm');
-
-    // $("input.number").inputmask({
-    //     'alias': 'numeric',
-    //     'groupSeparator': ',',
-    //     'autoGroup': true,
-    //     'digits': 2,
-    //     'digitsOptional': false,
-    //     'placeholder': '0'
-    // });
-
-    // $('select').not('.paging_listbox_select').selectize({
-    //     create: true,
-    //     sortField: 'text'
-    // });
+    $("input.number").inputmask({
+        'alias': 'numeric',
+        'groupSeparator': ',',
+        'autoGroup': true,
+        'digits': 2,
+        'digitsOptional': false,
+        'placeholder': '0'
+    });
 
 
 })

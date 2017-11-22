@@ -45,7 +45,7 @@ function insNoticeInformAll(arr, callback) {
             "content-type": "text/xml; charset=utf-8"
         }
     };
-
+debugger
     $.ajax(settings)
         .success(function (xmlDoc) {
             callback(xmlDoc);

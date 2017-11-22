@@ -20,37 +20,8 @@ $(document).ready(function () {
     // --- end ---
 
     // // รายชื่อเจ้าหน้าที่
-    // getStaffByKeyword($(e).val(), function callback(xml) {
-    //     var sleStaff = [];
-    //     $(xml).find('staffDTOList')
-    //         .each(function (i, e) {
-    //             sleStaff.push(
-    //                 {
-    //                     staffCode: $(e).find('staffCode').text(),
-    //                     staffName: $(e).find('firstName').text() + ' ' + $(e).find('lastName').text(),
-    //                     orgName: $(e).find('orgName').text()
-    //                 }
-    //             )
-    //         })
-
-    //     $('#sle_nmStaff').selectize({
-    //         valueField: 'name',
-    //         labelField: 'code',
-    //         searchField: ['name', 'code'],
-    //         create: false,
-    //         options: option,
-    //         render: {
-    //             option: function (item, escape) {
-    //                 return '<div>' +
-    //                     '<span class="title">' +
-    //                     '<span class="name">' + escape(item.code) + '</span>' +
-    //                     '</span>' +
-    //                     '<span class="description">' + escape(item.name) + '</span>' +
-    //                     '</div>';
-    //             }
-    //         }
-    //     });
-    // })
+    // getStaff('');
+    // --- end ---
 
     // สินค้า
     var sleDutyGroup = '<option value="" selected></option>';
@@ -89,7 +60,7 @@ $(document).ready(function () {
     // --- end ---
 
     // ผู้แจ้งความ
-    $('#sle_nmInfrom').selectize({
+    $('#sle_nmGenderType').selectize({
         create: true,
         sortField: 'value'
     });
@@ -111,6 +82,40 @@ function onSelectStaff() {
             $('#listStaffModal').modal('hide');
             return false;
         }
+    })
+}
+
+function getStaff(keyword) {
+    getStaffByKeyword(keyword, function callback(xml) {
+        var sleStaff = [];
+        $(xml).find('staffDTOList')
+            .each(function (i, e) {
+                sleStaff.push(
+                    {
+                        staffCode: $(e).find('staffCode').text(),
+                        staffName: $(e).find('firstName').text() + ' ' + $(e).find('lastName').text(),
+                        orgName: $(e).find('orgName').text()
+                    }
+                )
+            })
+
+        $('#sle_nmStaff').selectize({
+            valueField: 'staffCode',
+            labelField: 'staffName',
+            searchField: ['staffName', 'staffCode'],
+            create: false,
+            options: sleStaff,
+            render: {
+                option: function (item, escape) {
+                    return '<div>' +
+                        '<span class="title">' +
+                        '<span class="name">' + escape(item.staffName) + '</span>' +
+                        '</span>' +
+                        '<span class="description">' + escape(item.orgName) + '</span>' +
+                        '</div>';
+                }
+            }
+        });
     })
 }
 
@@ -146,20 +151,20 @@ function saveNotice(e) {
 
     // insNoticeNoticeAll
     var noticeNoticeAll = {}
-    noticeNoticeAll.arrestDesc = ''
+    noticeNoticeAll.arrestDesc = '?'
     noticeNoticeAll.createBy = 'User login'
     noticeNoticeAll.departmentNameCommander = '?'
     noticeNoticeAll.departmentNameReceive = $(e).find('#txt_nmDepartment').val()
-    noticeNoticeAll.informType = $(e).find('#sle_nmInfrom option:selected').val()
+    noticeNoticeAll.informType = $(e).find('#sle_nmGenderType option:selected').val()
     noticeNoticeAll.noticeCode = '?'
     noticeNoticeAll.noticeDate = $(e).find('#txt_nmNoticeDate').val()
     noticeNoticeAll.noticeDueDate = $(e).find('#txt_nmDueDate').val()
     noticeNoticeAll.noticeStation = $(e).find('#sle_nmDepartmentName option:selected').text()
-    noticeNoticeAll.noticeTime = $(e).find('txt_nmNoticeTime').val()
-    noticeNoticeAll.positionNameReceive = $(e).find('txt_nmPosition').val()
+    noticeNoticeAll.noticeTime = $(e).find('#txt_nmNoticeTime').val()
+    noticeNoticeAll.positionNameReceive = $(e).find('#txt_nmPosition').val()
     noticeNoticeAll.remarks = ''
-    noticeNoticeAll.secretLevel = ''
-    noticeNoticeAll.staffNameAccept = ''
+    noticeNoticeAll.secretLevel = '?'
+    noticeNoticeAll.staffNameAccept = '?'
     noticeNoticeAll.staffNameReceive = $(e).find('#txt_nmStaff').val()
     // End insNoticeNoticeAll
 

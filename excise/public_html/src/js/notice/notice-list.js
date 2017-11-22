@@ -1,48 +1,31 @@
 
 $(document).ready(function () {
-   
+
     $('#txt_nlNoticeDateFrom').bootstrapMaterialDatePicker().on('change', function (e, date) {
         $('#txt_nlNoticeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
     });
 
-    var tr = '';
-    for (var i = 1; i < 87; i++) {
-        tr += '<tr>'
-        tr += '<td>' + i + '</td>'
-        tr += '<td><a href="javascript:void(0);">Notice code</a></td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>'
-        tr += '<a href="notice-manage.html">'
-        tr += '<i class="material-icons col-teal">print</i>'
-        tr += '</a>'
-        tr += '</td>'
-        tr += '<td>'
-        tr += '<a href="notice-manage.html">'
-        tr += '<i class="material-icons col-teal">mode_edit</i>'
-        tr += '</a>'
-        tr += '</td>'
-        tr += '<td>'
-        tr += '<a href="javascript:void(0)" onclick="onDelRecord(123)">'
-        tr += '<i class="material-icons col-pink">delete</i>'
-        tr += '</a>'
-        tr += '</td>'
-        tr += '</tr>'
-    }
-    $('#table_nlNoticeList tbody').html(tr)
-    $('#table_nlNoticeList').DataTable({
-        scrollX: true,
-        scrollCollapse: true,
-        "ordering": false,
-        "searching": false,
-        "lengthChange": false,
-        "pageLength": 5,
-        "sPaginationType": "listbox",
-        "dom": '<<"row form-group"<"col-lg-12 col-md-12 col-sm-12 col-xs-12"t>><"row form-group"<"col-lg-6 col-sm-6"p><"col-lg-6 col-sm-6 text-right"i>>>'
+    // var tr = '';
+    // tr += '<tr>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '</tr>'
+    // $('#table_nlNoticeList tbody').html(tr)
+    $('#table_nlNoticeList tbody').pageMe({
+        pagerSelector: '#notice_pagination',
+        pageInfo: '#notice_pageinfo',
+        showPrevNext: true,
+        hidePageNumbers: false,
+        perPage: 5
     });
 
     // dataTables pagination style
@@ -60,6 +43,81 @@ $('#btn_nlAddNotice').on('click', function () {
     window.location.href = 'notice-manage.html'
 });
 
+function onSearchNoticeList(boxSearch, advSearch) {
+
+    if ($(advSearch).css('display') == 'none'){
+        if ($(boxSearch).val() == '') {
+            alert('กรุณาระบุคำที่ต้องการค้นหา');
+            return false;
+        }
+        
+        getNoticeListNoticeByKeyword($(boxSearch).val(), function callback(xmlDoc) {
+            var tr = '';
+            $(xmlDoc).find('noticeList')
+                .each(function (i, el) {
+                    var no = (++i)
+                    var noticecode = $(el).find('noticecode').text()
+                    var depCommander = $(el).find('departmentnamecommander').text()
+                    var noticeDate = $(el).find('noticedate').text()
+                    var groupName = $(el).find('groupname').text()
+                    var staffRecive = $(el).find('staffnamereceive').text()
+                    var localtion = $(el).find('locationname').text() + ' '
+                    localtion += $(el).find('sub_district_name').text() + '/'
+                    localtion += $(el).find('district_name_th').text() + '/'
+                    localtion += $(el).find('province_name_th').text()
+                    var endDate = 'ใช้ field ไหน';
+    
+    
+                    tr += '<tr>'
+                    tr += '<td>' + no + '</td>'
+                    tr += '<td>' + noticecode + '</td>'
+                    tr += '<td>' + depCommander + '</td>'
+                    tr += '<td>' + noticeDate + '</td>'
+                    tr += '<td>' + groupName + '</td>'
+                    tr += '<td>' + staffRecive + '</td>'
+                    tr += '<td>' + localtion + '</td>'
+                    tr += '<td>' + endDate + '</td>'
+                    tr += '<td>'
+                    tr += '<a href="notice-manage.html">'
+                    tr += '<i class="material-icons col-teal">print</i>'
+                    tr += '</a>'
+                    tr += '</td>'
+                    tr += '<td>'
+                    tr += '<a href="notice-manage.html?notice-code=' + noticecode + '">'
+                    tr += '<i class="material-icons col-teal">mode_edit</i>'
+                    tr += '</a>'
+                    tr += '</td>'
+                    tr += '<td>'
+                    tr += '<a href="javascript:void(0)" onclick="onDelRecord(' + noticecode + ')">'
+                    tr += '<i class="material-icons col-pink">delete</i>'
+                    tr += '</a>'
+                    tr += '</td>'
+                    tr += '</tr>'
+                })
+    
+            $('#table_nlNoticeList tbody').html(tr)
+            $('#table_nlNoticeList tbody').pageMe({
+                pagerSelector: '#notice_pagination',
+                pageInfo: '#notice_pageinfo',
+                showPrevNext: true,
+                hidePageNumbers: false,
+                perPage: 5
+            });
+        })
+    } else {
+        var arr = {}
+        arr["noticeDate"] = $(advSearch).find('#txt_nlNoticeDateFrom').val();
+        arr[""] = $(advSearch).find('#txt_nlNoticeDateTo').val();
+        arr[""] = $(advSearch).find('#txt_nlGroupName').val();
+        arr["noticeCode"] = $(advSearch).find('#txt_nlNoticeCode').val();
+        arr[""] = $(advSearch).find('#txt_nlNoticeInform').val();
+        arr["departmentNameReceive"] = $(advSearch).find('#txt_nlNoticeDepartmentNameRecieve').val();
+        arr["staffNameReceiv"] = $(advSearch).find('#txt_nlStaffNameReceive').val();
+    }
+
+
+
+}
 
 function onToggleAdvancedSearch() {
     $('.advanced-search').slideToggle();

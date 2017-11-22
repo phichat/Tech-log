@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
+    //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
     var sleRegion = '<option value="" selected></option>'
     getSubdistrictByKeyword('', function callback(xml) {
         $(xml).find('subDistrictDTOList')

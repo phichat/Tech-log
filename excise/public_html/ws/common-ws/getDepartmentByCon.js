@@ -1,14 +1,33 @@
-// <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">
-// <soapenv:Header/>
-// <soapenv:Body>
-//    <inf:getDepartmentByCon>
-//       <!--Optional:-->
-//       <arg0>
-//          <!--Optional:-->
-//          <departmentCode>?</departmentCode>
-//          <!--Optional:-->
-//          <departmentName>?</departmentName>
-//       </arg0>
-//    </inf:getDepartmentByCon>
-// </soapenv:Body>
-// </soapenv:Envelope>
+function getDepartmentByCon(arr, callbak) {
+    var url = 'http://103.233.193.62:8888/TLEXCWeb/CommonWS?wsdl'
+    var xmlData =''
+    xmlData += '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
+    xmlData += '<soapenv:Header/>'
+    xmlData += '<soapenv:Body>'
+    xmlData += '<inf:getDepartmentByCon>'
+    xmlData += '<arg0>'
+    xmlData += '<departmentCode>' + arr.deptCode + '</departmentCode>'
+    xmlData += '<departmentName>' + arr.deptName + '</departmentName>'
+    xmlData += '</arg0>'
+    xmlData += '</inf:getDepartmentByCon>'
+    xmlData += '</soapenv:Body>'
+    xmlData += '</soapenv:Envelope>'
+
+    var settings = {
+        "async": false,
+        "crossDomain": true,
+        "url": url,
+        "method": "POST",
+        "dataType": "xml",
+        "data": xmlData,
+        "headers": {
+            "content-type": "text/xml; charset=utf-8",
+            'X-HTTP-Method-Override': "GET"
+        }
+    };
+
+    $.ajax(settings).success(function (xmlDoc) {
+        callback(xmlDoc);
+    });
+}
+

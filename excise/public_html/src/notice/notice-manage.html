@@ -46,6 +46,8 @@
 
     <!-- excise custom Js -->
     <script src="../../lib/excise-custom/js/main.js" type="text/javascript"></script>
+
+
 </head>
 
 <body>
@@ -96,12 +98,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nmDepartmentName">เขียนที่หน่วยงาน:</label>
+                                <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="sle_nmDepartmentName">เขียนที่หน่วยงาน:</label>
                                 <div class="col-lg-3 col-md-4 col-sm-9 col-xs-12">
                                     <div class="input-group">
-                                        <div class="form-line">
+                                        <select name="department" id="sle_nmDepartmentName" 
+                                        class="form-control" style="z-index:0;"></select>
+                                        <!-- <div class="form-line">
                                             <input type="text" name="department" id="txt_nmDepartmentName" class="form-control" style="z-index:0;">
-                                        </div>
+                                        </div> -->
                                         <span class="input-group-addon" id="spn_nmDepartmentName">
                                             <span class="red-star">*</span>
                                         </span>
@@ -111,7 +115,8 @@
                                 <div class="col-lg-2 col-md-3 col-sm-5 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" class="datepicker form-control" id="txt_nmNoticeDate" name="noticeDate">
+                                            <input type="text" class="datepicker form-control" id="txt_nmNoticeDate" name="noticeDate"
+                                            onchange="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');">
                                         </div>
                                         <span class="input-group-addon date-event" id="spn_nmNoticeDate">
                                             <i class="material-icons">event</i>
@@ -131,13 +136,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="control-label col-lg-3 col-md-4 col-sm-6 col-xs-12" for="txt_nmGetDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
+                                <label class="control-label col-lg-3 col-md-4 col-sm-6 col-xs-12" for="txt_nmDueDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
                                 <div class="col-lg-2 col-md-3 col-sm-2 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="number" class="form-control zindex-0" name="getDate" 
-                                            id="txt_nmGetDate" maxlength="2"
-                                            style="z-index:0;" onkeypress="if(this.value.length == 2) return false;">
+                                            <input type="number" class="form-control zindex-0" name="getDate" id="txt_nmDueDate" maxlength="2" 
+                                            style="z-index:0;" onkeyup="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
+                                            onkeypress="if(this.value.length == 2) return false;">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmGetDate">วัน</span>
                                     </div>
@@ -145,7 +150,7 @@
                                 <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="txt_nmEndDate">สิ้นสุดวันที่:</label>
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12">
                                     <div class="form-line">
-                                        <input type="number" name="endDate" id="txt_nmEndDate" class="form-control">
+                                        <input type="text" name="endDate" id="txt_nmEndDate" class="form-control" disabled>
                                     </div>
                                 </div>
                             </div>
@@ -210,7 +215,11 @@
                                 <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmInfrom">ผู้แจ้งความ:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
-                                        <select name="infrom" id="sle_nmInfrom" class="form-control" style="z-index:0;"></select>
+                                        <select name="infrom" id="sle_nmInfrom" class="form-control" style="z-index:0;"
+                                        onchange="onChangeTypeInfrom(this, '#sle_nmInfromAlies');">
+                                            <option value="0" selected>สายลับ(ขอปิดนาม)</option>
+                                            <option value="1">ระบุชื่อ</option>
+                                        </select>
                                         <span class="input-group-addon" id="spn_nmInfrom">
                                             <span class="red-star">*</span>
                                         </span>
@@ -220,7 +229,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="infromAlies" id="sle_nmInfromAlies" class="form-control" style="z-index:0;">
+                                            <input type="text" name="infromAlies" id="sle_nmInfromAlies" class="form-control" 
+                                            style="z-index:0;" value="สายลับ(ขอปิดนาม)" disabled>
                                         </div>
                                         <span class="input-group-addon" id="spn_nmInfromAlies">
                                             <span class="red-star">*</span>
@@ -390,12 +400,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="txt_nmGoodName">สินค้า:</label>
+                                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmGoodName">สินค้า:</label>
                                 <div class="col-lg-4 col-md-10 col-sm-10 col-xs-12">
                                     <div class="input-group">
-                                        <div class="form-line">
+                                        <select name="" id="sle_nmGoodName" class="form-control" style="z-index:0;" onchange="onChangGoodName(this);"></select>
+                                        <!-- <div class="form-line">
                                             <input type="text" name="" id="txt_nmGoodName" class="form-control" style="z-index:0;" onkeyup="onChangGoodName(this);">
-                                        </div>
+                                        </div> -->
                                         <span class="input-group-addon" id="spn_nmGoodName">
                                             <span class="red-star">*</span>
                                         </span>
@@ -407,15 +418,15 @@
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                     <ul class="list-tags" id="ul_nmGoodName">
                                         <li>
-                                            <span class="good-name-tag">ยาสูบ</span>
+                                            <span class="good-name-tag" data-value="000a">ยาสูบ</span>
                                             <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
                                         </li>
                                         <li>
-                                            <span class="good-name-tag">สุรา</span>
+                                            <span class="good-name-tag" data-value="000b">สุรา</span>
                                             <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
                                         </li>
                                         <li>
-                                            <span class="good-name-tag">รถยนต์</span>
+                                            <span class="good-name-tag" data-value="000c">รถยนต์</span>
                                             <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
                                         </li>
                                     </ul>
@@ -432,7 +443,7 @@
         <div class="row">
             <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
             <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                <button type="button" class="btn bg-red form-control form-group" id="saveNotice" onclick="onSaveNotice();">
+                <button type="button" class="btn bg-red form-control form-group" id="saveNotice" onclick="onSaveNotice('.notice-manage');">
                     <i class="material-icons">save</i>
                     บันทึก
                 </button>
@@ -473,10 +484,7 @@
 
     <div class="script">
 
-        <!-- Ws -->
-        <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>
 
-        <script src="../js/notice/notice-manage.js"></script>
 
         <!-- Bootstrap Core Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
@@ -506,9 +514,23 @@
 
 
         <!-- Jquery DataTable Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
+
+
+        <script src="../js/notice/notice-manage.js"></script>
+
+        <!-- Common Ws Js-->
+        <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>
+        <script src="../../ws/common-ws/getDutygroupByKeyword.js" type="text/javascript"></script>
+        <script src="../../ws/common-ws/getOfficeByKeyword.js" type="text/javascript"></script>
+
+        <!-- Notice Ws Js -->
+        <script src="../../ws/notice-ws/insNoticeNoticeAll.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/insNoticeInformAll.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/insNoticeLocationAll.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/insNoticeProductlistAll.js" type="text/javascript"></script>
     </div>
 </body>
 

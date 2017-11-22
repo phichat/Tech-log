@@ -32,7 +32,6 @@
     var curr = 0,
     option = '';
     while (numPages > curr) {
-        debugger
         // $('<li class="num-page"><a href="javascript:void(0)" class="waves-effect">' + (curr + 1) + '</a></li>').appendTo(pager);
         option +='<option value="' + (curr + 1) + '">' + (curr + 1) + '</option>';
         curr++;
@@ -45,12 +44,13 @@
     if (curr == 0) {
         $(pager).html('<option value="1">1</option>');
         $(pager).closest('.pagination-select').find('.page-total').html('จาก 1 หน้า')
-        $(pageInfo).html('รายการที่ 1 - '+ 1 +' จาก 1 รายการ')
+        $(pageInfo).html('รายการที่ '+ (numItems > 0 ? perPage : numItems) +' - '+ numItems +' จาก ' + (numItems) + ' รายการ')
     } else{
         $(pager).html(option);
         $(pager).closest('.pagination-select').find('.page-total').html('จาก ' + numPages + ' หน้า')
-        $(pageInfo).html('รายการที่ 1 - '+ curr +' จาก ' + numItems + ' รายการ')
+        $(pageInfo).html('รายการที่ 1 - '+ (numItems > 0 ? perPage : numItems) +' จาก ' + (numItems) + ' รายการ')
     }
+    
 
     // var lastItem = curr == 0 ? 1 : curr ;
     // $(pageInfo).html('รายการที่ 1 - '+ lastItem +' จาก ' + numItems + ' รายการ')

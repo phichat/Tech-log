@@ -48,30 +48,34 @@ function onRemoveItemInTable(table) {
 
 // เพิ่มสินค้าเข้าไปใน Tag
 function onChangGoodName(e) {
-    var x = event.which || event.keyCode;
-    if (x === 13) {
-        var goodName = $(e).val()
-        if (goodName !== '') {
-            var checkItem = false;
-            $('.list-tags li.good-name-tag').each(function (i, el) {
-                if (goodName == $(el).text()) {
-                    checkItem = true;
-                    return false;
-                }
-            })
-
-            if (checkItem === false) {
-                var li = '<li><span class="good-name-tag">' + goodName
-                li += '</span><a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a></li>'
-
-                $('.list-tags').append(li)
-            } else {
-                alert('รายการสินค้า ' + goodName + ' ถูกเลือกแล้ว!')
+    // var x = event.which || event.keyCode;
+    // if (x === 13) {
+    var goodName = $(e).text()
+    var goodCode = $(e).val()
+    if (goodName !== '') {
+        var checkItem = false;
+        $('.list-tags li .good-name-tag').each(function (i, el) {
+            if (goodName == $(el).text()) {
+                checkItem = true;
+                return false;
             }
+        })
 
-            $(e).val('')
+        if (checkItem === false) {
+            var li = '<li><span class="good-name-tag" data-value="'+ goodCode +'">' + goodName
+            li += '</span><a href="javascript:void(0);"'
+            li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+
+            $('.list-tags').append(li)
+        } else {
+            alert('รายการสินค้า ' + goodName + ' ถูกเลือกแล้ว!')
         }
+
+        var $select = $(e).selectize();
+        var control = $select[0].selectize;
+        control.clear();
     }
+    // }
 }
 
 // function checkMaxlength(e) {
@@ -105,10 +109,10 @@ $(document).ready(function () {
 
     $("input.time24").inputmask('hh:mm');
 
-    $('select').not('.paging_listbox_select').selectize({
-        create: true,
-        sortField: 'text'
-    });
+    // $('select').not('.paging_listbox_select').selectize({
+    //     create: true,
+    //     sortField: 'text'
+    // });
 
     $("input.number").inputmask({
         'alias': 'numeric',

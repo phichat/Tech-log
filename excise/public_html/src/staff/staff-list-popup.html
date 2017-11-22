@@ -36,11 +36,19 @@
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <!-- <link href="../../lib/adminbsb-materialdesign/css/themes/all-themes.css" rel="stylesheet"> -->
 
-    <!--Custom excise-->
-    <!-- <link href="../../lib/excise-custom/css/style.css" rel="stylesheet"> -->
+    <!-- excise custom Js -->
+    <script src="../../lib/excise-custom/js/main.js"></script>
+    <script src="../../lib/excise-custom/js/pagination.js"></script>
 
     <!-- Jquery Js-->
     <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script> -->
+
+
+    <script src="../js/staff/staff-list-popup.js"></script>
+
+    <!-- Ws -->
+    <script src="../../ws/common-ws/getStaffByKeyword.js"></script>
+
 </head>
 
 <body>
@@ -75,7 +83,7 @@
 
         <div class="">
             <!-- table staff list -->
-            <div class="form-group">
+            <div class="form-group table-responsive">
                 <table id="tableStaffList" class="tableStaffList table table-striped table-hover">
                     <thead>
                         <tr>
@@ -93,6 +101,21 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="pagination-select">
+                        <span>หน้าที่ </span>
+                        <select id="staffList_pagination" class="paging_listbox_select"></select>
+                        <span class="page-total"></span>
+                    </div>
+                    <!-- หน้าที่ - จาก - หน้า -->
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div id="staffList_pageinfo" class="pagination-info text-right">
+                        <!-- รายการที่ 1 - 5 จาก 86 รายการ -->
+                    </div>
+                </div>
             </div>
 
             <!-- button -->
@@ -137,14 +160,12 @@
         <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
         <!-- <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script> -->
 
-        <script src="../../ws/common-ws/getStaffByKeyword.js"></script>
 
-        <script src="../js/staff/staff-list-popup.js"></script>
 
         <!-- Jquery DataTable Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
+        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
     </div>
 </body>
 

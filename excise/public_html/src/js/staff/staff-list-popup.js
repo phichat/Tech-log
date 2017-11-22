@@ -1,29 +1,24 @@
 $(document).ready(function () {
-    var tr = ''
-    tr += '<tr>'
-    tr += '<td></td>'
-    tr += '<td></td>'
-    tr += '<td></td>'
-    tr += '<td></td>'
-    tr += '<td></td>'
-    tr += '<td></td>'
-    tr += '<td></td>'
-    tr += '</tr>'
+    // var tr = ''
+    // tr += '<tr>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '<td></td>'
+    // tr += '</tr>'
 
-    $('#tableStaffList tbody').html(tr)
-    $('#tableStaffList').DataTable({
-        scrollX: true,
-        scrollCollapse: true,
-        "ordering": false,
-        "searching": false,
-        "lengthChange": false,
-        "pageLength": 5,
-        "sPaginationType": "listbox",
-        "dom": '<<"row form-group"<"col-lg-12 col-md-12 col-sm-12 col-xs-12"t>><"row form-group"<"col-lg-6 col-sm-6"p><"col-lg-6 col-sm-6 text-right"i>>>'
+    // $('#tableStaffList tbody').html(tr)
+
+    $('#tableStaffList tbody').pageMe({
+        pagerSelector: '#staffList_pagination',
+        pageInfo: '#staffList_pageinfo',
+        showPrevNext: true,
+        hidePageNumbers: false,
+        perPage: 5
     });
-
-    // dataTables pagination style
-    $('.paging_listbox').find('select').addClass('paging_listbox_select');
 });
 
 function onClearFormSearch() {
@@ -45,59 +40,39 @@ function staff(no, checkbox, staffName, position, orgName, pertype) {
 };
 
 function onSearchFormStaff(e) {
-    // getStaffByKeyword($(e).val(), function callback(xml) {
-    //     var tr = ''
-    //     $(xml).find('staffDTOList')
-    //         .each(function (i, e) {
-    //             var no = (++i);
-    //             var staffName = $(e).find('firstName').text() + ' ' + $(e).find('lastName').text();
-    //             var position = $(e).find('positionName').text();
-    //             var orgName = $(e).find('orgName').text();
-    //             var pertype = $(e).find('perType').text()
+    getStaffByKeyword($(e).val(), function callback(xml) {
+        var tr = ''
+        $(xml).find('staffDTOList')
+            .each(function (i, e) {
+                var no = (++i);
+                var staffName = $(e).find('firstName').text() + ' ' + $(e).find('lastName').text();
+                var position = $(e).find('positionName').text();
+                var orgName = $(e).find('orgName').text();
+                var pertype = $(e).find('perType').text()
 
-    //             tr += '<tr>'
-    //             tr += '<td><input type="checkbox" id="staffCheckboxTd' + i + '" name="staffCheckboxTd' + i + '" class="filled-in";">';
-    //             tr += '<label for="staffCheckboxTd' + i + '"></label></td>'
-    //             tr += '<td>' + i + '</td>'
-    //             tr += '<td class="staff-code">Staff code' + i + '</td>'
-    //             tr += '<td class="staff-name">' + $(e).find('firstName').text() + ' ' + $(e).find('lastName').text() + '</td>'
-    //             tr += '<td class="staff-position">' + position + '</td>'
-    //             tr += '<td class="staff-department">' + orgName + '</td>'
-    //             tr += '<td class="staff-pertype">' + pertype + '</td>'
-    //             tr += '</tr>'
-    //         })
+                tr += '<tr>'
+                tr += '<td><input type="checkbox" id="staffCheckboxTd' + i + '" name="staffCheckboxTd' + i + '" class="filled-in";">';
+                tr += '<label for="staffCheckboxTd' + i + '"></label></td>'
+                tr += '<td>' + i + '</td>'
+                tr += '<td class="staff-code">' + $(e).find('staffCode').text() + '</td>'
+                tr += '<td class="staff-name">' + $(e).find('firstName').text() + ' ' + $(e).find('lastName').text() + '</td>'
+                tr += '<td class="staff-position">' + position + '</td>'
+                tr += '<td class="staff-department">' + orgName + '</td>'
+                tr += '<td class="staff-pertype">' + pertype + '</td>'
+                tr += '</tr>'
+            })
 
+        $('#tableStaffList tbody').html(tr)
 
+        $('#tableStaffList tbody').pageMe({
+            pagerSelector: '#staffList_pagination',
+            pageInfo: '#staffList_pageinfo',
+            showPrevNext: true,
+            hidePageNumbers: false,
+            perPage: 5
+        });
 
-    //     html = $(tr.trim().replace(/\s+/g, " ").replace(/\<\/tr\> \<tr/g, '</tr><tr'))
-
-        
-
-    //     var mytable = $('#tableStaffList');
-
-    //     var dt = mytable.DataTable({
-    //         scrollY: "300px",
-    //         scrollX: true,
-    //         scrollCollapse: true,
-    //         ordering: false,
-    //         searching: false,
-    //         lengthChange: false,
-    //         pageLength: 5,
-    //         sPaginationType: "listbox",
-    //         // "columnDefs": [{
-    //         //     // "defaultContent": "",
-    //         //     // "targets": "_all"
-    //         // }],
-    //         "dom": '<<"row form-group"<"col-lg-12 col-md-12 col-sm-12 col-xs-12"t>><"row form-group"<"col-lg-6 col-sm-6"p><"col-lg-6 col-sm-6 text-right"i>>>'
-    //     });
-
-
-    //     dt.clear();
-    //     dt.rows.add(html).draw();
-    
-    //     // dataTables pagination style
-    //     $('.paging_listbox').find('select').addClass('paging_listbox_select');
-    // })
+    })
 
 
 }

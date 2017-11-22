@@ -1,25 +1,23 @@
 
-function insNoticeProductlistAll(arr, callback) {
+function insNoticeProductlistAll(array, callback) {
 
     var xmlData = ''
     xmlData += '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
     xmlData += '<soapenv:Header/>'
     xmlData += '<soapenv:Body>'
-    xmlData += '<inf:insNoticeProductlistAll>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<arg0>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<groupCode>' + arr.groupCode + '</groupCode>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<noticeCode>' + arr.noticeCode + '</noticeCode>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<groupName>' + arr.groupName + '</groupName>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<lawsuitCode>' + arr.lawsuitCode + '</lawsuitCode>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<createUser>' + arr.createUser + '</createUser>'
-    xmlData += '</arg0>'
-    xmlData += '</inf:insNoticeProductlistAll>'
+
+    $(array).each(function (i, e) {
+        xmlData += '<inf:insNoticeProductlistAll>'
+        xmlData += '<arg0>'
+        xmlData += '<groupCode>' + e.groupCode + '</groupCode>'
+        xmlData += '<noticeCode>' + e.noticeCode + '</noticeCode>'
+        xmlData += '<groupName>' + e.groupName + '</groupName>'
+        xmlData += '<lawsuitCode>' + e.lawsuitCode + '</lawsuitCode>'
+        xmlData += '<createUser>' + e.createUser + '</createUser>'
+        xmlData += '</arg0>'
+        xmlData += '</inf:insNoticeProductlistAll>'
+    })
+
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
 
@@ -32,8 +30,7 @@ function insNoticeProductlistAll(arr, callback) {
         "dataType": "xml",
         "data": xmlData,
         "headers": {
-            "content-type": "text/xml; charset=utf-8",
-            'X-HTTP-Method-Override': "GET"
+            "content-type": "text/xml; charset=utf-8"
         }
     };
 

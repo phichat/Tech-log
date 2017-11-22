@@ -5,47 +5,27 @@ function insNoticeInformAll(arr, callback) {
     xmlData += '<soapenv:Header/>'
     xmlData += '<soapenv:Body>'
     xmlData += '<inf:insNoticeInformAll>'
-    xmlData += '<!--Optional:-->'
+
     xmlData += '<arg0>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<inform>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<address>' + arr.address + '</address>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<age>' + arr.age + '</age>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<alley>' + arr.alley + '</alley>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<building>' + arr.building + '</building>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<createdBy>' + arr.createdBy + '</createdBy>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<firstName>' + arr.firstName + '</firstName>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<floor>' + arr.floor + '</floor>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<genderType>' + arr.genderType + '</genderType>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<inFormID>' + arr.inFormID + '</inFormID>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<lastName>' + arr.lastName + '</lastName>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<noticeCode>' + arr.noticeCode + '</noticeCode>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<postCode>' + arr.postCode + '</postCode>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<road>' + arr.road + '</road>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<room>' + arr.room + '</room>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<subdistrictCode>' + arr.subdistrictCode + '</subdistrictCode>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<titleCode>' + arr.titleCode + '</titleCode>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<titleName>' + arr.titleName + '</titleName>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<village>' + arr.village + '</village>'
-    xmlData += '<!--Optional:-->'
     xmlData += '<iDCard>' + arr.iDCard + '</iDCard>'
     xmlData += '</inform>'
     xmlData += '</arg0>'
@@ -62,16 +42,15 @@ function insNoticeInformAll(arr, callback) {
         "dataType": "xml",
         "data": xmlData,
         "headers": {
-            "content-type": "text/xml; charset=utf-8",
-            'X-HTTP-Method-Override': "GET"
+            "content-type": "text/xml; charset=utf-8"
         }
     };
 
     $.ajax(settings)
-    .success(function (xmlDoc) {
-        callback(xmlDoc);
-    })
-    .error(function (request, statusText, xhr){
-        callback(xhr);
-    });
+        .success(function (xmlDoc) {
+            callback(xmlDoc);
+        })
+        .error(function (request, statusText, xhr) {
+            callback(xhr);
+        });
 }

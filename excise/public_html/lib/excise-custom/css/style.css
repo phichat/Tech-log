@@ -109,10 +109,18 @@
       }
       
   }
+  
+  @media screen and (max-width: 991px) {
+    .pagination-select, .pagination-info {
+        text-align: center;
+    }
+}
 
   @media screen and (min-width: 768px) {
     .between-item{
       padding-left:0 !important;
     }
+
+
 
   }

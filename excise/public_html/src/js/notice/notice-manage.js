@@ -10,15 +10,47 @@ $(document).ready(function () {
                 sleRegion += $(e).find('districtNameTh').text() + '/';
                 sleRegion += $(e).find('provinceNameTh').text() + '</option>';
             })
-        // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
         $('select.region')
             .html(sleRegion)
             .selectize({
                 create: true,
-                sortField: 'text'
+                sortField: 'value'
             });
     });
     // --- end ---
+
+    // // รายชื่อเจ้าหน้าที่
+    // getStaffByKeyword($(e).val(), function callback(xml) {
+    //     var sleStaff = [];
+    //     $(xml).find('staffDTOList')
+    //         .each(function (i, e) {
+    //             sleStaff.push(
+    //                 {
+    //                     staffCode: $(e).find('staffCode').text(),
+    //                     staffName: $(e).find('firstName').text() + ' ' + $(e).find('lastName').text(),
+    //                     orgName: $(e).find('orgName').text()
+    //                 }
+    //             )
+    //         })
+
+    //     $('#sle_nmStaff').selectize({
+    //         valueField: 'name',
+    //         labelField: 'code',
+    //         searchField: ['name', 'code'],
+    //         create: false,
+    //         options: option,
+    //         render: {
+    //             option: function (item, escape) {
+    //                 return '<div>' +
+    //                     '<span class="title">' +
+    //                     '<span class="name">' + escape(item.code) + '</span>' +
+    //                     '</span>' +
+    //                     '<span class="description">' + escape(item.name) + '</span>' +
+    //                     '</div>';
+    //             }
+    //         }
+    //     });
+    // })
 
     // สินค้า
     var sleDutyGroup = '<option value="" selected></option>';
@@ -61,6 +93,7 @@ $(document).ready(function () {
         create: true,
         sortField: 'value'
     });
+    // --- end ---
 
     $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
 
@@ -115,7 +148,7 @@ function saveNotice(e) {
     var noticeNoticeAll = {}
     noticeNoticeAll.arrestDesc = ''
     noticeNoticeAll.createBy = 'User login'
-    noticeNoticeAll.departmentNameCommander = ''
+    noticeNoticeAll.departmentNameCommander = '?'
     noticeNoticeAll.departmentNameReceive = $(e).find('#txt_nmDepartment').val()
     noticeNoticeAll.informType = $(e).find('#sle_nmInfrom option:selected').val()
     noticeNoticeAll.noticeCode = '?'
@@ -137,20 +170,20 @@ function saveNotice(e) {
     noticeInformAll.alley = $(e).find('#txt_nmInfromAlley').val()
     noticeInformAll.building = $(e).find('#txt_nmInfromBuilding').val()
     noticeInformAll.createdBy = 'User login'
-    noticeInformAll.firstName = $(e).find('#sle_nmInfromAlies').val()
+    noticeInformAll.firstName = $(e).find('#txt_nmInfromAlies').val()
     noticeInformAll.floor = $(e).find('#txt_nmInfromClass').val()
-    noticeInformAll.genderType = ''
+    noticeInformAll.genderType = $(e).find('#sle_nmGenderType option:selected').val()
     noticeInformAll.inFormID = ''
-    noticeInformAll.lastName = ''
+    noticeInformAll.lastName = '?'
     noticeInformAll.noticeCode = '?'
     noticeInformAll.postCode = ''
     noticeInformAll.road = $(e).find('#txt_nmInfromRoad').val()
     noticeInformAll.room = $(e).find('#txt_nmInfromRoom').val()
     noticeInformAll.subdistrictCode = $(e).find('#sle_nmInfromRegion option:selected').val()
-    noticeInformAll.titleCode = ''
-    noticeInformAll.titleName = ''
+    noticeInformAll.titleCode = '?'
+    noticeInformAll.titleName = '?'
     noticeInformAll.village = $(e).find('#txt_nmInfromVillage').val()
-    noticeInformAll.iDCard = ''
+    noticeInformAll.iDCard = '?'
     // End insNoticeInformAll
 
     // location
@@ -239,10 +272,10 @@ function saveNotice(e) {
         alert('บันทึกสำเร็จ');
     } else {
         alert(
-            '1: ' + noticeAllDescription + '\r\n' +
-            '2: ' + informAllDescription + '\r\n' +
-            '3: ' + locationAllDescription + '\r\n' +
-            '4: ' + productListAllDescription
+            'Notice: ' + noticeAllCode + '\r\n' +
+            'Inform: ' + informAllCode + '\r\n' +
+            'Location: ' + locationAllCode + '\r\n' +
+            'Product list: ' + productListAllCode
         );
     }
 }

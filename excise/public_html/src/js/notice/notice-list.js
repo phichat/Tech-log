@@ -117,9 +117,10 @@ function onSearchNoticeList(boxSearch, advSearch) {
 
         getNoticeListNoticeByConAdv(arr, function callback(xmlDoc) {
             var tr = '';
+
+            debugger
             $(xmlDoc).find('noticeList')
                 .each(function (i, el) {
-                    debugger
                     var no = (++i)
                     var noticecode = $(el).find('noticecode').text()
                     var depCommander = $(el).find('departmentnamecommander').text()

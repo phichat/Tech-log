@@ -158,6 +158,7 @@
                                 <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nmStaff">ผู้รับแจ้งความนำจับ:</label>
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
                                     <div class="input-group">
+                                        <!-- <select name="" id="sle_nmStaff" class="form-control"></select> -->
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="staff" id="txt_nmStaff" style="z-index:0;">
                                         </div>
@@ -212,10 +213,10 @@
                     <div class="form-group">
                         <form class="form-horizontal">
                             <div class="row">
-                                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmInfrom">ผู้แจ้งความ:</label>
+                                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmGenderType">ผู้แจ้งความ:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
-                                        <select name="infrom" id="sle_nmInfrom" class="form-control" style="z-index:0;"
+                                        <select name="infrom" id="sle_nmGenderType" class="form-control" style="z-index:0;"
                                         onchange="onChangeTypeInfrom(this, '#sle_nmInfromAlies');">
                                             <option value="0" selected>สายลับ(ขอปิดนาม)</option>
                                             <option value="1">ระบุชื่อ</option>
@@ -225,11 +226,11 @@
                                         </span>
                                     </div>
                                 </div>
-                                <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="sle_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
+                                <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-3 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
-                                            <input type="text" name="infromAlies" id="sle_nmInfromAlies" class="form-control" 
+                                            <input type="text" name="infromAlies" id="txt_nmInfromAlies" class="form-control" 
                                             style="z-index:0;" value="สายลับ(ขอปิดนาม)" disabled>
                                         </div>
                                         <span class="input-group-addon" id="spn_nmInfromAlies">

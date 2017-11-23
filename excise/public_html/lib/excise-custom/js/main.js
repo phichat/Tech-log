@@ -101,8 +101,8 @@ function replaceAll(str, find, replace) {
 $(document).ready(function () {
 
     $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
         weekStart: 0,
+        format: 'DD/MM/YYYY',
         lang: 'th',
         time: false
     });

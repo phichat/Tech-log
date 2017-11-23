@@ -98,20 +98,28 @@ $(document).ready(function () {
             if (noticeStatusCode == 200) {
                 $(xml).find('noticeDTO')
                     .each(function (i, e) {
-                        $('.notice-manage').find('#txt_nmNoticeCode').val($(e).find('noticeCode').text());
-                        $('.notice-manage').find('#txt_nmNoticeDate').val(parseDate($(e).find('noticeDate').text()));
-                        $('.notice-manage').find('#txt_nmDueDate').val($(e).find('noticeDueDate').text());
-                        $('.notice-manage').find('#txt_nmNoticeTime').val($(e).find('noticeTime').text());
-                        $('.notice-manage').find('#txt_nmPosition').val($(e).find('positionNameReceive').text());
-                        $('.notice-manage').find('#txt_nmDepartment').val($(e).find('departmentNameReceive').text());
+                        $('#txt_nmNoticeCode').val($(e).find('noticeCode').text());
+                        $('#txt_nmNoticeDate').val(parseDate($(e).find('noticeDate').text()));
+                        $('#txt_nmDueDate').val($(e).find('noticeDueDate').text());
+                        $('#txt_nmNoticeTime').val($(e).find('noticeTime').text());
+                        $('#txt_nmPosition').val($(e).find('positionNameReceive').text());
+                        
+                        $('#txt_nmDepartment').val($(e).find('departmentNameReceive').text());
 
+                        var department = $('#sle_nmDepartmentName').selectize(),
+                            departmentZe = department[0].selectize;
+                        departmentZe.options
                         // var noticeStaff = $('.notice-manage').find('#sle_nmStaff').selectize();
                         // var noticeStaffZe = noticeStaff[0].selectize
                         // noticeStaffZe.setValue($(e).find('staffNameReceive').text(), true)
 
-                        var noticeStation = $('.notice-manage').find('#sle_nmDepartmentName').selectize();
-                        var noticeStationZe = noticeStation[0].selectize
+                        var noticeStation = $('#sle_nmDepartmentName').selectize(),
+                            noticeStationZe = noticeStation[0].selectize;
                         noticeStationZe.setValue($(e).find('noticeStation').text(), true)
+
+                        var informType = $('#sle_nmInformType').selectize(),
+                            informTypeZe = informType[0].selectize
+                        informTypeZe.setValue($(e).find('informType').text(), true)
                     });
 
                 // $(xml).find('informSelDTO')
@@ -153,7 +161,6 @@ function onSelectStaff() {
 }
 
 function onChangeStaff(e) {
-    debugger
     var value = $(e).find('option:selected').val()
     var nmStaff = $(e).selectize();
     var nmStaffZe = nmStaff[0].selectize
@@ -189,26 +196,29 @@ function onChangeTypeInfrom(sle, txt) {
     }
 }
 
-function onChangDueDate(noticeDate, dueDate, ) {
+function onChangDueDate(noticeDate, dueDate, endDate) {
     var date = $(noticeDate).val();
     var due = $(dueDate).val();
     if (date !== '' && due !== '') {
         var dd = date.split('/')[0],
             mm = date.split('/')[1],
-            yyyy = date.split('/')[2],
-            dateA = yyyy + '-' + mm + '-' + dd
-        dateB = new Date(dateA)
+            yyyy = Number(date.split('/')[2]) + 543,
+            dateA = yyyy + '-' + mm + '-' + dd,
+            dateB = new Date(dateA)
+            
         dateA = dateB.setDate(dateB.getDate() + Number(due))
         var dateC = new Date(dateA)
-        console.log(a)
 
-        // console.log(newDate.getDate() + '/' + (newDate.getMonth() + 1) + '/' + newDate.getFullYear())
-        // d.setDate(due)
-        // alert(d.getDate + '/' + (d.getMonth + 1) + '/' + d.getFullYear)
+        dd = dateC.getDate() < 10 ? '0' + dateC.getDate() : dateC.getDate();
+        mm = (dateC.getMonth() + 1) < 10 ? '0' + (dateC.getMonth() + 1) : (dateC.getMonth() + 1);
+
+        $(endDate).val(dd + '/' + mm + '/' + dateC.getFullYear())
+
+    } else {
+        $(endDate).val('')
     }
 
 }
-
 
 
 // =========================== Save ===========================
@@ -291,7 +301,7 @@ function saveNotice(e) {
                     groupCode: $(el).data('value'),
                     noticeCode: $(e).find('#txt_nmNoticeCode').val(),
                     groupName: $(el).text(),
-                    lawsuitCode: i,
+                    lawsuitCode: 1,
                     createUser: 'User login'
                 })
         })

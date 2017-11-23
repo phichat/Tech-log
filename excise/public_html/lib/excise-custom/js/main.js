@@ -109,11 +109,6 @@ $(document).ready(function () {
 
     $("input.time24").inputmask('hh:mm');
 
-    // $('select').not('.paging_listbox_select').selectize({
-    //     create: true,
-    //     sortField: 'text'
-    // });
-
     $("input.number").inputmask({
         'alias': 'numeric',
         'groupSeparator': ',',
@@ -125,6 +120,34 @@ $(document).ready(function () {
 
 
 })
+
+function parseDate(datetime) {
+    var today = new Date(datetime);
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    
+    dd = dd < 10 ? '0' + dd : dd;
+    mm = mm < 10 ? '0' + mm : mm;
+
+    var today = dd+'/'+mm+'/'+yyyy;
+    return today;
+}
+
+var getUrlParameter = function (sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+    sURLVariables = sPageURL.split('&'),
+    sParameterName,
+    i;
+
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        };
+    };
+};
 
 // //แปลงข้อมูลที่แสดงในแถบด้านท้ายตารางให้เป็น ภาษาที่ต้องการ
 // function regExpStringDatatable(mapObj, str) {

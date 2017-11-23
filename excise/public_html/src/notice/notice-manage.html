@@ -93,7 +93,7 @@
                                 <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nmNoticeCode">เลขที่บันทึกแจ้งความ:</label>
                                 <div class="col-lg-3 col-md-4 col-sm-9 col-xs-12">
                                     <div class="form-line">
-                                        <input type="text" name="NoticeCode" class="form-control" id="txt_nmNoticeCode" disabled>
+                                        <input type="text" name="NoticeCode" class="form-control" id="txt_nmNoticeCode">
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,8 @@
                                         <div class="form-line">
                                             <input type="number" class="form-control zindex-0" name="getDate" id="txt_nmDueDate" maxlength="2" 
                                             style="z-index:0;" onkeyup="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
-                                            onkeypress="if(this.value.length == 2) return false;">
+                                            onkeypress="if(this.value.length == 2) return false;"
+                                            min="1">
                                         </div>
                                         <span class="input-group-addon" id="spn_nmGetDate">วัน</span>
                                     </div>
@@ -155,13 +156,13 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nmStaff">ผู้รับแจ้งความนำจับ:</label>
+                                <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="sle_nmStaff">ผู้รับแจ้งความนำจับ:</label>
                                 <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
-                                    <div class="input-group">
-                                        <!-- <select name="" id="sle_nmStaff" class="form-control" style="z-index:0;"></select> -->
-                                        <div class="form-line">
+                                    <div class="input-group" style="z-index:1;">
+                                        <select name="" id="sle_nmStaff" class="form-control" style="z-index:0;" onchange="onChangeStaff(this);"></select>
+                                        <!-- <div class="form-line">
                                             <input type="text" class="form-control" name="staff" id="txt_nmStaff" style="z-index:0;">
-                                        </div>
+                                        </div> -->
                                         <span class="input-group-addon" id="spn_nmStaff">
                                             <div class="box-group-addon">
                                                 <a href="javascript:void(0);" data-toggle="modal" data-target="#listStaffModal" class="toggle-popup-list">....</a>
@@ -213,10 +214,10 @@
                     <div class="form-group">
                         <form class="form-horizontal">
                             <div class="row">
-                                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmGenderType">ผู้แจ้งความ:</label>
+                                <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_nmInformType">ผู้แจ้งความ:</label>
                                 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                     <div class="input-group">
-                                        <select name="infrom" id="sle_nmGenderType" class="form-control" style="z-index:0;"
+                                        <select name="infrom" id="sle_nmInformType" class="form-control" style="z-index:0;"
                                         onchange="onChangeTypeInfrom(this, '#sle_nmInfromAlies');">
                                             <option value="0" selected>สายลับ(ขอปิดนาม)</option>
                                             <option value="1">ระบุชื่อ</option>
@@ -516,6 +517,7 @@
         <script src="../../ws/common-ws/getStaffByKeyword.js" type="text/javascript"></script>
 
         <!-- Notice Ws Js -->
+        <script src="../../ws/notice-ws/getNoticeNoticeByCon.js" type="text/javascript"></script>
         <script src="../../ws/notice-ws/insNoticeNoticeAll.js" type="text/javascript"></script>
         <script src="../../ws/notice-ws/insNoticeInformAll.js" type="text/javascript"></script>
         <script src="../../ws/notice-ws/insNoticeLocationAll.js" type="text/javascript"></script>

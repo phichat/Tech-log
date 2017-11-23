@@ -25,9 +25,9 @@
     var numPages = Math.round(numItems / perPage);
 
     pager.data("curr", 0);
-    if (settings.showPrevNext) {
-        // $('<li class="previous disabled" disabled><a href="javascript:void(0)" class="waves-effect" tabindex="-1"><i class="material-icons">chevron_left</i></a></li>').appendTo(pager);
-    }
+    // if (settings.showPrevNext) {
+    //     // $('<li class="previous disabled" disabled><a href="javascript:void(0)" class="waves-effect" tabindex="-1"><i class="material-icons">chevron_left</i></a></li>').appendTo(pager);
+    // }
 
     var curr = 0,
     option = '';
@@ -37,18 +37,19 @@
         curr++;
     }
 
-    if (settings.showPrevNext) {
-        // $('<li class="next"><a href="javascript:void(0)" class="waves-effect"><i class="material-icons">chevron_right</i></a></li>').appendTo(pager);
-    }
+    // if (settings.showPrevNext) {
+    //     // $('<li class="next"><a href="javascript:void(0)" class="waves-effect"><i class="material-icons">chevron_right</i></a></li>').appendTo(pager);
+    // }
 
+    
     if (curr == 0) {
         $(pager).html('<option value="1">1</option>');
         $(pager).closest('.pagination-select').find('.page-total').html('จาก 1 หน้า')
-        $(pageInfo).html('รายการที่ '+ (numItems > 0 ? perPage : numItems) +' - '+ numItems +' จาก ' + (numItems) + ' รายการ')
+        $(pageInfo).html('รายการที่ '+ (numItems < perPage ? numItems : perPage) +' - '+ numItems +' จาก ' + (numItems) + ' รายการ')
     } else{
         $(pager).html(option);
         $(pager).closest('.pagination-select').find('.page-total').html('จาก ' + numPages + ' หน้า')
-        $(pageInfo).html('รายการที่ 1 - '+ (numItems > 0 ? perPage : numItems) +' จาก ' + (numItems) + ' รายการ')
+        $(pageInfo).html('รายการที่ 1 - '+ (numItems < perPage ? numItems : perPage) +' จาก ' + (numItems) + ' รายการ')
     }
     
 
@@ -101,20 +102,20 @@
         
         $(pageInfo).html('รายการที่ ' + (firstItem) + ' - ' + (lastItem) + ' จาก ' + numItems + ' รายการ')
 
-        if (page >= 1) {
-            pager.find('li.previous').removeClass('disabled').removeAttr('disabled');
+        // if (page >= 1) {
+        //     pager.find('li.previous').removeClass('disabled').removeAttr('disabled');
 
-        }
-        else {
-            pager.find('li.previous').addClass('disabled').attr('disabled', true);
-        }
+        // }
+        // else {
+        //     pager.find('li.previous').addClass('disabled').attr('disabled', true);
+        // }
 
-        if (page < (numPages - 1)) {
-            pager.find('li.next').removeClass('disabled').removeAttr('disabled');
-        }
-        else {
-            pager.find('li.next').addClass('disabled').attr('disabled', true);
-        }
+        // if (page < (numPages - 1)) {
+        //     pager.find('li.next').removeClass('disabled').removeAttr('disabled');
+        // }
+        // else {
+        //     pager.find('li.next').addClass('disabled').attr('disabled', true);
+        // }
 
 
         pager.data("curr", page);

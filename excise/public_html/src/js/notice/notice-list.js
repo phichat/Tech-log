@@ -82,7 +82,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                     tr += '</a>'
                     tr += '</td>'
                     tr += '<td>'
-                    tr += '<a href="notice-manage.html?notice-code=' + noticecode + '">'
+                    tr += '<a href="notice-manage.html?mode=edit&notice-code=' + noticecode + '">'
                     tr += '<i class="material-icons col-teal">mode_edit</i>'
                     tr += '</a>'
                     tr += '</td>'
@@ -149,7 +149,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                     tr += '</a>'
                     tr += '</td>'
                     tr += '<td>'
-                    tr += '<a href="notice-manage.html?notice-code=' + noticecode + '">'
+                    tr += '<a href="notice-manage.html?mode=edit&notice-code=' + noticecode + '">'
                     tr += '<i class="material-icons col-teal">mode_edit</i>'
                     tr += '</a>'
                     tr += '</td>'
@@ -171,9 +171,6 @@ function onSearchNoticeList(boxSearch, advSearch) {
             });
         })
     }
-
-
-
 }
 
 function onToggleAdvancedSearch() {

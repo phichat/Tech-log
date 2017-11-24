@@ -1,18 +1,19 @@
 
-function delNoticeProductlistByCon(arr, callback) {
+function delNoticeProductlistByCon(array, callback) {
     var xmlData = ''
     xmlData += '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
     xmlData += '<soapenv:Header/>'
     xmlData += '<soapenv:Body>'
-    xmlData += '<inf:delNoticeProductlistByCon>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<arg0>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<code>' + arr.code + '</code>'
-    xmlData += '<!--Optional:-->'
-    xmlData += '<updateUser>' + arr.updateUser + '</updateUser>'
-    xmlData += '</arg0>'
-    xmlData += '</inf:delNoticeProductlistByCon>'
+
+    $(array).each(function(i, e){
+        xmlData += '<inf:delNoticeProductlistByCon>'
+        xmlData += '<arg0>'
+        xmlData += '<code>' + e.code + '</code>'
+        xmlData += '<updateUser>' + e.updateUser + '</updateUser>'
+        xmlData += '</arg0>'
+        xmlData += '</inf:delNoticeProductlistByCon>'
+    })
+
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
 
@@ -26,7 +27,7 @@ function delNoticeProductlistByCon(arr, callback) {
         "data": xmlData,
         "headers": {
             "content-type": "text/xml; charset=utf-8",
-            'X-HTTP-Method-Override': "GET"
+            'X-HTTP-Method-Override': "DELETE"
         }
     };
 

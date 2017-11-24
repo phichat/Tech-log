@@ -22,7 +22,7 @@
     }
 
     var numItems = children.length;
-    var numPages = Math.round(numItems / perPage);
+    var numPages = Math.ceil(numItems / perPage);
 
     pager.data("curr", 0);
     // if (settings.showPrevNext) {
@@ -62,7 +62,7 @@
     children.slice(0, perPage).show();
 
     $(pager).change(function () {
-        var clickedPage = Number($(this).find('option:selected').val());
+        var clickedPage = Number($(this).find('option:selected').val()) - 1;
         goTo(clickedPage, perPage);
     })
     // pager.find('li.num-page a').click(function () {

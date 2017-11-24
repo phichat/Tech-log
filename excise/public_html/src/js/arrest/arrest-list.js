@@ -75,3 +75,7 @@ $(document).ready(function () {
     // dataTables pagination style
     $('.paging_listbox').find('select').addClass('paging_listbox_select');
 });
+
+$('#btn_nlAddArrest').on('click', function(){
+    window.location.href = 'arrest-manage.html'
+})

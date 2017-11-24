@@ -1,14 +1,14 @@
 $(document).ready(function () {
-    $('select').not('.paging_listbox_select').selectize({
-        create: true,
-        sortField: 'text'
-    });
+    // $('select').not('.paging_listbox_select').selectize({
+    //     create: true,
+    //     sortField: 'text'
+    // });
 
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
-    });
+    // $('input.datepicker').bootstrapMaterialDatePicker({
+    //     format: 'DD/MM/YYYY',
+    //     weekStart: 0,
+    //     time: false
+    // });
 });
 
 function onClearFormSearch() {

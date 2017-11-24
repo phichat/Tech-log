@@ -62,7 +62,7 @@ function onChangGoodName(e) {
         })
 
         if (checkItem === false) {
-            var li = '<li><span class="good-name-tag" data-value="'+ goodCode +'">' + goodName
+            var li = '<li><span class="good-name-tag" data-value="' + goodCode + '">' + goodName
             li += '</span><a href="javascript:void(0);"'
             li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
 
@@ -105,7 +105,12 @@ $(document).ready(function () {
         format: 'DD/MM/YYYY',
         lang: 'th',
         time: false
-    });
+    })
+
+    $('input.datepicker').val(buddhistDate(new Date()))
+
+
+
 
     $("input.time24").inputmask('hh:mm');
 
@@ -124,21 +129,32 @@ $(document).ready(function () {
 function parseDate(datetime) {
     var today = new Date(datetime);
     var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
+    var mm = today.getMonth() + 1; //January is 0!
     var yyyy = today.getFullYear();
-    
+
     dd = dd < 10 ? '0' + dd : dd;
     mm = mm < 10 ? '0' + mm : mm;
 
-    var today = dd+'/'+mm+'/'+yyyy;
+    var today = dd + '/' + mm + '/' + yyyy;
     return today;
+}
+
+function buddhistDate(date) {
+    dateNow = new Date(date),
+        dd = dateNow.getDate(),
+        mm = (dateNow.getMonth() + 1),
+        yyyy = (dateNow.getFullYear() + 543)
+
+    dd = dd < 10 ? '0' + dd : dd;
+    mm = mm < 10 ? '0' + mm : mm;
+    return dd + '/' + mm + '/' + yyyy;
 }
 
 var getUrlParameter = function (sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
-    sURLVariables = sPageURL.split('&'),
-    sParameterName,
-    i;
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
     for (i = 0; i < sURLVariables.length; i++) {
         sParameterName = sURLVariables[i].split('=');

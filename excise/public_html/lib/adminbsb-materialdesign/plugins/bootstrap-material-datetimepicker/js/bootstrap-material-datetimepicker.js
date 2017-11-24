@@ -7,6 +7,7 @@
 
    function Plugin(element, options)
    {
+         debugger
       this.currentView = 0;
 
       this.minDate;
@@ -198,7 +199,7 @@
                  }
               },
               initTemplate: function ()
-              {
+              { 
                  this.template = '<div class="dtp hidden" id="' + this.name + '">' +
                          '<div class="dtp-content">' +
                          '<div class="dtp-date-view">' +

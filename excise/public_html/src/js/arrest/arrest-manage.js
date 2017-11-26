@@ -62,7 +62,10 @@ $(document).ready(function () {
                 sortField: 'text'
             });
 
-            $('input.datepicker').bootstrapMaterialDatePicker({
+            var date = new Date()
+            $('.datepicker input').val(new Intl.DateTimeFormat('th-TH-u-ca-buddhist').format(date))
+
+            $('.datepicker input').bootstrapMaterialDatePicker({
                 format: 'DD/MM/YYYY',
                 weekStart: 0,
                 lang: 'th',

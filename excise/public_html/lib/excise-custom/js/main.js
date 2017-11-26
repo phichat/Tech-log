@@ -1,3 +1,27 @@
+$(document).ready(function () {
+    var date = new Date()
+    $('.datepicker input').val(new Intl.DateTimeFormat('th-TH-u-ca-buddhist').format(date))
+        .bootstrapMaterialDatePicker({
+            weekStart: 0,
+            format: 'DD/MM/YYYY',
+            lang: 'th',
+            time: false
+        })
+
+    $("input.time24").inputmask('hh:mm');
+
+    $("input.number").inputmask({
+        'alias': 'numeric',
+        'groupSeparator': ',',
+        'autoGroup': true,
+        'digits': 2,
+        'digitsOptional': false,
+        'placeholder': '0'
+    });
+
+
+})
+
 function onToggleCardBody(e) {
     $(e).find('i.material-icons').text(function (i, text) {
         return text == "arrow_drop_down" ? "arrow_drop_up" : "arrow_drop_down";
@@ -98,34 +122,6 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
-$(document).ready(function () {
-
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        weekStart: 0,
-        format: 'DD/MM/YYYY',
-        lang: 'th',
-        time: false
-    })
-
-    $('input.datepicker').val(buddhistDate(new Date()))
-
-
-
-
-    $("input.time24").inputmask('hh:mm');
-
-    $("input.number").inputmask({
-        'alias': 'numeric',
-        'groupSeparator': ',',
-        'autoGroup': true,
-        'digits': 2,
-        'digitsOptional': false,
-        'placeholder': '0'
-    });
-
-
-})
-
 function parseDate(datetime) {
     var today = new Date(datetime);
     var dd = today.getDate();
@@ -148,6 +144,26 @@ function buddhistDate(date) {
     dd = dd < 10 ? '0' + dd : dd;
     mm = mm < 10 ? '0' + mm : mm;
     return dd + '/' + mm + '/' + yyyy;
+}
+
+function addDate(date, int) {
+    if (date !== '' && int !== '') {
+        var dd = date.split('/')[0],
+            mm = date.split('/')[1],
+            yyyy = date.split('/')[2],
+            dateA = yyyy + '-' + mm + '-' + dd,
+            dateB = new Date(dateA)
+
+        dateA = dateB.setDate(dateB.getDate() + Number(int))
+        var dateC = new Date(dateA)
+
+        dd = dateC.getDate() < 10 ? '0' + dateC.getDate() : dateC.getDate();
+        mm = (dateC.getMonth() + 1) < 10 ? '0' + (dateC.getMonth() + 1) : (dateC.getMonth() + 1);
+        return dd + '/' + mm + '/' + dateC.getFullYear();
+    } else {
+        return '';
+    }
+
 }
 
 var getUrlParameter = function (sParam) {

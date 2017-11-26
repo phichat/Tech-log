@@ -115,26 +115,28 @@
                     <div class="form-group advanced-search" style="display:none;">
                         <form class="form-horizontal">
                             <div class="row form-group">
-                                <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeDateFrom">วันที่รับแจ้งความ:</label>
+                                <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
                                 <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="input-group datepicker">
                                         <div class="form-line">
-                                            <input type="text" class="datepicker form-control" id="txt_nlNoticeDateFrom" onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')">
+                                            <input type="text" class="form-control" id="txt_nlNoticeDateFrom" 
+                                            onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')">
                                         </div>
-                                        <span class="input-group-addon" id="spn_nmNoticeDateFrom">
+                                        <label for="txt_nlNoticeDateFrom" class="input-group-addon">
                                             <i class="material-icons">event</i>
-                                        </span>
+                                        </label>
                                     </div>
                                 </div>
                                 <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlNoticeDateTo">ถึง:</label>
                                 <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="input-group datepicker">
                                         <div class="form-line">
-                                            <input type="text" class="datepicker form-control" id="txt_nlNoticeDateTo" onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')">
+                                            <input type="text" class="form-control" id="txt_nlNoticeDateTo" 
+                                            onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')">
                                         </div>
-                                        <span class="input-group-addon" id="spn_nmNoticeDateTo">
+                                        <label for="txt_nlNoticeDateTo" class="input-group-addon" id="spn_nmNoticeDateTo">
                                             <i class="material-icons">event</i>
-                                        </span>
+                                        </label>
                                     </div>
                                 </div>
                                 <label class="control-label col-lg-1 col-md-3 col-sm-3 col-xs-12" for="txt_nlGroupName">สินค้า:</label>

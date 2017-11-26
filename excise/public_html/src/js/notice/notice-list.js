@@ -1,5 +1,13 @@
 
 $(document).ready(function () {
+    // var date = new Date();
+    //  $('.datepicker').val(new Intl.DateTimeFormat('th-TH-u-ca-buddhist').format(date))
+    //     .bootstrapMaterialDatePicker({
+    //         weekStart: 0,
+    //         format: 'DD/MM/YYYY',
+    //         lang: 'th',
+    //         time: false
+    //     })
 
     $('#txt_nlNoticeDateFrom').bootstrapMaterialDatePicker().on('change', function (e, date) {
         $('#txt_nlNoticeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
@@ -29,7 +37,7 @@ $(document).ready(function () {
     });
 
     // dataTables pagination style
-    $('.paging_listbox').find('select').addClass('paging_listbox_select');
+    // $('.paging_listbox').find('select').addClass('paging_listbox_select');
 });
 
 function onDelRecord(e) {
@@ -76,7 +84,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                             $(el).find('sub_district_name').text() + '/' +
                             $(el).find('district_name_th').text() + '/' +
                             $(el).find('province_name_th').text(),
-                        endDate: 'ใช้ field ไหน'
+                        endDate: addDate($(el).find('noticedate').text(), $(el).find('noticeduedate').text())
                     })
                 })
         })
@@ -107,7 +115,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                             $(el).find('sub_district_name').text() + '/' +
                             $(el).find('district_name_th').text() + '/' +
                             $(el).find('province_name_th').text(),
-                        endDate: 'ใช้ field ไหน'
+                        endDate: addDate($(el).find('noticedate').text(), $(el).find('noticeduedate').text()) 
                     })
                 })
         })

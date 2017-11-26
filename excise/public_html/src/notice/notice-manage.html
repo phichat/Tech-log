@@ -47,7 +47,6 @@
     <!-- excise custom Js -->
     <script src="../../lib/excise-custom/js/main.js" type="text/javascript"></script>
 
-
 </head>
 
 <body>
@@ -110,23 +109,15 @@
                                         </span>
                                     </div>
                                 </div>
-                                <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_nmNoticeDate">วันที่รับแจ้งความ:</label>
+                                <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
                                 <div class="col-lg-2 col-md-3 col-sm-5 col-xs-12">
-                                    <div class="input-group">
+                                    <div class="input-group datepicker">
                                         <div class="form-line">
-                                            <input type="text" class="datepicker form-control" id="txt_nmNoticeDate" name="noticeDate" onchange="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');">
+                                            <input type="text" class="form-control" id="txt_nmNoticeDate" name="noticeDate" onchange="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');">
                                         </div>
-                                        <span class="input-group-addon date-event" id="spn_nmNoticeDate" onclick="onToggleDatepicker(this);">
+                                        <label for="txt_nmNoticeDate" class="input-group-addon" id="spn_nmNoticeDate">
                                             <i class="material-icons">event</i>
-                                        </span>
-                                        <script>
-                                            function onToggleDatepicker(e) {
-                                                var inputGroup = $(e).closest('.input-group'),
-                                                    dtp = $(inputGroup).find('input.datepicker').data('dtp')
-                                                    $('#'+dtp).toggleClass('hidden')
-                                            }
-
-                                        </script>
+                                        </label>
                                     </div>
                                 </div>
                                 <label class="control-label col-lg-1 col-md-9 col-sm-2 col-xs-12" for="txt_nmNoticeTime">เวลา:</label>
@@ -281,10 +272,10 @@
                                         <input type="text" name="infromRoom" id="txt_nmInfromRoom" class="form-control">
                                     </div>
                                 </div>
-                                <label class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12" for="txt_nmInfromClass">ชั้น:</label>
+                                <label class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12" for="txt_nmInfromFloor">ชั้น:</label>
                                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
                                     <div class="form-line">
-                                        <input type="text" name="infromClass" id="txt_nmInfromClass" class="form-control">
+                                        <input type="text" name="infromClass" id="txt_nmInfromFloor" class="form-control">
                                     </div>
                                 </div>
                                 <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="txt_nmInfromAlley">ตรอก/ซอย:</label>
@@ -422,7 +413,7 @@
                                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12"></div>
                                 <div class="col-lg-10 col-md-10 col-sm-10 col-xs-12">
                                     <ul class="list-tags" id="ul_nmGoodName"></ul>
-                                    <ul id="ul_nmGoodNameCheck"></ul>
+                                    <ul id="ul_nmGoodNameCheck" style="display:none;"></ul>
                                 </div>
 
                             </div>
@@ -477,8 +468,6 @@
 
     <div class="script">
 
-
-
         <!-- Bootstrap Core Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
 
@@ -511,9 +500,6 @@
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
 
-
-        <script src="../js/notice/notice-manage.js"></script>
-
         <!-- Common Ws Js-->
         <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>
         <script src="../../ws/common-ws/getDutygroupByKeyword.js" type="text/javascript"></script>
@@ -522,6 +508,8 @@
 
         <!-- Notice Ws Js -->
         <script src="../../ws/notice-ws/getNoticeNoticeByCon.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/getNoticeLocationByCon.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/getNoticeProductlist.js" type="text/javascript"></script>
         <script src="../../ws/notice-ws/insNoticeNoticeAll.js" type="text/javascript"></script>
         <script src="../../ws/notice-ws/insNoticeInformAll.js" type="text/javascript"></script>
         <script src="../../ws/notice-ws/insNoticeLocationAll.js" type="text/javascript"></script>
@@ -532,6 +520,8 @@
         <script src="../../ws/notice-ws/updNoticeLocationByCon.js" type="text/javascript"></script>
 
         <script src="../../ws/notice-ws/delNoticeProductlistByCon.js" type="text/javascript"></script>
+
+        <script src="../js/notice/notice-manage.js"></script>
 
     </div>
 </body>

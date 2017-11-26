@@ -2,8 +2,15 @@ $(document).ready(function () {
 
     var modeUrl = getUrlParameter('mode'),
         noticeCodeUrl = getUrlParameter('notice-code')
+    debugger
+    $('input.datepicker').bootstrapMaterialDatePicker({
+        weekStart: 0,
+        format: 'DD/MM/YYYY',
+        lang: 'th',
+        time: false
+    })
 
-    $('#txt_nmNoticeDate').val(buddhistDate(new Date()))
+    // $('#txt_nmNoticeDate').val(buddhistDate(new Date()))
 
     //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
     var sleRegion = '<option value="" selected></option>'
@@ -19,7 +26,6 @@ $(document).ready(function () {
                 })
             })
         $('select.region')
-            .html(sleRegion)
             .selectize({
                 valueField: 'subDistrictCode',
                 labelField: 'region',
@@ -92,7 +98,6 @@ $(document).ready(function () {
     }
     // --- end Mode edit ---
 
-
     // โหลด form staff list popup
     $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
     // --- end form staff list popup ---
@@ -158,20 +163,7 @@ function onChangDueDate(noticeDate, dueDate, endDate) {
     var date = $(noticeDate).val();
     var due = $(dueDate).val();
     if (date !== '' && due !== '') {
-        var dd = date.split('/')[0],
-            mm = date.split('/')[1],
-            yyyy = date.split('/')[2],
-            dateA = yyyy + '-' + mm + '-' + dd,
-            dateB = new Date(dateA)
-
-        dateA = dateB.setDate(dateB.getDate() + Number(due))
-        var dateC = new Date(dateA)
-
-        dd = dateC.getDate() < 10 ? '0' + dateC.getDate() : dateC.getDate();
-        mm = (dateC.getMonth() + 1) < 10 ? '0' + (dateC.getMonth() + 1) : (dateC.getMonth() + 1);
-
-        $(endDate).val(dd + '/' + mm + '/' + dateC.getFullYear())
-
+        $(endDate).val(addDate(date, due))
     } else {
         $(endDate).val('')
     }
@@ -181,7 +173,8 @@ function onChangDueDate(noticeDate, dueDate, endDate) {
 // ====================== Load Data Edit ======================
 function loadFormEdit(noticeCodeUrl) {
     var noticeStatusCode = '',
-        description = ''
+        locationStatusCode = '',
+        productListcode = ''
 
     // Notice by con
     var noticeByCon = {};
@@ -195,20 +188,20 @@ function loadFormEdit(noticeCodeUrl) {
             });
 
         if (noticeStatusCode == 200) {
-            $(xml).find('noticeDTO')
+            $(xml).find('noticeInfom')
                 .each(function (i, e) {
-                    console.log($(e).find('noticeDate').text())
-                    $('#txt_nmNoticeCode').val($(e).find('noticeCode').text());
-                    $('#txt_nmNoticeDate').val(parseDate($(e).find('noticeDate').text()));
-                    $('#txt_nmDueDate').val($(e).find('noticeDueDate').text());
-                    $('#txt_nmNoticeTime').val($(e).find('noticeTime').text());
-                    $('#txt_nmPosition').val($(e).find('positionNameReceive').text());
-                    $('#txt_nmDepartment').val($(e).find('departmentNameReceive').text());
+                    $('#txt_nmNoticeCode').val($(e).find('noticecode').text());
+                    $('#txt_nmNoticeDate').val($(e).find('noticedate').text());
+                    $('#txt_nmDueDate').val($(e).find('noticeduedate').text());
+                    $('#txt_nmNoticeTime').val($(e).find('noticetime').text());
+                    $('#txt_nmEndDate').val(addDate($(e).find('noticedate').text(), $(e).find('noticeduedate').text()))
+                    $('#txt_nmPosition').val($(e).find('staffnamereceive').text());
+                    $('#txt_nmDepartment').val($(e).find('departmentnamereceive').text());
 
                     // ผู้รับแจ้งความนำจับ
                     var noticeStaff = $('#sle_nmStaff').selectize(),
                         noticeStaffZe = noticeStaff[0].selectize,
-                        staffNameText = $(e).find('staffNameReceive').text();
+                        staffNameText = $(e).find('staffnamereceive').text();
                     for (s in noticeStaffZe.options) {
                         if (staffNameText == noticeStaffZe.options[s].staffName) {
                             noticeStaffZe.setValue(s, true) // set value ให้กับ dropdown
@@ -220,7 +213,7 @@ function loadFormEdit(noticeCodeUrl) {
                     // เขียนที่หน่วยงาน
                     var noticeStation = $('#sle_nmDepartmentName').selectize(),
                         noticeStationZe = noticeStation[0].selectize,
-                        stationText = $(e).find('noticeStation').text();
+                        stationText = $(e).find('noticestation').text();
                     for (s in noticeStationZe.options) {
                         if (stationText == noticeStationZe.options[s].text) {
                             noticeStationZe.setValue(s, true) // set value ให้กับ dropdown
@@ -232,47 +225,118 @@ function loadFormEdit(noticeCodeUrl) {
                     // ผู้แจ้งความ 
                     var informType = $('#sle_nmInformType').selectize(),
                         informTypeZe = informType[0].selectize
-                    informTypeZe.setValue($(e).find('informType').text(), true)
+                    informTypeZe.setValue($(e).find('informtype').text(), true)
                     onChangeTypeInfrom('#sle_nmInformType', '#txt_nmInfromAlies');
                     // --- end ผู้แจ้งความ ---
 
+                    $('#txt_nmInfromAlies')
+                        .val($(e).find('titlename').text() + ' ' + $(e).find('firstname').text() + ' ' + $(e).find('lastname').text())
+                        .attr('data-id', $(e).find('inFormID').text())
+                    $('#txt_nmInfromAge').val($(e).find('age').text())
+                    $('#txt_nmInfromAddress').val($(e).find('address').text())
+                    $('#txt_nmInfromVillage').val($(e).find('village').text())
+                    $('#txt_nmInfromBuilding').val($(e).find('building').text())
+                    $('#txt_nmInfromRoom').val($(e).find('room').text())
+                    $('#txt_nmInfromFloor').val($(e).find('floor').text())
+                    $('#txt_nmInfromAlley').val($(e).find('alley').text())
+                    $('#txt_nmInfromRoad').val($(e).find('road').text())
 
+                    var infomrRegion = $('#sle_nmInfromRegion').selectize(),
+                        informRegionZe = infomrRegion[0].selectize
+                    informRegionZe.setValue($(e).find('subdistrictcode').text(), true)
+
+                    // ละติจูด-ลองติจูด
+                    $('#txt_nmOpsCoordinateX').val($(e).find('coordinatex').text())
+                    $('#txt_nmOpsCoordinateY').val($(e).find('coordinatey').text())
+                    // --- end ละติจูด-ลองติจูด ---
                 });
-
-            // $(xml).find('informSelDTO')
-            //     .each(function (i, e) {
-
-            //         var informType = $('.notice-manage').find('#sle_nmInformType').selectize();
-            //         var informTypeZe = informType[0].selectize;
-            //         informTypeZe.setValue($(e).find('informType').text(), true)
-
-            //     });
         } else {
             return false;
         }
     });
     // --- end Notice ---
 
-    // getNoticeProductlist
+    // locationByCon
+    var locationByCon = {}
+    locationByCon.noticeCode = noticeCodeUrl;
+    locationByCon.locationID = '';
+    getNoticeLocationByCon(locationByCon, function (xml) {
+        $(xml).find('responseHeader')
+            .each(function (i, e) {
+                locationStatusCode = $(e).find('code').text()
+            })
 
+        if (locationStatusCode == 200) {
+            $(xml).find('locationDTO')
+                .each(function (i, e) {
+                    $('#txt_nmLocation')
+                        .val($(e).find('locationName').text())
+                        .attr('data-id', $(e).find('locationId').text())
+                    $('#txt_nmOpsAddress').val($(e).find('address').text())
+                    $('#txt_nmOpsVillage').val($(e).find('village').text())
+                    $('#txt_nmOpsBuilding').val($(e).find('building').text())
+                    $('#txt_nmOpsRoom').val($(e).find('room').text())
+                    $('#txt_nmOpsFloor').val($(e).find('floor').text())
+                    $('#txt_nmOpsAlley').val($(e).find('alley').text())
+                    $('#txt_nmOpsRoad').val($(e).find('road').text())
+
+                    var infomrRegion = $('#sle_nmOpsRegion').selectize(),
+                        informRegionZe = infomrRegion[0].selectize
+                    informRegionZe.setValue($(e).find('subdistrictCode').text(), true)
+                })
+
+        } else {
+            return false;
+        }
+    })
+    // --- end locationByCon ---
+
+    // getNoticeProductlist
+    getNoticeProductlist(noticeCodeUrl, function (xml) {
+        $(xml).find('responseHeader')
+            .each(function (i, e) {
+                productListcode = $(e).find('code').text()
+            })
+
+        if (productListcode == 200) {
+            var productList = '',
+                li = '',
+                liCheck = ''
+            $(xml).find('productListDTO')
+                .each(function (i, e) {
+                    li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
+                    li += $(e).find('groupName').text()
+                    li += '</span><a href="javascript:void(0);"'
+                    li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+
+                    liCheck += '<li><span class="good-name-tag" data-id="' + $(e).find('productListID').text() + '"'
+                    liCheck += ' data-value="' + $(e).find('groupCode').text() + '"></span></li>'
+                })
+            $('#ul_nmGoodName').html(li)
+            $('#ul_nmGoodNameCheck').html(liCheck)
+        } else {
+            return false;
+        }
+    })
     // --- end getNoticeProductlist ---
 }
+// ====================== End Load Data Edit ======================
 
 // =========================== Save ===========================
 function onSaveNotice(e) {
     if ($(e).find('#sle_nmDepartmentName').val() == '' ||
         $(e).find('#txt_nmNoticeDate').val() == '' ||
-        $(e).find('#txt_nmNoticeTime').val().val() == '' ||
+        $(e).find('#txt_nmNoticeTime').val() == '' ||
         $(e).find('#sle_nmStaff option:selected').val() == '' ||
         $(e).find('#txt_nmPosition').val() == '' |
         $(e).find('#txt_nmDepartment').val() == '' ||
         $(e).find('#sle_nmInformType option:selected').val() == '' ||
         $(e).find('#infromAlies').val() == '' ||
         $(e).find('#ul_nmGoodName li').length == 0) {
-            alert("กรุณาระบุข้อมูลให้ครบถ้วน");
-            return false;
+        alert("กรุณาระบุข้อมูลให้ครบถ้วน");
+        return false;
     }
-   
+
     if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
         var modeUrl = getUrlParameter('mode')
 
@@ -280,6 +344,7 @@ function onSaveNotice(e) {
         var noticeNoticeAll = {}
         noticeNoticeAll.arrestDesc = ''
         noticeNoticeAll.createBy = 'User login'
+        noticeNoticeAll.departmentCodeReceive = ''
         noticeNoticeAll.departmentNameCommander = '?'
         noticeNoticeAll.departmentNameReceive = $(e).find('#txt_nmDepartment').val()
         noticeNoticeAll.informType = $(e).find('#sle_nmInformType option:selected').val()
@@ -303,17 +368,17 @@ function onSaveNotice(e) {
         noticeInformAll.building = $(e).find('#txt_nmInfromBuilding').val()
         noticeInformAll.createdBy = 'User login'
         noticeInformAll.firstName = $(e).find('#txt_nmInfromAlies').val()
-        noticeInformAll.floor = $(e).find('#txt_nmInfromClass').val()
+        noticeInformAll.floor = $(e).find('#txt_nmInfromFloor').val()
         noticeInformAll.genderType = 'F'
-        noticeInformAll.inFormID = '1'
-        noticeInformAll.lastName = '?'
+        noticeInformAll.inFormID = $(e).find('#txt_nmInfromAlies').data('id')
+        noticeInformAll.lastName = ' '
         noticeInformAll.noticeCode = $(e).find('#txt_nmNoticeCode').val()
         noticeInformAll.postCode = ''
         noticeInformAll.road = $(e).find('#txt_nmInfromRoad').val()
         noticeInformAll.room = $(e).find('#txt_nmInfromRoom').val()
         noticeInformAll.subdistrictCode = $(e).find('#sle_nmInfromRegion option:selected').val()
-        noticeInformAll.titleCode = '?'
-        noticeInformAll.titleName = '?'
+        noticeInformAll.titleCode = ' '
+        noticeInformAll.titleName = ' '
         noticeInformAll.village = $(e).find('#txt_nmInfromVillage').val()
         noticeInformAll.iDCard = ''
         // --- End NoticeInformAll ---
@@ -328,7 +393,7 @@ function onSaveNotice(e) {
         noticeLocationAll.createdBy = 'User login'
         noticeLocationAll.floor = $(e).find('#txt_nmOpsFloor').val()
         noticeLocationAll.lawsuitCode = ''
-        noticeLocationAll.locationId = ''
+        noticeLocationAll.locationId = $(e).find('#txt_nmLocation').data('id')
         noticeLocationAll.locationName = $(e).find('#txt_nmLocation').val()
         noticeLocationAll.noticeCode = $(e).find('#txt_nmNoticeCode').val()
         noticeLocationAll.policeStation = ''
@@ -385,7 +450,7 @@ function onSaveNotice(e) {
                 if (checkItem == false) {
                     delProduct.push
                         ({
-                            code: $(el).data('id'),
+                            code: ($(el).data('id') == '' ? 1 : $(el).data('id')),
                             groupCode: $(el).data('value'),
                             updateUser: 'User login'
                         })
@@ -429,6 +494,7 @@ function onSaveNotice(e) {
         }
     }
 }
+// =========================== End Save ===========================
 
 function saveNotice(e, obj) {
     var noticeAllCode = '',
@@ -475,8 +541,6 @@ function saveNotice(e, obj) {
             })
     })
 
-
-
     if (noticeAllCode == 200 && informAllCode == 200 &&
         locationAllCode == 200 && productListAllCode == 200) {
         alert('บันทึกสำเร็จ');
@@ -517,7 +581,6 @@ function updateNotice(e, obj) {
     // --- end NoticeInform ---
 
     // NoticeLocation
-    obj.location.locationId = 1
     updNoticeLocationByCon(obj.location, function (xml) {
         $(xml).find('responseHeader')
             .each(function (i, e) {

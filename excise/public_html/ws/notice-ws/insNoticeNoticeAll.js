@@ -8,6 +8,7 @@ function insNoticeNoticeAll(arr, callback) {
     xmlData += '<notice>'
     xmlData += '<arrestDesc>'+ arr.arrestDesc +'</arrestDesc>'
     xmlData += '<createBy>'+ arr.createBy +'</createBy>'
+    xmlData += '<departmentCodeReceive>'+ arr.departmentCodeReceive +'</departmentCodeReceive>'  
     xmlData += '<departmentNameCommander>'+ arr.departmentNameCommander +'</departmentNameCommander>'
     xmlData += '<departmentNameReceive>'+ arr.departmentNameReceive +'</departmentNameReceive>'
     xmlData += '<informType>'+ arr.informType +'</informType>'
@@ -26,7 +27,7 @@ function insNoticeNoticeAll(arr, callback) {
     xmlData += '</inf:insNoticeNoticeAll>'
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
-
+debugger
     var url = 'http://103.233.193.62:8888/TLEXCWeb/NoticeWS?wsdl'
     var settings = {
         "async": false,

@@ -1,11 +1,11 @@
-function getNoticeProductlist(lawsuitCode, callback) {
+function getNoticeProductlist(noticeCode, callback) {
     var xmlData = ''
     xmlData += '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
     xmlData += '<soapenv:Header/>'
     xmlData += '<soapenv:Body>'
     xmlData += '<inf:getNoticeProductlist>'
     xmlData += '<arg0>'
-    xmlData += '<lawsuitCode>' + lawsuitCode + '</lawsuitCode>'
+    xmlData += '<noticeCode>' + noticeCode + '</noticeCode>'
     xmlData += '</arg0>'
     xmlData += '</inf:getNoticeProductlist>'
     xmlData += '</soapenv:Body>'

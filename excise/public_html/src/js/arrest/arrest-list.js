@@ -14,11 +14,17 @@ function onToggleAdvancedSearch() {
 }
 
 $(document).ready(function () {
+    var date = new Date()
+    $('#txt_OccurrenceDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
+        $('#txt_OccurrenceDateTo').bootstrapMaterialDatePicker('setMinDate', date);
+    });
 
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
+    $('#txt_TakeDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
+        $('#txt_TakeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
+    });
+
+    $('#txt_LawSuitDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
+        $('#txt_LawSuitDateTo').bootstrapMaterialDatePicker('setMinDate', date);
     });
 
     var option = '<option disabled selected></option>';
@@ -76,6 +82,6 @@ $(document).ready(function () {
     $('.paging_listbox').find('select').addClass('paging_listbox_select');
 });
 
-$('#btn_nlAddArrest').on('click', function(){
+$('#btn_nlAddArrest').on('click', function () {
     window.location.href = 'arrest-manage.html'
 })

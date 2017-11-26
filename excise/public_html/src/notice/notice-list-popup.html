@@ -45,11 +45,11 @@
                 <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="ชื่อ/นามสกุล/ตำแหน่ง/สังกัด">
+                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="เลขที่การแจ้ง/ชื่อผู้แจ้ง">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control">
+                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control" onclick="onSearchNotice('#txt_nlSearch');">
                         <span>
                             <i class="material-icons">search</i>
                             ค้นหา
@@ -70,23 +70,40 @@
         <div class="">
             <!-- table staff list -->
             <div class="form-group">
-                <table id="tableNoticeAll" class="table table-striped table-hover">
-                    <thead>
-                        <tr>
-                            <th style="min-width:30px;">
-                                <input type="checkbox" id="noticeAllCheckboxTh" name="noticeAllCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableNoticeAll', 0);">
-                                <label for="noticeAllCheckboxTh"></label>
-                            </th>
-                            <th style="min-width:50px;">ลำดับ</th>
-                            <th style="min-width:170px;">เลขที่การแจ้ง</th>
-                            <th style="min-width:170px;">ชื่อผู้แจ้ง</th>
-                            <th style="min-width:170px;">วันที่แจ้ง</th>
-                            <th style="min-width:170px;"></th>
-                        </tr>
-                    </thead>
+                <div class="table-responsive">
+                    <table id="tableNoticeAll" class="table table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th style="min-width:30px;">
+                                    <input type="checkbox" id="noticeAllCheckboxTh" name="noticeAllCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableNoticeAll', 0);">
+                                    <label for="noticeAllCheckboxTh"></label>
+                                </th>
+                                <th style="min-width:50px;">ลำดับ</th>
+                                <th style="min-width:170px;">เลขที่การแจ้ง</th>
+                                <th style="min-width:170px;">ชื่อผู้แจ้ง</th>
+                                <th style="min-width:170px;">วันที่แจ้ง</th>
+                                <th style="min-width:170px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
 
-                    <tbody></tbody>
-                </table>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="pagination-select">
+                            <span>หน้าที่ </span>
+                            <select id="notice_pagination" class="paging_listbox_select"></select>
+                            <span class="page-total"></span>
+                        </div>
+                        <!-- หน้าที่ - จาก - หน้า -->
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div id="notice_pageinfo" class="pagination-info text-right">
+                            <!-- รายการที่ 1 - 5 จาก 86 รายการ -->
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- button -->
@@ -137,6 +154,8 @@
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+
+
     </div>
 </body>
 

@@ -15,6 +15,25 @@ $(document).ready(function () {
             })
     })
 
+    // สินค้า
+    var sleDutyGroup = '<option value="" selected></option>';
+    getDutygroupByKeyword('', function (xml) {
+        $(xml).find('dutygroupDTOList')
+            .each(function (i, e) {
+                sleDutyGroup += '<option value="' + $(e).find('groupCode').text() + '">';
+                sleDutyGroup += $(e).find('groupNameTh').text()
+                sleDutyGroup += '</option>'
+            })
+
+        $('#sle_nmGoodName')
+            .html(sleDutyGroup)
+            .selectize({
+                create: true,
+                sortField: 'text'
+            });
+    });
+    // --- end สินค้า ---
+
     var loadMultiFile = {
         // โหลดไฟล์ .html
         '#noticeByConModal .card .body': '../notice/notice-list-popup.html',
@@ -343,15 +362,24 @@ function onCancelArrest() {
 
 // NoticeteByCon Modal // รายการแจ้งความนำจับ
 function onSelectNotice(table) {
+    var noticeCode = ''
     $(table).find('tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
-            $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
-            $('#txt_noticeName').val($(el).find('td.notice-name').html())
+            noticeCode = $(el).find('td.notice-code').html()
+            // $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
+            // $('#txt_noticeName').val($(el).find('td.notice-name').html())
             return false;
         }
     })
 
     $(table).find('tr input[type=checkbox]').prop('checked', false);
+
+    getNoticeProductlist(noticeCode, function (xml) {
+        $(xml).find('')
+            .each(function (i, e) {
+
+            })
+    })
 }
 //==========================
 

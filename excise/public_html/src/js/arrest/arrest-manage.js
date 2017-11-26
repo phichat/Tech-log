@@ -362,24 +362,76 @@ function onCancelArrest() {
 
 // NoticeteByCon Modal // รายการแจ้งความนำจับ
 function onSelectNotice(table) {
+
     var noticeCode = ''
     $(table).find('tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
             noticeCode = $(el).find('td.notice-code').html()
-            // $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
-            // $('#txt_noticeName').val($(el).find('td.notice-name').html())
+            $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
+            $('#txt_noticeName').val($(el).find('td.notice-name').html())
             return false;
         }
     })
 
     $(table).find('tr input[type=checkbox]').prop('checked', false);
 
-    getNoticeProductlist(noticeCode, function (xml) {
-        $(xml).find('')
-            .each(function (i, e) {
+    if (noticeCode !== '') {
+        var noticeByCon = {
+            noticeCode: noticeCode,
+            noticeDateTo: '',
+            noticeDateForm: '',
+        }
+        getNoticeNoticeByCon(noticeByCon, function (xml) {
+            $(xml).find('noticeInfom')
+                .each(function (i, e) {
+                    // เขียนที่หน่วยงาน
+                    $('#txt_lawsuitLocation').val($(e).find('noticestation').text());
+                    // --- end เขียนที่หน่วยงาน ---
 
-            })
-    })
+                    // ละติจูด-ลองติจูด
+                    $('#txt_nmOpsCoordinateX').val($(e).find('coordinatex').text())
+                    $('#txt_nmOpsCoordinateY').val($(e).find('coordinatey').text())
+                    // --- end ละติจูด-ลองติจูด ---
+                });
+        });
+
+        getNoticeProductlist(noticeCode, function (xml) {
+            var li = ''
+            $(xml).find('productListDTO')
+                .each(function (i, e) {
+                    li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
+                    li += $(e).find('groupName').text()
+                    li += '</span><a href="javascript:void(0);"'
+                    li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+                })
+            $('#ul_nmGoodName').html(li)
+        })
+
+        var arr = {
+            noticeCode: noticeCode,
+            locationID: ''
+        }
+        getNoticeLocationByCon(arr, function (xml) {
+            $(xml).find('locationDTO')
+                .each(function (i, e) {
+                    $('#txt_locationName')
+                        .val($(e).find('locationName').text())
+                        .attr('data-id', $(e).find('locationId').text())
+                    $('#txt_address').val($(e).find('address').text())
+                    $('#txt_village').val($(e).find('village').text())
+                    $('#txt_building').val($(e).find('building').text())
+                    $('#txt_room').val($(e).find('room').text())
+                    $('#txt_floor').val($(e).find('floor').text())
+                    $('#txt_alley').val($(e).find('alley').text())
+                    $('#txt_road').val($(e).find('road').text())
+
+                    var infomrRegion = $('#sle_region').selectize(),
+                        informRegionZe = infomrRegion[0].selectize
+                    informRegionZe.setValue($(e).find('subdistrictCode').text(), true)
+                })
+        })
+    }
+
 }
 //==========================
 

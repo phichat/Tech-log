@@ -71,7 +71,7 @@ function onSearchNotice(e) {
         // tr += '<td class="notice-" style="display:none;">'+ e. +'</td>'
         tr += '</tr>'
     })
-    debugger
+ 
     $('#tableNoticeAll tbody').html(tr).pageMe({
         pagerSelector: '#notice_pagination',
         pageInfo: '#notice_pageinfo',

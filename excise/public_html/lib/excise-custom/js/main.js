@@ -1,14 +1,16 @@
 $(document).ready(function () {
     var date = new Date()
-    $('.datepicker input').val(new Intl.DateTimeFormat('th-TH-u-ca-buddhist').format(date))
-        .bootstrapMaterialDatePicker({
-            weekStart: 0,
-            format: 'DD/MM/YYYY',
-            lang: 'th',
-            time: false
-        })
 
-    $("input.time24").inputmask('hh:mm');
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: true,
+        language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+        thaiyear: true              //Set เป็นปี พ.ศ.
+    }).datepicker("setDate", "0");  //กำหนดเป็นวันปัจุบัน
+
+    var h = addZero(date.getHours()),
+        m = addZero(date.getMinutes());
+    $("input.time24").val(h + ":" + m).inputmask('hh:mm');
 
     $("input.number").inputmask({
         'alias': 'numeric',
@@ -19,8 +21,8 @@ $(document).ready(function () {
         'placeholder': '0'
     });
 
-
 })
+
 
 function onToggleCardBody(e) {
     $(e).find('i.material-icons').text(function (i, text) {
@@ -107,6 +109,13 @@ function onChangGoodName(e) {
 //     $(e).val($(e).val().match(/[0-9]*/));
 // }
 
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
 function checkBetweenDate(f, t) {
     if ($(f).val() !== '' && $(t).val() !== '') {
         var df = replaceAll($(f).val(), '/', '');
@@ -123,26 +132,18 @@ function replaceAll(str, find, replace) {
 }
 
 function parseDate(datetime) {
-    var today = new Date(datetime);
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    dd = dd < 10 ? '0' + dd : dd;
-    mm = mm < 10 ? '0' + mm : mm;
-
-    var today = dd + '/' + mm + '/' + yyyy;
-    return today;
+    var today = new Date(datetime),
+        dd = addZero(today.getDate()),
+        mm = addZero(today.getMonth() + 1),
+        yyyy = today.getFullYear();
+    return dd + '/' + mm + '/' + yyyy;
 }
 
 function buddhistDate(date) {
     dateNow = new Date(date),
-        dd = dateNow.getDate(),
-        mm = (dateNow.getMonth() + 1),
+        dd = addZero(dateNow.getDate()),
+        mm = addZero(dateNow.getMonth() + 1),
         yyyy = (dateNow.getFullYear() + 543)
-
-    dd = dd < 10 ? '0' + dd : dd;
-    mm = mm < 10 ? '0' + mm : mm;
     return dd + '/' + mm + '/' + yyyy;
 }
 
@@ -157,9 +158,9 @@ function addDate(date, int) {
         dateA = dateB.setDate(dateB.getDate() + Number(int))
         var dateC = new Date(dateA)
 
-        dd = dateC.getDate() < 10 ? '0' + dateC.getDate() : dateC.getDate();
-        mm = (dateC.getMonth() + 1) < 10 ? '0' + (dateC.getMonth() + 1) : (dateC.getMonth() + 1);
-        return dd + '/' + mm + '/' + dateC.getFullYear();
+        dd = addZero(dateC.getDate());
+        mm = addZero(dateC.getMonth());
+        return dd + '/' + mm + '/' + dateC.getFullYear() + ' 00:00 น.';
     } else {
         return '';
     }

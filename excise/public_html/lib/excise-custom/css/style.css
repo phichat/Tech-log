@@ -13,8 +13,18 @@
     font-size: 16px !important;
 }
 
-.card .body .control-label {
+.card .body [class*=col-] {
     margin-bottom: 10px;
+    /* padding-left: 10px;
+    padding-right: 10px; */
+}
+
+.dropdown-menu {
+    z-index: 10;
+}
+
+.datepicker-dropdown{
+    top: 397px !important;
 }
 
  .toggle-popup-list {
@@ -104,6 +114,32 @@
     border-radius: 4px !important;
   }
 
+  .sidebar .menu .list .header {
+      font-size: 14px;
+  }
+
+
+ /* navigation bar */
+ .bars{
+    top: 0px;
+    position: relative;
+ }
+
+.navbar-brand img{
+    position:absolute; 
+    display: none;
+  }
+
+  .navbar-brand span {
+    position: relative;
+    left: 25%;
+    top: 10px;
+  }
+
+  .navbar-brand span.detail {
+    display: none;
+  }
+
   @media screen and (max-width: 640px) {
       .card .body {
           padding: 20px 0;
@@ -117,11 +153,61 @@
     }
 }
 
+@media screen and (min-width: 640px) {
+    .navbar-brand {
+        position: absolute;
+        left: 10%;
+        height: 90px;
+        top: 2px;
+        line-height: 25px;      
+    }
+
+    .navbar-brand img{
+        position:absolute; 
+        display: none;
+      }
+
+    .navbar-brand span {
+        top: 0px;
+        left: 0px;
+      }
+
+      .navbar-brand span.detail {
+        display: block;
+      }
+}
+
   @media screen and (min-width: 768px) {
     .between-item{
       padding-left:0 !important;
     }
+  }
 
+  @media screen and (min-width: 1169px) {
+    .navbar-brand {
+        position: absolute;
+        height: 90px;
+        left: 80px;
+        top: 2px;
+        line-height: 25px;   
+        width: 50%;   
+    }
 
+    .navbar-brand img{
+        display: block;
+        height: 80px; 
+        position:absolute; 
+        top: 3px;
+      }
 
+      .navbar-brand img{
+        height: 80px; 
+        position:absolute; 
+        top: 3px;
+      }
+
+      .navbar-brand span {
+        position: relative;
+        left: 80px;
+      }
   }

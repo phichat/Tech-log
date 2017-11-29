@@ -2,15 +2,27 @@ $(document).ready(function () {
 
     var modeUrl = getUrlParameter('mode'),
         noticeCodeUrl = getUrlParameter('notice-code')
-    debugger
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        weekStart: 0,
-        format: 'DD/MM/YYYY',
-        lang: 'th',
-        time: false
+
+    autosize($('#txt_nmLocation'));
+
+    var loadMultifile = {
+        'section.header': '../navbar.html #topheader',
+        'section.sidebar': '../sidebar.html #leftsidebar',
+        '#listStaffModal .card .body': '../staff/staff-list-popup.html'
+    }
+
+    $.each(loadMultifile, function (tag, url) {
+        $(tag).load(url, function () {
+            var ele = $('.menu .list > li');
+            $(ele).each(function (i, s) {
+                if ($(s).data('page') == 'notice') {
+                    $(this).addClass('active')
+                }
+            })
+        });
     })
 
-    // $('#txt_nmNoticeDate').val(buddhistDate(new Date()))
+    $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 
     //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
     var sleRegion = '<option value="" selected></option>'
@@ -62,7 +74,7 @@ $(document).ready(function () {
         $('#sle_nmGoodName')
             .html(sleDutyGroup)
             .selectize({
-                create: true,
+                create: false,
                 sortField: 'text'
             });
     });
@@ -70,24 +82,60 @@ $(document).ready(function () {
 
     // เขียนที่หน่วยงาน
     getOfficeByKeyword('', function (xml) {
-        var sleNoticeStation = '<option value="" selected></option>';
+        var option = [];
         $(xml).find('officeDTOList')
             .each(function (i, e) {
-                sleNoticeStation += '<option value="' + $(e).find('officeCode').text() + '">';
-                sleNoticeStation += $(e).find('officeShortName').text() + '</option>'
+                option.push({
+                    "code": $(e).find('officeCode').text(),
+                    "name": $(e).find('officeShortName').text()
+                })
             })
-        $('#sle_nmDepartmentName')
-            .html(sleNoticeStation)
-            .selectize({
-                create: true,
-                sortField: 'text'
-            });
+        $('#sle_nmNoticeStation').selectize({
+            valueField: 'name',
+            labelField: 'code',
+            searchField: ['name', 'code'],
+            create: false,
+            options: option,
+            render: {
+                option: function (item, escape) {
+                    return '<div>' +
+                        '<span class="title">' +
+                        '<span class="name">' + escape(item.code) + '</span>' +
+                        '</span>' +
+                        '<span class="description">' + escape(item.name) + '</span>' +
+                        '</div>';
+                }
+            }
+        });
     });
     // --- end เขียนที่หน่วยงาน ---
 
+    // หน่วยงาน
+    getDepartmentByCon('', function (xml) {
+        var department = []
+        $(xml).find('departmentDTOList')
+            .each(function (i, e) {
+                department.push({
+                    deptCode: $(e).find('departmentCode').text(),
+                    deptName: $(e).find('departmentNameTh').text()
+                })
+            })
+
+        $('#sle_nmDepartmentName').selectize({
+            valueField: 'deptCode',
+            labelField: 'deptName',
+            searchField: 'deptName',
+            create: false,
+            sortField: 'text',
+            options: department
+        })
+    })
+
+    // --- end หน่วยงาน ---
+
     // ผู้แจ้งความ
     $('#sle_nmInformType').selectize({
-        create: true,
+        create: false,
         sortField: 'value'
     });
     // --- end ผู้แจ้งความ ---
@@ -97,10 +145,6 @@ $(document).ready(function () {
         loadFormEdit(noticeCodeUrl);
     }
     // --- end Mode edit ---
-
-    // โหลด form staff list popup
-    $('#listStaffModal .card .body').load('../staff/staff-list-popup.html');
-    // --- end form staff list popup ---
 })
 
 function onSelectStaff() {
@@ -162,13 +206,26 @@ function onChangeTypeInfrom(sle, txt) {
 function onChangDueDate(noticeDate, dueDate, endDate) {
     var date = $(noticeDate).val();
     var due = $(dueDate).val();
-    if (date !== '' && due !== '') {
+
+    if (isNaN(due) || due == 00) {
+        $(dueDate).val('')
+        return false;
+    }
+
+    if (date !== '' && due !== '' && due !== 00) {
+        // addDate จาก lib/excise-custom/js/main.js
         $(endDate).val(addDate(date, due))
     } else {
         $(endDate).val('')
     }
 
 }
+
+$('#noticeManage').change(function () {
+    // จาก lib/excise-custom/js/validate.js
+    unhighlight('#noticeManage');
+})
+
 
 // ====================== Load Data Edit ======================
 function loadFormEdit(noticeCodeUrl) {
@@ -210,17 +267,17 @@ function loadFormEdit(noticeCodeUrl) {
                     }
                     // --- end ผู้รับแจ้งความนำจับ ---
 
-                    // เขียนที่หน่วยงาน
-                    var noticeStation = $('#sle_nmDepartmentName').selectize(),
+                    // เขียนที่
+                    var noticeStation = $('#sle_nmNoticeStation').selectize(),
                         noticeStationZe = noticeStation[0].selectize,
                         stationText = $(e).find('noticestation').text();
                     for (s in noticeStationZe.options) {
-                        if (stationText == noticeStationZe.options[s].text) {
+                        if (stationText == noticeStationZe.options[s].name) {
                             noticeStationZe.setValue(s, true) // set value ให้กับ dropdown
                             break;
                         };
                     }
-                    // --- end เขียนที่หน่วยงาน ---
+                    // --- end เขียนที่ ---
 
                     // ผู้แจ้งความ 
                     var informType = $('#sle_nmInformType').selectize(),
@@ -244,11 +301,6 @@ function loadFormEdit(noticeCodeUrl) {
                     var infomrRegion = $('#sle_nmInfromRegion').selectize(),
                         informRegionZe = infomrRegion[0].selectize
                     informRegionZe.setValue($(e).find('subdistrictcode').text(), true)
-
-                    // ละติจูด-ลองติจูด
-                    $('#txt_nmOpsCoordinateX').val($(e).find('coordinatex').text())
-                    $('#txt_nmOpsCoordinateY').val($(e).find('coordinatey').text())
-                    // --- end ละติจูด-ลองติจูด ---
                 });
         } else {
             return false;
@@ -312,6 +364,7 @@ function loadFormEdit(noticeCodeUrl) {
                     liCheck += '<li><span class="good-name-tag" data-id="' + $(e).find('productListID').text() + '"'
                     liCheck += ' data-value="' + $(e).find('groupCode').text() + '"></span></li>'
                 })
+                debugger;
             $('#ul_nmGoodName').html(li)
             $('#ul_nmGoodNameCheck').html(liCheck)
         } else {
@@ -324,16 +377,8 @@ function loadFormEdit(noticeCodeUrl) {
 
 // =========================== Save ===========================
 function onSaveNotice(e) {
-    if ($(e).find('#sle_nmDepartmentName').val() == '' ||
-        $(e).find('#txt_nmNoticeDate').val() == '' ||
-        $(e).find('#txt_nmNoticeTime').val() == '' ||
-        $(e).find('#sle_nmStaff option:selected').val() == '' ||
-        $(e).find('#txt_nmPosition').val() == '' |
-        $(e).find('#txt_nmDepartment').val() == '' ||
-        $(e).find('#sle_nmInformType option:selected').val() == '' ||
-        $(e).find('#infromAlies').val() == '' ||
-        $(e).find('#ul_nmGoodName li').length == 0) {
-        alert("กรุณาระบุข้อมูลให้ครบถ้วน");
+    // จาก lib/excise-custom/js/validate.js
+    if (!validate(e)) {
         return false;
     }
 
@@ -341,66 +386,69 @@ function onSaveNotice(e) {
         var modeUrl = getUrlParameter('mode')
 
         // NoticeNoticeAll
-        var noticeNoticeAll = {}
-        noticeNoticeAll.arrestDesc = ''
-        noticeNoticeAll.createBy = 'User login'
-        noticeNoticeAll.departmentCodeReceive = ''
-        noticeNoticeAll.departmentNameCommander = '?'
-        noticeNoticeAll.departmentNameReceive = $(e).find('#txt_nmDepartment').val()
-        noticeNoticeAll.informType = $(e).find('#sle_nmInformType option:selected').val()
-        noticeNoticeAll.noticeCode = $(e).find('#txt_nmNoticeCode').val()
-        noticeNoticeAll.noticeDate = $(e).find('#txt_nmNoticeDate').val()
-        noticeNoticeAll.noticeDueDate = $(e).find('#txt_nmDueDate').val()
-        noticeNoticeAll.noticeStation = $(e).find('#sle_nmDepartmentName option:selected').text()
-        noticeNoticeAll.noticeTime = $(e).find('#txt_nmNoticeTime').val()
-        noticeNoticeAll.positionNameReceive = $(e).find('#txt_nmPosition').val()
-        noticeNoticeAll.remarks = ''
-        noticeNoticeAll.secretLevel = ''
-        noticeNoticeAll.staffNameAccept = ''
-        noticeNoticeAll.staffNameReceive = $(e).find('#sle_nmStaff option:selected').text()
+        var noticeNoticeAll = {
+            arrestDesc: '',
+            createBy: 'User login',
+            departmentCodeReceive: $(e).find('#sle_nmDepartmentName option:selected').val(), // รหัสหน่วยงาน
+            departmentNameCommander: ' ',
+            departmentNameReceive: $(e).find('#txt_nmDepartment').val(),                    // สังกัด
+            informType: $(e).find('#sle_nmInformType option:selected').val(),               // ผู้แจ้งความ
+            noticeCode: $(e).find('#txt_nmNoticeCode').val(),                               // เลขที่แจ้งความ
+            noticeDate: $(e).find('#txt_nmNoticeDate').val(),                               // วันที่แจ้งความ
+            noticeDueDate: $(e).find('#txt_nmDueDate').val(),                               // สินสุดใบแจ้งความ
+            noticeStation: $(e).find('#sle_nmNoticeStation  option:selected').val(),        // เขียนที่
+            noticeTime: $(e).find('#txt_nmNoticeTime').val(),                               // เวลา
+            positionNameReceive: $(e).find('#txt_nmPosition').val(),                        // ตำแหน่ง
+            remarks: '',
+            secretLevel: '',
+            staffNameAccept: '',
+            staffNameReceive: $(e).find('#sle_nmStaff option:selected').text()             // ผู้รับแจ้ง
+        }
         // --- End NoticeNoticeAll ---
 
         // NoticeInformAll
-        var noticeInformAll = {}
-        noticeInformAll.address = $(e).find('#txt_nmInfromAddress').val()
-        noticeInformAll.age = $(e).find('#txt_nmInfromAge').val()
-        noticeInformAll.alley = $(e).find('#txt_nmInfromAlley').val()
-        noticeInformAll.building = $(e).find('#txt_nmInfromBuilding').val()
-        noticeInformAll.createdBy = 'User login'
-        noticeInformAll.firstName = $(e).find('#txt_nmInfromAlies').val()
-        noticeInformAll.floor = $(e).find('#txt_nmInfromFloor').val()
-        noticeInformAll.genderType = 'F'
-        noticeInformAll.inFormID = $(e).find('#txt_nmInfromAlies').data('id')
-        noticeInformAll.lastName = ' '
-        noticeInformAll.noticeCode = $(e).find('#txt_nmNoticeCode').val()
-        noticeInformAll.postCode = ''
-        noticeInformAll.road = $(e).find('#txt_nmInfromRoad').val()
-        noticeInformAll.room = $(e).find('#txt_nmInfromRoom').val()
-        noticeInformAll.subdistrictCode = $(e).find('#sle_nmInfromRegion option:selected').val()
-        noticeInformAll.titleCode = ' '
-        noticeInformAll.titleName = ' '
-        noticeInformAll.village = $(e).find('#txt_nmInfromVillage').val()
-        noticeInformAll.iDCard = ''
+        var noticeInformAll = {
+            address: $(e).find('#txt_nmInfromAddress').val(),
+            age: $(e).find('#txt_nmInfromAge').val(),
+            alley: $(e).find('#txt_nmInfromAlley').val(),
+            building: $(e).find('#txt_nmInfromBuilding').val(),
+            createdBy: 'User login',
+            firstName: $(e).find('#txt_nmInfromAlies').val(),
+            floor: $(e).find('#txt_nmInfromFloor').val(),
+            genderType: '1',
+            inFormID: $(e).find('#txt_nmInfromAlies').data('id'),
+            lastName: ' ',
+            noticeCode: $(e).find('#txt_nmNoticeCode').val(),
+            postCode: '',
+            road: $(e).find('#txt_nmInfromRoad').val(),
+            room: $(e).find('#txt_nmInfromRoom').val(),
+            subdistrictCode: $(e).find('#sle_nmInfromRegion option:selected').val(),
+            titleCode: ' ',
+            titleName: ' ',
+            village: $(e).find('#txt_nmInfromVillage').val(),
+            iDCard: ''
+        }
         // --- End NoticeInformAll ---
 
         // location
-        var noticeLocationAll = {}
-        noticeLocationAll.address = $(e).find('#txt_nmOpsAddress').val()
-        noticeLocationAll.alley = $(e).find('#txt_nmOpsAlley').val()
-        noticeLocationAll.building = $(e).find('#txt_nmOpsBuilding').val()
-        noticeLocationAll.coodinateX = $(e).find('#txt_nmOpsCoordinateX').val()
-        noticeLocationAll.coodinateY = $(e).find('#txt_nmOpsCoordinateY').val()
-        noticeLocationAll.createdBy = 'User login'
-        noticeLocationAll.floor = $(e).find('#txt_nmOpsFloor').val()
-        noticeLocationAll.lawsuitCode = ''
-        noticeLocationAll.locationId = $(e).find('#txt_nmLocation').data('id')
-        noticeLocationAll.locationName = $(e).find('#txt_nmLocation').val()
-        noticeLocationAll.noticeCode = $(e).find('#txt_nmNoticeCode').val()
-        noticeLocationAll.policeStation = ''
-        noticeLocationAll.road = $(e).find('#txt_nmOpsRoad').val()
-        noticeLocationAll.room = $(e).find('#txt_nmOpsRoom').val()
-        noticeLocationAll.subdistrictCode = $(e).find('#sle_nmOpsRegion option:selected').val()
-        noticeLocationAll.village = $(e).find('#txt_nmOpsVillage').val()
+        var noticeLocationAll = {
+            address: $(e).find('#txt_nmOpsAddress').val(),
+            alley: $(e).find('#txt_nmOpsAlley').val(),
+            building: $(e).find('#txt_nmOpsBuilding').val(),
+            coodinateX: '',
+            coodinateY: '',
+            createdBy: 'User login',
+            floor: $(e).find('#txt_nmOpsFloor').val(),
+            lawsuitCode: '',
+            locationId: $(e).find('#txt_nmLocation').data('id'),
+            locationName: $(e).find('#txt_nmLocation').val(),
+            noticeCode: $(e).find('#txt_nmNoticeCode').val(),
+            policeStation: '',
+            road: $(e).find('#txt_nmOpsRoad').val(),
+            room: $(e).find('#txt_nmOpsRoom').val(),
+            subdistrictCode: $(e).find('#sle_nmOpsRegion option:selected').val(),
+            village: $(e).find('#txt_nmOpsVillage').val()
+        }
         // --- End location ---
 
         // noticeProductlistAll
@@ -507,16 +555,21 @@ function saveNotice(e, obj) {
         locationAllDescription = '',
 
         productListAllCode = '',
-        productListAllDescription = ''
+        productListAllDescription = '',
+
+        noticeCode = ''
 
     insNoticeNoticeAll(obj.notice, function (xml) {
-        $(xml).find('responseHeader')
+        $(xml).find('mergeResponse')
             .each(function (i, e) {
+                noticeCode = $(e).find('id').text()
                 noticeAllCode = $(e).find('code').text()
                 noticeAllDescription = $(e).find('description').text()
             })
     })
 
+    $(e).find('#txt_nmNoticeCode').val(noticeCode)
+    obj.inform.noticeCode = noticeCode
     insNoticeInformAll(obj.inform, function (xml) {
         $(xml).find('responseHeader')
             .each(function (i, e) {
@@ -525,6 +578,7 @@ function saveNotice(e, obj) {
             })
     })
 
+    obj.location.noticeCode = noticeCode
     insNoticeLocationAll(obj.location, function (xml) {
         $(xml).find('responseHeader')
             .each(function (i, e) {
@@ -533,6 +587,9 @@ function saveNotice(e, obj) {
             })
     })
 
+    $(obj.productlist).each(function (i, e) {
+        e.noticeCode = noticeCode
+    })
     insNoticeProductlistAll(obj.productlist, function (xml) {
         $(xml).find('responseHeader')
             .each(function (i, e) {

@@ -36,6 +36,8 @@ $(document).ready(function () {
 
     var loadMultiFile = {
         // โหลดไฟล์ .html
+        'section.header': '../navbar.html #topheader',
+        'section.sidebar': '../sidebar.html #leftsidebar',
         '#noticeByConModal .card .body': '../notice/notice-list-popup.html',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html',
         '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html',
@@ -48,12 +50,12 @@ $(document).ready(function () {
 
     $.each(loadMultiFile, function (tag, url) {
         $(tag).load(url, function () {
-            // โหลด Script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
-            $.getScript('../js/exhibit/exhibit-popup.js');
-            $.getScript('../js/lawbreaker/lawbreaker-list-popup.js');
-
-            $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
-            $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
+            var ele = $('.menu .list > li');
+            $(ele).each(function (i, s) {
+                if ($(s).data('page') == 'arrest') {
+                    $(this).addClass('active')
+                }
+            })
 
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
@@ -82,6 +84,14 @@ $(document).ready(function () {
             });
         });
     })
+
+    // โหลด Script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
+    $.getScript('../js/exhibit/exhibit-popup.js');
+    $.getScript('../js/lawbreaker/lawbreaker-list-popup.js');
+
+    $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
+    $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
+
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion);

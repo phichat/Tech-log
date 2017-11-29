@@ -1,33 +1,32 @@
 
 $(document).ready(function () {
-    // var date = new Date();
-    //  $('.datepicker').val(new Intl.DateTimeFormat('th-TH-u-ca-buddhist').format(date))
-    //     .bootstrapMaterialDatePicker({
-    //         weekStart: 0,
-    //         format: 'DD/MM/YYYY',
-    //         lang: 'th',
-    //         time: false
-    //     })
 
-    $('#txt_nlNoticeDateFrom').bootstrapMaterialDatePicker().on('change', function (e, date) {
-        $('#txt_nlNoticeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
-    });
+    var loadMultifile = {
+        'section.header': '../navbar.html #topheader',
+        'section.sidebar': '../sidebar.html #leftsidebar'
+    }
 
-    // var tr = '';
-    // tr += '<tr>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '</tr>'
-    // $('#table_nlNoticeList tbody').html(tr)
+    $.each(loadMultifile, function (tag, url) {
+        $(tag).load(url, function () {
+            var ele = $('.menu .list > li');
+            $(ele).each(function (i, s) {
+                if ($(s).data('page') == 'notice') {
+                    $(this).addClass('active')
+                }
+            })
+        });
+    })
+
+    $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
+
+
+
+
+    // $('#txt_nlNoticeDateFrom').bootstrapMaterialDatePicker().on('change', function (e, date) {
+    //     $('#txt_nlNoticeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
+    // });
+
+
     $('#table_nlNoticeList tbody').pageMe({
         pagerSelector: '#notice_pagination',
         pageInfo: '#notice_pageinfo',
@@ -35,9 +34,6 @@ $(document).ready(function () {
         hidePageNumbers: false,
         perPage: 5
     });
-
-    // dataTables pagination style
-    // $('.paging_listbox').find('select').addClass('paging_listbox_select');
 });
 
 function onDelRecord(e) {
@@ -51,24 +47,14 @@ $('#btn_nlAddNotice').on('click', function () {
     window.location.href = 'notice-manage.html'
 });
 
-// function noticeList(noticecode, department, noticeDate, groupName, staffName) {
-//     this.noticecode = noticecode
-//     this.department = department
-//     this.noticeDate = noticeDate 
-//     this.groupName = groupName
-//     this.staffName = staffName
-//     this.location = location
-//     this.endDate = endDate
-// }
-
 function onSearchNoticeList(boxSearch, advSearch) {
     var array = [];
 
     if ($(advSearch).css('display') == 'none') {
-        if ($(boxSearch).val() == '') {
-            alert('กรุณาระบุคำที่ต้องการค้นหา');
-            return false;
-        }
+        // if ($(boxSearch).val() == '') {
+        //     alert('กรุณาระบุคำที่ต้องการค้นหา');
+        //     return false;
+        // }
 
         getNoticeListNoticeByKeyword($(boxSearch).val(), function callback(xmlDoc) {
             $(xmlDoc).find('noticeList')
@@ -90,16 +76,17 @@ function onSearchNoticeList(boxSearch, advSearch) {
         })
 
     } else {
-        var arr = {}
-        arr["noticeDate"] = $(advSearch).find('#txt_nlNoticeDateFrom').val();
-        arr["noticeDueDate"] = $(advSearch).find('#txt_nlNoticeDateTo').val();
-        arr["groupName"] = $(advSearch).find('#txt_nlGroupName').val();
-        arr["noticeCode"] = $(advSearch).find('#txt_nlNoticeCode').val();
-        arr["departmentNameReceive"] = $(advSearch).find('#txt_nlNoticeDepartmentNameRecieve').val();
-        arr["staffNameReceiv"] = $(advSearch).find('#txt_nlStaffNameReceive').val();
-        arr["titleName"] = '';
-        arr["firstName"] = $(advSearch).find('#txt_nlNoticeInform').val();
-        arr["lastName"] = '';
+        var arr = {
+            noticeDateForm: $(advSearch).find('#txt_nlNoticeDateFrom').val(),
+            noticeDateTo: $(advSearch).find('#txt_nlNoticeDateTo').val(),
+            groupName: $(advSearch).find('#txt_nlGroupName').val(),
+            noticeCode: $(advSearch).find('#txt_nlNoticeCode').val(),
+            departmentNameReceive: $(advSearch).find('#txt_nlNoticeDepartmentNameRecieve').val(),
+            staffNameReceiv: $(advSearch).find('#txt_nlStaffNameReceive').val(),
+            infoName: $(advSearch).find('#txt_nlNoticeInform').val(),
+            noticeDueDate: ''
+        }
+
 
         getNoticeListNoticeByConAdv(arr, function callback(xmlDoc) {
             $(xmlDoc).find('noticeList')
@@ -115,7 +102,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                             $(el).find('sub_district_name').text() + '/' +
                             $(el).find('district_name_th').text() + '/' +
                             $(el).find('province_name_th').text(),
-                        endDate: addDate($(el).find('noticedate').text(), $(el).find('noticeduedate').text()) 
+                        endDate: addDate($(el).find('noticedate').text(), $(el).find('noticeduedate').text())
                     })
                 })
         })
@@ -123,7 +110,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
 
     var tr = ''
     $(array).each(function (i, e) {
-       
+
         tr += '<tr>'
         tr += '<td>' + e.no + '</td>'
         tr += '<td>' + e.noticecode + '</td>'
@@ -149,16 +136,16 @@ function onSearchNoticeList(boxSearch, advSearch) {
         tr += '</a>'
         tr += '</td>'
         tr += '</tr>'
-
-        $('#table_nlNoticeList tbody').html(tr)
-        $('#table_nlNoticeList tbody').pageMe({
-            pagerSelector: '#notice_pagination',
-            pageInfo: '#notice_pageinfo',
-            showPrevNext: true,
-            hidePageNumbers: false,
-            perPage: 5
-        });
     })
+
+    $('#table_nlNoticeList tbody').html(tr)
+    $('#table_nlNoticeList tbody').pageMe({
+        pagerSelector: '#notice_pagination',
+        pageInfo: '#notice_pageinfo',
+        showPrevNext: true,
+        hidePageNumbers: false,
+        perPage: 5
+    });
 
 }
 

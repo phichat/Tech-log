@@ -46,16 +46,19 @@
 <body>
     <div class="arrest-team-list-popup">
         <br>
-        <form class="form-horizontal">
+        <div class="form-horizontal">
             <div class="row form-group">
-                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
+                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_arrestTeamSearch">ค้นหา:</label>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="ชื่อ/นามสกุล/ตำแหน่ง/สังกัด">
+                        <input type="text" class="form-control" id="txt_arrestTeamSearch" 
+                        placeholder="ชื่อ/นามสกุล/ตำแหน่ง/สังกัด"
+                        onkeypress="onkeypressSearchFormArrest(this);">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control">
+                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control"
+                    onclick="onSearchFormArres('#txt_arrestTeamSearch');">
                         <span>
                             <i class="material-icons">search</i>
                             ค้นหา
@@ -71,11 +74,11 @@
                     </button>
                 </div> -->
             </div>
-        </form>
+        </div>
 
         <div class="">
             <!-- table staff list -->
-            <div class="form-group">
+            <div class="form-group table-responsive">
                 <table id="tableArrestTeamList" class="table table-striped table-hover">
                     <thead>
                         <tr>
@@ -93,6 +96,21 @@
                     </thead>
                     <tbody></tbody>
                 </table>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="pagination-select">
+                        <span>หน้าที่ </span>
+                        <select id="arrestTeamList_pagination" class="paging_listbox_select"></select>
+                        <span class="page-total"></span>
+                    </div>
+                    <!-- หน้าที่ - จาก - หน้า -->
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div id="arrestTeamList_pageinfo" class="pagination-info text-right">
+                        <!-- รายการที่ 1 - 5 จาก 86 รายการ -->
+                    </div>
+                </div>
             </div>
 
             <!-- button -->

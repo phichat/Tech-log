@@ -14,6 +14,25 @@ function onToggleAdvancedSearch() {
 }
 
 $(document).ready(function () {
+    var loadMultifile = {
+        'section.header': '../navbar.html #topheader',
+        'section.sidebar': '../sidebar.html #leftsidebar'
+    }
+
+    $.each(loadMultifile, function (tag, url) {
+        $(tag).load(url, function(){
+            var ele = $('.menu .list > li');
+            $(ele).each(function(i, s){
+                if ($(s).data('page') == 'arrest') {
+                    $(this).addClass('active')
+                }
+            })
+        });
+    })
+
+    $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
+
+
     var date = new Date()
     $('#txt_OccurrenceDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
         $('#txt_OccurrenceDateTo').bootstrapMaterialDatePicker('setMinDate', date);

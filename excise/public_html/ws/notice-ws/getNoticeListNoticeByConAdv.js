@@ -6,15 +6,14 @@ function getNoticeListNoticeByConAdv(arr, callback) {
     xmlData += '<soapenv:Body>'
     xmlData += '<inf:getNoticeListNoticeByConAdv>'
     xmlData += '<arg0>'
-    xmlData += '<noticeCode>' + arr.noticeCode.trim() + '</noticeCode>'
-    xmlData += '<noticeDate>' + arr.noticeDate.trim() + '</noticeDate>'
-    xmlData += '<staffNameReceiv>' + arr.staffNameReceiv.trim() + '</staffNameReceiv>'
-    xmlData += '<departmentNameReceive>' + arr.departmentNameReceive.trim() + '</departmentNameReceive>'
-    xmlData += '<noticeDueDate>' + arr.noticeDueDate.trim() + '</noticeDueDate>'
-    xmlData += '<groupName>' + arr.groupName.trim() + '</groupName>'
-    xmlData += '<firstName>' + arr.firstName.trim() + '</firstName>'
-    xmlData += '<titleName>' + arr.titleName.trim() + '</titleName>'
-    xmlData += '<lastName>' + arr.lastName.trim() + '</lastName>'
+    xmlData += '<noticeCode>'+ arr.noticeCode +'</noticeCode>'
+    xmlData += '<noticeDateTo>'+ arr.noticeDateTo +'</noticeDateTo>'
+    xmlData += '<noticeDateForm>'+ arr.noticeDateForm +'</noticeDateForm>'
+    xmlData += '<staffNameReceiv>'+ arr.staffNameReceiv +'</staffNameReceiv>'
+    xmlData += '<departmentNameReceive>'+ arr.departmentNameReceive +'</departmentNameReceive>'
+    xmlData += '<noticeDueDate>'+ arr.noticeDueDate +'</noticeDueDate>'
+    xmlData += '<groupName>'+ arr.groupName +'</groupName>'
+    xmlData += '<infoName>'+ arr.infoName +'</infoName>'
     xmlData += '</arg0>'
     xmlData += '</inf:getNoticeListNoticeByConAdv>'
     xmlData += '</soapenv:Body>'
@@ -33,7 +32,7 @@ function getNoticeListNoticeByConAdv(arr, callback) {
             'X-HTTP-Method-Override': "GET"
         }
     };
-    debugger
+
     $.ajax(settings)
         .success(function (xmlDoc) {
             callback(xmlDoc);

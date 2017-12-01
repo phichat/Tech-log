@@ -1,3 +1,28 @@
+$(document).ready(function () {
+    var date = new Date()
+
+    $('.datepicker').datepicker({
+        format: 'dd/mm/yyyy',
+        todayBtn: true,
+        language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+        thaiyear: true              //Set เป็นปี พ.ศ.
+    }).datepicker("setDate", "0");  //กำหนดเป็นวันปัจุบัน
+
+    var h = addZero(date.getHours()),
+        m = addZero(date.getMinutes());
+    $("input.time24").val(h + ":" + m).inputmask('hh:mm');
+
+    $("input.number").inputmask({
+        'alias': 'numeric',
+        'groupSeparator': ',',
+        'autoGroup': true,
+        'digits': 2,
+        'digitsOptional': false,
+        'placeholder': '0'
+    });
+})
+
+
 function onToggleCardBody(e) {
     $(e).find('i.material-icons').text(function (i, text) {
         return text == "arrow_drop_down" ? "arrow_drop_up" : "arrow_drop_down";
@@ -14,7 +39,6 @@ function checkedBox(e, table, col) {
             .find('td:eq(' + col + ') input[type=checkbox]')
             .prop('checked', $(e).prop('checked'));
     });
-
 }
 
 // ลบข้อมูล Tag สินค้า
@@ -83,11 +107,19 @@ function onChangGoodName(e) {
 //     $(e).val($(e).val().match(/[0-9]*/));
 // }
 
+function addZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
 function checkBetweenDate(f, t) {
     if ($(f).val() !== '' && $(t).val() !== '') {
-        var df = replaceAll($(f).val(), '/', '');
-        var dt = replaceAll($(t).val(), '/', '');
-        if (Number(df) > Number(dt)) {
+        var df = setNewdate($(f).val());
+        var dt = setNewdate($(t).val());
+        debugger
+        if (df > dt) {
             alert('"วันที่สิ้นสุด" ต้องไม่น้อยกว่า "วันที่เริ่มต้น"')
             $(f).val($(t).val())
         }
@@ -98,56 +130,42 @@ function replaceAll(str, find, replace) {
     return str.replace(new RegExp(find, 'g'), replace);
 }
 
-$(document).ready(function () {
-
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        weekStart: 0,
-        format: 'DD/MM/YYYY',
-        lang: 'th',
-        time: false
-    })
-
-    $('input.datepicker').val(buddhistDate(new Date()))
-
-
-
-
-    $("input.time24").inputmask('hh:mm');
-
-    $("input.number").inputmask({
-        'alias': 'numeric',
-        'groupSeparator': ',',
-        'autoGroup': true,
-        'digits': 2,
-        'digitsOptional': false,
-        'placeholder': '0'
-    });
-
-
-})
-
 function parseDate(datetime) {
-    var today = new Date(datetime);
-    var dd = today.getDate();
-    var mm = today.getMonth() + 1; //January is 0!
-    var yyyy = today.getFullYear();
-
-    dd = dd < 10 ? '0' + dd : dd;
-    mm = mm < 10 ? '0' + mm : mm;
-
-    var today = dd + '/' + mm + '/' + yyyy;
-    return today;
+    var today = new Date(datetime),
+        dd = addZero(today.getDate()),
+        mm = addZero(today.getMonth() + 1),
+        yyyy = today.getFullYear();
+    return dd + '/' + mm + '/' + yyyy;
 }
 
 function buddhistDate(date) {
     dateNow = new Date(date),
-        dd = dateNow.getDate(),
-        mm = (dateNow.getMonth() + 1),
+        dd = addZero(dateNow.getDate()),
+        mm = addZero(dateNow.getMonth() + 1),
         yyyy = (dateNow.getFullYear() + 543)
-
-    dd = dd < 10 ? '0' + dd : dd;
-    mm = mm < 10 ? '0' + mm : mm;
     return dd + '/' + mm + '/' + yyyy;
+}
+
+function addDate(date, int) {
+    if (date !== '' && int !== '') {
+        var dateB = setNewdate(date),
+            dateA = dateB.setDate(dateB.getDate() + Number(int)),
+            dateC = new Date(dateA),
+            dd = addZero(dateC.getDate()),
+            mm = addZero(dateC.getMonth() + 1);
+        return dd + '/' + mm + '/' + dateC.getFullYear() + ' 00:00 น.';
+    } else {
+        return '';
+    }
+}
+
+function setNewdate(date) {
+    var dd = date.split('/')[0],
+        mm = date.split('/')[1],
+        yyyy = date.split('/')[2],
+        dateA = yyyy + '-' + mm + '-' + dd,
+        dateB = new Date(dateA);
+    return dateB;
 }
 
 var getUrlParameter = function (sParam) {

@@ -8,6 +8,7 @@ function insNoticeNoticeAll(arr, callback) {
     xmlData += '<notice>'
     xmlData += '<arrestDesc>'+ arr.arrestDesc +'</arrestDesc>'
     xmlData += '<createBy>'+ arr.createBy +'</createBy>'
+    xmlData += '<departmentCodeReceive>'+ arr.departmentCodeReceive +'</departmentCodeReceive>'  
     xmlData += '<departmentNameCommander>'+ arr.departmentNameCommander +'</departmentNameCommander>'
     xmlData += '<departmentNameReceive>'+ arr.departmentNameReceive +'</departmentNameReceive>'
     xmlData += '<informType>'+ arr.informType +'</informType>'

@@ -7,7 +7,6 @@
 
    function Plugin(element, options)
    {
-         debugger
       this.currentView = 0;
 
       this.minDate;

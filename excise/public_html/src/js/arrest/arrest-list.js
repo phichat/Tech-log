@@ -14,12 +14,36 @@ function onToggleAdvancedSearch() {
 }
 
 $(document).ready(function () {
+    var loadMultifile = {
+        'section.header': '../navbar.html #topheader',
+        'section.sidebar': '../sidebar.html #leftsidebar'
+    }
 
-    $('input.datepicker').bootstrapMaterialDatePicker({
-        format: 'DD/MM/YYYY',
-        weekStart: 0,
-        time: false
-    });
+    $.each(loadMultifile, function (tag, url) {
+        $(tag).load(url, function () {
+            var ele = $('.menu .list > li');
+            $(ele).each(function (i, s) {
+                if ($(s).data('page') == 'arrest') {
+                    $(this).addClass('active')
+                }
+            })
+        });
+    })
+
+    $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
+
+    // var date = new Date()
+    // $('#txt_OccurrenceDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
+    //     $('#txt_OccurrenceDateTo').bootstrapMaterialDatePicker('setMinDate', date);
+    // });
+
+    // $('#txt_TakeDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
+    //     $('#txt_TakeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
+    // });
+
+    // $('#txt_LawSuitDate').bootstrapMaterialDatePicker().on('change', function (e, date) {
+    //     $('#txt_LawSuitDateTo').bootstrapMaterialDatePicker('setMinDate', date);
+    // });
 
     var option = '<option disabled selected></option>';
     for (var i = 1; i < 50; i++) {
@@ -61,21 +85,18 @@ $(document).ready(function () {
         tr += '</tr>'
     }
     $('#table_ArrestList tbody').html(tr)
-    $('#table_ArrestList').DataTable({
-        scrollX: true,
-        scrollCollapse: true,
-        "ordering": false,
-        "searching": false,
-        "lengthChange": false,
-        "pageLength": 5,
-        "sPaginationType": "listbox",
-        "dom": '<<"row form-group"<"col-lg-12 col-md-12 col-sm-12 col-xs-12"t>><"row form-group"<"col-lg-6 col-sm-6"p><"col-lg-6 col-sm-6 text-right"i>>>'
+    $('#table_ArrestList tbody').pageMe({
+        pagerSelector: '#notice_pagination',
+        pageInfo: '#notice_pageinfo',
+        showPrevNext: true,
+        hidePageNumbers: false,
+        perPage: 5
     });
 
     // dataTables pagination style
     $('.paging_listbox').find('select').addClass('paging_listbox_select');
 });
 
-$('#btn_nlAddArrest').on('click', function(){
+$('#btn_nlAddArrest').on('click', function () {
     window.location.href = 'arrest-manage.html'
 })

@@ -1,16 +1,4 @@
 $(document).ready(function () {
-    // var tr = ''
-    // tr += '<tr>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '<td></td>'
-    // tr += '</tr>'
-
-    // $('#tableStaffList tbody').html(tr)
 
     $('#tableStaffList tbody').pageMe({
         pagerSelector: '#staffList_pagination',
@@ -39,7 +27,18 @@ function staff(no, checkbox, staffName, position, orgName, pertype) {
     this.pertype = pertype;
 };
 
+function onkeypressSearchFormStaff(e){
+    var x = event.which || event.keyCode;
+    if (x === 13) {
+        searchFormStaff(e);
+    }
+}
+
 function onSearchFormStaff(e) {
+    searchFormStaff(e);
+}
+
+function searchFormStaff(e){
     getStaffByKeyword($(e).val(), function callback(xml) {
         var tr = ''
         $(xml).find('staffDTOList')
@@ -73,7 +72,5 @@ function onSearchFormStaff(e) {
         });
 
     })
-
-
 }
 

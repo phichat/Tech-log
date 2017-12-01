@@ -15,8 +15,29 @@ $(document).ready(function () {
             })
     })
 
+    // สินค้า
+    var sleDutyGroup = '<option value="" selected></option>';
+    getDutygroupByKeyword('', function (xml) {
+        $(xml).find('dutygroupDTOList')
+            .each(function (i, e) {
+                sleDutyGroup += '<option value="' + $(e).find('groupCode').text() + '">';
+                sleDutyGroup += $(e).find('groupNameTh').text()
+                sleDutyGroup += '</option>'
+            })
+
+        $('#sle_nmGoodName')
+            .html(sleDutyGroup)
+            .selectize({
+                create: true,
+                sortField: 'text'
+            });
+    });
+    // --- end สินค้า ---
+
     var loadMultiFile = {
         // โหลดไฟล์ .html
+        'section.header': '../navbar.html #topheader',
+        'section.sidebar': '../sidebar.html #leftsidebar',
         '#noticeByConModal .card .body': '../notice/notice-list-popup.html',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html',
         '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html',
@@ -29,25 +50,18 @@ $(document).ready(function () {
 
     $.each(loadMultiFile, function (tag, url) {
         $(tag).load(url, function () {
-            // โหลด Script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
-            $.getScript('../js/exhibit/exhibit-popup.js');
-            $.getScript('../js/lawbreaker/lawbreaker-list-popup.js');
-
-            $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
-            $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
+            var ele = $('.menu .list > li');
+            $(ele).each(function (i, s) {
+                if ($(s).data('page') == 'arrest') {
+                    $(this).addClass('active')
+                }
+            })
 
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
                 create: true,
                 sortField: 'text'
-            });
-
-            $('input.datepicker').bootstrapMaterialDatePicker({
-                format: 'DD/MM/YYYY',
-                weekStart: 0,
-                lang: 'th',
-                time: false
             });
 
             $("input.number").inputmask({
@@ -60,6 +74,14 @@ $(document).ready(function () {
             });
         });
     })
+
+    // โหลด Script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
+    $.getScript('../js/exhibit/exhibit-popup.js');
+    $.getScript('../js/lawbreaker/lawbreaker-list-popup.js');
+
+    $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
+    $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
+
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion);
@@ -343,8 +365,11 @@ function onCancelArrest() {
 
 // NoticeteByCon Modal // รายการแจ้งความนำจับ
 function onSelectNotice(table) {
+
+    var noticeCode = ''
     $(table).find('tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
+            noticeCode = $(el).find('td.notice-code').html()
             $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
             $('#txt_noticeName').val($(el).find('td.notice-name').html())
             return false;
@@ -352,6 +377,64 @@ function onSelectNotice(table) {
     })
 
     $(table).find('tr input[type=checkbox]').prop('checked', false);
+
+    if (noticeCode !== '') {
+        var noticeByCon = {
+            noticeCode: noticeCode,
+            noticeDateTo: '',
+            noticeDateForm: '',
+        }
+        getNoticeNoticeByCon(noticeByCon, function (xml) {
+            $(xml).find('noticeInfom')
+                .each(function (i, e) {
+                    // เขียนที่หน่วยงาน
+                    $('#txt_lawsuitLocation').val($(e).find('noticestation').text());
+                    // --- end เขียนที่หน่วยงาน ---
+
+                    // ละติจูด-ลองติจูด
+                    $('#txt_nmOpsCoordinateX').val($(e).find('coordinatex').text())
+                    $('#txt_nmOpsCoordinateY').val($(e).find('coordinatey').text())
+                    // --- end ละติจูด-ลองติจูด ---
+                });
+        });
+
+        getNoticeProductlist(noticeCode, function (xml) {
+            var li = ''
+            $(xml).find('productListDTO')
+                .each(function (i, e) {
+                    li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
+                    li += $(e).find('groupName').text()
+                    li += '</span><a href="javascript:void(0);"'
+                    li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+                })
+            $('#ul_nmGoodName').html(li)
+        })
+
+        var arr = {
+            noticeCode: noticeCode,
+            locationID: ''
+        }
+        getNoticeLocationByCon(arr, function (xml) {
+            $(xml).find('locationDTO')
+                .each(function (i, e) {
+                    $('#txt_locationName')
+                        .val($(e).find('locationName').text())
+                        .attr('data-id', $(e).find('locationId').text())
+                    $('#txt_address').val($(e).find('address').text())
+                    $('#txt_village').val($(e).find('village').text())
+                    $('#txt_building').val($(e).find('building').text())
+                    $('#txt_room').val($(e).find('room').text())
+                    $('#txt_floor').val($(e).find('floor').text())
+                    $('#txt_alley').val($(e).find('alley').text())
+                    $('#txt_road').val($(e).find('road').text())
+
+                    var infomrRegion = $('#sle_region').selectize(),
+                        informRegionZe = infomrRegion[0].selectize
+                    informRegionZe.setValue($(e).find('subdistrictCode').text(), true)
+                })
+        })
+    }
+
 }
 //==========================
 

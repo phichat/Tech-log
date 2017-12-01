@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'Helvetica Neue th';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/HelveticaNeueLTCom-Th.ttf') format('truetype');;
+  }
+
+  @font-face {
+    font-family: 'Helvetica Neue ThCn';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/HelveticaNeueLTCom-ThCn.ttf') format('truetype');;
+  }
+  
+  @font-face {
+    font-family: 'Helvetica Neue ThCnO';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/HelveticaNeueLTCom-ThCnO.ttf') format('truetype');;
+  }
+  
+  @font-face {
+    font-family: 'Helvetica Neue ThEx';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/HelveticaNeueLTCom-ThEx.ttf') format('truetype');;
+  }
+  
+  @font-face {
+    font-family: 'Helvetica Neue ThExO';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/HelveticaNeueLTCom-ThExO.ttf') format('truetype');;
+  }
+
+  @font-face {
+    font-family: 'Helvetica Neue ThIt';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../font/HelveticaNeueLTCom-ThIt.ttf') format('truetype');;
+  }

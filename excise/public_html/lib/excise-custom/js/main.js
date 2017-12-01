@@ -20,7 +20,6 @@ $(document).ready(function () {
         'digitsOptional': false,
         'placeholder': '0'
     });
-
 })
 
 
@@ -40,7 +39,6 @@ function checkedBox(e, table, col) {
             .find('td:eq(' + col + ') input[type=checkbox]')
             .prop('checked', $(e).prop('checked'));
     });
-
 }
 
 // ลบข้อมูล Tag สินค้า
@@ -118,9 +116,10 @@ function addZero(i) {
 
 function checkBetweenDate(f, t) {
     if ($(f).val() !== '' && $(t).val() !== '') {
-        var df = replaceAll($(f).val(), '/', '');
-        var dt = replaceAll($(t).val(), '/', '');
-        if (Number(df) > Number(dt)) {
+        var df = setNewdate($(f).val());
+        var dt = setNewdate($(t).val());
+        debugger
+        if (df > dt) {
             alert('"วันที่สิ้นสุด" ต้องไม่น้อยกว่า "วันที่เริ่มต้น"')
             $(f).val($(t).val())
         }
@@ -149,22 +148,24 @@ function buddhistDate(date) {
 
 function addDate(date, int) {
     if (date !== '' && int !== '') {
-        var dd = date.split('/')[0],
-            mm = date.split('/')[1],
-            yyyy = date.split('/')[2],
-            dateA = yyyy + '-' + mm + '-' + dd,
-            dateB = new Date(dateA)
-
-        dateA = dateB.setDate(dateB.getDate() + Number(int))
-        var dateC = new Date(dateA)
-
-        dd = addZero(dateC.getDate());
-        mm = addZero(dateC.getMonth());
+        var dateB = setNewdate(date),
+            dateA = dateB.setDate(dateB.getDate() + Number(int)),
+            dateC = new Date(dateA),
+            dd = addZero(dateC.getDate()),
+            mm = addZero(dateC.getMonth() + 1);
         return dd + '/' + mm + '/' + dateC.getFullYear() + ' 00:00 น.';
     } else {
         return '';
     }
+}
 
+function setNewdate(date) {
+    var dd = date.split('/')[0],
+        mm = date.split('/')[1],
+        yyyy = date.split('/')[2],
+        dateA = yyyy + '-' + mm + '-' + dd,
+        dateB = new Date(dateA);
+    return dateB;
 }
 
 var getUrlParameter = function (sParam) {

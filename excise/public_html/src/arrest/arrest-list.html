@@ -23,9 +23,8 @@
     <!-- Wait Me Css -->
     <link href="../../lib/adminbsb-materialdesign/plugins/waitme/waitMe.css" rel="stylesheet">
 
-    <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-        rel="stylesheet">
+    <!-- Bootstrap Datepicker Css -->
+    <link href="../../lib/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
 
     <!-- jquery-datatable bootstrap -->
     <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
@@ -48,6 +47,7 @@
     <!-- excise custom Js -->
     <script src="../../lib/excise-custom/js/main.js"></script>
     <script src="../../lib/excise-custom/js/pagination.js"></script>
+    <script src="../../lib/excise-custom/js/sort-table.js"></script>
 
 </head>
 
@@ -80,7 +80,7 @@
                 <div class="col-lg-10 col-md-10 col-sm-6 col-xs-12">
                     <ol class="breadcrumb breadcrumb-col-teal">
                         <li>2. งานจับกุม</li>
-                        <li class="active">บันทึกการจับกุม(ส.ส. 2/39)</li>
+                        <li class="font-bold col-teal">บันทึกการจับกุม(ส.ส. 2/39)</li>
                     </ol>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
@@ -142,7 +142,7 @@
                                         </div>
                                     </div>
                                     <label class="control-label col-lg-2 col-md-2 col-sm-1 col-xs-12" for="txt_CaseLawID">มาตรา:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="caseLawID" id="txt_CaseLawID">
                                         </div>
@@ -154,7 +154,7 @@
                                         </div>
                                     </div>
                                     <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_ProductName">ชื่อสินค้าของกลาง:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
+                                    <div class="col-lg-3 col-md-4 col-sm-9 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="productName" id="txt_ProductName">
                                         </div>
@@ -175,7 +175,7 @@
                                         </div>
                                     </div>
                                     <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_LawBreakerIDCard">เลขที่บัตรประชาชนผู้กระทำผิด:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
+                                    <div class="col-lg-3 col-md-4 col-sm-9 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="lawBreakerIDCard" id="txt_LawBreakerIDCard">
                                         </div>
@@ -184,9 +184,9 @@
                                 <div class="row">
                                     <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="">วันที่เกิดเหตุ:</label>
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
-                                        <div class="input-group datepicker">
+                                        <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control" id="txt_OccurrenceDate" onchange="checkBetweenDate('#txt_OccurrenceDate', '#txt_OccurrenceDateTo')">
+                                                <input type="text" class="form-control datepicker" id="txt_OccurrenceDate" onchange="checkBetweenDate('#txt_OccurrenceDate', '#txt_OccurrenceDateTo')">
                                             </div>
                                             <label for="txt_OccurrenceDate" class="input-group-addon">
                                                 <i class="material-icons">event</i>
@@ -194,12 +194,12 @@
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 between-item">
-                                        <div class="input-group datepicker">
+                                        <div class="input-group">
                                             <label class="input-group-addon" id="">
                                                 ถึง
                                             </label>
                                             <div class="form-line">
-                                                <input type="text" class="form-control" id="txt_OccurrenceDateTo" onchange="checkBetweenDate('#txt_OccurrenceDate', '#txt_OccurrenceDateTo')">
+                                                <input type="text" class="form-control datepicker" id="txt_OccurrenceDateTo" onchange="checkBetweenDate('#txt_OccurrenceDate', '#txt_OccurrenceDateTo')">
                                             </div>
                                             <label for="txt_OccurrenceDateTo" class="input-group-addon" id="">
                                                 <i class="material-icons">event</i>
@@ -207,7 +207,7 @@
                                         </div>
                                     </div>
                                     <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_Region">จังหวัด/อำเภอ/ตำบล:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
+                                    <div class="col-lg-3 col-md-4 col-sm-9 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="region" id="txt_Region">
                                         </div>
@@ -217,9 +217,9 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 0 !important; padding: 0 !important;">
                                         <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-12" for="">วันที่รับเรื่องส่วนคดี:</label>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="input-group datepicker">
+                                            <div class="input-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="takeDate" id="txt_TakeDate" onchange="checkBetweenDate('#txt_TakeDate', '#txt_TakeDateTo')">
+                                                    <input type="text" class="form-control datepicker" name="takeDate" id="txt_TakeDate" onchange="checkBetweenDate('#txt_TakeDate', '#txt_TakeDateTo')">
                                                 </div>
                                                 <label for="txt_TakeDate" class="input-group-addon">
                                                     <i class="material-icons">event</i>
@@ -227,12 +227,12 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 between-item">
-                                            <div class="input-group datepicker">
+                                            <div class="input-group">
                                                 <label class="input-group-addon">
                                                     ถึง
                                                 </label>
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="takeDateTo" id="txt_TakeDateTo" onchange="checkBetweenDate('#txt_TakeDate', '#txt_TakeDateTo')">
+                                                    <input type="text" class="form-control datepicker" name="takeDateTo" id="txt_TakeDateTo" onchange="checkBetweenDate('#txt_TakeDate', '#txt_TakeDateTo')">
                                                 </div>
                                                 <label for="txt_TakeDateTo" class="input-group-addon">
                                                     <i class="material-icons">event</i>
@@ -244,9 +244,9 @@
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="margin-bottom: 0 !important; padding: 0 !important;">
                                         <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-12" for="">วันที่เขียนบันทึกจับกุม:</label>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="input-group datepicker">
+                                            <div class="input-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="lawSuitDate" id="txt_LawSuitDate" onchange="checkBetweenDate('#txt_LawSuitDate', '#txt_LawSuitDateTo')">
+                                                    <input type="text" class="form-control datepicker" name="lawSuitDate" id="txt_LawSuitDate" onchange="checkBetweenDate('#txt_LawSuitDate', '#txt_LawSuitDateTo')">
                                                 </div>
                                                 <label for="txt_LawSuitDate" class="input-group-addon">
                                                     <i class="material-icons">event</i>
@@ -254,12 +254,12 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 between-item">
-                                            <div class="input-group datepicker">
+                                            <div class="input-group">
                                                 <label class="input-group-addon">
                                                     ถึง
                                                 </label>
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="lawSuitDateTo" id="txt_LawSuitDateTo" onchange="checkBetweenDate('#txt_LawSuitDate', '#txt_LawSuitDateTo')">
+                                                    <input type="text" class="form-control datepicker" name="lawSuitDateTo" id="txt_LawSuitDateTo" onchange="checkBetweenDate('#txt_LawSuitDate', '#txt_LawSuitDateTo')">
                                                 </div>
                                                 <label for="txt_LawSuitDateTo" class="input-group-addon">
                                                     <i class="material-icons">event</i>
@@ -270,40 +270,40 @@
                                 </div>
                                 <div class="row">
                                     <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_LawSuitCode">เลขที่งาน:</label>
-                                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class=" form-control" name="lawSuitCode" id="txt_LawSuitCode">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-2 col-md-3 col-sm-2 col-xs-12" for="txt_CompareCaseNo">คดีเปรียบเทียบ:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-lg-3 col-md-2 col-sm-3 col-xs-12" for="txt_CaseNo">เลขที่คดี:</label>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <div class="form-line">
+                                            <input type="text" class=" form-control" name="caseNo" id="txt_CaseNo">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-lg-2 col-md-3 col-sm-2 col-xs-12" for="txt_ExhibitReportNo">รายงานพิสูจน์ที่:</label>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="form-line">
+                                            <input type="text" class=" form-control" name="exhibitReportNo" id="txt_ExhibitReportNo">
+                                        </div>
+                                    </div>
+                                    <label class="control-label col-lg-3 col-md-3 col-sm-2 col-xs-12" for="txt_CompareCaseNo">คดีเปรียบเทียบ:</label>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class="form-control" name="compareCaseNo" id="txt_CompareCaseNo">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_CaseNo">เลขที่คดี:</label>
-                                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
+                                    <label class="control-label col-lg-2 col-md-3 col-sm-2 col-xs-12" for="txt_Area">สรรพสามิต:</label>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
                                         <div class="form-line">
-                                            <input type="text" class=" form-control" name="caseNo" id="txt_CaseNo">
+                                            <input type="text" class=" form-control" name="area" id="txt_Area">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-2 col-md-3 col-sm-2 col-xs-12" for="txt_ExhibitReportNo">รายงานพิสูจน์ที่:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class=" form-control" name="exhibitReportNo" id="txt_ExhibitReportNo">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_AccuserName">ชื่อผู้กล่าวหา:</label>
-                                    <div class="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class=" form-control" name="accuserName" id="txt_AccuserName">
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_LawSuitFine">จำนวนเงินค่าปรับ:</label>
+                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_LawSuitFine">จำนวนเงินค่าปรับ:</label>
                                     <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class="number form-control" name="lawSuitFine" id="txt_LawSuitFine">
@@ -321,25 +321,25 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="sle_AccuserType">ผู้กล่าวหา:</label>
-                                    <div class="col-lg-4 col-md-3 col-sm-3 col-xs-12">
-                                        <select name="accuserType" class="form-control" id="sle_AccuserType"></select>
-                                    </div>
-                                    <label class="control-label col-lg-2 col-md-3 col-sm-2 col-xs-12" for="txt_Area">สรรพสามิต:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_AccuserName">ชื่อผู้กล่าวหา:</label>
+                                    <div class="col-lg-3 col-md-3 col-sm-9 col-xs-12">
                                         <div class="form-line">
-                                            <input type="text" class=" form-control" name="area" id="txt_Area">
+                                            <input type="text" class=" form-control" name="accuserName" id="txt_AccuserName">
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
                                     <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_NoticeCode">ค้นหาข้อมูลสีบสวน: เลขที่แจ้งความ</label>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class=" form-control" name="noticeCode" id="txt_NoticeCode">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="chb_IsSentCourt">ลักษณะคดี:</label>
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="sle_AccuserType">ผู้กล่าวหา:</label>
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                        <select name="accuserType" class="form-control" id="sle_AccuserType"></select>
+                                    </div>
+                                    <label class="control-label col-lg-3 col-md-2 col-sm-2 col-xs-12" for="chb_IsSentCourt">ลักษณะคดี:</label>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="demo-checkbox">
                                             <input type="checkbox" id="chb_IsSentCourt" name="isSentCourt" class="filled-in">
@@ -352,13 +352,13 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_SearchWarrantNo">เลขที่หมายค้น:</label>
+                                    <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_SearchWarrantNo">เลขที่หมายค้น:</label>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class=" form-control" name="searchWarrantNo" id="txt_SearchWarrantNo">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="chb_CaseLast1">คดีสิ้นสุด:</label>
+                                    <label class="control-label col-lg-3 col-md-2 col-sm-2 col-xs-12" for="chb_CaseLast1">คดีสิ้นสุด:</label>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                         <div class="demo-checkbox">
                                             <input type="checkbox" id="chb_CaseLast1" name="caseLast1" class="filled-in" value="1">
@@ -371,14 +371,14 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_ss2_27">เลขที่ ส.ส.2/27:</label>
+                                    <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_ss2_27">เลขที่ ส.ส.2/27:</label>
                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class=" form-control" name="ss2_27" id="txt_ss2_27">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="sle_Revoke">เพิกถอน:</label>
-                                    <div class="col-lg-4 col-md-3 col-sm-4 col-xs-12">
+                                    <label class="control-label col-lg-3 col-md-2 col-sm-2 col-xs-12" for="sle_Revoke">เพิกถอน:</label>
+                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                         <select name="revoke" id="sle_Revoke" class="form-control"></select>
                                     </div>
                                 </div>
@@ -391,25 +391,42 @@
             <div class="form-group">
                 <div class="card">
                     <div class="body">
-                        <table id="table_ArrestList" class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th style="min-width:50px;">ลำดับ</th>
-                                    <th style="min-width:170px;">เลขที่งาน</th>
-                                    <th style="min-width:170px;">หน่วยงาน</th>
-                                    <th style="min-width:170px;">ผู้กล่าวหา</th>
-                                    <th style="min-width:170px;">ผู้กระทำผิด</th>
-                                    <th style="min-width:170px;">วันที่รับเรื่อง</th>
-                                    <th style="min-width:170px;">วันที่เกิดเหตุ</th>
-                                    <th style="min-width:170px;">สถานที่เกิดเหตุ</th>
-                                    <th style="min-width:170px;">ข้อกล่าวหา</th>
-                                    <th style="width:20px;"></th>
-                                    <th style="width:20px;"></th>
-                                    <th style="width:20px;"></th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
+                        <div class="table-responsive form-group">
+                            <table id="table_ArrestList" class="table table-striped table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="min-width:70px;" class="sort" onclick="sortTable('table_ArrestList', 0)">ลำดับ</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 1)">เลขที่งาน</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 2)">หน่วยงาน</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 3)">ผู้กล่าวหา</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 4)">ผู้กระทำผิด</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 5)">วันที่รับเรื่อง</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 6)">วันที่เกิดเหตุ</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 7)">สถานที่เกิดเหตุ</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_ArrestList', 8)">ข้อกล่าวหา</th>
+                                        <th style="width:20px;"></th>
+                                        <th style="width:20px;"></th>
+                                        <th style="width:20px;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="pagination-select">
+                                    <span>หน้าที่ </span>
+                                    <select id="notice_pagination" class="paging_listbox_select"></select>
+                                    <span class="page-total"></span>
+                                </div>
+                                <!-- หน้าที่ - จาก - หน้า -->
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div id="notice_pageinfo" class="pagination-info text-right">
+                                    <!-- รายการที่ 1 - 5 จาก 86 รายการ -->
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -422,6 +439,12 @@
 
         <!-- Bootstrap Core Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Bootstrap Datepicker Js -->
+        <script src="../../lib/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js"></script>
+
+        <!-- Bootstrap Datepicker th Js -->
+        <script src="../../lib/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js" charset="UTF-8"></script>
 
         <!-- Slimscroll Plugin Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
@@ -438,21 +461,6 @@
         <!-- Autosize Plugin Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script>
 
-        <!-- Moment Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/moment.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/locale/th.js"></script>
-
-        <!-- Bootstrap Material Datetime Picker Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-
-        <!--Custom-->
-        <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
-        <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script>
-
-        <!-- Jquery DataTable Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
 
 
     </div>

@@ -14,6 +14,9 @@
     <!-- Bootstrap Core Css -->
     <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
 
+    <!-- Bootstrap Datepicker Css -->
+    <link href="../../lib/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
     <!-- Waves Effect Css -->
     <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet">
 
@@ -22,13 +25,6 @@
 
     <!-- Wait Me Css -->
     <link href="../../lib/adminbsb-materialdesign/plugins/waitme/waitMe.css" rel="stylesheet">
-
-    <!-- Bootstrap Material Datetime Picker Css -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-        rel="stylesheet">
-
-    <!-- jquery-datatable bootstrap -->
-    <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
     <!-- Custom Css -->
     <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
@@ -48,7 +44,7 @@
     <!-- excise custom Js -->
     <script src="../../lib/excise-custom/js/main.js" type="text/javascript"></script>
     <script src="../../lib/excise-custom/js/pagination.js"></script>
-
+    <script src="../../lib/excise-custom/js/sort-table.js"></script>
 
 </head>
 
@@ -82,7 +78,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ol class="breadcrumb breadcrumb-col-teal">
                         <li>2. งานจับกุม</li>
-                        <li class="active">บันทึกการจับกุม(ส.ส. 2/39)</li>
+                        <li class="font-bold col-teal">บันทึกการจับกุม(ส.ส. 2/39)</li>
                     </ol>
                 </div>
             </div>
@@ -103,15 +99,22 @@
                     <div class="body">
                         <div class="form-horizontal form-group">
                             <div class="row">
-                                <label for="sle_isNotice" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ใบเลขที่แจ้งความนำจับ:</label>
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                    <select name="isNotice" id="sle_isNotice" class="form-control"></select>
+                                <label for="sle_isNotice" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">ใบแจ้งความนำจับ:</label>
+                                <div class="col-lg-1 col-md-1 col-sm-2 col-xs-12">
+                                    <select name="isNotice" id="sle_isNotice" class="form-control">
+                                        <option value="" selected disabled></option>
+                                        <option value="1">มี</option>
+                                        <option value="2">ไม่มี</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                                    <button class="form-control btn btn-default waves-effect">สร้างใบแจ้งความนำจับ</button>
                                 </div>
                             </div>
 
                             <div class="row">
                                 <label for="txt_noticeCode" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เลขที่:</label>
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
                                             <input type="text" name="noticeCode" id="txt_noticeCode" class="form-control">
@@ -148,9 +151,9 @@
                                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
                                     <label for="" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">วันที่เขียนบันทึกจับกุม:</label>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="input-group datepicker">
+                                        <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" name="lawsuitDate" id="txt_lawsuitDate" class="form-control">
+                                                <input type="text" name="lawsuitDate" id="txt_lawsuitDate" class="form-control datepicker">
                                             </div>
                                             <label for="txt_lawsuitDate" class="input-group-addon">
                                                 <i class="material-icons">event</i>
@@ -172,9 +175,9 @@
                                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
                                     <label for="" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">วันที่เกิดเหตุ:</label>
                                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                        <div class="input-group datepicker">
+                                        <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" name="occurenceDate" id="txt_occurenceDate" class="form-control">
+                                                <input type="text" name="occurenceDate" id="txt_occurenceDate" class="form-control datepicker">
                                             </div>
                                             <label for="txt_occurenceDate" class="input-group-addon">
                                                 <i class="material-icons">event</i>
@@ -182,8 +185,8 @@
                                         </div>
                                     </div>
 
-                                    <label for="txt_occurenceTime" class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12">เวลา:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                    <label for="txt_occurenceTime" class="control-label col-lg-1 col-md-1 col-sm-3 col-xs-12">เวลา:</label>
+                                    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" name="occurenceTime" id="txt_occurenceTime" class="time24 form-control">
                                         </div>
@@ -220,26 +223,15 @@
                             </div>
 
                             <div class="row">
-                                <label for="sle_nmGoodName" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">สินค้า:</label>
-                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                    <div class="form-line">
-                                        <select name="" id="sle_nmGoodName" class="form-control" style="z-index:0;" onchange="onChangGoodName(this);"></select>
-                                    </div>
-                                </div>
-                                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
-                                    <label for="txt_fine" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ประมาณการค่าปรับ:</label>
-                                    <div class="col-lg-4 col-md-6 col-sm-8 col-xs-12">
+                                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                    <label for="sle_nmGoodName" class="control-label col-lg-5 col-md-5 col-sm-4 col-xs-12" style="right: 8px;">สินค้า:</label>
+                                    <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12" style="padding-left: 0px; padding-right: 0px;">
                                         <div class="form-line">
-                                            <input type="texttxt_fine" name="" id="" class="number form-control" placeholder="0.00">
+                                            <select name="" id="sle_nmGoodName" class="form-control" style="z-index:0;" onchange="onChangGoodName(this);"></select>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
-                                    <label for="ul_nmGoodName" class="control-label col-lg-5 col-md-4 col-sm-4 col-xs-12"></label>
-                                    <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12">
+                                    <label for="ul_nmGoodName" class="control-label col-lg-5 col-md-5 col-sm-4 col-xs-12"></label>
+                                    <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12" style="padding-left: 0px; padding-right: 0px;">
                                         <ul class="list-tags good-name" id="ul_nmGoodName">
                                             <li>
                                                 <span class="good-name-tag">ยาสูบ</span>
@@ -257,8 +249,16 @@
                                     </div>
                                 </div>
 
-                                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
+                                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12" style="padding: 0 !important; margin-bottom:0 !important;">
+                                    <label for="txt_fine" class="control-label col-lg-4 col-md-4 col-sm-6 col-xs-12">ประมาณการค่าปรับ:</label>
+                                    <div class="col-lg-4 col-md-6 col-sm-5 col-xs-12">
+                                        <div class="form-line">
+                                            <input type="texttxt_fine" name="" id="" class="number form-control" placeholder="0.00">
+                                        </div>
+                                    </div>
+
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
+                                        <!-- <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;"> -->
                                         <label for="txt_Staff" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ชื่อผู้กล่าวหา:</label>
                                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                                             <div class="input-group">
@@ -272,26 +272,49 @@
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
+                                        <!-- </div> -->
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
+                                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;"> -->
                                         <label for="txt_Position" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ตำแหน่ง:</label>
                                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                                             <div class="form-line">
                                                 <input type="text" name="position" id="txt_Position" class="form-control">
                                             </div>
                                         </div>
-                                    </div>
+                                        <!-- </div> -->
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
+                                        <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;"> -->
                                         <label for="txt_Department" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">สังกัด:</label>
                                         <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                                             <div class="form-line">
                                                 <input type="text" name="department" id="txt_Department" class="form-control">
                                             </div>
                                         </div>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
+                            </div>
+
+                            <div class="row">
+                                <!-- <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12" style="padding:0 !important; margin-bottom:0 !important;">
+                                    <label for="ul_nmGoodName" class="control-label col-lg-5 col-md-4 col-sm-4 col-xs-12"></label>
+                                    <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12">
+                                        <ul class="list-tags good-name" id="ul_nmGoodName">
+                                            <li>
+                                                <span class="good-name-tag">ยาสูบ</span>
+                                                <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
+                                            </li>
+                                            <li>
+                                                <span class="good-name-tag">สุรา</span>
+                                                <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
+                                            </li>
+                                            <li>
+                                                <span class="good-name-tag">รถยนต์</span>
+                                                <a href="javascript:void(0);" onclick="onDelGoodNameTag(this);">X</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div> -->
                             </div>
 
                             <div class="row">
@@ -799,6 +822,12 @@
         <!-- Bootstrap Core Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
 
+        <!-- Bootstrap Datepicker Js -->
+        <script src="../../lib/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js"></script>
+
+        <!-- Bootstrap Datepicker th Js -->
+        <script src="../../lib/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js" charset="UTF-8"></script>
+
         <!-- Slimscroll Plugin Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
 
@@ -813,23 +842,6 @@
 
         <!-- Autosize Plugin Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script>
-
-        <!-- Moment Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/moment.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/locale/th.js"></script>
-
-        <!-- Bootstrap Material Datetime Picker Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
-
-        <!--Custom-->
-        <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
-        <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script>
-
-        <!-- Jquery DataTable Plugin Js -->
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
-
 
         <!-- Common Ws -->
         <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>

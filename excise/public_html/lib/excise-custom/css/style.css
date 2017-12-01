@@ -1,3 +1,10 @@
+/* body {
+    font-family: 'Helvetica Neue th';
+  } */
+  a {
+      text-decoration: none !important;
+  }
+
 .notice-list .row,
 .notice-list .form-group {
     margin-right: 0;
@@ -9,22 +16,26 @@
     color: #fff !important;
 }
 
+.card .header{
+    padding: 14px;
+}
+
 .card .header h2{
     font-size: 16px !important;
 }
 
-.card .body [class*=col-] {
-    margin-bottom: 10px;
-    /* padding-left: 10px;
-    padding-right: 10px; */
+.card .header .header-dropdown {
+    top:14px
 }
 
-.dropdown-menu {
-    z-index: 10;
+.card .body [class*=col-] {
+    margin-bottom: 10px;
+    padding-left: 8px;
+    padding-right: 8px;
 }
 
 .datepicker-dropdown{
-    top: 397px !important;
+    margin-top: 0 !important;
 }
 
  .toggle-popup-list {
@@ -35,7 +46,7 @@
      background-color: #009688 !important;
      color: #fff !important;
      text-decoration: none !important;
-     right: 17px;
+     right: 0px;
      top: 12px;
  }
 
@@ -44,7 +55,7 @@
  }
 
  .box-group-addon {
-     width: 50px;
+     width: 30px;
  }
 
  .box-group-addon>.red-star {
@@ -108,6 +119,36 @@
 
 
   /* Datatable */
+.table .sort{
+    cursor: pointer;
+    background-image: url('../../../img/ic_arrow_drop_black_24px.svg');
+    background-repeat: no-repeat;
+    background-position: center right;
+}
+
+table tr label {
+    margin-bottom: 0px !important;
+}
+
+
+ /* .arrow-drop {
+    position: relative;
+    top: -20px;
+    right: -27px;
+} */
+/*.arrow-drop .up, .arrow-drop .down{
+    position: relative;
+}
+.arrow-drop .up {
+    top: -4px;
+    left: 4px;
+}
+.arrow-drop .down{
+    top: 1px;
+    right: 20px;
+} */
+
+  
 .paging_listbox_select {
     padding: 4px 8px 4px !important;
     border: 1px solid #E0E0E0 !important;

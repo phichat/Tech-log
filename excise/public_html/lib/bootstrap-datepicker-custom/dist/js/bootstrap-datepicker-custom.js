@@ -7,7 +7,7 @@
 (function (factory) {
     /* 14:53 20/10/2559
     JavaScriptThai
-    µÑÇá»Å¤èÒ¤§·ÕèÊÓËÃÑº¡ÒÃ Convert Year
+    ï¿½ï¿½ï¿½ï¿½Å¤ï¿½Ò¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½ Convert Year
     */
     var yearOffSet;
 
@@ -95,7 +95,7 @@
 
         /* 13:51 20/10/2559
         JavaScriptthai
-        ¡ÓË¹´¤èÒ yearOffset 543
+        ï¿½ï¿½Ë¹ï¿½ï¿½ï¿½ï¿½ yearOffset 543
         */
         yearOffSet = 0;
         if (this.o.thaiyear == true) {
@@ -913,7 +913,7 @@
             /* 9:52 20/10/2559
             www.javascriptthai.com
             view.find('.datepicker-switch').text((year + '-' + (year + step * 9)));
-            á¡é¡ÒÃáÊ´§ »Õº¹ËÑÇµÒÃÒ§ àªè¹ 2550-2559
+            ï¿½ï¿½ï¿½ï¿½ï¿½Ê´ï¿½ ï¿½Õºï¿½ï¿½ï¿½Çµï¿½ï¿½Ò§ ï¿½ï¿½ 2550-2559
             */
 
             view.find('.datepicker-switch').text(((year + yearOffSet) + '-' + ((year + step * 9) + yearOffSet)));
@@ -1067,7 +1067,7 @@
                             /* 9:47 20/10/2559
                             javaScriptthai
                             .text(this.o.maxViewMode < 2 ? monthsTitle : year)
-                            á¡é¡ÒÃáÊ´§à´×Í¹º¹ËÑÇµÒÃÒ§»ÕãËéà»ç¹ ¾.È. àªè¹  µØÅÒ¤Á 2559
+                            ï¿½ï¿½ï¿½ï¿½ï¿½Ê´ï¿½ï¿½ï¿½Í¹ï¿½ï¿½ï¿½ï¿½Çµï¿½ï¿½Ò§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½.ï¿½. ï¿½ï¿½  ï¿½ï¿½ï¿½Ò¤ï¿½ 2559
                             */
 							.text(this.o.maxViewMode < 2 ? monthsTitle : year + yearOffSet)
 
@@ -1253,7 +1253,7 @@
                         /* 9:48 20/10/2559 fix0001
                         javascriptthai
                         year = Number(target.text());
-                        convert »Õ ¾.È. ãËéà»ç¹ ¤.È. à¾×èÍãËéÃÐºº¤Ó¹Ç³ÇÑ¹ àªè¹à´×Í¹ ¡ØÁÀÒ¾Ñ¹¸ìÇèÒÁÕ 28 ËÃ×Í 29 ÇÑ¹
+                        convert ï¿½ï¿½ ï¿½.ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½.ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðºï¿½ï¿½Ó¹Ç³ï¿½Ñ¹ ï¿½ï¿½ï¿½ï¿½Í¹ ï¿½ï¿½ï¿½ï¿½Ò¾Ñ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 28 ï¿½ï¿½ï¿½ï¿½ 29 ï¿½Ñ¹
                         */
                         year = Number(target.text()) - yearOffSet;
 
@@ -1957,7 +1957,7 @@
                 /* 9:50 20/10/2559
                 www.javascriptthai.com
                 yyyy: date.getUTCFullYear()
-                à¾×èÍáÊ´§»ÃÑº¡ÒÃ display ·Ñé§ËÁ´ãËéà»ç¹ ¾.È. áÅéÇ Convert ¡ÅÑºã¹ Function >> click: function (e)
+                ï¿½ï¿½ï¿½ï¿½ï¿½Ê´ï¿½ï¿½ï¿½Ñºï¿½ï¿½ï¿½ display ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½.ï¿½. ï¿½ï¿½ï¿½ï¿½ Convert ï¿½ï¿½Ñºï¿½ Function >> click: function (e)
                 */
                 yyyy: date.getUTCFullYear() + yearOffSet
             };

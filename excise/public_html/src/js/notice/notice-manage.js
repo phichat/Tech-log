@@ -203,13 +203,22 @@ function onChangeTypeInfrom(sle, txt) {
     }
 }
 
+function onCheckInt(text) {
+    var int = $(text).val()
+    if (isNaN(int) || int == 00) {
+        $(text).val('')
+        return false;
+    } else {
+        return true
+    }
+}
+
 function onChangDueDate(noticeDate, dueDate, endDate) {
     var date = $(noticeDate).val();
     var due = $(dueDate).val();
 
-    if (isNaN(due) || due == 00) {
-        $(dueDate).val('')
-        return false;
+    if (!onCheckInt(dueDate)) {
+        return false
     }
 
     if (date !== '' && due !== '' && due !== 00) {
@@ -364,7 +373,7 @@ function loadFormEdit(noticeCodeUrl) {
                     liCheck += '<li><span class="good-name-tag" data-id="' + $(e).find('productListID').text() + '"'
                     liCheck += ' data-value="' + $(e).find('groupCode').text() + '"></span></li>'
                 })
-                debugger;
+            debugger;
             $('#ul_nmGoodName').html(li)
             $('#ul_nmGoodNameCheck').html(liCheck)
         } else {

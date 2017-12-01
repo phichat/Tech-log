@@ -274,6 +274,7 @@
 				switch (plc[0]){
 					case 'top':
 					case 'bottom':
+					debugger
 						o.orientation.y = plc[0];
 						break;
 					case 'left':
@@ -711,9 +712,9 @@
 
 			this.picker.addClass('datepicker-orient-' + yorient);
 			if (yorient === 'top')
-				top -= calendarHeight + parseInt(this.picker.css('padding-top'));
+				top -= calendarHeight + parseInt(this.picker.css('padding-top')) + 144;
 			else
-				top += height;
+				top += height + 144;
 
 			if (this.o.rtl) {
 				var right = windowWidth - (left + width);

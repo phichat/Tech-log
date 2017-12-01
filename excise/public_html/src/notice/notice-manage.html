@@ -76,7 +76,7 @@
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                     <ol class="breadcrumb breadcrumb-col-teal">
                         <li>1. งานสืบสวน</li>
-                        <li class="active">ใบแจ้งความนำจับ</li>
+                        <li class="font-bold col-teal">ใบแจ้งความนำจับ</li>
                     </ol>
                 </div>
             </div>
@@ -101,7 +101,7 @@
                     <div class="form-horizontal">
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmNoticeCode">เลขที่บันทึกแจ้งความ:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="NoticeCode" class="form-control" id="txt_nmNoticeCode" disabled value="NEW">
@@ -111,13 +111,13 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="sle_nmNoticeStation">เขียนที่:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <select name="stationCode" id="sle_nmNoticeStation" class="form-control required" required></select>
                                 </div>
                             </div>
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="sle_nmDepartmentName">หน่วยงาน:</label>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <select name="departmentName" id="sle_nmDepartmentName" class="form-control required" required></select>
                                 </div>
@@ -125,7 +125,7 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12">วันที่รับแจ้งความ:</label>
-                            <div class="col-lg-2 col-md-3 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                 <div class="input-group">
                                     <div class="form-group form-float">
                                         <div class="form-line">
@@ -138,17 +138,21 @@
                                     </label>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-1 col-md-2 col-sm-2 col-xs-12" for="txt_nmNoticeTime">เวลา:</label>
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 between-item">
                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" class="time24 form-control required" name="noticeTime" id="txt_nmNoticeTime" required>
+                                    <div class="input-group">
+                                        <label class="input-group-addon">
+                                            เวลา:
+                                        </label>
+                                        <div class="form-line">
+                                            <input type="text" class="time24 form-control required" name="noticeTime" id="txt_nmNoticeTime" required>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row">
-                            <label class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12" for="txt_nmDueDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
+                            <label class="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" for="txt_nmDueDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="input-group">
@@ -160,11 +164,13 @@
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12" for="txt_nmEndDate">สิ้นสุดวันที่:</label>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-                                <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="endDate" id="txt_nmEndDate" class="form-control required" disabled>
+                            <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12" style="margin-bottom: 0 !important; padding: 0 !important;">
+                                <label class="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" for="txt_nmEndDate">สิ้นสุดวันที่:</label>
+                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="endDate" id="txt_nmEndDate" class="form-control required" disabled>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -230,7 +236,7 @@
                     <div class="form-horizontal">
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="sle_nmInformType">ผู้แจ้งความ:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <select name="infromType" id="sle_nmInformType" class="form-control required" style="z-index:0;" onchange="onChangeTypeInfrom(this, '#txt_nmInfromAlies');"
                                         required>
@@ -239,12 +245,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-2 col-md-4 col-sm-4 col-xs-12" for="txt_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="infromAlies" id="txt_nmInfromAlies" class="form-control required" 
-                                        style="z-index:0;" value="สายลับ(ขอปิดนาม)"
+                                        <input type="text" name="infromAlies" id="txt_nmInfromAlies" class="form-control required" style="z-index:0;" value="สายลับ(ขอปิดนาม)"
                                             disabled required>
                                     </div>
                                 </div>
@@ -253,7 +258,8 @@
                             <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                 <div class="input-group">
                                     <div class="form-line">
-                                        <input type="text" name="informAge" id="txt_nmInfromAge" class="form-control" style="z-index:0;">
+                                        <input type="text" maxlength="2" name="informAge" id="txt_nmInfromAge" class="form-control" 
+                                        style="z-index:0;" onkeyup="onCheckInt(this);">
                                     </div>
                                     <span class="input-group-addon" id="spn_nmInfromAge">
                                         <span>ปี</span>
@@ -263,23 +269,23 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAddress">บ้านเลขที่:</label>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="form-group form-float">
                                     <div class="form-line">
-                                        <input type="text" name="infromAddress" id="txt_nmInfromAddress" class="form-control required" required>
+                                        <input type="text" name="infromAddress" id="txt_nmInfromAddress" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12" for="txt_nmInfromVillage">หมู่ที่:</label>
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12">
-                                <div class="form-group form-float">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7 between-item">
+                                <div class="input-group">
+                                    <label class="input-group-addon">หมู่ที่:</label>
                                     <div class="form-line">
                                         <input type="text" name="inforVillage" id="txt_nmInfromVillage" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromBuilding">อาคาร/สถานที่:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="infromBuliding" id="txt_nmInfromBuilding" class="form-control">
@@ -289,23 +295,25 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromRoom">ห้อง:</label>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="infromRoom" id="txt_nmInfromRoom" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12" for="txt_nmInfromFloor">ชั้น:</label>
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7">
                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="infromClass" id="txt_nmInfromFloor" class="form-control">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">ชั้น:</label>
+                                        <div class="form-line">
+                                            <input type="text" name="infromClass" id="txt_nmInfromFloor" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAlley">ตรอก/ซอย:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="infromAlley" id="txt_nmInfromAlley" class="form-control">
@@ -322,10 +330,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="sle_nmInfromRegion">ตำบล/อำเภอ/จังหวัด:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="sle_nmInfromRegion">ตำบล/อำเภอ/จังหวัด:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
-                                    <select name="infromRegion" id="sle_nmInfromRegion" class="region form-control required" required></select>
+                                    <select name="infromRegion" id="sle_nmInfromRegion" class="region form-control"></select>
                                 </div>
                             </div>
                         </div>
@@ -355,7 +363,7 @@
                     <div class="form-horizontal">
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmLocation">สถานที่เกิดเหตุ:</label>
-                            <div class="col-lg-4 col-md-5 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <textarea name="location" id="txt_nmLocation" rows="1" class="form-control no-resize required" required></textarea>
@@ -365,23 +373,25 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsAddress">บ้านเลขที่:</label>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="opsAddress" id="txt_nmOpsAddress" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12" for="txt_nmOpsVillage">หมู่ที่:</label>
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7">
                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="opsVillage" id="txt_nmOpsVillage" class="form-control">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">หมู่ที่:</label>
+                                        <div class="form-line">
+                                            <input type="text" name="opsVillage" id="txt_nmOpsVillage" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsBuilding">อาคาร/สถานที่:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="opsBuliding" id="txt_nmOpsBuilding" class="form-control">
@@ -391,23 +401,25 @@
                         </div>
                         <div class="row">
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsRoom">ห้อง:</label>
-                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="opsRoom" id="txt_nmOpsRoom" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-1 col-md-1 col-sm-2 col-xs-12" for="txt_nmOpsFloor">ชั้น:</label>
-                            <div class="col-lg-1 col-md-2 col-sm-3 col-xs-12">
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7">
                                 <div class="form-group form-float">
-                                    <div class="form-line">
-                                        <input type="text" name="opsFloor" id="txt_nmOpsFloor" class="form-control">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">ชั้น:</label>
+                                        <div class="form-line">
+                                            <input type="text" name="opsFloor" id="txt_nmOpsFloor" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsAlley">ตรอก/ซอย:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <div class="form-line">
                                         <input type="text" name="opsAlley" id="txt_nmOpsAlley" class="form-control">
@@ -424,8 +436,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="sle_nmOpsRegion">ตำบล/อำเภอ/จังหวัด:</label>
-                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="sle_nmOpsRegion">ตำบล/อำเภอ/จังหวัด:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                 <div class="form-group form-float">
                                     <select name="opsRegion" id="sle_nmOpsRegion" class="region form-control required" required></select>
                                 </div>

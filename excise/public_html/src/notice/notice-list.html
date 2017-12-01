@@ -8,8 +8,10 @@
     <title>Notice list</title>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="../../lib/excise-custom/font-neue-helvetica/css/font-neue-helvetica.css">
 
     <!-- Bootstrap Core Css -->
     <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -25,13 +27,6 @@
 
     <!-- Bootstrap Datepicker Css -->
     <link href="../../lib/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
-
-    <!-- Bootstrap Material Datetime Picker Css -->
-    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css"
-        rel="stylesheet"> -->
-
-    <!-- jquery-datatable bootstrap -->
-    <!-- <link href="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet"> -->
 
     <!-- Custom Css -->
     <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
@@ -51,6 +46,7 @@
     <!-- excise custom Js -->
     <script src="../../lib/excise-custom/js/main.js"></script>
     <script src="../../lib/excise-custom/js/pagination.js"></script>
+    <script src="../../lib/excise-custom/js/sort-table.js"></script>
 
     <!-- Ws -->
     <script src="../../ws/notice-ws/getNoticeListNoticeByKeyword.js"></script>
@@ -89,7 +85,7 @@
                 <div class="col-lg-10 col-md-10 col-sm-6 col-xs-12">
                     <ol class="breadcrumb breadcrumb-col-teal">
                         <li>1. งานสืบสวน</li>
-                        <li class="active">ใบแจ้งความนำจับ</li>
+                        <li class="font-bold col-teal">ใบแจ้งความนำจับ</li>
                     </ol>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
@@ -116,7 +112,7 @@
                                     <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
                                     <div class="col-lg-5 col-md-5 col-sm-11 col-xs-12">
                                         <div class="form-line">
-                                            <input type="text" class="form-control" id="txt_nlSearch" placeholder="สินค้า/เลขที่บันทึกแจ้งความ/ชื่อผู้แจ้ง/ชื่อผู้รับแจ้ง/หน่วยงาน/สถานที่เกิดเหตุ">
+                                            <input type="text" class="form-control" id="txt_nlSearch" value="k" placeholder="สินค้า/เลขที่บันทึกแจ้งความ/ชื่อผู้แจ้ง/ชื่อผู้รับแจ้ง/หน่วยงาน/สถานที่เกิดเหตุ">
                                         </div>
                                     </div>
                                     <div class="col-lg-2 col-md-2 col-sm-11 col-xs-12">
@@ -146,37 +142,40 @@
                             <div class="form-horizontal">
                                 <div class="row form-group">
                                     <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
-                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
                                         <div class="input-group">
                                             <div class="form-line">
-                                                <input type="text" class="form-control datepicker" id="txt_nlNoticeDateFrom" 
-                                                onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')"
-                                                data-date-format="mm/dd/yyyy">
+                                                <input type="text" class="form-control datepicker" id="txt_nlNoticeDateFrom" onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')"
+                                                    data-date-format="mm/dd/yyyy">
                                             </div>
                                             <label for="txt_nlNoticeDateFrom" class="input-group-addon">
                                                 <i class="material-icons">event</i>
                                             </label>
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlNoticeDateTo">ถึง:</label>
-                                    <div class="col-lg-2 col-md-4 col-sm-4 col-xs-12">
+                                    <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12  between-item">
                                         <div class="input-group">
+                                            <label class="input-group-addon">
+                                                ถึง:
+                                            </label>
                                             <div class="form-line">
-                                                <input type="text" class="form-control datepicker" id="txt_nlNoticeDateTo" 
-                                                onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')"
-                                                data-date-format="mm/dd/yyyy">
+                                                <input type="text" class="form-control datepicker" id="txt_nlNoticeDateTo" onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')"
+                                                    data-date-format="mm/dd/yyyy">
                                             </div>
                                             <label for="txt_nlNoticeDateTo" class="input-group-addon" id="spn_nmNoticeDateTo">
                                                 <i class="material-icons">event</i>
                                             </label>
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-1 col-md-3 col-sm-3 col-xs-12" for="txt_nlGroupName">สินค้า:</label>
-                                    <div class="col-lg-4 col-md-9 col-sm-9 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" id="txt_nlGroupName">
+                                    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12" style="margin-bottom: 0 !important; padding: 0 !important;">
+                                        <label class="control-label col-lg-4 col-md-3 col-sm-3 col-xs-12" for="txt_nlGroupName">สินค้า:</label>
+                                        <div class="col-lg-8 col-md-3 col-sm-9 col-xs-12">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" id="txt_nlGroupName">
+                                            </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="row form-group">
                                     <label class="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeCode">เลขที่บันทึกแจ้งความ:</label>
@@ -212,6 +211,8 @@
                 </div>
             </div>
 
+            
+
             <div class="form-group">
                 <div class="card">
                     <div class="body">
@@ -219,14 +220,14 @@
                             <table id="table_nlNoticeList" class="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th style="min-width:50px;">ลำดับ</th>
-                                        <th style="min-width:170px;">เลขที่</th>
-                                        <th style="min-width:170px;">หน่วยงาน</th>
-                                        <th style="min-width:170px;">วันที่รับแจ้งความ</th>
-                                        <th style="min-width:170px;">สินค้า</th>
-                                        <th style="min-width:170px;">ชื่อผู้รับแจ้ง</th>
-                                        <th style="min-width:170px;">สถานที่เกิดเหตุ</th>
-                                        <th style="min-width:170px;">วันที่สิ้นสุด</th>
+                                        <th style="min-width:70px;" class="sort" onclick="sortTable('table_nlNoticeList', 0);">ลำดับ</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 1);">เลขที่</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 2);">หน่วยงาน</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 3);">วันที่รับแจ้งความ</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 4);">สินค้า</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 5);">ชื่อผู้รับแจ้ง</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 6);">สถานที่เกิดเหตุ</th>
+                                        <th style="min-width:170px;" class="sort" onclick="sortTable('table_nlNoticeList', 7);">วันที่สิ้นสุด</th>
                                         <th style="width:20px;"></th>
                                         <th style="width:20px;"></th>
                                         <th style="width:20px;"></th>
@@ -284,28 +285,8 @@
         <!-- Autosize Plugin Js -->
         <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script>
 
-        <!-- Moment Plugin Js -->
-        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/moment.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/momentjs/locale/th.js"></script> -->
-
-        <!-- Bootstrap Material Datetime Picker Plugin Js -->
-        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script> -->
-
-        <!--Custom-->
-        <!-- <script src="../../lib/adminbsb-materialdesign/js/admin.js"></script> -->
-        <!-- <script src="../../lib/adminbsb-materialdesign/js/pages/forms/basic-form-elements.js"></script> -->
-
         <!-- Demo Js -->
-        <script src="../../lib/adminbsb-materialdesign/js/demo.js"></script>
-
-
-        <!-- Jquery DataTable Plugin Js -->
-        <!-- <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/jquery.dataTables.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/plugins-master/pagination/select.js"></script>
-        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script> -->
-
-
-
+        <!-- <script src="../../lib/adminbsb-materialdesign/js/demo.js"></script> -->
 
     </div>
 </body>

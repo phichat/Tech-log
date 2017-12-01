@@ -19,21 +19,7 @@ $(document).ready(function () {
 
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 
-
-
-
-    // $('#txt_nlNoticeDateFrom').bootstrapMaterialDatePicker().on('change', function (e, date) {
-    //     $('#txt_nlNoticeDateTo').bootstrapMaterialDatePicker('setMinDate', date);
-    // });
-
-
-    $('#table_nlNoticeList tbody').pageMe({
-        pagerSelector: '#notice_pagination',
-        pageInfo: '#notice_pageinfo',
-        showPrevNext: true,
-        hidePageNumbers: false,
-        perPage: 5
-    });
+    onSearchNoticeList('#txt_nlSearch', '.advanced-search');
 });
 
 function onDelRecord(e) {
@@ -131,7 +117,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
         tr += '</a>'
         tr += '</td>'
         tr += '<td>'
-        tr += '<a href="javascript:void(0)" onclick="onDelRecord(' + e.noticecode + ')">'
+        tr += "<a href='javascript:void(0)' onclick=onDelRecord('" + e.noticecode + "');>"
         tr += '<i class="material-icons col-pink">delete</i>'
         tr += '</a>'
         tr += '</td>'
@@ -157,7 +143,7 @@ function onToggleAdvancedSearch() {
 }
 
 function onClearFormSearch() {
-    $('.notice-list input[type=text]').val('');
+    $('.notice-list input[type=text]').not('input#txt_nlNoticeDepartmentNameRecieve').val('');
     $('.notice-list input[type=date]').val('');
 }
 

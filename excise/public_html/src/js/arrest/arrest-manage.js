@@ -57,6 +57,13 @@ $(document).ready(function () {
                 }
             })
 
+            $('.datepicker').datepicker({
+                format: 'dd/mm/yyyy',
+                todayBtn: true,
+                language: 'th',             
+                thaiyear: true              
+            }).datepicker("setDate", "0");
+
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
@@ -81,7 +88,7 @@ $(document).ready(function () {
 
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
     $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
-
+    $.getScript('../../lib/excise-custom/js/sort-table.js');
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion);

@@ -18,6 +18,7 @@ function onCancelSelectArrestTeam() {
 }
 
 function onkeypressSearchFormArrest(e){
+    debugger
     var x = event.which || event.keyCode;
     if (x === 13) {
         searchFormArres(e);
@@ -29,6 +30,9 @@ function onSearchFormArres(e) {
 }
 
 function searchFormArres(e) {
+    if ($(e).val() !== ''){
+        return false;
+    }
     getStaffByKeyword($(e).val(), function callback(xml) {
         var tr = ''
         $(xml).find('staffDTOList')

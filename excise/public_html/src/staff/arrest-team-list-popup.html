@@ -48,11 +48,7 @@
         <br>
         <div class="form-horizontal">
             <div class="row form-group">
-<<<<<<< HEAD
-                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
-=======
                 <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_arrestTeamSearch">ค้นหา:</label>
->>>>>>> 91b6bfc6a51b8f48af7c9964224755a15c008edb
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                     <div class="form-line">
                         <input type="text" class="form-control" id="txt_arrestTeamSearch" 
@@ -61,26 +57,14 @@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
-<<<<<<< HEAD
-                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control">
-=======
                     <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control"
                     onclick="onSearchFormArres('#txt_arrestTeamSearch');">
->>>>>>> 91b6bfc6a51b8f48af7c9964224755a15c008edb
                         <span>
                             <i class="material-icons">search</i>
                             ค้นหา
                         </span>
                     </button>
                 </div>
-                <!-- <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <button type="button" id="btn_nlClear" class="btn bg-grey waves-effect form-control" onclick="onClearFormSearch();">
-                        <span>
-                            <i class="material-icons">clear</i>
-                            เคลียร์
-                        </span>
-                    </button>
-                </div> -->
             </div>
         </div>
 
@@ -94,12 +78,12 @@
                                 <input type="checkbox" id="arrestTeamCheckboxTh" name="arrestTeamCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableArrestTeamList', 0);">
                                 <label for="arrestTeamCheckboxTh"></label>
                             </th>
-                            <th style="min-width:50px;">ลำดับ</th>
-                            <th style="min-width:170px;">รหัสพนักงาน</th>
-                            <th style="min-width:170px;">ชื่อ-นามสกุล</th>
-                            <th style="min-width:170px;">ตำแหน่ง</th>
-                            <th style="min-width:170px;">สังกัด</th>
-                            <th style="min-width:170px;">ประเภทเจ้าหน้าที่</th>
+                            <th style="min-width:70px;" class="sort" onclick="sortTable('tableArrestTeamList', 1)">ลำดับ</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableArrestTeamList', 2)">รหัสพนักงาน</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableArrestTeamList', 3)">ชื่อ-นามสกุล</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableArrestTeamList', 4)">ตำแหน่ง</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableArrestTeamList', 5)">สังกัด</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableArrestTeamList', 6)">ประเภทเจ้าหน้าที่</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

@@ -45,7 +45,8 @@
                 <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
                 <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
                     <div class="form-line">
-                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="เลขที่การแจ้ง/ชื่อผู้แจ้ง">
+                        <input type="text" class="form-control" id="txt_nlSearch" placeholder="เลขที่การแจ้ง/ชื่อผู้แจ้ง"
+                        onkeypress="onkeypressSearchNoticeList(this);">
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
@@ -56,14 +57,6 @@
                         </span>
                     </button>
                 </div>
-                <!-- <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <button type="button" id="btn_nlClear" class="btn bg-grey waves-effect form-control" onclick="onClearFormSearch();">
-                        <span>
-                            <i class="material-icons">clear</i>
-                            เคลียร์
-                        </span>
-                    </button>
-                </div> -->
             </div>
         </div>
 
@@ -78,10 +71,10 @@
                                     <input type="checkbox" id="noticeAllCheckboxTh" name="noticeAllCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableNoticeAll', 0);">
                                     <label for="noticeAllCheckboxTh"></label>
                                 </th>
-                                <th style="min-width:50px;">ลำดับ</th>
-                                <th style="min-width:170px;">เลขที่การแจ้ง</th>
-                                <th style="min-width:170px;">ชื่อผู้แจ้ง</th>
-                                <th style="min-width:170px;">วันที่แจ้ง</th>
+                                <th style="min-width:70px;" class="sort" onclick="sortTable('tableNoticeAll', 1)">ลำดับ</th>
+                                <th style="min-width:170px;" class="sort" onclick="sortTable('tableNoticeAll', 2)">เลขที่การแจ้ง</th>
+                                <th style="min-width:170px;" class="sort" onclick="sortTable('tableNoticeAll', 3)">ชื่อผู้แจ้ง</th>
+                                <th style="min-width:170px;" class="sort" onclick="sortTable('tableNoticeAll', 4)">วันที่แจ้ง</th>
                                 <th style="min-width:170px;"></th>
                             </tr>
                         </thead>

@@ -37,7 +37,18 @@ $(document).ready(function () {
     });
 });
 
+function onkeypressSearchNoticeList(e) {
+    var x = event.which || event.keyCode;
+    if (x === 13) {
+        searchFormArres(e);
+    }
+}
+
 function onSearchNotice(e) {
+    searchNotice(e);
+}
+
+function searchNotice(e) {
     if ($(e).val() == '') {
         alert('กรุณาระบุข้อมูลที่ต้องกาารค้นหา');
         return false;
@@ -71,7 +82,7 @@ function onSearchNotice(e) {
         // tr += '<td class="notice-" style="display:none;">'+ e. +'</td>'
         tr += '</tr>'
     })
- 
+
     $('#tableNoticeAll tbody').html(tr).pageMe({
         pagerSelector: '#notice_pagination',
         pageInfo: '#notice_pageinfo',

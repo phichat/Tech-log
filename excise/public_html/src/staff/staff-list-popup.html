@@ -70,14 +70,6 @@
                         </span>
                     </button>
                 </div>
-                <!-- <div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                    <button type="button" id="btn_nlClear" class="btn bg-grey waves-effect form-control" onclick="onClearFormSearch();">
-                        <span>
-                            <i class="material-icons">clear</i>
-                            เคลียร์
-                        </span>
-                    </button>
-                </div> -->
             </div>
         </div>
 
@@ -91,12 +83,12 @@
                                 <input type="checkbox" id="staffCheckboxTh" name="staffCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableStaffList', 0);">
                                 <label for="staffCheckboxTh"></label>
                             </th>
-                            <th style="min-width:50px;">ลำดับ</th>
-                            <th style="min-width:170px;">รหัสพนักงาน</th>
-                            <th style="min-width:170px;">ชื่อ-นามสกุล</th>
-                            <th style="min-width:170px;">ตำแหน่ง</th>
-                            <th style="min-width:170px;">สังกัด</th>
-                            <th style="min-width:170px;">ประเภทเจ้าหน้าที่</th>
+                            <th style="min-width:70px;" class="sort" onclick="sortTable('tableStaffList', 1)">ลำดับ</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableStaffList', 2)">รหัสพนักงาน</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableStaffList', 3)">ชื่อ-นามสกุล</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableStaffList', 4)">ตำแหน่ง</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableStaffList', 5)">สังกัด</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableStaffList', 6)">ประเภทเจ้าหน้าที่</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

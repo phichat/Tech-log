@@ -16,18 +16,10 @@ $(document).ready(function () {
                 }
             })
 
-            // Set new link url
-            var menu = $('.ml-menu'),
-                path = window.location.pathname.split('/'),
-                pathArray = path.slice(0, -2);
-            $(menu).each(function () {
-                var a = $(this).find('.link-href')
-                var a_href = $(this).find('.link-href').attr('href')
-                if (a_href !== undefined) {
-                    var b = pathArray.join('/') + '/' + a_href
-                    a[0].href = window.location.origin + b
-                }
-            })
+            // จาก lib/exicse-custom/js/main.js
+            // กำหนดเส้นทาง link ใหม่ให้กับเมนู
+            changePathUri($('.ml-menu'));
+                
         });
     })
 

@@ -6,7 +6,7 @@ $(document).ready(function () {
         todayBtn: true,
         language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
         thaiyear: true              //Set เป็นปี พ.ศ.
-    });  
+    });
 
     // var h = addZero(date.getHours()),
     //     m = addZero(date.getMinutes());
@@ -189,6 +189,19 @@ var getUrlParameter = function (sParam) {
         };
     };
 };
+
+// กำหนดเส้นทาง link ใหม่ให้กับเมนู
+function changePathUri(menu) {
+    path = window.location.pathname.split('/').slice(0, -2);
+    for (i = 0; i < menu.length; i++) {
+        var a = menu[i].getElementsByClassName('link-href')
+        if (a.length > 0) {
+            var href = a[0].href.split('/')
+            a[0].href = window.location.origin + path.join('/') + '/' + href.slice(-2).join('/')
+        }
+
+    }
+}
 
 // //แปลงข้อมูลที่แสดงในแถบด้านท้ายตารางให้เป็น ภาษาที่ต้องการ
 // function regExpStringDatatable(mapObj, str) {

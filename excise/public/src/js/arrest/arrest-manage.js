@@ -61,6 +61,9 @@ $(document).ready(function () {
                     $(this).addClass('active')
                 }
             })
+            // จาก lib/exicse-custom/js/main.js
+            // กำหนดเส้นทาง link ใหม่ให้กับเมนู
+            changePathUri($('.ml-menu'));
 
             $('input.datepicker').datepicker({
                 format: 'dd/mm/yyyy',

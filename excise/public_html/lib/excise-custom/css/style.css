@@ -34,6 +34,14 @@
     padding-right: 8px;
 }
 
+.clear-m {
+    margin-bottom: 0 !important; 
+}    
+.clear-p {
+    padding: 0 !important;
+}
+
+
 .datepicker-dropdown{
     margin-top: 0 !important;
 }
@@ -117,6 +125,7 @@
     font-size: 13px !important;
   }
 
+  
 
   /* Datatable */
 .table .sort{

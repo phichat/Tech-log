@@ -68,7 +68,7 @@ $(document).ready(function () {
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
                 create: true,
-                sortField: 'text'
+                sortField: 'value'
             });
 
             $("input.number").inputmask({

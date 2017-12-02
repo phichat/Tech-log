@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Notice manage</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&amp;subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+    <!-- Bootstrap Core Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Waves Effect Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.css" rel="stylesheet">
+
+    <!-- Animation Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/animate-css/animate.css" rel="stylesheet">
+
+    <!-- Wait Me Css -->
+    <link href="../../lib/adminbsb-materialdesign/plugins/waitme/waitMe.css" rel="stylesheet">
+
+    <!-- Bootstrap Datepicker Css -->
+    <link href="../../lib/bootstrap-datepicker-custom/dist/css/bootstrap-datepicker.css" rel="stylesheet" />
+
+    <!-- Custom Css -->
+    <link href="../../lib/adminbsb-materialdesign/css/style.css" rel="stylesheet">
+
+    <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+    <link href="../../lib/adminbsb-materialdesign/css/themes/all-themes.css" rel="stylesheet">
+
+    <!--Custom notice-->
+    <link href="../../lib/excise-custom/css/style.css" rel="stylesheet">
+
+    <!-- Selectize.js-master -->
+    <link href="../../lib/selectize.js-master/dist/css/selectize.css" rel="stylesheet" type="text/css" />
+
+    <!--Jquery Js-->
+    <script src="../../lib/adminbsb-materialdesign/plugins/jquery/jquery.min.js" type="text/javascript"></script>
+
+    <!-- excise custom Js -->
+    <script src="../../lib/excise-custom/js/main.js" type="text/javascript"></script>
+    <script src="../../lib/excise-custom/js/validate.js"></script>
+</head>
+
+<body class="theme-teal">
+
+    <!-- Page Loader -->
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="preloader">
+                <div class="spinner-layer pl-red">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div>
+                    <div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+            <p>Please wait...</p>
+        </div>
+    </div>
+    <!-- #END# Page Loader -->
+
+    <section class="header"></section>
+
+    <section class="sidebar"></section>
+
+    <section class="content">
+        <form id="noticeManage" class="notice-manage container">
+
+            <div class="row clearfix">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <ol class="breadcrumb breadcrumb-col-teal">
+                        <li>1. งานสืบสวน</li>
+                        <li class="font-bold col-teal">ใบแจ้งความนำจับ</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- ผู้รับแจ้งความ -->
+            <!-- <div class="form-group"> -->
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        ผู้รับแจ้งความ
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li>
+                            <a href="javascript:void(0);" role="button" onclick="onToggleCardBody(this);">
+                                <i class="material-icons">arrow_drop_down</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <!-- <div class="form-group"> -->
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmNoticeCode">เลขที่บันทึกแจ้งความ:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="NoticeCode" class="form-control" id="txt_nmNoticeCode" disabled value="NEW">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="sle_nmNoticeStation">เขียนที่:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <select name="stationCode" id="sle_nmNoticeStation" class="form-control required" required></select>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">หน่วยงาน:</label>
+                            <div class="col-lg-4 col-md-3 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <select name="departmentName" id="sle_nmDepartmentName" class="form-control required" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12">วันที่รับแจ้งความ:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                                <div class="input-group">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control datepicker required" id="txt_nmNoticeDate" name="noticeDate" onchange="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <label for="txt_nmNoticeDate" class="input-group-addon" id="spn_nmNoticeDate">
+                                        <i class="material-icons">event</i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 between-item">
+                                <div class="form-group form-float">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">
+                                            เวลา:
+                                        </label>
+                                        <div class="form-line">
+                                            <input type="text" class="time24 form-control required" name="noticeTime" id="txt_nmNoticeTime" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" for="txt_nmDueDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="input-group">
+                                        <div class="form-line">
+                                            <input type="text" class="form-control required" name="getDate" id="txt_nmDueDate" maxlength="2" style="z-index:0;" onkeyup="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
+                                                required>
+                                        </div>
+                                        <span class="input-group-addon" id="spn_nmGetDate">วัน</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-5 col-sm-12 col-xs-12" style="margin-bottom: 0 !important; padding: 0 !important;">
+                                <label class="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" for="txt_nmEndDate">สิ้นสุดวันที่:</label>
+                                <div class="col-lg-6 col-md-7 col-sm-6 col-xs-12">
+                                    <div class="form-group form-float">
+                                        <div class="form-line">
+                                            <input type="text" name="endDate" id="txt_nmEndDate" class="form-control required" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="">ผู้รับแจ้งความนำจับ:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="input-group" style="z-index:1;">
+                                        <select name="" id="sle_nmStaff" class="form-control required" style="z-index:0;" onchange="onChangeStaff(this);" required></select>
+                                        <span class="input-group-addon" id="spn_nmStaff">
+                                            <div class="box-group-addon">
+                                                <a href="javascript:void(0);" data-toggle="modal" data-target="#listStaffModal" class="toggle-popup-list">....</a>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmPosition">ตำแหน่ง:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control required" name="position" id="txt_nmPosition" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmDepartment">สังกัด:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" class="form-control required" name="department" id="txt_nmDepartment" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- รายละเอียดผู้แจ้งความ -->
+            <!-- <div class="form-group"> -->
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        รายละเอียดผู้แจ้งความ
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li>
+                            <a href="javascript:void(0);" role="button" onclick="onToggleCardBody(this);">
+                                <i class="material-icons">arrow_drop_down</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <!-- <div class="form-group"> -->
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">ผู้แจ้งความ:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <select name="infromType" id="sle_nmInformType" class="form-control required" style="z-index:0;" onchange="onChangeTypeInfrom(this, '#txt_nmInfromAlies');"
+                                        required>
+                                        <option value="0" selected>สายลับ(ขอปิดนาม)</option>
+                                        <option value="1">ระบุชื่อ</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="infromAlies" id="txt_nmInfromAlies" class="form-control required" style="z-index:0;" value="สายลับ(ขอปิดนาม)"
+                                            disabled required>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAge">อายุผู้แจ้ง:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                                <div class="input-group">
+                                    <div class="form-line">
+                                        <input type="text" maxlength="2" name="informAge" id="txt_nmInfromAge" class="form-control" 
+                                        style="z-index:0;" onkeyup="onCheckInt(this);">
+                                    </div>
+                                    <span class="input-group-addon" id="spn_nmInfromAge">
+                                        <span>ปี</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAddress">บ้านเลขที่:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="infromAddress" id="txt_nmInfromAddress" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7 between-item">
+                                <div class="input-group">
+                                    <label class="input-group-addon">หมู่ที่:</label>
+                                    <div class="form-line">
+                                        <input type="text" name="inforVillage" id="txt_nmInfromVillage" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromBuilding">อาคาร/สถานที่:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="infromBuliding" id="txt_nmInfromBuilding" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromRoom">ห้อง:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="infromRoom" id="txt_nmInfromRoom" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7">
+                                <div class="form-group form-float">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">ชั้น:</label>
+                                        <div class="form-line">
+                                            <input type="text" name="infromClass" id="txt_nmInfromFloor" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAlley">ตรอก/ซอย:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="infromAlley" id="txt_nmInfromAlley" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromRoad">ถนน:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="infromRoad" id="txt_nmInfromRoad" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">ตำบล/อำเภอ/จังหวัด:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <select name="infromRegion" id="sle_nmInfromRegion" class="region form-control"></select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!--  รายละเอียดการกระทำความผิด  -->
+            <!-- <div class="form-group"> -->
+            <div class="card">
+                <div class="header bg-teal">
+                    <h2>
+                        รายละเอียดการกระทำความผิด
+                    </h2>
+                    <ul class="header-dropdown m-r--5">
+                        <li>
+                            <a href="javascript:void(0);" role="button" onclick="onToggleCardBody(this);">
+                                <i class="material-icons">arrow_drop_down</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="body">
+                    <!-- <div class="form-group"> -->
+                    <div class="form-horizontal">
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmLocation">สถานที่เกิดเหตุ:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <textarea name="location" id="txt_nmLocation" rows="1" class="form-control no-resize required" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsAddress">บ้านเลขที่:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="opsAddress" id="txt_nmOpsAddress" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7">
+                                <div class="form-group form-float">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">หมู่ที่:</label>
+                                        <div class="form-line">
+                                            <input type="text" name="opsVillage" id="txt_nmOpsVillage" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsBuilding">อาคาร/สถานที่:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="opsBuliding" id="txt_nmOpsBuilding" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsRoom">ห้อง:</label>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-5">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="opsRoom" id="txt_nmOpsRoom" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-3 col-xs-7">
+                                <div class="form-group form-float">
+                                    <div class="input-group">
+                                        <label class="input-group-addon">ชั้น:</label>
+                                        <div class="form-line">
+                                            <input type="text" name="opsFloor" id="txt_nmOpsFloor" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsAlley">ตรอก/ซอย:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="opsAlley" id="txt_nmOpsAlley" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsRoad">ถนน:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        <input type="text" name="opsRoad" id="txt_nmOpsRoad" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">ตำบล/อำเภอ/จังหวัด:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <select name="opsRegion" id="sle_nmOpsRegion" class="region form-control required" required></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">สินค้า:</label>
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                                <div class="form-group form-float">
+                                    <select name="" id="sle_nmGoodName" class="form-control" style="z-index:0;" onchange="onChangGoodName(this);"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12"></div>
+                            <div class="col-lg-10 col-md-10 col-sm-8 col-xs-12">
+                                <div class="form-group form-float">
+                                    <ul class="list-tags required" name="goodName" id="ul_nmGoodName" required></ul>
+                                </div>
+                                <ul id="ul_nmGoodNameCheck" style="display:none;"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <!-- </div> -->
+
+            <!-- button -->
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <button type="button" class="btn bg-red form-control form-group" id="saveNotice" onclick="onSaveNotice('.notice-manage');">
+                        <i class="material-icons">save</i>
+                        บันทึก
+                    </button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <button type="button" class="btn bg-grey form-control form-group" id="cancelNotice" onclick="onCancelNotice();">
+                        <i class="material-icons">close</i>
+                        ยกเลิก
+                    </button>
+                </div>
+            </div>
+
+            <!-- List staff modal -->
+            <div id="listStaffModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
+                data-backdrop="static" data-keyboard="false">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="card">
+                            <div class="header bg-teal">
+                                <h2>
+                                    รายชื่อเจ้าหน้าที่
+                                </h2>
+                                <ul class="header-dropdown m-r--5">
+                                    <li>
+                                        <a href="javascript:void(0);" data-dismiss="modal">
+                                            <i class="material-icons">close</i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </section>
+
+
+    <div class="script">
+
+        <!-- Bootstrap Core Js -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Bootstrap Datepicker Js -->
+        <script src="../../lib/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js"></script>
+
+        <!-- Bootstrap Datepicker th Js -->
+        <script src="../../lib/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js" charset="UTF-8"></script>
+
+        <!-- Slimscroll Plugin Js -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+
+        <!-- Selectize Js -->
+        <script src="../../lib/selectize.js-master/dist/js/standalone/selectize.min.js" type="text/javascript"></script>
+
+        <!-- Input Mask Plugin Js -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-inputmask/jquery.inputmask.bundle.js"></script>
+
+        <!-- Jquery Validation Plugin Css -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/jquery-validation/jquery.validate.js"></script>
+
+        <!-- Waves Effect Plugin Js -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
+
+        <!-- Autosize Plugin Js -->
+        <script src="../../lib/adminbsb-materialdesign/plugins/autosize/autosize.js"></script>
+
+        <!-- Common Ws Js-->
+        <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>
+        <script src="../../ws/common-ws/getDepartmentByCon.js" type="text/javascript"></script>
+        <script src="../../ws/common-ws/getDutygroupByKeyword.js" type="text/javascript"></script>
+        <script src="../../ws/common-ws/getOfficeByKeyword.js" type="text/javascript"></script>
+        <script src="../../ws/common-ws/getStaffByKeyword.js" type="text/javascript"></script>
+
+        <!-- Notice Ws Js -->
+        <script src="../../ws/notice-ws/getNoticeNoticeByCon.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/getNoticeLocationByCon.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/getNoticeProductlistByCon.js" type="text/javascript"></script>
+
+        <script src="../../ws/notice-ws/insNoticeNoticeAll.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/insNoticeInformAll.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/insNoticeLocationAll.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/insNoticeProductlistAllMul.js" type="text/javascript"></script>
+
+        <script src="../../ws/notice-ws/updNoticeNoticeByCon.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/updNoticeInformByCon.js" type="text/javascript"></script>
+        <script src="../../ws/notice-ws/updNoticeLocationByCon.js" type="text/javascript"></script>
+
+        <script src="../../ws/notice-ws/delNoticeProductlistByCon.js" type="text/javascript"></script>
+
+        <script src="../js/notice/notice-manage.js"></script>
+
+
+    </div>
+</body>
+
+</html>

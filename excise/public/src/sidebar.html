@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <base href="public/src/">
+</head>
+
+<body>
+    <aside id="leftsidebar" class="sidebar">
+        <!-- User Info -->
+        <div class="user-info bg-grey">
+            <div class="image">
+                <img src="../lib/adminbsb-materialdesign/images/user.png" width="48" height="48" alt="User" />
+            </div>
+            <div class="info-container">
+                <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ผู้ดูแลระบบ</div>
+                <div class="email">admin.doe@example.com</div>
+            </div>
+        </div>
+        <!-- #User Info -->
+        <!-- Menu -->
+        <div class="menu bg-teal">
+            <ul class="list">
+                <li class="header">เมนู</li>
+                <li data-page="notice">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">announcement</i>
+                        <span>1. งานสืบสวน</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="notice/notice-list.html" class="link-href">
+                                <span>ใบแจ้งความนำจับ</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li data-page="arrest">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">build</i>
+                        <span>2. งานจับกุม</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="arrest/arrest-list.html" class="link-href">
+                                <span>บันทึกการจับกุม(ส.ส. 2/39)</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li data-page="">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">assignment</i>
+                        <span>3. งานเปรียบเทียบคดี</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="">บันทึกรับคำกล่าวโทษ 1/55</a>
+                        </li>
+                        <li>
+                            <a href="">เปรียบเทียบปรับและออกใบเสร็จ</a>
+                        </li>
+                    </ul>
+                </li>
+                <li data-page="">
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">desktop_mac</i>
+                        <span>4. งานตรวจพิสูจน์ของกลาง</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a href="javascript:void(0);">
+                                <span>พิสูจน์ของกลาง</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- #Menu -->
+        <!-- Footer -->
+        <div class="legal bg-grey">
+            <div class="copyright">
+                &copy; 2016 - 2017
+                <a href="javascript:void(0);"> ผู้ดูแลระบบ</a>
+            </div>
+            <div class="version">
+                <b>เวอร์ชั่น: </b> 1.0.5
+            </div>
+        </div>
+        <!-- #Footer -->
+    </aside>
+</body>
+
+</html>

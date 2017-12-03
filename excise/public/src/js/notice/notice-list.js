@@ -18,8 +18,10 @@ $(document).ready(function () {
 
             // จาก lib/exicse-custom/js/main.js
             // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-            changePathUri($('.ml-menu'));
+            srcPathUri($('.ml-menu'));
                 
+            leaveSrcPathUri($('a.navbar-brand'), '../../');
+            leaveSrcPathUri($('img'), '../../');
         });
     })
 

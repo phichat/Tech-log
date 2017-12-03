@@ -191,7 +191,7 @@ var getUrlParameter = function (sParam) {
 };
 
 // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-function changePathUri(menu) {
+function srcPathUri(menu) {
     path = window.location.pathname.split('/').slice(0, -2);
     for (i = 0; i < menu.length; i++) {
         var a = menu[i].getElementsByClassName('link-href')
@@ -202,6 +202,19 @@ function changePathUri(menu) {
 
     }
 }
+
+function leaveSrcPathUri(url, drive) {
+    debugger
+    var tag = url[0].tagName
+    switch (tag) {
+        case 'A':
+            
+            break;
+        case 'IMG':
+            break;
+    }
+}
+
 
 // //แปลงข้อมูลที่แสดงในแถบด้านท้ายตารางให้เป็น ภาษาที่ต้องการ
 // function regExpStringDatatable(mapObj, str) {

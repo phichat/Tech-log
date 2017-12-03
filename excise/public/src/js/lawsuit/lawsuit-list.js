@@ -1,18 +1,3 @@
-function onDelRecord(e) {
-    if (confirm('Msg ยืนยันการทำรายการหรือไม่?')) {
-        alert(e)
-    }
-}
-
-function onClearFormSearch() {
-    $('input[type=text]').val('');
-    $('input[type=date]').val('');
-}
-
-function onToggleAdvancedSearch() {
-    $('.advanced-search').slideToggle();
-}
-
 $(document).ready(function () {
     var loadMultifile = {
         'section.header': '../navbar.html #topheader',
@@ -25,7 +10,7 @@ $(document).ready(function () {
         $(tag).load(url, function () {
             var ele = $('.menu .list > li');
             $(ele).each(function (i, s) {
-                if ($(s).data('page') == 'arrest') {
+                if ($(s).data('page') == 'lawsuit') {
                     $(this).addClass('active')
                 }
             })
@@ -53,7 +38,6 @@ $(document).ready(function () {
         tr += '<td>dd/mm/yyyy</td>'
         tr += '<td>dd/mm/yyyy</td>'
         tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
         tr += '<td>'
         tr += '<a href="notice-manage.html">'
         tr += '<i class="material-icons col-teal">print</i>'
@@ -71,19 +55,26 @@ $(document).ready(function () {
         tr += '</td>'
         tr += '</tr>'
     }
-    $('#table_ArrestList tbody').html(tr)
-    $('#table_ArrestList tbody').pageMe({
-        pagerSelector: '#notice_pagination',
-        pageInfo: '#notice_pageinfo',
+    $('#table_lawsuitList tbody').html(tr)
+    $('#table_lawsuitList tbody').pageMe({
+        pagerSelector: '#lawsuit_pagination',
+        pageInfo: '#lawsuit_pageinfo',
         showPrevNext: true,
         hidePageNumbers: false,
         perPage: 5
     });
-
-    // dataTables pagination style
-    $('.paging_listbox').find('select').addClass('paging_listbox_select');
-});
-
-$('#btn_nlAddArrest').on('click', function () {
-    window.location.href = 'arrest-manage.html'
 })
+
+$('#btn_addLawsuit').on('click', function () {
+    window.location.href = 'lawsuit-manage.html'
+})
+
+function onToggleAdvancedSearch() {
+    $('.advanced-search').slideToggle();
+}
+
+function onClearFormSearch() {
+    $('input[type=text]').val('');
+    $('input[type=date]').val('');
+    $('input[type=checkbox]').prop('checked', false);
+}

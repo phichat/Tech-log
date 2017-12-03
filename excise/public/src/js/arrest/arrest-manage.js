@@ -33,7 +33,7 @@ $(document).ready(function () {
         $('#sle_nmGoodName')
             .html(sleDutyGroup)
             .selectize({
-                create: true,
+                create: false,
                 sortField: 'text'
             });
     });
@@ -63,7 +63,7 @@ $(document).ready(function () {
             })
             // จาก lib/exicse-custom/js/main.js
             // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-            changePathUri($('.ml-menu'));
+            srcPathUri($('.ml-menu'));
 
             $('input.datepicker').datepicker({
                 format: 'dd/mm/yyyy',

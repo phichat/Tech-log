@@ -269,30 +269,33 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_LawSuitCode">เลขที่งาน:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class=" form-control" name="lawSuitCode" id="txt_LawSuitCode">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 clear-m clear-p">
+                                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-12" for="txt_LawSuitCode">เลขที่งาน:</label>
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                                            <div class="form-line">
+                                                <input type="text" class=" form-control" name="lawSuitCode" id="txt_LawSuitCode">
+                                            </div>
+                                        </div>
+                                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-12" for="txt_ExhibitReportNo">รายงานพิสูจน์ที่:</label>
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                                            <div class="form-line">
+                                                <input type="text" class=" form-control" name="exhibitReportNo" id="txt_ExhibitReportNo">
+                                            </div>
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_CaseNo">เลขที่คดี:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class=" form-control" name="caseNo" id="txt_CaseNo">
+
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 clear-m clear-p">
+                                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-12" for="txt_CaseNo">เลขที่คดี:</label>
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                                            <div class="form-line">
+                                                <input type="text" class=" form-control" name="caseNo" id="txt_CaseNo">
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_ExhibitReportNo">รายงานพิสูจน์ที่:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class=" form-control" name="exhibitReportNo" id="txt_ExhibitReportNo">
-                                        </div>
-                                    </div>
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_CompareCaseNo">คดีเปรียบเทียบ:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class="form-control" name="compareCaseNo" id="txt_CompareCaseNo">
+                                        <label class="control-label col-lg-4 col-md-4 col-sm-3 col-xs-12" for="txt_CompareCaseNo">คดีเปรียบเทียบ:</label>
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                                            <div class="form-line">
+                                                <input type="text" class="form-control" name="compareCaseNo" id="txt_CompareCaseNo">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -327,15 +330,7 @@
                                             <input type="text" class=" form-control" name="accuserName" id="txt_AccuserName">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_NoticeCode">ค้นหาข้อมูลสีบสวน: เลขที่แจ้งความ</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
-                                        <div class="form-line">
-                                            <input type="text" class=" form-control" name="noticeCode" id="txt_NoticeCode">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="sle_AccuserType">ผู้กล่าวหา:</label>
+                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="sle_AccuserType">ผู้กล่าวหา:</label>
                                     <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
                                         <select name="accuserType" class="form-control" id="sle_AccuserType">
                                             <option value="" selected disabled></option>
@@ -346,40 +341,53 @@
                                             <option value="5">เจ้าหน้าที่อื่นๆ</option>
                                         </select>
                                     </div>
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="chb_IsSentCourt">ลักษณะคดี:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
-                                        <div class="demo-checkbox">
-                                            <input type="checkbox" id="chb_IsSentCourt" name="isSentCourt" class="filled-in">
-                                            <label for="chb_IsSentCourt">ฟ้องศาล</label>
-                                            <input type="checkbox" id="chb_CaseQuality" name="caseQuality" class="filled-in">
-                                            <label for="chb_CaseQuality">เปรียบเทียบปรับ</label>
-                                            <input type="checkbox" id="chb_HaveCulprit" name="HaveCulprit" class="filled-in">
-                                            <label for="chb_HaveCulprit">ไม่มีตัว</label>
+
+                                </div>
+                                <div class="row">
+                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_NoticeCode">ค้นหาข้อมูลสีบสวน: เลขที่แจ้งความ</label>
+                                    <div class="col-lg-2 col-md-2 col-sm-7 col-xs-12">
+                                        <div class="form-line">
+                                            <input type="text" class=" form-control" name="noticeCode" id="txt_NoticeCode">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 clear-m clear-p">
+                                        <label class="control-label col-lg-5 col-md-4 col-sm-3 col-xs-12" for="chb_IsSentCourt">ลักษณะคดี:</label>
+                                        <div class="col-lg-7 col-md-8 col-sm-9 col-xs-12">
+                                            <div class="demo-checkbox">
+                                                <input type="checkbox" id="chb_IsSentCourt" name="isSentCourt" class="filled-in">
+                                                <label for="chb_IsSentCourt">ฟ้องศาล</label>
+                                                <input type="checkbox" id="chb_CaseQuality" name="caseQuality" class="filled-in">
+                                                <label for="chb_CaseQuality">เปรียบเทียบปรับ</label>
+                                                <input type="checkbox" id="chb_HaveCulprit" name="HaveCulprit" class="filled-in">
+                                                <label for="chb_HaveCulprit">ไม่มีตัว</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_SearchWarrantNo">เลขที่หมายค้น:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
+                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_SearchWarrantNo">เลขที่หมายค้น:</label>
+                                    <div class="col-lg-2 col-md-2 col-sm-7 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class=" form-control" name="searchWarrantNo" id="txt_SearchWarrantNo">
                                         </div>
                                     </div>
-                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="chb_CaseLast1">คดีสิ้นสุด:</label>
-                                    <div class="col-lg-4 col-md-4 col-sm-9 col-xs-12">
-                                        <div class="demo-checkbox">
-                                            <input type="checkbox" id="chb_CaseLast1" name="caseLast1" class="filled-in" value="1">
-                                            <label for="chb_CaseLast1">กรมสรรพสามิต</label>
-                                            <input type="checkbox" id="chb_CaseLast2" name="caseLast2" class="filled-in" value="2">
-                                            <label for="chb_CaseLast2">ศาล</label>
-                                            <input type="checkbox" id="chb_CaseLast3" name="caseLast3" class="filled-in" value="3">
-                                            <label for="chb_CaseLast3">พนักงานสอบสวน/พนักงานอัยการ</label>
+                                    <div class="col-lg-6 col-md-7 col-sm-12 col-xs-12 clear-m clear-p">
+                                        <label class="control-label col-lg-5 col-md-4 col-sm-3 col-xs-12" for="chb_CaseLast1">คดีสิ้นสุด:</label>
+                                        <div class="col-lg-7 col-md-8 col-sm-9 col-xs-12">
+                                            <div class="demo-checkbox">
+                                                <input type="checkbox" id="chb_CaseLast1" name="caseLast1" class="filled-in" value="1">
+                                                <label for="chb_CaseLast1">กรมสรรพสามิต</label>
+                                                <input type="checkbox" id="chb_CaseLast2" name="caseLast2" class="filled-in" value="2">
+                                                <label for="chb_CaseLast2">ศาล</label>
+                                                <input type="checkbox" id="chb_CaseLast3" name="caseLast3" class="filled-in" value="3">
+                                                <label for="chb_CaseLast3">พนักงานสอบสวน/พนักงานอัยการ</label>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <label class="control-label col-lg-2 col-md-2 col-sm-3 col-xs-12" for="txt_ss2_27">เลขที่ ส.ส.2/27:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
+                                    <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="txt_ss2_27">เลขที่ ส.ส.2/27:</label>
+                                    <div class="col-lg-2 col-md-2 col-sm-7 col-xs-12">
                                         <div class="form-line">
                                             <input type="text" class=" form-control" name="ss2_27" id="txt_ss2_27">
                                         </div>

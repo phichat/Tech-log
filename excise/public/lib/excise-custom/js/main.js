@@ -203,16 +203,17 @@ function srcPathUri(menu) {
     }
 }
 
+
 function leaveSrcPathUri(url, drive) {
-    debugger
-    var tag = url[0].tagName
-    switch (tag) {
-        case 'A':
-            
-            break;
-        case 'IMG':
-            break;
-    }
+    return url = drive + url;
+    // var tag = url[0].tagName
+    // switch (tag) {
+    //     case 'A':
+
+    //         break;
+    //     case 'IMG':
+    //         break;
+    // }
 }
 
 

@@ -23,12 +23,21 @@ $(document).ready(function () {
             })
             // จาก lib/exicse-custom/js/main.js
             // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-            srcPathUri($('.ml-menu'));
+            switch (tag) {
+                case 'section.header':
+                    $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
+                    $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
+                    break;
+                case 'section.sidebar':
+                    srcPathUri($('.ml-menu'));
+                    $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+                    break;
+            }
+        });
 
-            $('select').not('.paging_listbox_select').selectize({
-                create: true,
-                sortField: 'value'
-            });
+        $('select').not('.paging_listbox_select').selectize({
+            create: true,
+            sortField: 'value'
         });
     })
 

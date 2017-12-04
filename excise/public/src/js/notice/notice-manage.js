@@ -29,7 +29,16 @@ $(document).ready(function () {
             })
             // จาก lib/exicse-custom/js/main.js
             // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-            srcPathUri($('.ml-menu'));
+            switch (tag) {
+                case 'section.header':
+                    $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
+                    $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
+                    break;
+                case 'section.sidebar':
+                    srcPathUri($('.ml-menu'));
+                    $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+                    break;
+            }
         });
     })
 
@@ -102,21 +111,11 @@ $(document).ready(function () {
                 })
             })
         $('#sle_nmNoticeStation').selectize({
-            valueField: 'name',
-            labelField: 'code',
-            searchField: ['name', 'code'],
+            valueField: 'code',
+            labelField: 'name',
+            searchField: 'name',
             create: false,
-            options: option,
-            render: {
-                option: function (item, escape) {
-                    return '<div>' +
-                        '<span class="title">' +
-                        '<span class="name">' + escape(item.code) + '</span>' +
-                        '</span>' +
-                        '<span class="description">' + escape(item.name) + '</span>' +
-                        '</div>';
-                }
-            }
+            options: option
         });
     });
     // --- end เขียนที่หน่วยงาน ---
@@ -292,10 +291,10 @@ function loadFormEdit(noticeCodeUrl) {
                     var noticeStation = $('#sle_nmNoticeStation').selectize(),
                         noticeStationZe = noticeStation[0].selectize,
                         stationText = $(e).find('noticeStation').text();
-                        debugger
+                    debugger
                     for (s in noticeStationZe.options) {
                         if (stationText == noticeStationZe.options[s].name) {
-                            noticeStationZe.setValue(stationText, true) // set value ให้กับ dropdown
+                            noticeStationZe.setValue(noticeStationZe.options[s].code, true) // set value ให้กับ dropdown
                             break;
                         };
                     }
@@ -416,8 +415,8 @@ function onSaveNotice(e) {
             noticeCode: $(e).find('#txt_nmNoticeCode').val(),                               // เลขที่แจ้งความ
             noticeDate: $(e).find('#txt_nmNoticeDate').val(),                               // วันที่แจ้งความ
             noticeDueDate: $(e).find('#txt_nmDueDate').val(),                               // สินสุดใบแจ้งความ
-            noticeStation: $(e).find('#sle_nmNoticeStation option:selected').val(),         // เขียนที่
-            noticeStationCode: $(e).find('#sle_nmNoticeStation option:selected').text(),    // รหัส เขียนที่
+            noticeStation: $(e).find('#sle_nmNoticeStation option:selected').text(),         // เขียนที่
+            noticeStationCode: $(e).find('#sle_nmNoticeStation option:selected').val(),    // รหัส เขียนที่
             noticeTime: $(e).find('#txt_nmNoticeTime').val(),                               // เวลา
             positionNameReceive: $(e).find('#txt_nmPosition').val(),                        // ตำแหน่ง
             remarks: '',
@@ -672,7 +671,7 @@ function updateNotice(e, obj) {
 
     // productlist delete
     if (obj.productlist[0].del.length > 0) {
-        delNoticeProductlistByCon(obj.productlist[0].del, function (xml) {
+        delNoticeProductlistByConMul(obj.productlist[0].del, function (xml) {
             $(xml).find('responseHeader')
                 .each(function (i, e) {
                     productListDelCode = $(e).find('code').text()

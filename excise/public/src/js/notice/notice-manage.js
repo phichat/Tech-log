@@ -19,8 +19,6 @@ $(document).ready(function () {
         '#listStaffModal .card .body': '../staff/staff-list-popup.html'
     }
 
-    var fileName = window.location.pathname.split('/').slice(-1)
-
     $.each(loadMultifile, function (tag, url) {
         $(tag).load(url, function () {
             var ele = $('.menu .list > li');

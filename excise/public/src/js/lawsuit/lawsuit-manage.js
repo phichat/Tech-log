@@ -52,7 +52,7 @@ $(document).ready(function () {
     })
     // -- end โหลดข้อมูล ตำบล/อำเภอ/จังหวัด --
 
-    // เขียนที่หน่วยงาน
+    // เขียนที่
     getOfficeByKeyword('', function (xml) {
         var option = [];
         $(xml).find('officeDTOList')
@@ -63,21 +63,11 @@ $(document).ready(function () {
                 })
             })
         $('#sle_lawsuitArea').selectize({
-            valueField: 'name',
-            labelField: 'code',
-            searchField: ['name', 'code'],
+            valueField: 'code',
+            labelField: 'name',
+            searchField: 'name',
             create: false,
-            options: option,
-            render: {
-                option: function (item, escape) {
-                    return '<div>' +
-                        '<span class="title">' +
-                        '<span class="name">' + escape(item.code) + '</span>' +
-                        '</span>' +
-                        '<span class="description">' + escape(item.name) + '</span>' +
-                        '</div>';
-                }
-            }
+            options: option
         });
     });
     // --- end เขียนที่หน่วยงาน ---

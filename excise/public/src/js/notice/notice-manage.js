@@ -19,12 +19,14 @@ $(document).ready(function () {
         '#listStaffModal .card .body': '../staff/staff-list-popup.html'
     }
 
+    var fileName = window.location.pathname.split('/').slice(-1)
+
     $.each(loadMultifile, function (tag, url) {
         $(tag).load(url, function () {
             var ele = $('.menu .list > li');
             $(ele).each(function (i, s) {
                 if ($(s).data('page') == 'notice') {
-                    $(this).addClass('active')
+                    $(this).addClass('active')                   
                 }
             })
             // จาก lib/exicse-custom/js/main.js
@@ -240,11 +242,6 @@ function onChangDueDate(noticeDate, dueDate, endDate) {
 
 }
 
-$('#noticeManage').change(function () {
-    // จาก lib/excise-custom/js/validate.js
-    unhighlight('#noticeManage');
-})
-
 
 // ====================== Load Data Edit ======================
 function loadFormEdit(noticeCodeUrl) {
@@ -291,7 +288,6 @@ function loadFormEdit(noticeCodeUrl) {
                     var noticeStation = $('#sle_nmNoticeStation').selectize(),
                         noticeStationZe = noticeStation[0].selectize,
                         stationText = $(e).find('noticeStation').text();
-                    debugger
                     for (s in noticeStationZe.options) {
                         if (stationText == noticeStationZe.options[s].name) {
                             noticeStationZe.setValue(noticeStationZe.options[s].code, true) // set value ให้กับ dropdown
@@ -393,7 +389,13 @@ function loadFormEdit(noticeCodeUrl) {
 }
 // ====================== End Load Data Edit ======================
 
+
 // =========================== Save ===========================
+$('#noticeManage').change(function () {
+    // จาก lib/excise-custom/js/validate.js
+    unhighlight('#noticeManage');
+})
+
 function onSaveNotice(e) {
     // จาก lib/excise-custom/js/validate.js
     if (!validate(e)) {
@@ -401,7 +403,6 @@ function onSaveNotice(e) {
     }
 
     if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
-        debugger
         var modeUrl = getUrlParameter('mode')
 
         // NoticeNoticeAll

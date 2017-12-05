@@ -164,12 +164,20 @@ table tr label {
     border-radius: 4px !important;
   }
 
+
+  /* side bar */
+  /* .sidebar{
+    z-index: 91 !important;
+  } */
   .sidebar .menu .list .header {
       font-size: 14px;
   }
-
+  /* end side bar */
 
  /* navigation bar */
+ /* .navbar {
+     z-index: 92 !important;
+ } */
  .bars{
     top: 0px;
     position: relative;

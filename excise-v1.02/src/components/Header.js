@@ -15,7 +15,7 @@ const Header = ({ history: { push } }) => {
             <div id="navheader" className="navbar-header">
                 <a href="javascript:void(0);" className="bars"></a>
                 <Link to={"Home"} className="navbar-brand index">
-                    {/* <img src="img/logo-excise.png" alt="excise" class="logo" /> */}
+                    <img src="../excise-custom-theme/img/logo-excise.png" alt="excise" class="logo" />
                     <span className="main">
                         กรมสรรพสามิต
                     </span>

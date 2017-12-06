@@ -20,7 +20,7 @@ class SidebarContainer extends Component {
           {/* <!-- User Info --> */}
           <div className="user-info bg-grey">
             <div className="image">
-              <img className="userImg" src="lib/adminbsb-materialdesign/images/user.png" width="48" height="48" alt="User" />
+              <img className="userImg" src="../../node_modules/adminbsb-materialdesign/images/user.png" width="48" height="48" alt="User" />
             </div>
             <div className="info-container">
               <div className="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ผู้ดูแลระบบ</div>

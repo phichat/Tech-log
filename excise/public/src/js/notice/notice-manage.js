@@ -22,7 +22,7 @@ $(document).ready(function () {
             var ele = $('.menu .list > li');
             $(ele).each(function (i, s) {
                 if ($(s).data('page') == 'notice') {
-                    $(this).addClass('active')                   
+                    $(this).addClass('active')
                 }
             })
             // จาก lib/exicse-custom/js/main.js
@@ -155,7 +155,15 @@ $(document).ready(function () {
     // --- end Mode edit ---
 })
 
+
+
 function onSelectStaff() {
+    var isCheckBox = $('#tableStaffList tbody tr')
+        .find('input[type=checkbox]')
+        .is(':checked').length
+
+    alert(isCheckBox)
+
     $('#tableStaffList tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
 
@@ -620,7 +628,10 @@ function saveNotice(e, obj) {
         locationAllCode == 200 && productListAllCode == 200) {
         alert('บันทึกสำเร็จ');
         history.pushState(null, "", "notice-manage.html?mode=edit&notice-code=" + noticeCode);
-        location.reload(true)
+        // Load data edit
+        loadFormEdit(noticeCode);
+        // --- end Load data edit ---
+        toggleButtonPrint();
     } else {
         alert(
             'Notice: ' + noticeAllCode + '\r\n' +
@@ -629,6 +640,11 @@ function saveNotice(e, obj) {
             'Product list: ' + productListAllCode
         );
     }
+}
+
+function toggleButtonPrint(){
+    $('#printNotice').removeClass('hidden');
+    $('#saveNotice').addClass('hidden');
 }
 
 function updateNotice(e, obj) {
@@ -693,6 +709,7 @@ function updateNotice(e, obj) {
         (productListDelCode == '' || productListDelCode == 200) &&
         (productListInsCode == '' || productListInsCode == 200)) {
         alert('บันทึกสำเร็จ');
+        toggleButtonPrint();
     } else {
         alert(
             'Notice: ' + noticeAllCode + '\r\n' +

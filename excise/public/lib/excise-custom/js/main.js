@@ -3,10 +3,11 @@ $(document).ready(function () {
 
     $('.datepicker').datepicker({
         format: 'dd/mm/yyyy',
+        todayHighlight: true,
         todayBtn: true,
         language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
         thaiyear: true              //Set เป็นปี พ.ศ.
-    });
+    }).on('changeDate', dateChanged);
 
     // var h = addZero(date.getHours()),
     //     m = addZero(date.getMinutes());
@@ -21,6 +22,10 @@ $(document).ready(function () {
         'placeholder': '0'
     });
 })
+
+function dateChanged(ev){
+    $(this).datepicker('hide');
+}
 
 
 function onToggleCardBody(e) {
@@ -106,6 +111,8 @@ function onChangGoodName(e) {
 //     if ($(e).val().length == 2) return false;
 //     $(e).val($(e).val().match(/[0-9]*/));
 // }
+
+
 
 function addZero(i) {
     if (i < 10) {

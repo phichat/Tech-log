@@ -394,7 +394,12 @@
                                     </div>
                                     <label class="control-label col-lg-3 col-md-3 col-sm-3 col-xs-12" for="sle_Revoke">เพิกถอน:</label>
                                     <div class="col-lg-3 col-md-3 col-sm-7 col-xs-12">
-                                        <select name="revoke" id="sle_Revoke" class="form-control"></select>
+                                        <select name="revoke" id="sle_Revoke" class="form-control">
+                                            <option value="" disabled selected></option>
+                                            <option value="1">เพิกถอน</option>
+                                            <option value="2">อยู่ระหว่างเพิกถอน</option>
+                                            <option value="3">ไม่ระบุ</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

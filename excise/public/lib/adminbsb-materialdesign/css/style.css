@@ -6274,10 +6274,10 @@ fieldset[disabled] .form-control {
     position: relative;
     top: calc(50% - 30px); }
 
-    @media screen and (min-width: 1170px){
+    /* @media screen and (min-width: 1170px){
       .page-loader-wrapper .loader {
         left: calc(50% - 40%); }
-    }
+    } */
 
 /* Preloaders ================================== */
 .md-preloader .pl-red {

@@ -10,17 +10,17 @@ const Header = ({ history: { push } }) => {
   }
   return (
     
-    <nav class="navbar">
-        <div class="container-fluid">
-            <div id="navheader" class="navbar-header">
-                <a href="javascript:void(0);" class="bars"></a>
-                <Link to={"Home"} class="navbar-brand index">
+    <nav className="navbar">
+        <div className="container-fluid">
+            <div id="navheader" className="navbar-header">
+                <a href="javascript:void(0);" className="bars"></a>
+                <Link to={"Home"} className="navbar-brand index">
                     {/* <img src="img/logo-excise.png" alt="excise" class="logo" /> */}
-                    <span class="main">
+                    <span className="main">
                         กรมสรรพสามิต
                     </span>
                     <br />
-                    <span class="detail">
+                    <span className="detail">
                         ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560
                     </span>
                 </Link>

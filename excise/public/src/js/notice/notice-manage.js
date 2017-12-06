@@ -11,8 +11,6 @@ $(document).ready(function () {
         $("input.time24").val(h + ":" + m).inputmask('hh:mm');
     }
 
-    autosize($('#txt_nmLocation'));
-
     var loadMultifile = {
         'section.header': '../navbar.html #topheader',
         'section.sidebar': '../sidebar.html #leftsidebar',

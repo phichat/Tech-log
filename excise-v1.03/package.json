@@ -1,0 +1,10 @@
+{
+  "name": "excise-v1.03",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.5"
+  }
+}

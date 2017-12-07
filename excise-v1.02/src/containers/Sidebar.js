@@ -20,7 +20,7 @@ class SidebarContainer extends Component {
           {/* <!-- User Info --> */}
           <div className="user-info bg-grey">
             <div className="image">
-              <img className="userImg" src="../../node_modules/adminbsb-materialdesign/images/user.png" width="48" height="48" alt="User" />
+              <img className="userImg" src="../excise-custom-theme/user.png" width="48" height="48" alt="User" />
             </div>
             <div className="info-container">
               <div className="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ผู้ดูแลระบบ</div>
@@ -40,7 +40,7 @@ class SidebarContainer extends Component {
                 <ul className="ml-menu">
                   <li>
                     <NavLink
-                      to="/notice/notice-list"
+                      to="/notice/list"
                       activeClassName='active'>
                       <span>ใบแจ้งความนำจับ</span>
                     </NavLink>
@@ -54,7 +54,7 @@ class SidebarContainer extends Component {
                 </a>
                 <ul className="ml-menu">
                   <li>
-                    <NavLink to="/arrest/arrest-list"
+                    <NavLink to="/arrest/list"
                       activeClassName='active'>
                       <span>บันทึกการจับกุม(ส.ส. 2/39)</span>
                     </NavLink>
@@ -69,7 +69,7 @@ class SidebarContainer extends Component {
                 <ul className="ml-menu">
                   <li>
                     <NavLink
-                      to="/lawsuit/lawsuit-list"
+                      to="/lawsuit/list"
                       activeClassName='active'>บันทึกรับคำกล่าวโทษ 1/55</NavLink>
                   </li>
                   <li>
@@ -85,7 +85,7 @@ class SidebarContainer extends Component {
                 <ul className="ml-menu">
                   <li>
                     <NavLink
-                      to="/exhibit/prove-exhibit-list"
+                      to="/exhibit/list"
                       activeClassName='active'>
                       พิสูจน์ของกลาง
                             </NavLink>

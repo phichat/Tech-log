@@ -1,8 +1,20 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 
 class NoticeListContainer extends Component {
-    state = {}
+
+    constructor() {
+        super();
+        this.state = { isToggleOn: true };
+        this.onToggleAdvancedSearch = this.onToggleAdvancedSearch.bind(this);
+    }
+
+    onToggleAdvancedSearch() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
 
     render() {
         const minWidth_70 = { 'minWidth': '70px' };
@@ -18,7 +30,7 @@ class NoticeListContainer extends Component {
                         </ol>
                     </div>
                     <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                        <Link to="/notice/notice-manage" className="btn btn-danger waves-effect form-control" type="button" id="btn_nlAddNotice">
+                        <Link to="/notice/manage" className="btn btn-danger waves-effect form-control" type="button" id="btn_nlAddNotice">
                             <span>
                                 <i className="material-icons">add_circle</i>
                                 เพิ่มข้อมูล
@@ -45,11 +57,12 @@ class NoticeListContainer extends Component {
                                             </div>
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-11 col-xs-12">
-                                            <a href="javascript:void(0);" onclick="onToggleAdvancedSearch();">ค้นหาขั้นสูง</a>
+                                            <a href="#" onclick={this.onToggleAdvancedSearch}>ค้นหาขั้นสูง</a>
+                                            {/* onclick={onToggleAdvancedSearch} */}
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                            <button type="button" id="btn_nlSearch" className="btn bg-dark-blue-custom waves-effect form-control"
-                                                onclick="onSearchNoticeList('#txt_nlSearch', '.advanced-search')">
+                                            <button type="button" id="btn_nlSearch" className="btn bg-dark-blue-custom waves-effect form-control">
+                                                {/* onclick={onSearchNoticeList('#txt_nlSearch', '.advanced-search')} */}
                                                 <span>
                                                     <i className="material-icons">search</i>
                                                     ค้นหา
@@ -57,7 +70,8 @@ class NoticeListContainer extends Component {
                                             </button>
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
-                                            <button type="button" id="btn_nlClear" className="btn bg-grey waves-effect form-control" onclick="onClearFormSearch();">
+                                            <button type="button" id="btn_nlClear" className="btn bg-grey waves-effect form-control">
+                                                {/* onclick={onClearFormSearch} */}
                                                 <span>
                                                     <i className="material-icons">clear</i>
                                                     เคลียร์
@@ -93,122 +107,127 @@ class NoticeListContainer extends Component {
                                     </div>
                                 </div>
                             </div>
-
-                            <div className="form-group advanced-search hidden">
-                                <div className="form-horizontal">
-                                    <div className="row form-group">
-                                        <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
-                                        <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                                            <div className="input-group">
-                                                <div className="form-line">
-                                                    <input type="text" className="form-control datepicker" id="txt_nlNoticeDateFrom" onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')"
-                                                        data-date-format="mm/dd/yyyy" />
+                            {
+                                this.state.isToggleOn ?
+                                (
+                                    <div className="form-group advanced-search">
+                                        <div className="form-horizontal">
+                                            <div className="row form-group">
+                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
+                                                <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                                                    <div className="input-group">
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control datepicker" id="txt_nlNoticeDateFrom" data-date-format="mm/dd/yyyy" />
+                                                            {/* onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')" */}
+                                                        </div>
+                                                        <label for="txt_nlNoticeDateFrom" className="input-group-addon">
+                                                            <i className="material-icons">event</i>
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <label for="txt_nlNoticeDateFrom" className="input-group-addon">
-                                                    <i className="material-icons">event</i>
+                                                <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12  between-item">
+                                                    <div className="input-group">
+                                                        <label className="input-group-addon">
+                                                            ถึง:
                                                 </label>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12  between-item">
-                                            <div className="input-group">
-                                                <label className="input-group-addon">
-                                                    ถึง:
-                                            </label>
-                                                <div className="form-line">
-                                                    <input type="text" className="form-control datepicker" id="txt_nlNoticeDateTo"
-                                                        onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')"
-                                                        data-date-format="mm/dd/yyyy" />
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control datepicker" id="txt_nlNoticeDateTo" data-date-format="mm/dd/yyyy" />
+                                                            {/* onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')" */}
+                                                        </div>
+                                                        <label for="txt_nlNoticeDateTo" className="input-group-addon" id="spn_nmNoticeDateTo">
+                                                            <i className="material-icons">event</i>
+                                                        </label>
+                                                    </div>
                                                 </div>
-                                                <label for="txt_nlNoticeDateTo" className="input-group-addon" id="spn_nmNoticeDateTo">
-                                                    <i className="material-icons">event</i>
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 clear-m clear-p">
-                                            <label className="control-label col-lg-4 col-md-3 col-sm-3 col-xs-12" for="txt_nlGroupName">สินค้า:</label>
-                                            <div className="col-lg-8 col-md-3 col-sm-9 col-xs-12">
-                                                <div className="form-line">
-                                                    <input type="text" className="form-control" id="txt_nlGroupName" />
+                                                <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 clear-m clear-p">
+                                                    <label className="control-label col-lg-4 col-md-3 col-sm-3 col-xs-12" for="txt_nlGroupName">สินค้า:</label>
+                                                    <div className="col-lg-8 col-md-3 col-sm-9 col-xs-12">
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control" id="txt_nlGroupName" />
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
 
+                                            </div>
+                                            <div className="row form-group">
+                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeCode">เลขที่บันทึกแจ้งความ:</label>
+                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                    <div className="form-line">
+                                                        <input type="text" className="form-control" id="txt_nlNoticeCode" />
+                                                    </div>
+                                                </div>
+                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeInform">ชื่อ(นามแฝง) ผู้แจ้ง:</label>
+                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                    <div className="form-line">
+                                                        <input type="text" className="form-control" id="txt_nlNoticeInform" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div className="row form-group">
+                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeDepartmentNameRecieve">หน่วยงาน:</label>
+                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                    <div className="form-line">
+                                                        <input type="text" className="form-control" id="txt_nlNoticeDepartmentNameRecieve" value="Admin login" />
+                                                    </div>
+                                                </div>
+                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlStaffNameReceive">ชื่อผู้รับแจ้ง:</label>
+                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                    <div className="form-line">
+                                                        <input type="text" className="form-control" id="txt_nlStaffNameReceive" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div className="row form-group">
-                                        <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeCode">เลขที่บันทึกแจ้งความ:</label>
-                                        <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                            <div className="form-line">
-                                                <input type="text" className="form-control" id="txt_nlNoticeCode" />
-                                            </div>
-                                        </div>
-                                        <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeInform">ชื่อ(นามแฝง) ผู้แจ้ง:</label>
-                                        <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                            <div className="form-line">
-                                                <input type="text" className="form-control" id="txt_nlNoticeInform" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row form-group">
-                                        <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeDepartmentNameRecieve">หน่วยงาน:</label>
-                                        <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                            <div className="form-line">
-                                                <input type="text" className="form-control" id="txt_nlNoticeDepartmentNameRecieve" value="Admin login" />
-                                            </div>
-                                        </div>
-                                        <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlStaffNameReceive">ชื่อผู้รับแจ้ง:</label>
-                                        <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                            <div className="form-line">
-                                                <input type="text" className="form-control" id="txt_nlStaffNameReceive" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                ) :  ('')
+                            }
+
+
                         </div>
                     </div>
                 </div>
 
                 <div className="form-group">
-                <div className="card">
-                    <div className="body">
-                        <div className="table-responsive form-group">
-                            <table id="table_nlNoticeList" className="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <th style={minWidth_70} className="sort" onclick="sortTable('table_nlNoticeList', 0);">ลำดับ</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 1);">เลขที่</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 2);">หน่วยงาน</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 3);">วันที่รับแจ้งความ</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 4);">สินค้า</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 5);">ชื่อผู้รับแจ้ง</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 6);">สถานที่เกิดเหตุ</th>
-                                        <th style={minWidth_170} className="sort" onclick="sortTable('table_nlNoticeList', 7);">วันที่สิ้นสุด</th>
-                                        <th style={width_20}></th>
-                                        <th style={width_20}></th>
-                                        <th style={width_20}></th>
-                                    </tr>
-                                </thead>
-                                <tbody></tbody>
-                            </table>
-                        </div>
-                        <div className="row">
-                            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div className="pagination-select">
-                                    <span>หน้าที่ </span>
-                                    <select id="notice_pagination" className="paging_listbox_select"></select>
-                                    <span className="page-total"></span>
-                                </div>
-                                {/* <!-- หน้าที่ - จาก - หน้า --> */}
+                    <div className="card">
+                        <div className="body">
+                            <div className="table-responsive form-group">
+                                <table id="table_nlNoticeList" className="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th style={minWidth_70} className="sort">ลำดับ</th>
+                                            <th style={minWidth_170} className="sort">เลขที่</th>
+                                            <th style={minWidth_170} className="sort">หน่วยงาน</th>
+                                            <th style={minWidth_170} className="sort">วันที่รับแจ้งความ</th>
+                                            <th style={minWidth_170} className="sort">สินค้า</th>
+                                            <th style={minWidth_170} className="sort">ชื่อผู้รับแจ้ง</th>
+                                            <th style={minWidth_170} className="sort">สถานที่เกิดเหตุ</th>
+                                            <th style={minWidth_170} className="sort">วันที่สิ้นสุด</th>
+                                            <th style={width_20}></th>
+                                            <th style={width_20}></th>
+                                            <th style={width_20}></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
                             </div>
-                            <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div id="notice_pageinfo" className="pagination-info text-right">
-                                    {/* <!-- รายการที่ 1 - 5 จาก 86 รายการ --> */}
+                            <div className="row">
+                                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div className="pagination-select">
+                                        <span>หน้าที่ </span>
+                                        <select id="notice_pagination" className="paging_listbox_select"></select>
+                                        <span className="page-total"></span>
+                                    </div>
+                                    {/* <!-- หน้าที่ - จาก - หน้า --> */}
+                                </div>
+                                <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div id="notice_pageinfo" className="pagination-info text-right">
+                                        {/* <!-- รายการที่ 1 - 5 จาก 86 รายการ --> */}
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
             </div>
         )
     }

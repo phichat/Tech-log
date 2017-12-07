@@ -138,7 +138,6 @@ $(document).ready(function () {
             options: department
         })
     })
-
     // --- end หน่วยงาน ---
 
     // ผู้แจ้งความ
@@ -156,13 +155,17 @@ $(document).ready(function () {
 })
 
 
-
 function onSelectStaff() {
-    var isCheckBox = $('#tableStaffList tbody tr')
-        .find('input[type=checkbox]')
-        .is(':checked').length
+    $('#tableStaffList tbody tr').each(function (i, el) {
+        if ($(el).find('input[type=checkbox]').is(':checked')) {
+            item++
+        }
+    })
 
-    alert(isCheckBox)
+    if (item > 1) {
+        alert('สามารถเลือกได้เพียง 1 คนเท่านั้น')
+        return false;
+    }
 
     $('#tableStaffList tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
@@ -171,7 +174,6 @@ function onSelectStaff() {
             var nmStaffZe = nmStaff[0].selectize
             nmStaffZe.setValue($(el).find('td.staff-code').html(), true)
 
-            // $('#txt_nmStaff').val(unescape($(el).find('td.staff-name').html()))
             $('#txt_nmPosition').val($(el).find('td.staff-position').html())
             $('#txt_nmDepartment').val($(el).find('td.staff-department').html())
 
@@ -642,7 +644,7 @@ function saveNotice(e, obj) {
     }
 }
 
-function toggleButtonPrint(){
+function toggleButtonPrint() {
     $('#printNotice').removeClass('hidden');
     $('#saveNotice').addClass('hidden');
 }

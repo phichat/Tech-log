@@ -471,6 +471,17 @@ function onSelectNotice(table) {
 function onSelectStaff() {
     $('#tableStaffList tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
+            item++
+        }
+    })
+
+    if (item > 1) {
+        alert('สามารถเลือกได้เพียง 1 คนเท่านั้น')
+        return false;
+    }
+    
+    $('#tableStaffList tbody tr').each(function (i, el) {
+        if ($(el).find('input[type=checkbox]').is(':checked')) {
             $('#txt_Staff').val($(el).find('td.staff-name').html())
             $('#txt_Position').val($(el).find('td.staff-position').html())
             $('#txt_Department').val($(el).find('td.staff-department').html())

@@ -230,10 +230,6 @@ function onDelRecord(e) {
     }
 }
 
-// $('.datepicker').on('changeDate', function() {
-//     $(this).datepicker('destroy');
-// });
-
 $('#btn_nlAddNotice').on('click', function () {
     window.location.href = 'notice-manage.html'
 });

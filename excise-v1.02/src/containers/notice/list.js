@@ -6,7 +6,7 @@ class NoticeListContainer extends Component {
 
     constructor() {
         super();
-        this.state = { isToggleOn: true };
+        this.state = { isToggleOn: false };
         this.onToggleAdvancedSearch = this.onToggleAdvancedSearch.bind(this);
     }
 
@@ -181,8 +181,6 @@ class NoticeListContainer extends Component {
                                     </div>
                                 ) :  ('')
                             }
-
-
                         </div>
                     </div>
                 </div>

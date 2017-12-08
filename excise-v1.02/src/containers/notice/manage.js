@@ -1,7 +1,26 @@
 import React, { Component } from 'react';
 
+import '../../../node_modules/adminbsb-materialdesign/css/style.css';
+import $ from "jquery"
+window.jQuery = $;
+window.$ = $;
+global.jQuery = $;
+require("../../../node_modules/adminbsb-materialdesign/js/admin.js");
+
 class NoticeManageContainer extends Component {
-    state = {}
+    constructor() {
+        super()
+        this.state = {
+            isToggleCardBody: true
+        }
+    }
+
+    onToggleCardBody = (e) => {
+        e.preventDefault();
+        let header = $(e.target).closest('.card');
+        $(header).find('.body').slideToggle();
+    }
+
 
     render() {
         const z0 = { zIndex: 0 }
@@ -26,7 +45,7 @@ class NoticeManageContainer extends Component {
                     </h2>
                         <ul className="header-dropdown m-r--5">
                             <li>
-                                <a href="javascript:void(0);" role="button" onclick="onToggleCardBody(this);">
+                                <a href="#" role="button" onClick={this.onToggleCardBody}>
                                     <i className="material-icons">arrow_drop_down</i>
                                 </a>
                             </li>
@@ -36,7 +55,7 @@ class NoticeManageContainer extends Component {
                         {/* <!-- <div className="form-group"> --> */}
                         <div className="form-horizontal">
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmNoticeCode">เลขที่บันทึกแจ้งความ:</label>
+                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12">เลขที่บันทึกแจ้งความ:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -46,13 +65,13 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="sle_nmNoticeStation">เขียนที่:</label>
+                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12">เขียนที่:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <select name="stationCode" id="sle_nmNoticeStation" className="form-control required" required></select>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">หน่วยงาน:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">หน่วยงาน:</label>
                                 <div className="col-lg-4 col-md-3 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <select name="departmentName" id="sle_nmDepartmentName" className="form-control required" required></select>
@@ -65,11 +84,15 @@ class NoticeManageContainer extends Component {
                                     <div className="input-group">
                                         <div className="form-group form-float">
                                             <div className="form-line">
-                                                <input type="text" className="form-control datepicker required" id="txt_nmNoticeDate" name="noticeDate" onchange="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
+                                                <input type="text"
+                                                    className="form-control datepicker required"
+                                                    id="txt_nmNoticeDate"
+                                                    name="noticeDate"
+                                                    // onChange="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
                                                     required />
                                             </div>
                                         </div>
-                                        <label for="txt_nmNoticeDate" className="input-group-addon" id="spn_nmNoticeDate">
+                                        <label htmlFor="txt_nmNoticeDate" className="input-group-addon" id="spn_nmNoticeDate">
                                             <i className="material-icons">event</i>
                                         </label>
                                     </div>
@@ -88,13 +111,13 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" for="txt_nmDueDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
+                                <label className="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" htmlFor="txt_nmDueDate">ใบแจ้งความนำจับฉบับนี้ใช้ได้ภายในกำหนด:</label>
                                 <div className="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="input-group">
                                             <div className="form-line">
-                                                <input type="text" className="form-control required" name="getDate" id="txt_nmDueDate" maxlength="2" style={{z0}}
-                                                    onkeyup="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
+                                                <input type="text" className="form-control required" name="getDate" id="txt_nmDueDate" maxLength="2" style={{ z0 }}
+                                                    // onKeyUp="onChangDueDate('#txt_nmNoticeDate', '#txt_nmDueDate', '#txt_nmEndDate');"
                                                     required />
                                             </div>
                                             <span className="input-group-addon" id="spn_nmGetDate">วัน</span>
@@ -102,7 +125,7 @@ class NoticeManageContainer extends Component {
                                     </div>
                                 </div>
                                 <div className="col-lg-6 col-md-5 col-sm-12 col-xs-12 clear-m clear-p">
-                                    <label className="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" for="txt_nmEndDate">สิ้นสุดวันที่:</label>
+                                    <label className="control-label col-lg-4 col-md-5 col-sm-4 col-xs-12" htmlFor="txt_nmEndDate">สิ้นสุดวันที่:</label>
                                     <div className="col-lg-6 col-md-7 col-sm-6 col-xs-12">
                                         <div className="form-group form-float">
                                             <div className="form-line">
@@ -113,11 +136,12 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="">ผู้รับแจ้งความนำจับ:</label>
+                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" htmlFor="">ผู้รับแจ้งความนำจับ:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
-                                        <div className="input-group" style={{z1}}>
-                                            <select name="" id="sle_nmStaff" className="form-control required" style={{z0}} onchange="onChangeStaff(this);" required></select>
+                                        <div className="input-group" style={{ z1 }}>
+                                            <select name="" id="sle_nmStaff" className="form-control required" style={{ z0 }} required></select>
+                                            {/* onChange="onChangeStaff(this);"  */}
                                             <span className="input-group-addon" id="spn_nmStaff">
                                                 <div className="box-group-addon">
                                                     <a href="javascript:void(0);" data-toggle="modal" data-target="#listStaffModal" className="toggle-popup-list">....</a>
@@ -128,7 +152,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmPosition">ตำแหน่ง:</label>
+                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" htmlFor="txt_nmPosition">ตำแหน่ง:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -138,7 +162,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" for="txt_nmDepartment">สังกัด:</label>
+                                <label className="control-label col-lg-2 col-md-3 col-sm-4 col-xs-12" htmlFor="txt_nmDepartment">สังกัด:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -162,7 +186,7 @@ class NoticeManageContainer extends Component {
                     </h2>
                         <ul className="header-dropdown m-r--5">
                             <li>
-                                <a href="javascript:void(0);" role="button" onclick="onToggleCardBody(this);">
+                                <a href="#" role="button" onClick={this.onToggleCardBody}>
                                     <i className="material-icons">arrow_drop_down</i>
                                 </a>
                             </li>
@@ -172,30 +196,33 @@ class NoticeManageContainer extends Component {
                         {/* <!-- <div className="form-group"> --> */}
                         <div className="form-horizontal">
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">ผู้แจ้งความ:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="">ผู้แจ้งความ:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
-                                        <select name="infromType" id="sle_nmInformType" className="form-control required" style={{z0}} onchange="onChangeTypeInfrom(this, '#txt_nmInfromAlies');"
-                                            required>
-                                            <option value="0" selected>สายลับ(ขอปิดนาม)</option>
+                                        <select name="infromType" id="sle_nmInformType" className="form-control required" style={{ z0 }} required>
+                                            {/* onChange="onChangeTypeInfrom(this, '#txt_nmInfromAlies');" */}
+                                            <option value="0" defaultValue>สายลับ(ขอปิดนาม)</option>
                                             <option value="1">ระบุชื่อ</option>
                                         </select>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromAlies">ชื่อ(นามแฝง)ผู้แจ้ง:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
-                                            <input type="text" name="infromAlies" id="txt_nmInfromAlies" className="form-control required" style={{z0}} value="สายลับ(ขอปิดนาม)"
+                                            <input type="text" name="infromAlies" id="txt_nmInfromAlies" className="form-control required" style={{ z0 }} value="สายลับ(ขอปิดนาม)"
                                                 disabled required />
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAge">อายุผู้แจ้ง:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromAge">อายุผู้แจ้ง:</label>
                                 <div className="col-lg-2 col-md-2 col-sm-3 col-xs-12">
                                     <div className="input-group">
                                         <div className="form-line">
-                                            <input type="text" maxlength="2" name="informAge" id="txt_nmInfromAge" className="form-control" style={{z0}} onkeyup="onCheckInt(this);" />
+                                            <input type="text" maxLength="2" name="informAge" id="txt_nmInfromAge"
+                                                className="form-control" style={{ z0 }}
+                                            // onkeyup="onCheckInt(this);" 
+                                            />
                                         </div>
                                         <span className="input-group-addon" id="spn_nmInfromAge">
                                             <span>ปี</span>
@@ -204,7 +231,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAddress">บ้านเลขที่:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromAddress">บ้านเลขที่:</label>
                                 <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -220,7 +247,7 @@ class NoticeManageContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromBuilding">อาคาร/สถานที่:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromBuilding">อาคาร/สถานที่:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -230,7 +257,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromRoom">ห้อง:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromRoom">ห้อง:</label>
                                 <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -248,7 +275,7 @@ class NoticeManageContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromAlley">ตรอก/ซอย:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromAlley">ตรอก/ซอย:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -258,7 +285,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmInfromRoad">ถนน:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="txt_nmInfromRoad">ถนน:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -266,7 +293,7 @@ class NoticeManageContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">ตำบล/อำเภอ/จังหวัด:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" htmlFor="">ตำบล/อำเภอ/จังหวัด:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <select name="infromRegion" id="sle_nmInfromRegion" className="region form-control"></select>
@@ -288,7 +315,7 @@ class NoticeManageContainer extends Component {
                     </h2>
                         <ul className="header-dropdown m-r--5">
                             <li>
-                                <a href="javascript:void(0);" role="button" onclick="onToggleCardBody(this);">
+                                <a href="#" role="button" onClick={this.onToggleCardBody}>
                                     <i className="material-icons">arrow_drop_down</i>
                                 </a>
                             </li>
@@ -298,7 +325,7 @@ class NoticeManageContainer extends Component {
                         {/* <!-- <div className="form-group"> --> */}
                         <div className="form-horizontal">
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmLocation">สถานที่เกิดเหตุ:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">สถานที่เกิดเหตุ:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -308,7 +335,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsAddress">บ้านเลขที่:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">บ้านเลขที่:</label>
                                 <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -326,7 +353,7 @@ class NoticeManageContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsBuilding">อาคาร/สถานที่:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">อาคาร/สถานที่:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -336,7 +363,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsRoom">ห้อง:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">ห้อง:</label>
                                 <div className="col-lg-2 col-md-2 col-sm-3 col-xs-5">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -354,7 +381,7 @@ class NoticeManageContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsAlley">ตรอก/ซอย:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">ตรอก/ซอย:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -364,7 +391,7 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="txt_nmOpsRoad">ถนน:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">ถนน:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <div className="form-line">
@@ -372,7 +399,7 @@ class NoticeManageContainer extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">ตำบล/อำเภอ/จังหวัด:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
                                         <select name="opsRegion" id="sle_nmOpsRegion" className="region form-control required" required></select>
@@ -380,10 +407,11 @@ class NoticeManageContainer extends Component {
                                 </div>
                             </div>
                             <div className="row">
-                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12" for="">สินค้า:</label>
+                                <label className="control-label col-lg-2 col-md-2 col-sm-4 col-xs-12">สินค้า:</label>
                                 <div className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
                                     <div className="form-group form-float">
-                                        <select name="" id="sle_nmGoodName" className="form-control" style={{z0}} onchange="onChangGoodName(this);"></select>
+                                        <select name="" id="sle_nmGoodName" className="form-control" style={{ z0 }}></select>
+                                        {/* onchange="onChangGoodName(this);" */}
                                     </div>
                                 </div>
                             </div>
@@ -406,18 +434,19 @@ class NoticeManageContainer extends Component {
                 <div className="row">
                     <div className="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
                     <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                        <button type="button" className="btn bg-red form-control form-group" id="saveNotice" onclick="onSaveNotice('.notice-manage');">
+                        <button type="button" className="btn bg-red form-control form-group" id="saveNotice">
+                            {/* onClick="onSaveNotice('.notice-manage');" */}
                             <i className="material-icons">save</i>
                             บันทึก
                     </button>
-                        <button type="button" className="btn bg-red form-control form-group hidden" id="printNotice"
-                            onclick="">
+                        <button type="button" className="btn bg-red form-control form-group hidden" id="printNotice">
                             <i className="material-icons">print</i>
                             พิมพ์
                         </button>
                     </div>
                     <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                        <button type="button" className="btn bg-grey form-control form-group" id="cancelNotice" onclick="onCancelNotice();">
+                        <button type="button" className="btn bg-grey form-control form-group" id="cancelNotice">
+                            {/* onClick="onCancelNotice();" */}
                             <i className="material-icons">close</i>
                             ยกเลิก
                     </button>
@@ -425,7 +454,7 @@ class NoticeManageContainer extends Component {
                 </div>
 
                 {/* <!-- List staff modal --> */}
-                <div id="listStaffModal" className="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
+                <div id="listStaffModal" className="modal fade" tabIndex="-1" role="dialog" aria-labelledby="myLargeModalLabel" data-toggle="modal"
                     data-backdrop="static" data-keyboard="false">
                     <div className="modal-dialog modal-lg" role="document">
                         <div className="modal-content">
@@ -436,7 +465,7 @@ class NoticeManageContainer extends Component {
                                 </h2>
                                     <ul className="header-dropdown m-r--5">
                                         <li>
-                                            <a href="javascript:void(0);" data-dismiss="modal">
+                                            <a href="#" data-dismiss="modal">
                                                 <i className="material-icons">close</i>
                                             </a>
                                         </li>

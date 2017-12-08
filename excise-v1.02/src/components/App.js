@@ -1,29 +1,35 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import { Switch, Route } from 'react-router-dom'
 import { Content, Header } from './'
 
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/css/bootstrap-theme.css'
-import "../../node_modules/adminbsb-materialdesign/plugins/node-waves/waves.css";
+import 'bootstrap/dist/css/bootstrap.css';
+import "../../node_modules/adminbsb-materialdesign/plugins/node-waves/waves.css"
 import "../../node_modules/adminbsb-materialdesign/plugins/animate-css/animate.css";
 import '../../node_modules/adminbsb-materialdesign/css/style.css';
 import "../../node_modules/adminbsb-materialdesign/css/themes/all-themes.css";
-
-import $ from 'jquery';
-import 'bootstrap/dist/js/bootstrap.js';
-import "../../node_modules/adminbsb-materialdesign/plugins/node-waves/waves.js";
-import "../../node_modules/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js";
-import '../../node_modules/adminbsb-materialdesign/js/admin.js';
-
 import '../excise-custom-theme/css/App.css';
 
-class App extends Component {
-  render() {
+import $ from "jquery"
+window.jQuery = $;
+window.$ = $;
+global.jQuery = $;
+global.$ = $;
+require('bootstrap/dist/js/bootstrap.js');
+const Waves = require("../../node_modules/adminbsb-materialdesign/plugins/node-waves/waves.js");
+window.Waves = Waves;
+require("../../node_modules/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js");
+require("../../node_modules/adminbsb-materialdesign/js/admin.js");
+require("../../node_modules/adminbsb-materialdesign/plugins/jquery-inputmask/jquery.inputmask.bundle.js");
+// require("../excise-custom-theme/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js");
+// require("../excise-custom-theme/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js");
+// require("node-waves");
 
-    // import "../../node_modules/adminbsb-materialdesign/plugins/node-waves/waves.js";
-    // import "../../node_modules/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js";
-    // import '../../node_modules/adminbsb-materialdesign/js/admin.js';
+class App extends Component {
+  componentDidMount() {
+    
+  }
+
+  render() {
     return (
       <div>
         <section className="header">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
+import imgUser from '../excise-custom-theme/img/user.png'
 
 class SidebarContainer extends Component {
   state = {
@@ -20,7 +21,7 @@ class SidebarContainer extends Component {
           {/* <!-- User Info --> */}
           <div className="user-info bg-grey">
             <div className="image">
-              <img className="userImg" src="../excise-custom-theme/user.png" width="48" height="48" alt="User" />
+              <img className="userImg" src={imgUser} width="48" height="48" alt="User" />
             </div>
             <div className="info-container">
               <div className="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ผู้ดูแลระบบ</div>

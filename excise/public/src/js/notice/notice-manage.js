@@ -141,7 +141,7 @@ $(document).ready(function () {
     // --- end หน่วยงาน ---
 
     // ผู้แจ้งความ
-    $('#sle_nmInformType').selectize({
+    $('.select').selectize({
         create: false,
         sortField: 'value'
     });
@@ -156,6 +156,7 @@ $(document).ready(function () {
 
 
 function onSelectStaff() {
+    var item = 1;
     $('#tableStaffList tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
             item++

@@ -6,15 +6,29 @@ class NoticeListContainer extends Component {
 
     constructor() {
         super();
-        this.state = { isToggleOn: false };
-        this.onToggleAdvancedSearch = this.onToggleAdvancedSearch.bind(this);
+        this.state = {
+            isToggleAdvancedSearch: false,
+        };
     }
 
-    onToggleAdvancedSearch() {
+    componentDidMount() {
+        // $(this.refs.datepicker).datepicker({
+        //     format: 'dd/mm/yyyy',
+        //     todayHighlight: true,
+        //     todayBtn: true,
+        //     language: 'th',             //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
+        //     thaiyear: true              //Set เป็นปี พ.ศ.
+        // }).on('changeDate', dateChanged);
+    }
+
+    onToggleAdvancedSearch = (e) => {
+        e.preventDefault();
         this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
+            isToggleAdvancedSearch: !prevState.isToggleAdvancedSearch
         }));
     }
+
+
 
     render() {
         const minWidth_70 = { 'minWidth': '70px' };
@@ -50,14 +64,14 @@ class NoticeListContainer extends Component {
                             <div className="form-group">
                                 <div className="form-horizontal">
                                     <div className="row form-group">
-                                        <label className="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_nlSearch">ค้นหา:</label>
+                                        <label className="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" htmlFor="txt_nlSearch">ค้นหา:</label>
                                         <div className="col-lg-5 col-md-5 col-sm-11 col-xs-12">
                                             <div className="form-line">
                                                 <input type="text" className="form-control" id="txt_nlSearch" placeholder="สินค้า/เลขที่บันทึกแจ้งความ/ชื่อผู้แจ้ง/ชื่อผู้รับแจ้ง/หน่วยงาน/สถานที่เกิดเหตุ" />
                                             </div>
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-11 col-xs-12">
-                                            <a href="#" onclick={this.onToggleAdvancedSearch}>ค้นหาขั้นสูง</a>
+                                            <a href="#" onClick={this.onToggleAdvancedSearch}>ค้นหาขั้นสูง</a>
                                             {/* onclick={onToggleAdvancedSearch} */}
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">
@@ -85,9 +99,9 @@ class NoticeListContainer extends Component {
                                             <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                 <div className="demo-checkbox">
                                                     <input type="checkbox" name="isArrest" id="isArrest" className="filled-in" value="1" />
-                                                    <label for="isArrest" className="t-6px">อ้างอิงแล้ว</label>
-                                                    <input type="checkbox" name="isArrest" id="isNotArrest" className="filled-in" value="0" checked />
-                                                    <label for="isNotArrest" className="t-6px">ยังไม่อ้างอิง</label>
+                                                    <label htmlFor="isArrest" className="t-6px">อ้างอิงแล้ว</label>
+                                                    <input type="checkbox" name="isArrest" id="isNotArrest" className="filled-in" value="0" defaultChecked />
+                                                    <label htmlFor="isNotArrest" className="t-6px">ยังไม่อ้างอิง</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -98,9 +112,9 @@ class NoticeListContainer extends Component {
                                             <div className="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                 <div className="demo-checkbox">
                                                     <input type="checkbox" name="expireDate" id="expireDate" className="filled-in" value="0" />
-                                                    <label for="expireDate" className="t-6px" >หมดอายุ</label>
-                                                    <input type="checkbox" name="expireDate" id="notexpireDate" className="filled-in" value="1" checked />
-                                                    <label for="notexpireDate" className="t-6px">ยังไม่หมดอายุ</label>
+                                                    <label htmlFor="expireDate" className="t-6px" >หมดอายุ</label>
+                                                    <input type="checkbox" name="expireDate" id="notexpireDate" className="filled-in" value="1" defaultChecked />
+                                                    <label htmlFor="notexpireDate" className="t-6px">ยังไม่หมดอายุ</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -108,78 +122,86 @@ class NoticeListContainer extends Component {
                                 </div>
                             </div>
                             {
-                                this.state.isToggleOn ?
-                                (
-                                    <div className="form-group advanced-search">
-                                        <div className="form-horizontal">
-                                            <div className="row form-group">
-                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
-                                                <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12">
-                                                    <div className="input-group">
-                                                        <div className="form-line">
-                                                            <input type="text" className="form-control datepicker" id="txt_nlNoticeDateFrom" data-date-format="mm/dd/yyyy" />
-                                                            {/* onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')" */}
-                                                        </div>
-                                                        <label for="txt_nlNoticeDateFrom" className="input-group-addon">
-                                                            <i className="material-icons">event</i>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12  between-item">
-                                                    <div className="input-group">
-                                                        <label className="input-group-addon">
-                                                            ถึง:
-                                                </label>
-                                                        <div className="form-line">
-                                                            <input type="text" className="form-control datepicker" id="txt_nlNoticeDateTo" data-date-format="mm/dd/yyyy" />
-                                                            {/* onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')" */}
-                                                        </div>
-                                                        <label for="txt_nlNoticeDateTo" className="input-group-addon" id="spn_nmNoticeDateTo">
-                                                            <i className="material-icons">event</i>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 clear-m clear-p">
-                                                    <label className="control-label col-lg-4 col-md-3 col-sm-3 col-xs-12" for="txt_nlGroupName">สินค้า:</label>
-                                                    <div className="col-lg-8 col-md-3 col-sm-9 col-xs-12">
-                                                        <div className="form-line">
-                                                            <input type="text" className="form-control" id="txt_nlGroupName" />
+                                this.state.isToggleAdvancedSearch ?
+                                    (
+                                        <div className="form-group advanced-search">
+                                            <div className="form-horizontal">
+                                                <div className="row form-group">
+                                                    <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12">วันที่รับแจ้งความ:</label>
+                                                    <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                                                        <div className="input-group">
+                                                            <div className="form-line">
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control datepicker"
+                                                                    id="txt_nlNoticeDateFrom"
+                                                                    data-date-format="mm/dd/yyyy"
+                                                                    ref="datepicker" />
+                                                                {/* onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')" */}
+                                                            </div>
+                                                            <label htmlFor="txt_nlNoticeDateFrom" className="input-group-addon">
+                                                                <i className="material-icons">event</i>
+                                                            </label>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div className="col-lg-2 col-md-3 col-sm-4 col-xs-12  between-item">
+                                                        <div className="input-group">
+                                                            <label className="input-group-addon">ถึง:</label>
+                                                            <div className="form-line">
+                                                                <input
+                                                                    type="text"
+                                                                    className="form-control datepicker"
+                                                                    id="txt_nlNoticeDateTo"
+                                                                    data-date-format="mm/dd/yyyy"
+                                                                    ref="datepicker" />
+                                                                {/* onchange="checkBetweenDate('#txt_nlNoticeDateFrom', '#txt_nlNoticeDateTo')" */}
+                                                            </div>
+                                                            <label htmlFor="txt_nlNoticeDateTo" className="input-group-addon" id="spn_nmNoticeDateTo">
+                                                                <i className="material-icons">event</i>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                    <div className="col-lg-6 col-md-12 col-sm-12 col-xs-12 clear-m clear-p">
+                                                        <label className="control-label col-lg-4 col-md-3 col-sm-3 col-xs-12" htmlFor="txt_nlGroupName">สินค้า:</label>
+                                                        <div className="col-lg-8 col-md-3 col-sm-9 col-xs-12">
+                                                            <div className="form-line">
+                                                                <input type="text" className="form-control" id="txt_nlGroupName" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
-                                            </div>
-                                            <div className="row form-group">
-                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeCode">เลขที่บันทึกแจ้งความ:</label>
-                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                                    <div className="form-line">
-                                                        <input type="text" className="form-control" id="txt_nlNoticeCode" />
+                                                </div>
+                                                <div className="row form-group">
+                                                    <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" htmlFor="txt_nlNoticeCode">เลขที่บันทึกแจ้งความ:</label>
+                                                    <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control" id="txt_nlNoticeCode" />
+                                                        </div>
+                                                    </div>
+                                                    <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" htmlFor="txt_nlNoticeInform">ชื่อ(นามแฝง) ผู้แจ้ง:</label>
+                                                    <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control" id="txt_nlNoticeInform" />
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeInform">ชื่อ(นามแฝง) ผู้แจ้ง:</label>
-                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                                    <div className="form-line">
-                                                        <input type="text" className="form-control" id="txt_nlNoticeInform" />
+                                                <div className="row form-group">
+                                                    <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" htmlFor="txt_nlNoticeDepartmentNameRecieve">หน่วยงาน:</label>
+                                                    <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control" id="txt_nlNoticeDepartmentNameRecieve" defaultValue="Admin login" />
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div className="row form-group">
-                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlNoticeDepartmentNameRecieve">หน่วยงาน:</label>
-                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                                    <div className="form-line">
-                                                        <input type="text" className="form-control" id="txt_nlNoticeDepartmentNameRecieve" value="Admin login" />
-                                                    </div>
-                                                </div>
-                                                <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" for="txt_nlStaffNameReceive">ชื่อผู้รับแจ้ง:</label>
-                                                <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
-                                                    <div className="form-line">
-                                                        <input type="text" className="form-control" id="txt_nlStaffNameReceive" />
+                                                    <label className="control-label col-lg-2 col-md-3 col-sm-3 col-xs-12" htmlFor="txt_nlStaffNameReceive">ชื่อผู้รับแจ้ง:</label>
+                                                    <div className="col-lg-4 col-md-3 col-sm-9 col-xs-12">
+                                                        <div className="form-line">
+                                                            <input type="text" className="form-control" id="txt_nlStaffNameReceive" />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                ) :  ('')
+                                    ) : ('')
                             }
                         </div>
                     </div>

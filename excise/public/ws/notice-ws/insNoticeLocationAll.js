@@ -30,7 +30,7 @@ function insNoticeLocationAll(arr, callback) {
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
 
-    var url = 'http://103.233.193.62:8888/TLEXCWeb/NoticeWS?wsdl'
+    var url = 'http://103.233.193.62:8080/TLEXCWeb/NoticeWS?wsdl'
     var settings = {
         "async": false,
         "crossDomain": true,

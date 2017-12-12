@@ -1,17 +1,4 @@
-function onDelRecord(e) {
-    if (confirm('Msg ยืนยันการทำรายการหรือไม่?')) {
-        alert(e)
-    }
-}
 
-function onClearFormSearch() {
-    $('input[type=text]').val('');
-    $('input[type=date]').val('');
-}
-
-function onToggleAdvancedSearch() {
-    $('.advanced-search').slideToggle();
-}
 
 $(document).ready(function () {
     var loadMultifile = {
@@ -51,48 +38,63 @@ $(document).ready(function () {
         sortField: 'text'
     });
 
-    var tr = '';
-    for (var i = 1; i < 87; i++) {
-        tr += '<tr>'
-        tr += '<td>' + i + '</td>'
-        tr += '<td><a href="javascript:void(0);">Notice code</a></td>'
-        tr += '<td>สท.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>dd/mm/yyyy</td>'
-        tr += '<td>dd/mm/yyyy</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>.....</td>'
-        tr += '<td>'
-        tr += '<a href="notice-manage.html">'
-        tr += '<i class="material-icons col-teal">print</i>'
-        tr += '</a>'
-        tr += '</td>'
-        tr += '<td>'
-        tr += '<a href="arrest-manage.html">'
-        tr += '<i class="material-icons col-teal">mode_edit</i>'
-        tr += '</a>'
-        tr += '</td>'
-        tr += '<td>'
-        tr += '<a href="javascript:void(0)" onclick="onDelRecord(123)">'
-        tr += '<i class="material-icons col-pink">delete</i>'
-        tr += '</a>'
-        tr += '</td>'
-        tr += '</tr>'
-    }
-    $('#table_ArrestList tbody').html(tr)
-    $('#table_ArrestList tbody').pageMe({
-        pagerSelector: '#notice_pagination',
-        pageInfo: '#notice_pageinfo',
-        showPrevNext: true,
-        hidePageNumbers: false,
-        perPage: 5
-    });
+    // getArrestNoticieByKeyword('LS411016000002', function (jsonData) {
+    //     var tr = '';
+    //     $(jsonData).find('detail').each(function (i, e) {
+    //         tr += '<tr>'
+    //         tr += '<td>' + (i + 1) + '</td>'
+    //         tr += '<td><a href="javascript:void(0);">Notice code</a></td>'
+    //         tr += '<td>สท.....</td>'
+    //         tr += '<td>.....</td>'
+    //         tr += '<td>.....</td>'
+    //         tr += '<td>dd/mm/yyyy</td>'
+    //         tr += '<td>dd/mm/yyyy</td>'
+    //         tr += '<td>.....</td>'
+    //         tr += '<td>.....</td>'
+    //         tr += '<td>'
+    //         tr += '<a href="notice-manage.html">'
+    //         tr += '<i class="material-icons col-teal">print</i>'
+    //         tr += '</a>'
+    //         tr += '</td>'
+    //         tr += '<td>'
+    //         tr += '<a href="arrest-manage.html">'
+    //         tr += '<i class="material-icons col-teal">mode_edit</i>'
+    //         tr += '</a>'
+    //         tr += '</td>'
+    //         tr += '<td>'
+    //         tr += '<a href="javascript:void(0)" onclick="onDelRecord(123)">'
+    //         tr += '<i class="material-icons col-pink">delete</i>'
+    //         tr += '</a>'
+    //         tr += '</td>'
+    //         tr += '</tr>'
+    //     })
 
-    // dataTables pagination style
-    $('.paging_listbox').find('select').addClass('paging_listbox_select');
+    //     $('#table_ArrestList tbody').html(tr)
+    //     $('#table_ArrestList tbody').pageMe({
+    //         pagerSelector: '#notice_pagination',
+    //         pageInfo: '#notice_pageinfo',
+    //         showPrevNext: true,
+    //         hidePageNumbers: false,
+    //         perPage: 5
+    //     });
+    // })
 });
 
 $('#btn_nlAddArrest').on('click', function () {
     window.location.href = 'arrest-manage.html'
 })
+
+function onDelRecord(e) {
+    if (confirm('Msg ยืนยันการทำรายการหรือไม่?')) {
+        alert(e)
+    }
+}
+
+function onClearFormSearch() {
+    $('input[type=text]').val('');
+    $('input[type=date]').val('');
+}
+
+function onToggleAdvancedSearch() {
+    $('.advanced-search').slideToggle();
+}

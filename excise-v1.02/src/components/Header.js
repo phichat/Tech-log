@@ -1,6 +1,6 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { Link, withRouter } from 'react-router-dom'
+import logo from '../excise-custom-theme/img/logo-excise.png'
 
 
 const Header = ({ history: { push } }) => {
@@ -15,7 +15,7 @@ const Header = ({ history: { push } }) => {
             <div id="navheader" className="navbar-header">
                 <a href="javascript:void(0);" className="bars"></a>
                 <Link to={"Home"} className="navbar-brand index">
-                    <img src="../excise-custom-theme/img/logo-excise.png" alt="excise" className="logo" />
+                    <img src={logo} alt="excise" className="logo" />
                     <span className="main">
                         กรมสรรพสามิต
                     </span>

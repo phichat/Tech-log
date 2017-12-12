@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import {Link, NavLink} from 'react-router-dom';
-import '../../excise-custom-theme/js/main.js';
 
 class ArrestManageContainer extends Component {
     state = {}

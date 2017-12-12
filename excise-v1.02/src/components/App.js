@@ -14,13 +14,16 @@ window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
 global.$ = $;
+import "../excise-custom-theme/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js";
+import "../excise-custom-theme/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js";
+
 require('bootstrap/dist/js/bootstrap.js');
 const Waves = require("../../node_modules/adminbsb-materialdesign/plugins/node-waves/waves.js");
 window.Waves = Waves;
 require("../../node_modules/adminbsb-materialdesign/plugins/jquery-slimscroll/jquery.slimscroll.js");
 require("../../node_modules/adminbsb-materialdesign/js/admin.js");
 require("../../node_modules/adminbsb-materialdesign/plugins/jquery-inputmask/jquery.inputmask.bundle.js");
-// require("../excise-custom-theme/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js");
+require("../excise-custom-theme/bootstrap-datepicker-custom/dist/js/bootstrap-datepicker-custom.js");
 // require("../excise-custom-theme/bootstrap-datepicker-custom/dist/locales/bootstrap-datepicker.th.min.js");
 // require("node-waves");
 

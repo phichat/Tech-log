@@ -9,7 +9,7 @@
     JavaScriptThai
     ����Ť�Ҥ��������Ѻ��� Convert Year
     */
-    var yearOffSet;
+    var yearOffSet ;
 
     if (typeof define === "function" && define.amd) {
         define(["jquery"], factory);

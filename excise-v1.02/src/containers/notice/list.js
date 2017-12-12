@@ -15,6 +15,7 @@ class NoticeListContainer extends Component {
     }
 
     componentDidMount() {
+
         // $(this.refs.datepicker).datepicker({
         //     format: 'dd/mm/yyyy',
         //     todayHighlight: true,

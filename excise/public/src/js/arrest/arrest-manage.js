@@ -20,6 +20,26 @@ $(document).ready(function () {
             })
     })
 
+    // พื้นที่
+    getOfficeByKeyword('', function (xml) {
+        var option = [];
+        $(xml).find('officeDTOList')
+            .each(function (i, e) {
+                option.push({
+                    "code": $(e).find('officeCode').text(),
+                    "name": $(e).find('officeShortName').text()
+                })
+            })
+        $('#sle_lawsuitArea').selectize({
+            valueField: 'code',
+            labelField: 'name',
+            searchField: 'name',
+            create: false,
+            options: option
+        });
+    });
+    // --- end พื้นที่ ---
+
     // สินค้า
     var sleDutyGroup = '<option value="" selected></option>';
     getDutygroupByKeyword('', function (xml) {
@@ -113,7 +133,11 @@ $(document).ready(function () {
     $.getScript('../../lib/excise-custom/js/sort-table.js');
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
-    $('select.region').html(sleRegion);
+    $('select.region').html(sleRegion)
+        .selectize({
+            create: false,
+            sortField: 'value'
+        });;
 
     //==========================
 
@@ -469,6 +493,7 @@ function onSelectNotice(table) {
 
 // List staff Modal // รายชื่อพนักงาน
 function onSelectStaff() {
+    var item = 0;
     $('#tableStaffList tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
             item++
@@ -479,15 +504,17 @@ function onSelectStaff() {
         alert('สามารถเลือกได้เพียง 1 คนเท่านั้น')
         return false;
     }
-    
-    $('#tableStaffList tbody tr').each(function (i, el) {
-        if ($(el).find('input[type=checkbox]').is(':checked')) {
-            $('#txt_Staff').val($(el).find('td.staff-name').html())
-            $('#txt_Position').val($(el).find('td.staff-position').html())
-            $('#txt_Department').val($(el).find('td.staff-department').html())
-            return false;
-        }
-    })
+
+    if (item == 1) {
+        $('#tableStaffList tbody tr').each(function (i, el) {
+            if ($(el).find('input[type=checkbox]').is(':checked')) {
+                $('#txt_Staff').val($(el).find('td.staff-name').html())
+                $('#txt_Position').val($(el).find('td.staff-position').html())
+                $('#txt_Department').val($(el).find('td.staff-department').html())
+                return false;
+            }
+        })
+    }
 
     $('#tableStaffList').find('input[type=checkbox]').prop('checked', false);
 }

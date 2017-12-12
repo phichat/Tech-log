@@ -1,3 +1,18 @@
-function getExhibitByKeyword(){
-   var url = 'http://103.233.193.62/ManageExhibit/getExhibitByKeyword';
+function getExhibitByKeyword(key, callback) {
+    var url = 'http://103.233.193.62/ManageExhibit/getExhibitByKeyword';
+    var settings = {
+        "async": false,
+        "crossDomain": true,
+        "url": url + "?Keyword=" + key,
+        "method": "POST",
+        "headers": {
+            "content-type": "application/json",
+            "cache-control": "no-cache",
+            'X-HTTP-Method-Override': "GET"
+        }
+    }
+
+    $.ajax(settings).done(function (response) {
+        callback(response);
+    });
 }

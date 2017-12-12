@@ -43,7 +43,6 @@ $(document).ready(function () {
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 
     //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
-    var sleRegion = '<option value="" selected></option>'
     getSubdistrictByKeyword('', function callback(xml) {
         var subdistrict = []
         $(xml).find('subDistrictDTOList')

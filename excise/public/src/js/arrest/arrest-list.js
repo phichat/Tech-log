@@ -33,6 +33,31 @@ $(document).ready(function () {
 
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 
+    //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
+    var sleRegion = '<option value="" selected></option>'
+    getSubdistrictByKeyword('', function callback(xml) {
+        var subdistrict = []
+        $(xml).find('subDistrictDTOList')
+            .each(function (i, e) {
+                subdistrict.push({
+                    subDistrictCode: $(e).find('subDistrictCode').text(),
+                    region: $(e).find('subDistrictNameTh').text() + '/' +
+                        $(e).find('districtNameTh').text() + '/' +
+                        $(e).find('provinceNameTh').text()
+                })
+            })
+        $('select.region')
+            .selectize({
+                valueField: 'subDistrictCode',
+                labelField: 'region',
+                searchField: 'region',
+                create: false,
+                sortField: 'subDistrictCode',
+                options: subdistrict
+            });
+    });
+    // --- end ตำบล/อำเภอ/จังหวัด ---
+
     $('select').not('.paging_listbox_select').selectize({
         create: true,
         sortField: 'text'

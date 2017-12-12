@@ -1,6 +1,6 @@
 
 function getSubdistrictByKeyword(keyword, callback) {
-    var url = 'http://103.233.193.62:8888/TLEXCWeb/CommonWS?wsdl'
+    var url = 'http://103.233.193.62:8080/TLEXCWeb/CommonWS?wsdl'
     var xmlData = '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
     xmlData += '<soapenv:Header/>'
     xmlData += '<soapenv:Body>'

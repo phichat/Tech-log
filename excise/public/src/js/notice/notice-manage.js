@@ -98,7 +98,7 @@ $(document).ready(function () {
     });
     // --- end สินค้า ---
 
-    // เขียนที่หน่วยงาน
+    // เขียนที่
     getOfficeByKeyword('', function (xml) {
         var option = [];
         $(xml).find('officeDTOList')
@@ -116,7 +116,7 @@ $(document).ready(function () {
             options: option
         });
     });
-    // --- end เขียนที่หน่วยงาน ---
+    // --- end เขียนที่ ---
 
     // หน่วยงาน
     getDepartmentByCon('', function (xml) {
@@ -141,7 +141,7 @@ $(document).ready(function () {
     // --- end หน่วยงาน ---
 
     // ผู้แจ้งความ
-    $('.select').selectize({
+    $('#sle_nmInformType').selectize({
         create: false,
         sortField: 'value'
     });
@@ -149,6 +149,7 @@ $(document).ready(function () {
 
     // Mode edit
     if (modeUrl !== undefined && modeUrl == 'edit') {
+        toggleButtonPrint();
         loadFormEdit(noticeCodeUrl);
     }
     // --- end Mode edit ---
@@ -156,7 +157,7 @@ $(document).ready(function () {
 
 
 function onSelectStaff() {
-    var item = 1;
+    var item = 0;
     $('#tableStaffList tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
             item++
@@ -168,22 +169,25 @@ function onSelectStaff() {
         return false;
     }
 
-    $('#tableStaffList tbody tr').each(function (i, el) {
-        if ($(el).find('input[type=checkbox]').is(':checked')) {
+    if (item == 1) {
+        $('#tableStaffList tbody tr').each(function (i, el) {
+            if ($(el).find('input[type=checkbox]').is(':checked')) {
 
-            var nmStaff = $('.notice-manage').find('#sle_nmStaff').selectize();
-            var nmStaffZe = nmStaff[0].selectize
-            nmStaffZe.setValue($(el).find('td.staff-code').html(), true)
+                var nmStaff = $('.notice-manage').find('#sle_nmStaff').selectize();
+                var nmStaffZe = nmStaff[0].selectize
+                nmStaffZe.setValue($(el).find('td.staff-code').html(), true)
 
-            $('#txt_nmPosition').val($(el).find('td.staff-position').html())
-            $('#txt_nmDepartment').val($(el).find('td.staff-department').html())
+                $('#txt_nmPosition').val($(el).find('td.staff-position').html())
+                $('#txt_nmDepartment').val($(el).find('td.staff-department').html())
 
-            $('#tableStaffList').find('input[type=checkbox]').prop('checked', false);
+                $('#tableStaffList').find('input[type=checkbox]').prop('checked', false);
 
-            $('#listStaffModal').modal('hide');
-            return false;
-        }
-    })
+                $('#listStaffModal').modal('hide');
+                return false;
+            }
+        })
+    }
+
 }
 
 function onChangeStaff(e) {
@@ -305,8 +309,9 @@ function loadFormEdit(noticeCodeUrl) {
 
                     // หน่วยงาน
                     var department = $('#sle_nmDepartmentName').selectize(),
-                        departmentZe = department[0].selectize
-                    departmentZe.setValue($(e).find('departmentCodeReceive').text(), true)
+                        departmentZe = department[0].selectize,
+                        departmentCodeReceive = $(e).find('departmentCodeReceive').text().trim()
+                    departmentZe.setValue(departmentCodeReceive, true)
                     // --- end หน่วยงาน ---
 
                     // ผู้แจ้งความ 
@@ -373,8 +378,8 @@ function loadFormEdit(noticeCodeUrl) {
     })
     // --- end locationByCon ---
 
-    // getNoticeProductlistByCon
-    getNoticeProductlistByCon(noticeCodeUrl, function (xml) {
+    // getNoticeProductlist
+    getNoticeProductlist(noticeCodeUrl, function (xml) {
         var productList = '',
             li = '',
             liCheck = ''
@@ -392,7 +397,7 @@ function loadFormEdit(noticeCodeUrl) {
         $('#ul_nmGoodNameCheck').html(liCheck)
 
     })
-    // --- end getNoticeProductlistByCon ---
+    // --- end getNoticeProductlist ---
 }
 // ====================== End Load Data Edit ======================
 
@@ -633,8 +638,8 @@ function saveNotice(e, obj) {
         history.pushState(null, "", "notice-manage.html?mode=edit&notice-code=" + noticeCode);
         // Load data edit
         loadFormEdit(noticeCode);
-        // --- end Load data edit ---
         toggleButtonPrint();
+        // --- end Load data edit ---
     } else {
         alert(
             'Notice: ' + noticeAllCode + '\r\n' +
@@ -647,7 +652,6 @@ function saveNotice(e, obj) {
 
 function toggleButtonPrint() {
     $('#printNotice').removeClass('hidden');
-    $('#saveNotice').addClass('hidden');
 }
 
 function updateNotice(e, obj) {
@@ -712,7 +716,6 @@ function updateNotice(e, obj) {
         (productListDelCode == '' || productListDelCode == 200) &&
         (productListInsCode == '' || productListInsCode == 200)) {
         alert('บันทึกสำเร็จ');
-        toggleButtonPrint();
     } else {
         alert(
             'Notice: ' + noticeAllCode + '\r\n' +

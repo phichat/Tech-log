@@ -1,3 +1,5 @@
-function getRaceByKeyword(){
-    var url = 'http://103.233.193.62/GetRace/getRaceByKeyword'
-}
+// Error : code 500
+
+// function getRaceByKeyword(){
+//     var url = 'http://103.233.193.62/GetRace/getRaceByKeyword'
+// }

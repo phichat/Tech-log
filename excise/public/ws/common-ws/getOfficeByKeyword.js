@@ -12,7 +12,7 @@ function getOfficeByKeyword(keyword, callback){
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
 
-    var url = 'http://103.233.193.62:8888/TLEXCWeb/CommonWS?wsdl'
+    var url = 'http://103.233.193.62:8080/TLEXCWeb/CommonWS?wsdl'
     var settings = {
         "async": false,
         "crossDomain": true,

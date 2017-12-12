@@ -1,39 +1,6 @@
 
 function insNoticeInformAll(arr, callback) {
     var xmlData = ''
-    // xmlData += '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
-    // xmlData += '<soapenv:Header/>'
-    // xmlData += '<soapenv:Body>'
-    // xmlData += '<inf:insNoticeInformAll'
-    // xmlData += '<arg0>'
-    // xmlData += '<inform>'
-    // xmlData += '<address>PK House</address>'
-    // xmlData += '<age></age>'
-    // xmlData += '<alley></alley>'
-    // xmlData += '<building></building>'
-    // xmlData += '<createdBy>Admin</createdBy>'
-    // xmlData += '<firstName>บุญมาก</firstName>'
-    // xmlData += '<floor></floor>'
-    // xmlData += '<genderType>1</genderType>'
-    // xmlData += '<inFormID></inFormID>'
-    // xmlData += '<lastName>เจริญชัย</lastName>'
-    // xmlData += '<noticeCode>LS0501016000006</noticeCode>'
-    // xmlData += '<postCode></postCode>'
-    // xmlData += '<road></road>'
-    // xmlData += '<room></room>'
-    // xmlData += '<subdistrictCode>940601</subdistrictCode>'
-    // xmlData += '<titleCode>105 </titleCode>'
-    // xmlData += '<titleName>ว่าที่ ร.ต.</titleName>'
-    // xmlData += '<village></village>'
-    // xmlData += '<iDCard></iDCard>'
-    // xmlData += '</inform>'
-    // xmlData += '</arg0>'
-    // xmlData += '</inf:insNoticeInformAll>'
-    // xmlData += '</soapenv:Body>'
-    // xmlData += '</soapenv:Envelope>'
-
-
-
     xmlData += '<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:inf="http://inf.soap.tlexc.custom.go.th/">'
     xmlData += '<soapenv:Header/>'
     xmlData += '<soapenv:Body>'
@@ -66,7 +33,7 @@ function insNoticeInformAll(arr, callback) {
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
 debugger
-    var url = 'http://103.233.193.62:8888/TLEXCWeb/NoticeWS?wsdl'
+    var url = 'http://103.233.193.62:8080/TLEXCWeb/NoticeWS?wsdl'
     var settings = {
         "async": false,
         "crossDomain": true,

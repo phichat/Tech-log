@@ -13,7 +13,7 @@ $(document).ready(function () {
 function onkeypressSearchNoticeList(e) {
     var x = event.which || event.keyCode;
     if (x === 13) {
-        searchFormArres(e);
+        searchNotice(e);
     }
 }
 
@@ -28,7 +28,6 @@ function searchNotice(e) {
     }
 
     getArrestNoticieByKeyword($(e).val(), function (jsonData) {
-        debugger
         var tr = '',
             j = 0;
         for (i = 0; i < jsonData.detail.length; i++) {

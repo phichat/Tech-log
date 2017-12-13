@@ -17,31 +17,28 @@ function onCancelSelectArrestTeam() {
     $('#tableArrestTeamList').find('input[type=checkbox]').prop('checked', false);
 }
 
-function onkeypressSearchFormArrest(e){
-    debugger
+function onkeypressSearchFormArrestTeam(e) {
     var x = event.which || event.keyCode;
     if (x === 13) {
-        searchFormArres(e);
+        onSearchFormArresTeam(e);
     }
 }
 
-function onSearchFormArres(e) {
-    searchFormArres(e);
-}
 
-function searchFormArres(e) {
-    if ($(e).val() !== ''){
+function onSearchFormArresTeam(e) {
+    var keyWord = $(e).val();
+    if (keyWord == '') {
         return false;
     }
-    getStaffByKeyword($(e).val(), function callback(xml) {
+    getStaffByKeyword(keyWord, function callback(xml) {
         var tr = ''
         $(xml).find('staffDTOList')
             .each(function (i, e) {
-                var no = (++i);
-                var staffName = $(e).find('firstName').text() + ' ' + $(e).find('lastName').text();
-                var position = $(e).find('positionName').text();
-                var orgName = $(e).find('orgName').text();
-                var pertype = $(e).find('perType').text()
+                var no = (++i),
+                    staffName = $(e).find('firstName').text() + ' ' + $(e).find('lastName').text(),
+                    position = $(e).find('positionName').text(),
+                    orgName = $(e).find('orgName').text(),
+                    pertype = $(e).find('perType').text()
 
                 tr += '<tr>'
                 tr += '<td><input type="checkbox" id="arrestTeamCheckboxTd' + i + '" name="arrestTeamCheckboxTd' + i + '" class="filled-in";">';
@@ -55,9 +52,7 @@ function searchFormArres(e) {
                 tr += '</tr>'
             })
 
-        $('#tableArrestTeamList tbody').html(tr)
-
-        $('#tableArrestTeamList tbody').pageMe({
+        $('#tableArrestTeamList tbody').html(tr).pageMe({
             pagerSelector: '#arrestTeamList_pagination',
             pageInfo: '#arrestTeamList_pageinfo',
             showPrevNext: true,

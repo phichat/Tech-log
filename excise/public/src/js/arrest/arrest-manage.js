@@ -296,8 +296,8 @@ function onSelectIndictment(table) {
     $(table).find('tbody tr').each(function (i, e) {
         var matching = false;
         var s_caseLawId = $(e).find('td.caselawid').html();
-        var s_penalityCaseLawId = $(e).find('td.penality-caselawid').html();
-        var s_buildBaseName = $(e).find('td.built-base-name').html();
+        var s_penaltyCaseLawId = $(e).find('td.penalty-caselawid').html();
+        var s_penaltyDesc = $(e).find('td.penalty-desc').html();
 
         $('#tableIndictmentByCon tbody tr').each(function (j, el) {
             // ตรวจสอบข้อมูลจากตารางปลายทาง และต้นทางว่ามีข้อมูลที่ซ้ำกันหรือไม่
@@ -316,14 +316,14 @@ function onSelectIndictment(table) {
             tr += '<label for="indictmentByConCheckboxTd' + index + '"></label></td>'
             tr += '<td>' + index + '</td>'
             tr += '<td class="caselawid">' + s_caseLawId + '</td>'
-            tr += '<td class="penality-caselawid">' + s_penalityCaseLawId + '</td>'
-            tr += '<td class="built-base-name">' + s_buildBaseName + '</td>'
+            tr += '<td class="penalty-caselawid">' + s_penaltyCaseLawId + '</td>'
+            tr += '<td class="penalty-desc">' + s_penaltyDesc + '</td>'
             tr += '</tr>'
             $('#tableIndictmentByCon tbody').append(tr);
         }
 
     })
-    $(table).find('input[type=checkbox]').prop('checked', false);
+    // $(table).find('input[type=checkbox]').prop('checked', false);
 }
 //==========================
 
@@ -502,8 +502,8 @@ function onSelectNotice(table) {
             if ($(el).find('input[type=checkbox]').is(':checked')) {
                 noticeCode = $(el).find('td.notice-code').html()
                 $('#txt_noticeCode').val(noticeCode)
-                $('#txt_noticeName').val($(el).find('td.notice-name').text().trim())  
-                return false;              
+                $('#txt_noticeName').val($(el).find('td.notice-name').text().trim())
+                return false;
             }
         })
 
@@ -553,6 +553,8 @@ function onSelectNotice(table) {
                     })
             })
         }
+
+        $('.modal').modal('hide');
     }
 
 
@@ -570,7 +572,6 @@ function onSelectStaff() {
 
     if (item > 1) {
         alert('สามารถเลือกได้เพียง 1 คนเท่านั้น')
-        return false;
     }
 
     if (item == 1) {
@@ -582,6 +583,8 @@ function onSelectStaff() {
                 return false;
             }
         })
+
+        $('.modal').modal('hide');
     }
 
     $('#tableStaffList').find('input[type=checkbox]').prop('checked', false);

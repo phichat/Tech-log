@@ -118,7 +118,7 @@ $(document).ready(function () {
     // --- end เขียนที่ ---
 
     // หน่วยงาน
-    getDepartmentByCon('', function (xml) {
+    getDepartmentByKeyword('', function (xml) {
         var department = []
         $(xml).find('departmentDTOList')
             .each(function (i, e) {
@@ -133,7 +133,7 @@ $(document).ready(function () {
             labelField: 'deptName',
             searchField: 'deptName',
             create: false,
-            sortField: 'text',
+            sortField: 'deptName',
             options: department
         })
     })
@@ -274,7 +274,6 @@ function loadFormEdit(noticeCodeUrl) {
             $(xml).find('noticeInfom')
                 .each(function (i, e) {
                     $('#txt_nmNoticeCode').val($(e).find('noticecode').text());
-                    parseDateAD($(e).find('noticedate').text())
                     $('#txt_nmNoticeDate').datepicker('update', parseDateAD($(e).find('noticedate').text()));
                     $('#txt_nmDueDate').val($(e).find('noticeduedate').text());
                     $('#txt_nmNoticeTime').val($(e).find('noticetime').text());
@@ -377,8 +376,8 @@ function loadFormEdit(noticeCodeUrl) {
     })
     // --- end locationByCon ---
 
-    // getNoticeProductlist
-    getNoticeProductlist(noticeCodeUrl, function (xml) {
+    // getNoticeProductlistByCon
+    getNoticeProductlistByCon(noticeCodeUrl, function (xml) {
         var productList = '',
             li = '',
             liCheck = ''
@@ -396,7 +395,7 @@ function loadFormEdit(noticeCodeUrl) {
         $('#ul_nmGoodNameCheck').html(liCheck)
 
     })
-    // --- end getNoticeProductlist ---
+    // --- end getNoticeProductlistByCon ---
 }
 // ====================== End Load Data Edit ======================
 
@@ -660,7 +659,6 @@ function updateNotice(e, obj) {
         locationAllCode = '',
         productListInsCode = '',
         productListDelCode = ''
-
     // NoticeNotice
     updNoticeNoticeByCon(obj.notice, function (xml) {
         $(xml).find('responseHeader')

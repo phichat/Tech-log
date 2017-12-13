@@ -9,16 +9,34 @@ $(document).ready(function () {
     getSubdistrictByKeyword('', function callback(xml) {
         $(xml).find('subDistrictDTOList')
             .each(function (i, e) {
-                sleRegion += '<option value="';
-                sleRegion += $(e).find('subDistrictNameTh').text();
-                sleRegion += $(e).find('districtNameTh').text();
-                sleRegion += $(e).find('provinceNameTh').text();
-                sleRegion += '">'
+                sleRegion += '<option value="' + $(e).find('subDistrictCode').text() + '">'
                 sleRegion += $(e).find('subDistrictNameTh').text() + '/';
                 sleRegion += $(e).find('districtNameTh').text() + '/';
                 sleRegion += $(e).find('provinceNameTh').text() + '</option>';
             })
     })
+
+    // เขียนที่
+    getDepartmentByKeyword('', function (xml) {
+        var department = []
+        $(xml).find('departmentDTOList')
+            .each(function (i, e) {
+                department.push({
+                    deptCode: $(e).find('departmentCode').text(),
+                    deptName: $(e).find('departmentNameTh').text()
+                })
+            })
+
+        $('#sle_lawsuitLocation').selectize({
+            valueField: 'deptCode',
+            labelField: 'deptName',
+            searchField: 'deptName',
+            create: false,
+            sortField: 'deptName',
+            options: department
+        })
+    })
+    // --- end เขียนที่ ---
 
     // พื้นที่
     getOfficeByKeyword('', function (xml) {
@@ -88,10 +106,43 @@ $(document).ready(function () {
                     $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
                     $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
                     break;
+
                 case 'section.sidebar':
                     srcPathUri($('.ml-menu'));
                     $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
                     break;
+
+                case '#exhibitModal .card .body':
+                    $.getScript('../js/exhibit/exhibit-popup.js');
+                    break;
+
+                case '#lawbreakerModal .card .body':
+                    $.getScript('../js/lawbreaker/lawbreaker-list-popup.js');
+                    getTitleByKeyword('', function (json) {
+                        var option = '<option selected disabled></option>'
+                        for (i = 0; i < json.detail.length; i++) {
+                            option += '<option value="' + json.detail[i].TitleCode + '">'
+                            option += json.detail[i].TitleShortName + '</option>'
+                        }
+                        $('select#sle_titleName').html(option).selectize({
+                            create: false,
+                            sortField: 'text'
+                        });
+                    });
+
+                    getNationalityByKeyword('', function (json) {
+                        var option = '<option selected disabled></option>'
+                        for (i = 0; i < json.detail.length; i++) {
+                            option += '<option value="' + json.detail[i].NationalityCode + '">'
+                            option += json.detail[i].NationalityNameTh + '</option>'
+                        }
+                        $('select#sle_lawNationallity').html(option).selectize({
+                            create: false,
+                            sortField: 'text'
+                        });
+                    })
+                    break;
+
             }
 
             $('input.datepicker').datepicker({
@@ -99,7 +150,7 @@ $(document).ready(function () {
                 todayBtn: true,
                 language: 'th',
                 thaiyear: true
-            });
+            }).on('changeDate', dateChanged);
 
             if (modeUrl == undefined || modeUrl == '') {
                 $("input.datepicker").datepicker("setDate", "0")
@@ -109,7 +160,7 @@ $(document).ready(function () {
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
-                create: true,
+                create: false,
                 sortField: 'value'
             });
 
@@ -125,35 +176,32 @@ $(document).ready(function () {
     })
 
     // โหลด Script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
-    $.getScript('../js/exhibit/exhibit-popup.js');
-    $.getScript('../js/lawbreaker/lawbreaker-list-popup.js');
-
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
-    $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
-    $.getScript('../../lib/excise-custom/js/sort-table.js');
+    // $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
+    // $.getScript('../../lib/excise-custom/js/sort-table.js');
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion)
         .selectize({
             create: false,
             sortField: 'value'
-        });;
-
+        });
     //==========================
+
 
 
     // Indictment
     var tr = '';
-    for (var i = 1; i < 4; i++) {
-        tr += '<tr>'
-        tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + i + '" name="indictmentByConCheckboxTd' + i + '" class="filled-in";">';
-        tr += '<label for="indictmentByConCheckboxTd' + i + '"></label></td>'
-        tr += '<td>' + i + '</td>'
-        tr += '<td class="caselawid">' + i + '</td>'
-        tr += '<td class="penality-caselawid">.....</td>'
-        tr += '<td class="built-base-name">.....</td>'
-        tr += '</tr>'
-    }
+    // for (var i = 1; i < 4; i++) {
+    //     tr += '<tr>'
+    //     tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + i + '" name="indictmentByConCheckboxTd' + i + '" class="filled-in";">';
+    //     tr += '<label for="indictmentByConCheckboxTd' + i + '"></label></td>'
+    //     tr += '<td>' + i + '</td>'
+    //     tr += '<td class="caselawid">' + i + '</td>'
+    //     tr += '<td class="penality-caselawid">.....</td>'
+    //     tr += '<td class="built-base-name">.....</td>'
+    //     tr += '</tr>'
+    // }
 
     $('#tableIndictmentByCon tbody').html(tr);
     //==========================
@@ -161,19 +209,19 @@ $(document).ready(function () {
 
     // Exhibit บัญชีสิ่งของ
     tr = '';
-    for (var i = 1; i < 4; i++) {
-        tr += '<tr>'
-        tr += '<td><input type="checkbox" id="exhibitCheckboxTd' + i + '" name="exhibitCheckboxTd' + i + '" class="filled-in";">';
-        tr += '<label for="exhibitCheckboxTd' + i + '"></label></td>'
-        tr += '<td>' + i + '</td>'
-        tr += '<td class="exhibit-product-name">.....</td>'
-        tr += '<td class="exhibit-qty">.....</td>'
-        tr += '<td class="exhibit-net-weight">.....</td>'
-        tr += '<td class="exhibit-carsn">.....</td>'
-        tr += '<td class="exhibit-i-o">.....</td>'
-        tr += '<td class="exhibit-is-status">.....</td>'
-        tr += '</tr>'
-    }
+    // for (var i = 1; i < 4; i++) {
+    //     tr += '<tr>'
+    //     tr += '<td><input type="checkbox" id="exhibitCheckboxTd' + i + '" name="exhibitCheckboxTd' + i + '" class="filled-in";">';
+    //     tr += '<label for="exhibitCheckboxTd' + i + '"></label></td>'
+    //     tr += '<td>' + i + '</td>'
+    //     tr += '<td class="exhibit-product-name">.....</td>'
+    //     tr += '<td class="exhibit-qty">.....</td>'
+    //     tr += '<td class="exhibit-net-weight">.....</td>'
+    //     tr += '<td class="exhibit-carsn">.....</td>'
+    //     tr += '<td class="exhibit-i-o">.....</td>'
+    //     tr += '<td class="exhibit-is-status">.....</td>'
+    //     tr += '</tr>'
+    // }
 
     $('#tableExhibitByCon tbody').html(tr);
     //==========================
@@ -181,24 +229,24 @@ $(document).ready(function () {
 
     // Lawbreaker รายชื่อผู้กระทำความผิด
     tr = '';
-    for (var i = 1; i < 4; i++) {
-        tr += '<tr>'
-        tr += '<td><input type="checkbox" id="lawBreakerCheckboxTd' + i + '" name="lawBreakerCheckboxTd' + i + '" class="filled-in";">';
-        tr += '<label for="lawBreakerCheckboxTd' + i + '"></label></td>'
-        tr += '<td>' + i + '</td>'
-        tr += '<td class="law-name">.....</td>'
-        tr += '<td class="law-type">.....</td>'
-        tr += '<td class="law-creer">.....</td>'
-        tr += '<td class="law-birthday">.....</td>'
-        tr += '<td class="law-idcard">.....</td>'
-        tr += '<td class="law-passpord">.....</td>'
-        tr += '<td class="law-reac">.....</td>'
-        tr += '<td class="law-nationllity">.....</td>'
-        tr += '<td class="law-address">.....</td>'
-        tr += '<td class="law-father-name">.....</td>'
-        tr += '<td class="law-mather-name">.....</td>'
-        tr += '</tr>'
-    }
+    // for (var i = 1; i < 4; i++) {
+    //     tr += '<tr>'
+    //     tr += '<td><input type="checkbox" id="lawBreakerCheckboxTd' + i + '" name="lawBreakerCheckboxTd' + i + '" class="filled-in";">';
+    //     tr += '<label for="lawBreakerCheckboxTd' + i + '"></label></td>'
+    //     tr += '<td>' + i + '</td>'
+    //     tr += '<td class="law-name">.....</td>'
+    //     tr += '<td class="law-type">.....</td>'
+    //     tr += '<td class="law-creer">.....</td>'
+    //     tr += '<td class="law-birthday">.....</td>'
+    //     tr += '<td class="law-idcard">.....</td>'
+    //     tr += '<td class="law-passpord">.....</td>'
+    //     tr += '<td class="law-reac">.....</td>'
+    //     tr += '<td class="law-nationllity">.....</td>'
+    //     tr += '<td class="law-address">.....</td>'
+    //     tr += '<td class="law-father-name">.....</td>'
+    //     tr += '<td class="law-mather-name">.....</td>'
+    //     tr += '</tr>'
+    // }
 
     $('#tableLawbreakerByCon tbody').html(tr);
     //==========================
@@ -206,24 +254,42 @@ $(document).ready(function () {
 
     // ArrestTeam ทีมจับกุม
     tr = '';
-    for (var i = 1; i < 4; i++) {
-        tr += '<tr>'
-        tr += '<td><input type="checkbox" id="arrestteamCheckboxTd' + i + '" name="arrestteamCheckboxTd' + i + '" class="filled-in";">';
-        tr += '<label for="arrestteamCheckboxTd' + i + '"></label></td>'
-        tr += '<td>' + i + '</td>'
-        tr += '<td class="arrestTeam-code hidden">code' + i + '</td>'
-        tr += '<td class="arrestTeam-name">.....</td>'
-        tr += '<td class="arrestTeam-position">.....</td>'
-        tr += '<td class="arrestTeam-department">.....</td>'
-        tr += '<td><select name="arrestBy' + i + '" id="sle_arrestBy' + i + '"><option value="ผู้ร่วมจับกุม" selected></option></select></td>'
-        tr += '</tr>'
-    }
+    // for (var i = 1; i < 4; i++) {
+    //     tr += '<tr>'
+    //     tr += '<td><input type="checkbox" id="arrestteamCheckboxTd' + i + '" name="arrestteamCheckboxTd' + i + '" class="filled-in";">';
+    //     tr += '<label for="arrestteamCheckboxTd' + i + '"></label></td>'
+    //     tr += '<td>' + i + '</td>'
+    //     tr += '<td class="arrestTeam-code hidden">code' + i + '</td>'
+    //     tr += '<td class="arrestTeam-name">.....</td>'
+    //     tr += '<td class="arrestTeam-position">.....</td>'
+    //     tr += '<td class="arrestTeam-department">.....</td>'
+    //     tr += '<td><select name="arrestBy' + i + '" id="sle_arrestBy' + i + '"><option value="ผู้ร่วมจับกุม" selected></option></select></td>'
+    //     tr += '</tr>'
+    // }
 
     $('#tableArrestTeam tbody').html(tr);
     //==========================
 })
 //====================================================
 
+function onChangeIsNotice(e) {
+    var isNotice = $(e).find('option:selected').val()
+    if (isNotice == 2) {
+        $('#txt_noticeCode').prop('disabled', true)
+        $('#txt_noticeName').prop('disabled', true)
+    } else {
+        $('#txt_noticeCode').prop('disabled', false)
+        $('#txt_noticeName').prop('disabled', false)
+    }
+}
+
+// --- คำนวนอายุ ---
+function onCalculateAge(birthday, age) {
+    // จาก /lib/excise-custom/js/main.js/calculateAge
+    var newAge = calculateAge(birthday)
+    $(age).val(newAge == 0 ? '' : newAge)
+}
+// --- end คำนวนอายุ ---
 
 // Indictment
 function onSelectIndictment(table) {
@@ -418,75 +484,77 @@ function onCancelArrest() {
 
 // NoticeteByCon Modal // รายการแจ้งความนำจับ
 function onSelectNotice(table) {
-
-    var noticeCode = ''
+    var item = 0;
     $(table).find('tbody tr').each(function (i, el) {
         if ($(el).find('input[type=checkbox]').is(':checked')) {
-            noticeCode = $(el).find('td.notice-code').html()
-            $('#txt_noticeCode').val(unescape($(el).find('td.notice-code').html()))
-            $('#txt_noticeName').val($(el).find('td.notice-name').html())
-            return false;
+            item++
         }
     })
 
-    $(table).find('tr input[type=checkbox]').prop('checked', false);
-
-    if (noticeCode !== '') {
-        var noticeByCon = {
-            noticeCode: noticeCode,
-            noticeDateTo: '',
-            noticeDateForm: '',
-        }
-        getNoticeNoticeByCon(noticeByCon, function (xml) {
-            $(xml).find('noticeInfom')
-                .each(function (i, e) {
-                    // เขียนที่หน่วยงาน
-                    $('#txt_lawsuitLocation').val($(e).find('noticestation').text());
-                    // --- end เขียนที่หน่วยงาน ---
-
-                    // ละติจูด-ลองติจูด
-                    $('#txt_nmOpsCoordinateX').val($(e).find('coordinatex').text())
-                    $('#txt_nmOpsCoordinateY').val($(e).find('coordinatey').text())
-                    // --- end ละติจูด-ลองติจูด ---
-                });
-        });
-
-        getNoticeProductlist(noticeCode, function (xml) {
-            var li = ''
-            $(xml).find('productListDTO')
-                .each(function (i, e) {
-                    li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
-                    li += $(e).find('groupName').text()
-                    li += '</span><a href="javascript:void(0);"'
-                    li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
-                })
-            $('#ul_nmGoodName').html(li)
-        })
-
-        var arr = {
-            noticeCode: noticeCode,
-            locationID: ''
-        }
-        getNoticeLocationByCon(arr, function (xml) {
-            $(xml).find('locationDTO')
-                .each(function (i, e) {
-                    $('#txt_locationName')
-                        .val($(e).find('locationName').text())
-                        .attr('data-id', $(e).find('locationId').text())
-                    $('#txt_address').val($(e).find('address').text())
-                    $('#txt_village').val($(e).find('village').text())
-                    $('#txt_building').val($(e).find('building').text())
-                    $('#txt_room').val($(e).find('room').text())
-                    $('#txt_floor').val($(e).find('floor').text())
-                    $('#txt_alley').val($(e).find('alley').text())
-                    $('#txt_road').val($(e).find('road').text())
-
-                    var infomrRegion = $('#sle_region').selectize(),
-                        informRegionZe = infomrRegion[0].selectize
-                    informRegionZe.setValue($(e).find('subdistrictCode').text(), true)
-                })
-        })
+    if (item > 1) {
+        alert('สามารถเลือกได้เพียง 1 คนเท่านั้น')
+        return false;
     }
+
+    if (item == 1) {
+        var noticeCode = ''
+        $(table).find('tbody tr').each(function (i, el) {
+            if ($(el).find('input[type=checkbox]').is(':checked')) {
+                noticeCode = $(el).find('td.notice-code').html()
+                $('#txt_noticeCode').val(noticeCode)
+                $('#txt_noticeName').val($(el).find('td.notice-name').text().trim())  
+                return false;              
+            }
+        })
+
+        $(table).find('tr input[type=checkbox]').prop('checked', false);
+
+        if (noticeCode !== '') {
+            debugger
+            var noticeByCon = {
+                noticeCode: noticeCode,
+                noticeDateTo: '',
+                noticeDateForm: '',
+            }
+
+            getNoticeProductlistByCon(noticeCode, function (xml) {
+                var li = ''
+                $(xml).find('productListDTO')
+                    .each(function (i, e) {
+                        li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
+                        li += $(e).find('groupName').text()
+                        li += '</span><a href="javascript:void(0);"'
+                        li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+                    })
+                $('#ul_nmGoodName').html(li)
+            })
+
+            var arr = {
+                noticeCode: noticeCode,
+                locationID: ''
+            }
+            getNoticeLocationByCon(arr, function (xml) {
+                $(xml).find('locationDTO')
+                    .each(function (i, e) {
+                        $('#txt_locationName')
+                            .val($(e).find('locationName').text())
+                            .attr('data-id', $(e).find('locationId').text())
+                        $('#txt_address').val($(e).find('address').text())
+                        $('#txt_village').val($(e).find('village').text())
+                        $('#txt_building').val($(e).find('building').text())
+                        $('#txt_room').val($(e).find('room').text())
+                        $('#txt_floor').val($(e).find('floor').text())
+                        $('#txt_alley').val($(e).find('alley').text())
+                        $('#txt_road').val($(e).find('road').text())
+
+                        var infomrRegion = $('#sle_region').selectize(),
+                            informRegionZe = infomrRegion[0].selectize
+                        informRegionZe.setValue($(e).find('subdistrictCode').text(), true)
+                    })
+            })
+        }
+    }
+
 
 }
 //==========================

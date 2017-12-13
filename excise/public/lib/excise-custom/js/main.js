@@ -22,7 +22,7 @@ $(document).ready(function () {
     });
 })
 
-function dateChanged(ev){
+function dateChanged(ev) {
     $(this).datepicker('hide');
 }
 
@@ -179,6 +179,15 @@ function setNewdate(date) {
         dateA = yyyy + '-' + mm + '-' + dd,
         dateB = new Date(dateA);
     return dateB;
+}
+
+function calculateAge(birthDay) {
+    var date0 = parseDateAD($(birthDay).val()),
+        date1 = new Date(setNewdate(date0)),
+        date2 = new Date(),
+        ageDifMs = date2 - date1.getTime(),
+        ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
 }
 
 var getUrlParameter = function (sParam) {

@@ -17,6 +17,9 @@ function onSearch(key) {
                 j = 0
             for (i = 0; i < jsonData.detail.length; i++) {
                 tr += '<tr>'
+                tr += '<td><input type="checkbox" id="caseLawCheckboxTd' + i + '"'
+                tr += ' name="caseLawCheckboxTd' + i + '" class="filled-in";">'
+                tr += '<label for="caseLawCheckboxTd' + i + '"></label></td>'
                 tr += '<td>' + (++j) + '</td>'
                 tr += '<td class="caselawid">' + jsonData.detail[i].CaseLawID + '</td>'
                 tr += '<td class="penalty-caselawid">' + jsonData.detail[i].PenaltyCaseLawID + '</td>'

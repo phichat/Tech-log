@@ -175,7 +175,7 @@ $(document).ready(function () {
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
-                create: true,
+                create: false,
                 sortField: 'value'
             });
 
@@ -290,11 +290,27 @@ $(document).ready(function () {
 function onChangeIsNotice(e) {
     var isNotice = $(e).find('option:selected').val()
     if (isNotice == 2) {
-        $('#txt_noticeCode').prop('disabled', true)
-        $('#txt_noticeName').prop('disabled', true)
+        $('#txt_noticeCode').prop('disabled', true).val('')
+        $('#txt_noticeName').prop('disabled', true).val('')
+        $('#a_noticeNotice').prop('disabled', true).addClass('disabled')
+        $('#ul_nmGoodName li').remove()
+        $('#txt_locationName').val('')
+        $('#txt_address').val('')
+        $('#txt_village').val('')
+        $('#txt_building').val('')
+        $('#txt_room').val('')
+        $('#txt_floor').val('')
+        $('#txt_alley').val('')
+        $('#txt_road').val('')
+
+        var $select = $('#sle_region').selectize(),
+            control = $select[0].selectize;
+        control.clear();
+
     } else {
         $('#txt_noticeCode').prop('disabled', false)
         $('#txt_noticeName').prop('disabled', false)
+        $('#a_noticeNotice').prop('disabled', false).removeClass('disabled')
     }
 }
 
@@ -305,6 +321,16 @@ function onCalculateAge(birthday, age) {
     $(age).val(newAge == 0 ? '' : newAge)
 }
 // --- end คำนวนอายุ ---
+
+function onDisabledSubmitCourt(sle, chk) {
+    var isLawbreaker = $(sle).find('option:selected').val()
+    if (isLawbreaker == 0) {
+        $(chk).prop('disabled', true)
+    } else {
+        $(chk).prop('disabled', false)
+    }
+
+}
 
 // Indictment
 function onSelectIndictment(table) {
@@ -486,9 +512,21 @@ function onSelectArrestTeam(table) {
 //==========================
 
 // Button
-function onSaveArrest() {
-    if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
+$('.arrest-manage').change(function () {
+    // จาก lib/excise-custom/js/validate.js
+    unhighlight('.arrest-manage');
+})
 
+function onSaveArrest(e) {
+    // จาก lib/excise-custom/js/validate.js
+    if (!validate(e)) {
+        return false;
+    }
+
+    if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
+        insArrestLawsuitAll('', function (jsonData) {
+            debugger
+        })
     }
 }
 

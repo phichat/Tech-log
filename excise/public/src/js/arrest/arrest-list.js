@@ -59,7 +59,7 @@ $(document).ready(function () {
     // --- end ตำบล/อำเภอ/จังหวัด ---
 
     $('select').not('.paging_listbox_select').selectize({
-        create: true,
+        create: false,
         sortField: 'text'
     });
 
@@ -122,4 +122,6 @@ function onClearFormSearch() {
 
 function onToggleAdvancedSearch() {
     $('.advanced-search').slideToggle();
+    $('#txt_search').prop('disabled', function (i, v) { return !v; });
 }
+

@@ -36,10 +36,7 @@ function searchNotice(e) {
             tr += '<label for="noticeAllCheckboxTd' + i + '"></label></td>'
             tr += '<td>' + (++j) + '</td>'
             tr += '<td class="notice-code">' + jsonData.detail[i].NoticeCode + '</td>'
-            tr += '<td class="notice-name">' + jsonData.detail[i].TitleName + ' '
-            tr += jsonData.detail[i].FirstName + ' '
-            tr += jsonData.detail[i].LastName
-            tr += '</td>'
+            tr += '<td class="notice-name">' + jsonData.detail[i].StaffNameReceive + '</td>'
             tr += '<td class="notice-date">' + jsonData.detail[i].NoticeDate + '</td>'
             tr += "<td class=''><input type='button' value='ดูใบแจ้งความนำจับ' class='btn-default-notice' onclick=getNotice('" + jsonData.detail[i].NoticeCode + "')></td>"
             tr += '</tr>'

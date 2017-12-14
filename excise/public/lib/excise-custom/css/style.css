@@ -39,6 +39,13 @@
 .clear-p {
     padding: 0 !important;
 }
+.p-l-0{
+    padding-left: 0 !important;
+}
+
+.p-r-0{
+    padding-right: 0 !important;
+}
 
 
 .datepicker-dropdown{
@@ -50,11 +57,16 @@
      width: 30px;
      height: 20px;
      border-radius: 10px;
-     background-color: #009688 !important;
+     background-color: #009688;
      color: #fff !important;
      text-decoration: none !important;
      right: 0px;
      top: 12px;
+ }
+
+ .disabled{
+    background-color: #BDBDBD;
+    cursor: not-allowed;
  }
 
  .red-star {

@@ -40,6 +40,15 @@ function validate(e) {
         }
     })
 
+    $(e).find('table.required').each(function (i, el) {
+        if ($(this).find('tbody tr').length == 0) {
+            if (!$(this).parents('.form-group').find('label.error').length) {
+                $(this).parents('.form-group').append(label);
+            }
+            isvalidate = false;
+        }
+    })
+
     var isfocus = false;
     $(e).find('.required').each(function (i, e) {
         if (isfocus == false) {
@@ -83,6 +92,14 @@ function unhighlight(e) {
 
     $(e).find('ul.required').each(function (i, el) {
         if ($(this).find('li').length > 0) {
+            $(this).parents('.form-group').find('label.error').remove();
+        }
+    })
+
+    $(e).find('table.required').each(function (i, el) {
+        debugger
+        if ($(this).find('tbody tr').length > 0) {
+            debugger
             $(this).parents('.form-group').find('label.error').remove();
         }
     })

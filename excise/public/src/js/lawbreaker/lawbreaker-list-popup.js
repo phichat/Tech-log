@@ -69,6 +69,7 @@ function onSaveLawbreaker(form) {
     // } else {
     //     isSave = true;
     // }
+    var isSave = true;
 
     if (isSave) {
         // เรียกใช้งาน ฟังชั่นก์ ในหน้า arrest-manage.html

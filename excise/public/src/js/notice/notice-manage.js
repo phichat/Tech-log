@@ -187,6 +187,8 @@ function onSelectStaff() {
         })
     }
 
+    $('.modal').modal('hide');
+
 }
 
 function onChangeStaff(e) {

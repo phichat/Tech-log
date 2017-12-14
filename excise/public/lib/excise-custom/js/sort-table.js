@@ -70,13 +70,13 @@ function sortTable(tableId, n) {
             for (j = 0; j < th.length; j++) {
                 if (j == n) {
                     if (dir == "asc") {
-                        th[j].style.backgroundImage = "url('../../../img/ic_arrow_drop_up_black_24px.svg')";
+                        th[j].style.backgroundImage = "url('../../img/ic_arrow_drop_up_black_24px.svg')";
                     } else {
-                        th[j].style.backgroundImage = "url('../../../img/ic_arrow_drop_down_black_24px.svg')";
+                        th[j].style.backgroundImage = "url('../../img/ic_arrow_drop_down_black_24px.svg')";
                     }
                 } else {
                     if (th[j].className == 'sort') {
-                        th[j].style.backgroundImage = " url('../../../img/ic_arrow_drop_black_24px.svg')";
+                        th[j].style.backgroundImage = " url('../../img/ic_arrow_drop_black_24px.svg')";
                     }
                 }
 

@@ -78,15 +78,14 @@ $(document).ready(function () {
     // --- end สินค้า ---
 
     var loadMultiFile = {
-        // โหลดไฟล์ .html
+        // โหลดเฉพาะ tag id และ element ที่อยู่ภายใน
         'section.header': '../navbar.html #topheader',
         'section.sidebar': '../sidebar.html #leftsidebar',
-        '#noticeByConModal .card .body': '../notice/notice-list-popup.html',
-        '#listStaffModal .card .body': '../staff/staff-list-popup.html',
-        '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html',
-        '#indictmentModal .card .body': '../indictment/indictment-list-popup.html',
-
         // โหลดเฉพาะ tag class และ element ที่อยู่ภายใน
+        '#noticeByConModal .card .body': '../notice/notice-list-popup.html .notice-list-popup',
+        '#listStaffModal .card .body': '../staff/staff-list-popup.html .staff-list',
+        '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html .arrest-team-list-popup',
+        '#indictmentModal .card .body': '../indictment/indictment-list-popup.html .indictment-list-popup',
         '#exhibitModal .card .body': '../exhibit/exhibit-popup.html .exhibit-popup',
         '#lawbreakerModal .card .body': '../lawbreaker/lawbreaker-list-popup.html .lawbreaker-list-popup'
     }
@@ -110,6 +109,22 @@ $(document).ready(function () {
                 case 'section.sidebar':
                     srcPathUri($('.ml-menu'));
                     $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+                    break;
+
+                case '#noticeByConModal .card .body':
+                    $.getScript('../js/notice/notice-list-popup.js');
+                    break;
+
+                case '#listStaffModal .card .body':
+                    $.getScript('../js/staff/staff-list-popup.js');
+                    break;
+
+                case '#arrestTeamModal .card .body':
+                    $.getScript('../js/staff/arrest-team-list-popup.js');
+                    break;
+
+                case '#indictmentModal .card .body':
+                    $.getScript('../js/indictment/indictment-list-popup.js');
                     break;
 
                 case '#exhibitModal .card .body':
@@ -160,7 +175,7 @@ $(document).ready(function () {
             // set script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
             $('select.region').html(sleRegion);
             $('select').not('.paging_listbox_select').selectize({
-                create: false,
+                create: true,
                 sortField: 'value'
             });
 
@@ -178,7 +193,7 @@ $(document).ready(function () {
     // โหลด Script ให้กับ element ภายใต้ไฟล์ / tags ที่ถูกโหลดมา
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js');
     // $.getScript('../../lib/selectize.js-master/dist/js/standalone/selectize.min.js');
-    // $.getScript('../../lib/excise-custom/js/sort-table.js');
+    $.getScript('../../lib/excise-custom/js/sort-table.js');
 
     // set script ให้กับ element ภายใต้ไฟล์ arest-manage.js
     $('select.region').html(sleRegion)
@@ -294,36 +309,38 @@ function onCalculateAge(birthday, age) {
 // Indictment
 function onSelectIndictment(table) {
     $(table).find('tbody tr').each(function (i, e) {
-        var matching = false;
-        var s_caseLawId = $(e).find('td.caselawid').html();
-        var s_penaltyCaseLawId = $(e).find('td.penalty-caselawid').html();
-        var s_penaltyDesc = $(e).find('td.penalty-desc').html();
+        var checkbox = $(e).find('td:eq(0) input[type=checkbox]').is(':checked');
+        if (checkbox) {
+            var matching = false;
+            var s_caseLawId = $(e).find('td.caselawid').html();
+            var s_penaltyCaseLawId = $(e).find('td.penalty-caselawid').html();
+            var s_penaltyDesc = $(e).find('td.penalty-desc').html();
 
-        $('#tableIndictmentByCon tbody tr').each(function (j, el) {
-            // ตรวจสอบข้อมูลจากตารางปลายทาง และต้นทางว่ามีข้อมูลที่ซ้ำกันหรือไม่
-            if (s_caseLawId == $(el).find('td.caselawid').html()) {
-                matching = true
-                return false;
+            $('#tableIndictmentByCon tbody tr').each(function (j, el) {
+                // ตรวจสอบข้อมูลจากตารางปลายทาง และต้นทางว่ามีข้อมูลที่ซ้ำกันหรือไม่
+                if (s_caseLawId == $(el).find('td.caselawid').html()) {
+                    matching = true
+                    return false;
+                }
+            })
+
+            // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
+            if (matching === false) {
+                var index = $('#tableIndictmentByCon tbody tr:last').index() + 2
+                var tr = ''
+                tr += '<tr>'
+                tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + index + '" name="indictmentByConCheckboxTd' + index + '" class="filled-in";">';
+                tr += '<label for="indictmentByConCheckboxTd' + index + '"></label></td>'
+                tr += '<td>' + index + '</td>'
+                tr += '<td class="caselawid">' + s_caseLawId + '</td>'
+                tr += '<td class="penalty-caselawid">' + s_penaltyCaseLawId + '</td>'
+                tr += '<td class="penalty-desc">' + s_penaltyDesc + '</td>'
+                tr += '</tr>'
+                $('#tableIndictmentByCon tbody').append(tr);
             }
-        })
-
-        // ถ้าข้อมูลไม่ซ้ำให้เพิ่มข้อมูลเข้าไปยัง ตารางปลายทาง
-        if (matching === false) {
-            var index = $('#tableIndictmentByCon tbody tr:last').index() + 2
-            var tr = ''
-            tr += '<tr>'
-            tr += '<td><input type="checkbox" id="indictmentByConCheckboxTd' + index + '" name="indictmentByConCheckboxTd' + index + '" class="filled-in";">';
-            tr += '<label for="indictmentByConCheckboxTd' + index + '"></label></td>'
-            tr += '<td>' + index + '</td>'
-            tr += '<td class="caselawid">' + s_caseLawId + '</td>'
-            tr += '<td class="penalty-caselawid">' + s_penaltyCaseLawId + '</td>'
-            tr += '<td class="penalty-desc">' + s_penaltyDesc + '</td>'
-            tr += '</tr>'
-            $('#tableIndictmentByCon tbody').append(tr);
         }
-
     })
-    // $(table).find('input[type=checkbox]').prop('checked', false);
+    $(table).find('tr input[type=checkbox]').prop('checked', false);
 }
 //==========================
 
@@ -332,7 +349,7 @@ function onSelectIndictment(table) {
 // Exhibit บัญชีสิ่งของ
 function onSetExhibit(form) {
     var matching = false;
-    var productName = $(form).find('input#txt_productName').val();
+    var productName = $(form).find('select#sle_productName option:selected').text();
     var qty = $(form).find('input#txt_qty').val();
     var netWeight = $(form).find('input#txt_netWeight').val();
     var carNo = $(form).find('input#txt_carNo').val();
@@ -492,7 +509,7 @@ function onSelectNotice(table) {
     })
 
     if (item > 1) {
-        alert('สามารถเลือกได้เพียง 1 คนเท่านั้น')
+        alert('สามารถเลือกได้เพียง 1 รายการเท่านั้น')
         return false;
     }
 
@@ -510,7 +527,6 @@ function onSelectNotice(table) {
         $(table).find('tr input[type=checkbox]').prop('checked', false);
 
         if (noticeCode !== '') {
-            debugger
             var noticeByCon = {
                 noticeCode: noticeCode,
                 noticeDateTo: '',

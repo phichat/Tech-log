@@ -367,6 +367,7 @@ function onSelectIndictment(table) {
         }
     })
     $(table).find('tr input[type=checkbox]').prop('checked', false);
+    unhighlightTable('#tableIndictmentByCon')
 }
 //==========================
 
@@ -406,6 +407,7 @@ function onSetExhibit(form) {
         tr += '</tr>'
         $('#tableExhibitByCon tbody').append(tr)
     }
+    unhighlightTable('#tableExhibitByCon')
 }
 //==========================
 
@@ -461,6 +463,7 @@ function onSetLawbreaker(form) {
         tr += '</tr>'
         $('#tableLawbreakerByCon tbody').append(tr)
     }
+    unhighlightTable('#tableLawbreakerByCon')
 }
 //==========================
 
@@ -512,7 +515,7 @@ function onSelectArrestTeam(table) {
 //==========================
 
 // Button
-$('.arrest-manage').change(function () {
+$('.arrest-manage').find('.required').change(function () {
     // จาก lib/excise-custom/js/validate.js
     unhighlight('.arrest-manage');
 })

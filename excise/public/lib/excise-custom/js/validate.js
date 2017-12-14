@@ -96,16 +96,14 @@ function unhighlight(e) {
         }
     })
 
-    $(e).find('table.required').each(function (i, el) {
-        debugger
-        if ($(this).find('tbody tr').length > 0) {
-            debugger
-            $(this).parents('.form-group').find('label.error').remove();
-        }
-    })
+
 }
 
-
+function unhighlightTable(table) {
+    if ($(table).find('tbody tr').length > 0) {
+        $(table).parents('.form-group').find('label.error').remove()
+    }
+}
 
 
 

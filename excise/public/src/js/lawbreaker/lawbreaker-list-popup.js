@@ -1,49 +1,3 @@
-// $(document).ready(function () {
-//     // $('select').not('.paging_listbox_select').selectize({
-//     //     create: true,
-//     //     sortField: 'text'
-//     // });
-    
-
-//     getTitleByKeyword('', function (json) {
-//         var option = '<option selected disabled></option>'
-//         for (i = 0; i < json.detail.length; i++) {
-//             option += '<option value="' + json.detail[i].TitleCode + '">'
-//             option += json.detail[i].TitleShortName + '</option>'
-//             // option.push({
-//             //     titleCode: json.detail[i].TitleCode,
-//             //     titleShotName: json.detail[i].TitleShortName
-//             // })
-//         }
-//         $('select#sle_titleName').html(option).selectize({
-//             create: true,
-//             sortField: 'text'
-//         });
-//         // console.log($('select#sle_titleName'));
-//         // $('select#sle_titleName').selectize({
-//         //     valueField: 'titleCode',
-//         //     labelField: 'titleShotName',
-//         //     searchField: 'titleShotName',
-//         //     create: false,
-//         //     sortField: 'text',
-//         //     options: option
-//         // })
-//     })
-
-
-
-    // $('input.datepicker').bootstrapMaterialDatePicker({
-    //     format: 'DD/MM/YYYY',
-    //     weekStart: 0,
-    //     time: false
-    // });
-// });
-
-
-function onClearFormSearch() {
-    $('.lawbreaker-list-popup .search input[type=text]').val('');
-}
-
 function onSaveLawbreaker(form) {
     var isSave = false;
     // if (
@@ -77,6 +31,22 @@ function onSaveLawbreaker(form) {
         onClearLawbreaker();
         $('.modal').modal('hide');
     }
+}
+
+function onKeyupSearchLawbreaker(e) {
+    debugger
+    new autoComplete({
+        selector: 'input[name="searchLawbreaker"]',
+        source: function (term, response) {
+            getArrestLawbreakerByKeyword(term, function (json) {
+                response(json)
+            })
+        }
+    });
+}
+
+function onSearchLawbreaker(e) {
+    getArrestLawbreakerByKeyword()
 }
 
 function onClearLawbreaker() {

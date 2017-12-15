@@ -156,6 +156,18 @@ $(document).ready(function () {
                             sortField: 'text'
                         });
                     })
+
+                    getRaceByKeyword('', function(json){
+                        var option = '<option selected disabled></option>'
+                        for (i = 0; i < json.detail.length; i++) {
+                            option += '<option value="' + json.detail[i].RaceCode + '">'
+                            option += json.detail[i].RaceNameTH + '</option>'
+                        }
+                        $('select#sle_lawRace').html(option).selectize({
+                            create: false,
+                            sortField: 'text'
+                        });
+                    })
                     break;
 
             }

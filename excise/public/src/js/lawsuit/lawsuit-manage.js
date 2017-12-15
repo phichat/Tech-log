@@ -34,25 +34,46 @@ $(document).ready(function () {
         });
     })
 
+    // เขียนที่
+    getDepartmentByKeyword('', function (xml) {
+        var department = []
+        $(xml).find('departmentDTOList')
+            .each(function (i, e) {
+                department.push({
+                    deptCode: $(e).find('departmentCode').text(),
+                    deptName: $(e).find('departmentNameTh').text()
+                })
+            })
+
+        $('#sle_lawsuitLocation').selectize({
+            valueField: 'deptCode',
+            labelField: 'deptName',
+            searchField: 'deptName',
+            create: false,
+            sortField: 'deptName',
+            options: department
+        })
+    })
+    // --- end เขียนที่ ---
+
     // โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
     var sleRegion = '<option value="" selected></option>'
     getSubdistrictByKeyword('', function callback(xml) {
         $(xml).find('subDistrictDTOList')
             .each(function (i, e) {
-                sleRegion += '<option value="';
-                sleRegion += $(e).find('subDistrictNameTh').text();
-                sleRegion += $(e).find('districtNameTh').text();
-                sleRegion += $(e).find('provinceNameTh').text();
-                sleRegion += '">'
+                sleRegion += '<option value="' + $(e).find('subDistrictCode').text() + '">'
                 sleRegion += $(e).find('subDistrictNameTh').text() + '/';
                 sleRegion += $(e).find('districtNameTh').text() + '/';
                 sleRegion += $(e).find('provinceNameTh').text() + '</option>';
             })
-        $('#sle_arrestRegion').html(sleRegion)
+        $('#sle_arrestRegion').html(sleRegion).selectize({
+            create: false,
+            sortField: 'value'
+        })
     })
     // -- end โหลดข้อมูล ตำบล/อำเภอ/จังหวัด --
 
-    // เขียนที่
+    // พื้นที่
     getOfficeByKeyword('', function (xml) {
         var option = [];
         $(xml).find('officeDTOList')
@@ -70,7 +91,7 @@ $(document).ready(function () {
             options: option
         });
     });
-    // --- end เขียนที่หน่วยงาน ---
+    // --- end พื้นที่หน่วยงาน ---
 
     $('select').selectize({
         create: false,
@@ -100,9 +121,11 @@ function onSelectStaff() {
 }
 //==========================
 
-$('#lawsuitManage').change(function () {
+$('#lawsuitManage').on('change', '.required', function () {
     // จาก lib/excise-custom/js/validate.js
-    unhighlight('#lawsuitManage');
+    if ($(this).parents('.form-group').find('label.error').length) {
+        unhighlight('#lawsuitManage');
+    }
 })
 
 function onSaveLawsuit(e) {

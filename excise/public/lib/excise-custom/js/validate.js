@@ -70,7 +70,6 @@ function validate(e) {
 
 function unhighlight(e) {
     $(e).find('input.required').each(function (i, el) {
-        debugger
         if ($(this).val() !== '') {
             $(this).parents('.form-line').removeClass('error').addClass('focused');
             $(this).parents('.form-group').find('label.error').remove();

@@ -6,6 +6,31 @@ $(document).ready(function () {
 
     $(".datepicker").datepicker("setDate", "0")
 
+    //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด
+    var sleRegion = '<option value="" selected></option>'
+    getSubdistrictByKeyword('', function callback(xml) {
+        var subdistrict = []
+        $(xml).find('subDistrictDTOList')
+            .each(function (i, e) {
+                subdistrict.push({
+                    subDistrictCode: $(e).find('subDistrictCode').text(),
+                    region: $(e).find('subDistrictNameTh').text() + '/' +
+                        $(e).find('districtNameTh').text() + '/' +
+                        $(e).find('provinceNameTh').text()
+                })
+            })
+        $('select.region')
+            .selectize({
+                valueField: 'subDistrictCode',
+                labelField: 'region',
+                searchField: 'region',
+                create: false,
+                sortField: 'subDistrictCode',
+                options: subdistrict
+            });
+    });
+    // --- end ตำบล/อำเภอ/จังหวัด ---
+
     $.each(loadMultifile, function (tag, url) {
         $(tag).load(url, function () {
             var ele = $('.menu .list > li');
@@ -86,6 +111,14 @@ function onToggleAdvancedSearch() {
 
 function onClearFormSearch() {
     $('input[type=text]').val('');
-    $('input[type=date]').val('');
     $('input[type=checkbox]').prop('checked', false);
+    $('input[type=date]').val('');
+    var $select = $('select').not('.paging_listbox_select').selectize(),
+        control = $select[0].selectize;
+    control.clear();
+}
+
+function onToggleAdvancedSearch() {
+    $('.advanced-search').slideToggle();
+    $('#txt_search').prop('disabled', function (i, v) { return !v; });
 }

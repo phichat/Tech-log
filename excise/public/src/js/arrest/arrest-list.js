@@ -117,7 +117,11 @@ function onDelRecord(e) {
 
 function onClearFormSearch() {
     $('input[type=text]').val('');
+    $('input[type=checkbox]').prop('checked', false);
     $('input[type=date]').val('');
+    var $select = $('select').not('.paging_listbox_select').selectize(),
+        control = $select[0].selectize;
+    control.clear();
 }
 
 function onToggleAdvancedSearch() {

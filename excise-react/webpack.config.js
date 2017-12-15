@@ -1,5 +1,22 @@
 const path = require('path')
 const webpack = require('webpack')
+const cssModuleRules = [
+    'style-loader',
+    {
+        loader: 'css-loader',
+        options: {
+            module: true,
+            sourceMap: true,
+            localIdentName: '[path][name]__[local]--[hash:base64:5]'
+        }
+    },
+    {
+        loader: 'postcss-loader',
+        options: {
+            sourceMap: true
+        }
+    }
+]
 
 module.exports = {
     devtool: 'source-map',
@@ -16,7 +33,9 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Containers: './containers'
+            Containers: './containers',
+            Components: './components',
+            Images: './theme/img'
         },
         extensions: ['.js', '.jsx']
     },
@@ -25,45 +44,44 @@ module.exports = {
             { test: /\.js$/, exclude: /node_modules/, enforce: 'pre', loader: 'eslint-loader' },
             { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
             { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.css$/, exclude: /node_modules/, use: cssModuleRules },
+            { test: /\.css$/, include: /node_modules/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }] },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000
+                }
+            },
             {
                 test: /\.scss$/,
-                use:
-                    [
-                        'style-loader',
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                // moudle: true,
-                                sourceMap: true,
-                                localIdentName: '[path][name]__[local]--[hash:base64:5]'
-                            }
-                        },
-                        {
-                            loader: 'postcss-loader',
-                            options: {
-                                sourceMap: true
-                            }
-                        },
-                        {
-                            loader: 'sass-loader',
-                            options: {
-                                // moudle: true,
-                                sourceMap: true
-                            }
+                use: [
+                    ...cssModuleRules,
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
                         }
-                    ]
+                    }
+                ]
             }
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default']
+        })
     ],
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         hot: true,
         historyApiFallback: true,
         proxy: {
-        //   "/api": "http://localhost:3000"
+            //   "/api": "http://localhost:3000"
         }
     }
 }

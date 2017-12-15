@@ -31,7 +31,17 @@
   },
   "dependencies": {
     "adminbsb-materialdesign": "^1.0.5",
+    "bootstrap": "^3.3.7",
+    "bootstrap-datepicker": "^1.7.1",
+    "file-loader": "^1.1.5",
+    "grunt-cli": "^1.2.0",
+    "jquery": "^3.2.1",
+    "node-waves": "^0.7.5",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-selectize": "^3.0.1",
+    "url-loader": "^0.6.2"
   }
 }

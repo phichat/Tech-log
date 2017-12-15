@@ -2,6 +2,10 @@
       text-decoration: none !important;
   }
 
+  ul {
+     list-style: none;
+  }
+
 .notice-list .row,
 .notice-list .form-group {
     margin-right: 0;

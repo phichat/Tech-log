@@ -57,7 +57,7 @@ $(document).ready(function () {
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 
     $('select').not('.paging_listbox_select').selectize({
-        create: true,
+        create: false,
         sortField: 'text'
     });
 

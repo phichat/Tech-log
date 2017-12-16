@@ -54,12 +54,12 @@ window.onload = function () {
     //     });
     // })
 
-    $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
+    // $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
 
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 
     $('select').not('.paging_listbox_select').selectize({
-        create: true,
+        create: false,
         sortField: 'text'
     });
 

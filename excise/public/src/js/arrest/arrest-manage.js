@@ -1,4 +1,4 @@
-$(document).ready(function () {
+window.onload = function () {
     var modeUrl = getUrlParameter('mode'),
         date = new Date(),
         h = addZero(date.getHours()),
@@ -78,10 +78,10 @@ $(document).ready(function () {
     // --- end สินค้า ---
 
     var loadMultiFile = {
-        // โหลดเฉพาะ tag id และ element ที่อยู่ภายใน
-        'section.header': '../navbar.html #topheader',
-        'section.sidebar': '../sidebar.html #leftsidebar',
-        // โหลดเฉพาะ tag class และ element ที่อยู่ภายใน
+        // // โหลดเฉพาะ tag id และ element ที่อยู่ภายใน
+        // 'section.header': '../navbar.html #topheader',
+        // 'section.sidebar': '../sidebar.html #leftsidebar',
+        // // โหลดเฉพาะ tag class และ element ที่อยู่ภายใน
         '#noticeByConModal .card .body': '../notice/notice-list-popup.html .notice-list-popup',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html .staff-list',
         '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html .arrest-team-list-popup',
@@ -92,24 +92,24 @@ $(document).ready(function () {
 
     $.each(loadMultiFile, function (tag, url) {
         $(tag).load(url, function () {
-            var ele = $('.menu .list > li');
-            $(ele).each(function (i, s) {
-                if ($(s).data('page') == 'arrest') {
-                    $(this).addClass('active')
-                }
-            })
-            // จาก lib/exicse-custom/js/main.js
-            // กำหนดเส้นทาง link ใหม่ให้กับเมนู
+            // var ele = $('.menu .list > li');
+            // $(ele).each(function (i, s) {
+            //     if ($(s).data('page') == 'arrest') {
+            //         $(this).addClass('active')
+            //     }
+            // })
+            // // จาก lib/exicse-custom/js/main.js
+            // // กำหนดเส้นทาง link ใหม่ให้กับเมนู
             switch (tag) {
-                case 'section.header':
-                    $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
-                    $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
-                    break;
+                // case 'section.header':
+                //     $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
+                //     $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
+                //     break;
 
-                case 'section.sidebar':
-                    srcPathUri($('.ml-menu'));
-                    $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
-                    break;
+                // case 'section.sidebar':
+                //     srcPathUri($('.ml-menu'));
+                //     $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+                //     break;
 
                 case '#noticeByConModal .card .body':
                     $.getScript('../js/notice/notice-list-popup.js');
@@ -296,7 +296,7 @@ $(document).ready(function () {
 
     $('#tableArrestTeam tbody').html(tr);
     //==========================
-})
+}
 //====================================================
 
 function onChangeIsNotice(e) {

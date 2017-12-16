@@ -1,8 +1,8 @@
 $(document).ready(function () {
-    var loadMultifile = {
-        'section.header': '../navbar.html #topheader',
-        'section.sidebar': '../sidebar.html #leftsidebar'
-    }
+    // var loadMultifile = {
+    //     'section.header': '../navbar.html #topheader',
+    //     'section.sidebar': '../sidebar.html #leftsidebar'
+    // }
 
     $(".datepicker").datepicker("setDate", "0")
 
@@ -31,28 +31,28 @@ $(document).ready(function () {
     });
     // --- end ตำบล/อำเภอ/จังหวัด ---
 
-    $.each(loadMultifile, function (tag, url) {
-        $(tag).load(url, function () {
-            var ele = $('.menu .list > li');
-            $(ele).each(function (i, s) {
-                if ($(s).data('page') == 'prove-exhibit') {
-                    $(this).addClass('active')
-                }
-            })
-            // จาก lib/exicse-custom/js/main.js
-            // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-            switch (tag) {
-                case 'section.header':
-                    $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
-                    $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
-                    break;
-                case 'section.sidebar':
-                    srcPathUri($('.ml-menu'));
-                    $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
-                    break;
-            }
-        });
-    })
+    // $.each(loadMultifile, function (tag, url) {
+    //     $(tag).load(url, function () {
+    //         var ele = $('.menu .list > li');
+    //         $(ele).each(function (i, s) {
+    //             if ($(s).data('page') == 'prove-exhibit') {
+    //                 $(this).addClass('active')
+    //             }
+    //         })
+    //         // จาก lib/exicse-custom/js/main.js
+    //         // กำหนดเส้นทาง link ใหม่ให้กับเมนู
+    //         switch (tag) {
+    //             case 'section.header':
+    //                 $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
+    //                 $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
+    //                 break;
+    //             case 'section.sidebar':
+    //                 srcPathUri($('.ml-menu'));
+    //                 $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+    //                 break;
+    //         }
+    //     });
+    // })
 
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
 

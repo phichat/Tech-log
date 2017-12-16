@@ -6274,10 +6274,10 @@ fieldset[disabled] .form-control {
     position: relative;
     top: calc(50% - 30px); }
 
-    /* @media screen and (min-width: 1170px){
+    @media screen and (min-width: 1170px){
       .page-loader-wrapper .loader {
         left: calc(50% - 40%); }
-    } */
+    }
 
 /* Preloaders ================================== */
 .md-preloader .pl-red {
@@ -7667,7 +7667,7 @@ fieldset[disabled] .form-control {
             position: relative;
             font-size: 21px;
             height: 20px;
-            top: -5px;
+            top: -2px;
             right: 0px; }
         .sidebar .menu .list .ml-menu li .ml-menu li a {
           padding-left: 80px; }

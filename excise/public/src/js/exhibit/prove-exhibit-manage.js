@@ -6,8 +6,8 @@ $(document).ready(function () {
 
     var loadMultiFile = {
         // โหลดไฟล์ .html
-        'section.header': '../navbar.html #topheader',
-        'section.sidebar': '../sidebar.html #leftsidebar',
+        // 'section.header': '../navbar.html #topheader',
+        // 'section.sidebar': '../sidebar.html #leftsidebar',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html',
 
         '#exhibitModal .card .body': '../exhibit/exhibit-popup.html .exhibit-popup',
@@ -15,29 +15,30 @@ $(document).ready(function () {
 
     $.each(loadMultiFile, function (tag, url) {
         $(tag).load(url, function () {
-            var ele = $('.menu .list > li');
-            $(ele).each(function (i, s) {
-                if ($(s).data('page') == 'prove-exhibit') {
-                    $(this).addClass('active')
-                }
-            })
-            // จาก lib/exicse-custom/js/main.js
-            // กำหนดเส้นทาง link ใหม่ให้กับเมนู
+            // var ele = $('.menu .list > li');
+            // $(ele).each(function (i, s) {
+            //     if ($(s).data('page') == 'prove-exhibit') {
+            //         $(this).addClass('active')
+            //     }
+            // })
+            // // จาก lib/exicse-custom/js/main.js
+            // // กำหนดเส้นทาง link ใหม่ให้กับเมนู
             switch (tag) {
-                case 'section.header':
-                    $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
-                    $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
-                    break;
-                case 'section.sidebar':
-                    srcPathUri($('.ml-menu'));
-                    $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+                // case 'section.header':
+                //     $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
+                //     $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
+                //     break;
+                // case 'section.sidebar':
+                //     srcPathUri($('.ml-menu'));
+                //     $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
+                //     break;
+                case '#exhibitModal .card .body':
+                    $('select').not('.paging_listbox_select').selectize({
+                        create: false,
+                        sortField: 'value'
+                    });
                     break;
             }
-
-            $('select').not('.paging_listbox_select').selectize({
-                create: false,
-                sortField: 'value'
-            });
         });
     })
 

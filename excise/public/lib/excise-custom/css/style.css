@@ -183,18 +183,18 @@ table tr label {
 
 
   /* side bar */
-  /* .sidebar{
+  .sidebar{
     z-index: 91 !important;
-  } */
+  }
   .sidebar .menu .list .header {
       font-size: 14px;
   }
   /* end side bar */
 
  /* navigation bar */
- /* .navbar {
+ .navbar {
      z-index: 92 !important;
- } */
+ }
  .bars{
     top: 0px;
     position: relative;

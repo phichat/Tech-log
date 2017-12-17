@@ -58,7 +58,7 @@ class ArrestListContainer extends Component {
                                             </div>
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-11 col-xs-12">
-                                            <a href="javascript:void(0);">ค้นหาขั้นสูง</a>
+                                            <a href="javascript:void(0);" onClick={this.onToggleAdvancedSearch}>ค้นหาขั้นสูง</a>
                                             {/* onclick={onToggleAdvancedSearch()} */}
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-6 col-xs-12">

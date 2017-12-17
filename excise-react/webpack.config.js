@@ -81,7 +81,8 @@ module.exports = {
         hot: true,
         historyApiFallback: true,
         proxy: {
-            //   "/api": "http://localhost:3000"
+              "/soap": "http://localhost:3000",
+              "/rest": "http://"
         }
     }
 }

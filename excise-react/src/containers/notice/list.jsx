@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import $ from "jquery"
-window.jQuery = $;
-window.$ = $;
-global.jQuery = $;
+
+import 'adminbsb-materialdesign/css/style.css'
+import 'adminbsb-materialdesign/js/admin.js'
+
 
 class NoticeListContainer extends Component {
 

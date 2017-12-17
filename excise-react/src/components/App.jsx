@@ -20,27 +20,18 @@ import 'adminbsb-materialdesign/css/themes/all-themes.css'
 import 'adminbsb-materialdesign/css/style.css'
 import 'adminbsb-materialdesign/js/admin.js'
 
-const Waves =  require('adminbsb-materialdesign/plugins/node-waves/waves.js')
+const Waves = require('adminbsb-materialdesign/plugins/node-waves/waves.js')
 window.Waves = Waves;
 
-
-export class App extends Component {
-    render() {
-        return (
-            <div>
-                <section className="header">
-                    <Header />
-                </section>
-
-                <div>
-                    <h1>React</h1>
-                    <Switch>
-                        <Route component={Content} />
-                    </Switch>
-                </div>
-            </div>
-        )
-    }
-}
+const App = () => (
+    <div>
+        <section className="header">
+            <Header />
+        </section>
+        <Switch>
+            <Route component={Content} />
+        </Switch>
+    </div>
+)
 
 export default App

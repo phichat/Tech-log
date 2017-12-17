@@ -3,8 +3,60 @@ import { NavLink, Link } from 'react-router-dom'
 import imgUser from '../theme/img/user.png'
 
 class SidebarContainer extends Component {
- 
+  constructor() {
+    super()
+    this.state = {
+      categories:
+        [{
+          key: 1,
+          item: "1. งานสืบสวน",
+          icon: "announcement",
+          subItem: [{
+            key: 1,
+            item: "ใบแจ้งความนำจับ",
+            url: "/notice/list"
+          }]
+        },
+        {
+          key: 2,
+          item: "2. งานจับกุม",
+          icon: "build",
+          subItem: [{
+            key: 1,
+            item: "บันทึกการจับกุม(ส.ส. 2/39)",
+            url: "/arrest/list"
+          }]
+        },
+        {
+          key: 3,
+          item: "3. งานเปรียบเทียบคดี",
+          icon: "assignment",
+          subItem: [{
+            key: 1,
+            item: "บันทึกรับคำกล่าวโทษ 1/55",
+            url: "/lawsuit/list"
+          },
+          {
+            key: 2,
+            item: "เปรียบเทียบปรับและออกใบเสร็จ",
+            url: "#"
+          }]
+        },
+        {
+          key: 4,
+          item: "4. งานตรวจพิสูจน์ของกลาง",
+          icon: "desktop_mac",
+          subItem: [{
+            key: 1,
+            item: "พิสูจน์ของกลาง",
+            url: "/exhibit/list"
+          }]
+        }]
+    }
+  }
+
   componentDidMount() {
+  
   }
 
   render() {
@@ -30,66 +82,27 @@ class SidebarContainer extends Component {
           <div className="menu bg-teal">
             <ul className="list">
               <li className="header">เมนู</li>
-              <li data-page="notice">
-                <a href="javascript:void(0);" className="menu-toggle">
-                  <i className="material-icons">announcement</i>
-                  <span>1. งานสืบสวน</span>
-                </a>
-                <ul className="ml-menu">
-                  <li>
-                    <NavLink
-                      to="/notice/list"
-                      activeClassName='active'>
-                      <span>ใบแจ้งความนำจับ</span>
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
-              <li data-page="arrest">
-                <a href="javascript:void(0);" className="menu-toggle">
-                  <i className="material-icons">build</i>
-                  <span>2. งานจับกุม</span>
-                </a>
-                <ul className="ml-menu">
-                  <li>
-                    <NavLink to="/arrest/list"
-                      activeClassName='active'>
-                      <span>บันทึกการจับกุม(ส.ส. 2/39)</span>
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
-              <li data-page="lawsuit">
-                <a href="javascript:void(0);" className="menu-toggle">
-                  <i className="material-icons">assignment</i>
-                  <span>3. งานเปรียบเทียบคดี</span>
-                </a>
-                <ul className="ml-menu">
-                  <li>
-                    <NavLink
-                      to="/lawsuit/list"
-                      activeClassName='active'>บันทึกรับคำกล่าวโทษ 1/55</NavLink>
-                  </li>
-                  <li>
-                    <a href="javascript:void(0);">เปรียบเทียบปรับและออกใบเสร็จ</a>
-                  </li>
-                </ul>
-              </li>
-              <li data-page="prove-exhibit">
-                <a href="javascript:void(0);" className="menu-toggle">
-                  <i className="material-icons">desktop_mac</i>
-                  <span>4. งานตรวจพิสูจน์ของกลาง</span>
-                </a>
-                <ul className="ml-menu">
-                  <li>
-                    <NavLink
-                      to="/exhibit/list"
-                      activeClassName='active'>
-                      พิสูจน์ของกลาง
+              {
+                this.state.categories.map(({ key, item, icon, subItem }) =>
+                  <li key={key}>
+                    <a href="javaScript:void(0);" className="menu-toggle">
+                      <i className="material-icons">{icon}</i>
+                      <span>{item}</span>
+                    </a>
+                    <ul className="ml-menu">
+                      {
+                        subItem.map(({ key, item, url }) =>
+                          <li key={key}>
+                            <NavLink to={url} activeClassName="active">
+                              <span>{item}</span>
                             </NavLink>
+                          </li>
+                        )
+                      }
+                    </ul>
                   </li>
-                </ul>
-              </li>
+                )
+              }
             </ul>
           </div>
           {/* <!-- #Menu --> */}

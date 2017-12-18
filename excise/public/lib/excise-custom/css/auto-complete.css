@@ -3,16 +3,48 @@ input.textSearch:focus{
     padding-left: 6px;
 }
 
+
 ul.autocomplete {
     width: calc(100% - 16px);
     position: absolute;
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    padding:6px;
-    z-index: 2;
+    padding: 0;
+    z-index: 3;
+    max-height: 300px;
+    overflow-y: scroll;
 }
 
 ul.autocomplete li{
-    padding: 4px 0;
+    padding: 6px 8px;
+    cursor: pointer;
 }
+ul.autocomplete li:hover{
+    background-color: #f5fafd;
+    color: #495c68;
+}
+
+ul.autocomplete > .selected{
+    background-color: #f5fafd;
+    color: #495c68;
+}
+
+ul.autocomplete .title {
+    display: block;
+}
+
+ul.autocomplete .title .name {
+    font-weight: bold;
+}
+
+ul.autocomplete .description{
+    font-size: 12px;
+    display: block;
+    opacity: 0.5;
+    white-space: nowrap;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+

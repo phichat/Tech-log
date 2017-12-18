@@ -33,17 +33,13 @@ module.exports = {
     },
     resolve: {
         alias: {
-            Containers: './containers',
-            Components: './components',
-            Images: './theme/img'
         },
-        extensions: ['.js', '.jsx']
+        extensions: [".js", ".json", ".scss"]
     },
     module: {
         rules: [
-            { test: /\.js$/, exclude: /node_modules/, enforce: 'pre', loader: 'eslint-loader' },
-            { test: /\.js$/, exclude: /node_modules/, loader: 'babel-loader' },
-            { test: /\.jsx$/, exclude: /node_modules/, loader: 'babel-loader' },
+            { test: /\.(js|jsx)$/, exclude: /node_modules/, enforce: 'pre', loader: 'eslint-loader' },
+            { test: /\.(js|jsx)$/, exclude: /node_modules/, loader: 'babel-loader' },
             { test: /\.css$/, exclude: /node_modules/, use: cssModuleRules },
             { test: /\.css$/, include: /node_modules/, use: [{ loader: 'style-loader' }, { loader: 'css-loader' }] },
             {

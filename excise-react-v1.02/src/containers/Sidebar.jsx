@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { NavLink, Link } from 'react-router-dom'
 import imgUser from '../theme/img/user.png'
+import 'adminbsb-materialdesign/css/style.css'
+import 'adminbsb-materialdesign/js/admin.js'
 
 class SidebarContainer extends Component {
   constructor() {

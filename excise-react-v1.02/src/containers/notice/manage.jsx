@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import 'adminbsb-materialdesign/css/style.css'
+import 'adminbsb-materialdesign/js/admin.js'
+
 class NoticeManageContainer extends Component {
     constructor() {
         super()

@@ -32,8 +32,6 @@ module.exports = {
         filename: '[name].js'
     },
     resolve: {
-        alias: {
-        },
         extensions: [".js", ".json", ".scss"]
     },
     module: {

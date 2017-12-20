@@ -51,6 +51,7 @@
     "whatwg-fetch": "2.0.3"
   },
   "scripts": {
+<<<<<<< HEAD
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom"
@@ -96,5 +97,11 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+=======
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+>>>>>>> f1e4ea3956773977d09534ca7c26b921b0dafbda
   }
 }

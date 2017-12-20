@@ -8,5 +8,4 @@ function insArrestIndicmentAll(){
     // CreationDate		M			วันที่สร้างรายการ		
     // CreateUser		M			User ที่สร้างรายการ		
     // LawsuitCode		M		Y	"อ้างอิงเลขที่คดี"		
-    // IsStatus							
 }

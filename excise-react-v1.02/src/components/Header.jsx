@@ -12,14 +12,12 @@ const Header = () => {
                     {/* <a href="javaScript:void(0);" className="bars"></a> */}
                     <Link to={"/Home"} className="navbar-brand index">
                         <img src={logo} alt="excise" className="logo" />
-                        <span className="main">
-                            กรมสรรพสามิต
-                    </span>
-                        <br />
-                        <span className="detail">
-                            ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560
-                    </span>
                     </Link>
+                    <Link to={"/Home"} className="title">
+                        <h4 className="main">กรมสรรพสามิต</h4>
+                        <p className="detail">ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560</p>
+                    </Link>
+
                 </div>
             </div>
         </nav>

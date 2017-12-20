@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
 class NoticeListContainer extends Component {
 
     constructor() {
@@ -20,7 +19,6 @@ class NoticeListContainer extends Component {
     }
 
     componentDidMount() {
-
         // $(this.refs.datepicker).datepicker({
         //     format: 'dd/mm/yyyy',
         //     todayHighlight: true,
@@ -66,8 +64,10 @@ class NoticeListContainer extends Component {
                                     <div className="row form-group">
                                         <label className="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" htmlFor="txt_nlSearch">ค้นหา:</label>
                                         <div className="col-lg-5 col-md-5 col-sm-11 col-xs-12">
-                                            <div className="form-line">
-                                                <input type="text" className="form-control" id="txt_nlSearch" placeholder="สินค้า/เลขที่บันทึกแจ้งความ/ชื่อผู้แจ้ง/ชื่อผู้รับแจ้ง/หน่วยงาน/สถานที่เกิดเหตุ" />
+                                            <div className="form-group">
+                                                <div className="form-line">
+                                                    <input type="text" className="form-control" id="txt_nlSearch" placeholder="สินค้า/เลขที่บันทึกแจ้งความ/ชื่อผู้แจ้ง/ชื่อผู้รับแจ้ง/หน่วยงาน/สถานที่เกิดเหตุ" />
+                                                </div>
                                             </div>
                                         </div>
                                         <div className="col-lg-2 col-md-2 col-sm-11 col-xs-12">

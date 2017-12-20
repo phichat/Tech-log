@@ -302,7 +302,7 @@ window.onload = function () {
 function onChangeIsNotice(e) {
     var isNotice = $(e).find('option:selected').val()
     if (isNotice == 2) {
-        $('#txt_noticeCode').prop('disabled', true).val('')
+        $('#txt_noticeCode').val('')
         $('#txt_noticeName').prop('disabled', true).val('')
         $('#a_noticeNotice').prop('disabled', true).addClass('disabled')
         $('#ul_nmGoodName li').remove()
@@ -320,7 +320,6 @@ function onChangeIsNotice(e) {
         control.clear();
 
     } else {
-        $('#txt_noticeCode').prop('disabled', false)
         $('#txt_noticeName').prop('disabled', false)
         $('#a_noticeNotice').prop('disabled', false).removeClass('disabled')
     }

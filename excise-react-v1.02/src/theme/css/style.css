@@ -1,3 +1,4 @@
+
 .navbar-header {
   height: 90px !important;
 }
@@ -208,22 +209,39 @@ z-index: 91 !important;
 
 /* navigation bar */
 .navbar {
- z-index: 92 !important;
+  position: fixed;
+  border-radius: 0;
+  z-index: 92 !important;
 }
 .bars{
-top: 0px;
-position: relative;
+  top: 0px;
+  position: relative;
 }
 
 .navbar-brand img{
-position:absolute; 
-display: none;
+  /* position:absolute;  */
+  display: none;
 }
 
-.navbar-brand span {
-position: relative;
-left: 25%;
-top: 10px;
+.navbar span {
+  display: block;
+  /* position: relative; */
+  /* left: 25%; */
+  top: 10px;
+}
+
+.navbar-header .title {
+  position: relative;
+  color: #fff;
+  top: 5px;
+}
+
+.navbar-brand {
+  position: absolute;
+  left: 10%;
+  height: 90px;
+  top: 5px;
+  line-height: 25px;      
 }
 
 .navbar-brand span.detail {
@@ -244,16 +262,16 @@ display: none;
 }
 
 @media screen and (min-width: 640px) {
-.navbar-brand {
+/* .navbar-brand {
     position: absolute;
     left: 10%;
     height: 90px;
-    top: 2px;
+    top: 5px;
     line-height: 25px;      
-}
+} */
 
 .navbar-brand img{
-    position:absolute; 
+    /* position:absolute;  */
     display: none;
   }
 
@@ -274,30 +292,38 @@ display: none;
 }
 
 @media screen and (min-width: 1169px) {
+
+  .navbar-header .title {
+    left: 140px;
+  }
+  .navbar-header .title .detail {
+    position: relative;
+    top: -10px;
+  }
 .navbar-brand {
     position: absolute;
     height: 90px;
     left: 80px;
-    top: 2px;
-    line-height: 25px;   
-    width: 50%;   
+    padding: 0 15px;
+    line-height: 25px;
 }
 
 .navbar-brand img{
     display: block;
     height: 80px; 
-    position:absolute; 
+    /* position:absolute;  */
     top: 3px;
   }
 
-  .navbar-brand img{
+  /* .navbar-brand img{
     height: 80px; 
     position:absolute; 
     top: 3px;
-  }
+  } */
+  
 
   .navbar-brand span {
     position: relative;
-    left: 80px;
+    /* left: 80px; */
   }
 }

@@ -536,16 +536,19 @@ $('.arrest-manage').on('change', '.required', function () {
 })
 
 function onSaveArrest(e) {
+    insArrestProductlistByAll('', function(json){
+        console.log(json)
+    });
     // จาก lib/excise-custom/js/validate.js
-    if (!validate(e)) {
-        return false;
-    }
+    // if (!validate(e)) {
+    //     return false;
+    // }
 
-    if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
-        insArrestLawsuitAll('', function (jsonData) {
-            debugger
-        })
-    }
+    // if (confirm('MsgBox “ยืนยันการทำรายการหรือไม่?”')) {
+    //     insArrestLawsuitAll('', function (jsonData) {
+    //         debugger
+    //     })
+    // }
 }
 
 function onCancelArrest() {

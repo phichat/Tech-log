@@ -9,22 +9,22 @@ function insArrestProductlistByAll(obj, callback) {
     // CreationDate		        M			วันที่สร้างรายการ		
     // CreateUser		        M			User ที่สร้างรายการ		
 
-    var objData = {
-        ProductListId: "",
-        GroupCode: "1000",
-        GroupName: "กิจการเสี่ยงโชค",
-        NoticeCode: "LS411016000003",
-        LawsuitCode: "",
-        CreationDate: "",
-        CreateUser: "",
-    }
+    var arrayData = [{
+        "ProductListId": "01",
+        "GroupCode": "1000",
+        "GroupName": "กิจการเสี่ยงโชค",
+        "NoticeCode": "LS411016000003",
+        "LawsuitCode": "01",
+        "CreationDate": "20/12/2560",
+        "CreateUser": "Admin",
+    }]
 
     var settings = {
         "async": false,
         "crossDomain": true,
         "url": url,
         "method": "POST",
-        "data": JSON.stringify(objData),
+        "data": JSON.stringify(arrayData),
         "headers": {
             "content-type": "application/json",
             "cache-control": "no-cache",

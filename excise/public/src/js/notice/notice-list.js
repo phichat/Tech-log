@@ -56,7 +56,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                     array.push({
                         no: (++i),
                         noticecode: $(el).find('noticecode').text(),
-                        department: $(el).find('departmentnamereceive').text(),
+                        department: $(el).find('departmentName').text(),
                         noticeDate: $(el).find('noticedate').text(),
                         groupName: $(el).find('groupname').text(),
                         staffRecive: $(el).find('staffnamereceive').text(),
@@ -91,7 +91,7 @@ function onSearchNoticeList(boxSearch, advSearch) {
                     array.push({
                         no: (++i),
                         noticecode: $(el).find('noticecode').text(),
-                        department: $(el).find('departmentnamereceive').text(),
+                        department: $(el).find('departmentName').text(),
                         noticeDate: $(el).find('noticedate').text(),
                         groupName: $(el).find('groupname').text(),
                         staffRecive: $(el).find('staffnamereceive').text(),

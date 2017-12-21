@@ -81,22 +81,18 @@ window.onload = function () {
     // --- end รายชื่อเจ้าหน้าที่ ---
 
     // สินค้า
-    var sleDutyGroup = '<option value="" selected></option>';
-    getDutygroupByKeyword('', function (xml) {
-        $(xml).find('dutygroupDTOList')
-            .each(function (i, e) {
-                sleDutyGroup += '<option value="' + $(e).find('groupCode').text() + '">';
-                sleDutyGroup += $(e).find('groupNameTh').text()
-                sleDutyGroup += '</option>'
-            })
 
-        $('#sle_nmGoodName')
-            .html(sleDutyGroup)
-            .selectize({
-                create: false,
-                sortField: 'text'
-            });
-    });
+    // getDutygroupByKeyword('', function (xml) {
+    //     var checkBox = '';
+    //     $(xml).find('dutygroupDTOList')
+    //         .each(function (i, e) {
+    //             checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
+    //             checkBox += ' class="filled-in" value=' + $(e).find('groupCode').text() + '>'
+    //             checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupNameTh').text() + '</label>'
+    //         })
+
+    //     $('#chb_nmGoodName').append(checkBox);
+    // });
     // --- end สินค้า ---
 
     // เขียนที่
@@ -311,8 +307,8 @@ function loadFormEdit(noticeCodeUrl) {
                     // หน่วยงาน
                     var department = $('#sle_nmDepartmentName').selectize(),
                         departmentZe = department[0].selectize,
-                        departmentCodeReceive = $(e).find('departmentCodeReceive').text().trim()
-                    departmentZe.setValue(departmentCodeReceive, true)
+                        departmentCode = $(e).find('departmentCode').text().trim()
+                    departmentZe.setValue(departmentCode, true)
                     // --- end หน่วยงาน ---
 
                     // ผู้แจ้งความ 
@@ -382,19 +378,22 @@ function loadFormEdit(noticeCodeUrl) {
     // getNoticeProductlistByCon
     getNoticeProductlistByCon(noticeCodeUrl, function (xml) {
         var productList = '',
-            li = '',
+            checkBox = '',
             liCheck = ''
         $(xml).find('productListDTO')
             .each(function (i, e) {
-                li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
-                li += $(e).find('groupName').text()
-                li += '</span><a href="javascript:void(0);"'
-                li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+                // li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
+                // li += $(e).find('groupName').text()
+                // li += '</span><a href="javascript:void(0);"'
+                // li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+                checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
+                checkBox += ' class="filled-in" value=' + $(e).find('groupCode').text() + '>'
+                checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupName').text() + '</label>'
 
                 liCheck += '<li><span class="good-name-tag" data-id="' + $(e).find('productListID').text() + '"'
                 liCheck += ' data-value="' + $(e).find('groupCode').text() + '"></span></li>'
             })
-        $('#ul_nmGoodName').html(li)
+        $('#chb_nmGoodName').html(checkBox)
         $('#ul_nmGoodNameCheck').html(liCheck)
 
     })
@@ -422,8 +421,11 @@ function onSaveNotice(e) {
         var noticeNoticeAll = {
             arrestDesc: '',
             createBy: 'User login',
-            departmentCodeReceive: $(e).find('#sle_nmDepartmentName option:selected').val(), // รหัสหน่วยงาน
+            // departmentCodeReceive: $(e).find('#sle_nmDepartmentName option:selected').val(), // รหัสหน่วยงาน
+            departmentCode: $(e).find('#sle_nmDepartmentName option:selected').val(),       // รหัสหน่วยงาน
+            departmentName: $(e).find('#sle_nmDepartmentName option:selected').text(),      // ชื่อหน่วยงาน
             departmentNameCommander: ' ',
+            departmentCodeReceive: ' ',
             departmentNameReceive: $(e).find('#txt_nmDepartment').val(),                    // สังกัด
             informType: $(e).find('#sle_nmInformType option:selected').val(),               // ผู้แจ้งความ
             noticeCode: $(e).find('#txt_nmNoticeCode').val(),                               // เลขที่แจ้งความ
@@ -573,6 +575,7 @@ function onSaveNotice(e) {
             updateNotice(e, objAllsave)
         } else {
             saveNotice(e, objAllsave);
+
         }
     }
 }

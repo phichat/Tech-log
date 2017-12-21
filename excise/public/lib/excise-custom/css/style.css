@@ -200,20 +200,43 @@ table tr label {
     position: relative;
  }
 
+ .navbar-header .title {
+    color: #fff;
+    position: absolute;
+    left: calc(100px - 10px);
+    top: 18px;
+}
+
+.navbar-header .title span {
+    display: block;
+}
+
+.navbar-header .title .main {
+    font-size: 18px;
+}
+
+.navbar-header .title .detail{
+
+}
+
 .navbar-brand img{
     position:absolute; 
     display: none;
   }
 
-  .navbar-brand span {
+  /* .navbar-brand span {
     position: relative;
     left: 25%;
     top: 10px;
-  }
+  } */
 
   .navbar-brand span.detail {
     display: none;
   }
+
+  /* #chb_nmGoodName label {
+      max-width: 100px;
+  } */
 
   @media screen and (max-width: 640px) {
       .card .body {
@@ -230,7 +253,7 @@ table tr label {
 
 @media screen and (min-width: 640px) {
     .navbar-brand {
-        position: absolute;
+        /* position: absolute; */
         left: 10%;
         height: 90px;
         top: 2px;
@@ -242,14 +265,14 @@ table tr label {
         display: none;
       }
 
-    .navbar-brand span {
+    /* .navbar-brand span {
         top: 0px;
         left: 0px;
-      }
+      } */
 
-      .navbar-brand span.detail {
+      /* .navbar-brand span.detail {
         display: block;
-      }
+      } */
 }
 
   @media screen and (min-width: 768px) {
@@ -259,18 +282,24 @@ table tr label {
   }
 
   @media screen and (min-width: 1169px) {
-    .navbar-brand {
+    .navbar-header .title {
+        color: #fff;
         position: absolute;
+        left: 155px;
+    }
+    .navbar-brand {
+        /* position: absolute; */
         height: 90px;
-        left: 80px;
+        /* left: 80px; */
         top: 2px;
         line-height: 25px;   
-        width: 50%;   
+        /* width: 50%;    */
     }
 
     .navbar-brand img{
         display: block;
         height: 80px; 
+        left: 80px;
         position:absolute; 
         top: 3px;
       }
@@ -278,11 +307,11 @@ table tr label {
       .navbar-brand img{
         height: 80px; 
         position:absolute; 
-        top: 3px;
+        top: 6px;
       }
 
-      .navbar-brand span {
+      /* .navbar-brand span {
         position: relative;
         left: 80px;
-      }
+      } */
   }

@@ -1,5 +1,5 @@
 // {
-//     "result": "fail",
+//     "result": "fail"&
 //     "detail": "Error authen."
 //   }
 

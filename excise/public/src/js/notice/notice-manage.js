@@ -82,17 +82,19 @@ window.onload = function () {
 
     // สินค้า
 
-    // getDutygroupByKeyword('', function (xml) {
-    //     var checkBox = '';
-    //     $(xml).find('dutygroupDTOList')
-    //         .each(function (i, e) {
-    //             checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
-    //             checkBox += ' class="filled-in" value=' + $(e).find('groupCode').text() + '>'
-    //             checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupNameTh').text() + '</label>'
-    //         })
+    getDutygroupByKeyword('', function (xml) {
+        var checkBox = '';
+        $(xml).find('dutygroupDTOList')
+            .each(function (i, e) {
+                checkBox += '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'
+                checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
+                checkBox += ' class="filled-in" value=' + $(e).find('groupCode').text() + '>'
+                checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupNameTh').text() + '</label>'
+                checkBox += '</div>'
+            })
 
-    //     $('#chb_nmGoodName').append(checkBox);
-    // });
+        $('#chb_nmGoodName').append(checkBox);
+    });
     // --- end สินค้า ---
 
     // เขียนที่
@@ -378,22 +380,21 @@ function loadFormEdit(noticeCodeUrl) {
     // getNoticeProductlistByCon
     getNoticeProductlistByCon(noticeCodeUrl, function (xml) {
         var productList = '',
-            checkBox = '',
-            liCheck = ''
+            liCheck = '',
+            checkBox = $('input[type=checkbox][name*=groupName]');
         $(xml).find('productListDTO')
             .each(function (i, e) {
-                // li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
-                // li += $(e).find('groupName').text()
-                // li += '</span><a href="javascript:void(0);"'
-                // li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
-                checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
-                checkBox += ' class="filled-in" value=' + $(e).find('groupCode').text() + '>'
-                checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupName').text() + '</label>'
+                $(checkBox).each(function () {
+                    if ($(this).val() === $(e).find('groupCode').text()) {
+                        $(this).prop("checked", true);
+                        return false;
+                    }
+                })
 
                 liCheck += '<li><span class="good-name-tag" data-id="' + $(e).find('productListID').text() + '"'
                 liCheck += ' data-value="' + $(e).find('groupCode').text() + '"></span></li>'
             })
-        $('#chb_nmGoodName').html(checkBox)
+        // $('#chb_nmGoodName').html(checkBox)
         $('#ul_nmGoodNameCheck').html(liCheck)
 
     })
@@ -495,9 +496,10 @@ function onSaveNotice(e) {
             // - ตรวจสอบสินค้าเก่า - ใหม่ (ถ้า ของเก่า ไม่มีอยู่ในรายการ ของใหม่ ข้อมูลจะถูกลบ)
             var checkItem = false,
                 delProduct = [],
-                insProduct = []
+                insProduct = [],
+                checkBox = $('input[type=checkbox][name*=groupName]');
             // ตรวจสอบข้อมูลสินค้าที่ถูกเพิ่มเข้าใหม่ 
-            $(e).find('#ul_nmGoodName li .good-name-tag').each(function (i, el) {
+            $(checkBox).each(function (i, el) {
                 checkItem = false;
                 // ตรวสอบข้อมูล ในรายการสินค้า 
                 $(e).find('#ul_nmGoodNameCheck li .good-name-tag').each(function (j, ele) {

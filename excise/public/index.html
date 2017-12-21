@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>กรมสรรพสามิตร | ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ</title>    
+    <title>กรมสรรพสามิตร | ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ</title>
     <!-- Favicon-->
     <link rel="icon" href="img/icon-excise.ico" type="image/x-icon">
 
@@ -38,7 +38,7 @@
 <body class="theme-teal">
 
 
-    <script>
+    <!-- <script>
         $(document).ready(function () {
             var loadMultifile = {
                 'section.header': './src/navbar.html #topheader',
@@ -50,11 +50,119 @@
             })
             $.getScript('lib/adminbsb-materialdesign/js/admin.js')
         })
-    </script>
+    </script> -->
 
-    <section class="header"></section>
+    <section class="header">
+        <!-- Top Bar -->
+        <nav id="topheader" class="navbar">
+            <div class="container-fluid">
+                <div class="navbar-header" style="height: 90px !important;">
+                    <!-- <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a> -->
+                    <a href="javascript:void(0);" class="bars"></a>
+                    <a href="index.html" class="navbar-brand index">
+                        <img src="img/logo-excise.png" alt="excise" class="logo">
+                    </a>
+                    <a href="index.html" class="title">
+                        <span class="main">
+                            กรมสรรพสามิต
+                        </span>
+                        <span class="detail">
+                            ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560
+                        </span>
+                    </a>
+                </div>
 
-    <section class="sidebar"></section>
+            </div>
+        </nav>
+        <!-- #Top Bar -->
+    </section>
+
+    <section class="sidebar">
+        <aside id="leftsidebar" class="sidebar">
+            <!-- User Info -->
+            <div class="user-info bg-grey">
+                <div class="image">
+                    <img class="userImg" src="lib/adminbsb-materialdesign/images/user.png" width="48" height="48" alt="User" />
+                </div>
+                <div class="info-container">
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">ผู้ดูแลระบบ</div>
+                    <div class="email">admin.doe@example.com</div>
+                </div>
+            </div>
+            <!-- #User Info -->
+            <!-- Menu -->
+            <div class="menu bg-teal">
+                <ul class="list">
+                    <li class="header">เมนู</li>
+                    <li data-page="notice">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">announcement</i>
+                            <span>1. งานสืบสวน</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="src/notice/notice-list.html" class="link-href">
+                                    <span>ใบแจ้งความนำจับ</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-page="arrest">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">build</i>
+                            <span>2. งานจับกุม</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="src/arrest/arrest-list.html" class="link-href">
+                                    <span>บันทึกการจับกุม(ส.ส. 2/39)</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-page="lawsuit">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">assignment</i>
+                            <span>3. งานเปรียบเทียบคดี</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="src/lawsuit/lawsuit-list.html" class="link-href">บันทึกรับคำกล่าวโทษ 1/55</a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);">เปรียบเทียบปรับและออกใบเสร็จ</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li data-page="prove-exhibit">
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">desktop_mac</i>
+                            <span>4. งานตรวจพิสูจน์ของกลาง</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li>
+                                <a href="src/exhibit/prove-exhibit-list.html" class="link-href">
+                                    พิสูจน์ของกลาง
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- #Menu -->
+            <!-- Footer -->
+            <div class="legal bg-grey">
+                <div class="copyright">
+                    &copy; 2016 - 2017
+                    <a href="javascript:void(0);"> ผู้ดูแลระบบ</a>
+                </div>
+                <div class="version">
+                    <b>เวอร์ชั่น: </b> 1.0.5
+                </div>
+            </div>
+            <!-- #Footer -->
+        </aside>
+    </section>
 
     <section class="content"></section>
 
@@ -69,8 +177,7 @@
     <script src="lib/adminbsb-materialdesign/plugins/node-waves/waves.js"></script>
 
     <!-- Custom Js -->
-    <!-- <script src="lib/adminbsb-materialdesign/js/admin.js"></script> -->
-    <!-- <script src="lib/adminbsb-materialdesign/js/pages/index.js"></script> -->
+    <script src="lib/adminbsb-materialdesign/js/admin.js"></script>
 
     <!-- Demo Js -->
     <script src="lib/adminbsb-materialdesign/js/demo.js"></script>

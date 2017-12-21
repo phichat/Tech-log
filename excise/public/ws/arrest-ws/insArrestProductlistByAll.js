@@ -19,6 +19,9 @@ function insArrestProductlistByAll(obj, callback) {
         "CreateUser": "Admin",
     }]
 
+    var bojj ='Array("GroupCode"=>"01","GroupName"=>"สุรา","NoticeCode"=>"01","LawsuitCode"=>"01","CreationDate"=>"20/12/2560","CreateUser"=>"Admin")'
+
+
     var settings = {
         "async": false,
         "crossDomain": true,

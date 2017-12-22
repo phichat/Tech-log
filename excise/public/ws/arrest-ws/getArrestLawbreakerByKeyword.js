@@ -7,7 +7,8 @@ function getArrestLawbreakerByKeyword(key, callback) {
         "method": "POST",
         "headers": {
           "content-type": "application/x-www-form-urlencoded",
-          "cache-control": "no-cache"
+          "cache-control": "no-cache",
+          'X-HTTP-Method-Override': "GET"
         },
         "data": {
           "Keyword": key

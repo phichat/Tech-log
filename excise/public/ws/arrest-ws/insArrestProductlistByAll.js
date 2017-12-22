@@ -9,7 +9,7 @@ function insArrestProductlistByAll(obj, callback) {
     // CreationDate		        M			วันที่สร้างรายการ		
     // CreateUser		        M			User ที่สร้างรายการ		
 
-    var arrayData = [{
+    var arrayData = {
         "ProductListId": "01",
         "GroupCode": "1000",
         "GroupName": "กิจการเสี่ยงโชค",
@@ -17,21 +17,16 @@ function insArrestProductlistByAll(obj, callback) {
         "LawsuitCode": "01",
         "CreationDate": "20/12/2560",
         "CreateUser": "Admin",
-    }]
-
-    var bojj ='Array("GroupCode"=>"01","GroupName"=>"สุรา","NoticeCode"=>"01","LawsuitCode"=>"01","CreationDate"=>"20/12/2560","CreateUser"=>"Admin")'
-
-
+    }
     var settings = {
         "async": false,
         "crossDomain": true,
         "url": url,
         "method": "POST",
-        "data": JSON.stringify(arrayData),
+        "data": arrayData,
         "headers": {
-            "content-type": "application/json",
-            "cache-control": "no-cache",
-            'X-HTTP-Method-Override': "GET"
+            "content-type": "application/x-www-form-urlencoded",
+            "cache-control": "no-cache"
         }
     }
 

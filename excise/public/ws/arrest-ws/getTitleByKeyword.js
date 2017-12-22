@@ -5,8 +5,11 @@ function getTitleByKeyword(key, callback) {
         "crossDomain": true,
         "url": url + "?Keyword=" + key,
         "method": "POST",
+        "data":{
+            "Keyword": key
+        },
         "headers": {
-            "content-type": "application/json",
+            "content-type": "application/x-www-form-urlencoded",
             "cache-control": "no-cache",
             'X-HTTP-Method-Override': "GET"
         }

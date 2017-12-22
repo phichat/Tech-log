@@ -5,11 +5,15 @@ function getRaceByKeyword(key, callback){
     var settings = {
         "async": false,
         "crossDomain": true,
-        "url": url + "?Keyword=" + key,
-        "method": "GET",
+        "url": url,
+        "method": "POST",
+        "data": {
+            "Keyword": key
+        },
         "headers": {
-            "content-type": "application/json",
-            "cache-control": "no-cache"
+            "content-type": "application/x-www-form-urlencoded",
+            "cache-control": "no-cache",
+            'X-HTTP-Method-Override': "GET"
         }
     }
 

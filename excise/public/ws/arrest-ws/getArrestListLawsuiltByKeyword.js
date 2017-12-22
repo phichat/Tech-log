@@ -4,10 +4,13 @@ function getArrestListLawsuiltByKeyword(key, callback) {
     var settings = {
         "async": false,
         "crossDomain": true,
-        "url": url + "?Keyword=" + key,
+        "url": url,
         "method": "POST",
+        "data": {
+            "Keyword": key
+        },
         "headers": {
-            "content-type": "application/json",
+            "content-type": "application/x-www-form-urlencoded",
             "cache-control": "no-cache",
             'X-HTTP-Method-Override': "GET"
         }

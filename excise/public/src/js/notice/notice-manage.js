@@ -81,19 +81,21 @@ window.onload = function () {
     // --- end รายชื่อเจ้าหน้าที่ ---
 
     // สินค้า
-
     getDutygroupByKeyword('', function (xml) {
         var checkBox = '';
         $(xml).find('dutygroupDTOList')
             .each(function (i, e) {
                 checkBox += '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'
                 checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
-                checkBox += ' class="filled-in" value=' + $(e).find('groupCode').text() + '>'
+                checkBox += ' class="filled-in" value="' + $(e).find('groupCode').text() + '">'
                 checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupNameTh').text() + '</label>'
                 checkBox += '</div>'
             })
 
-        $('#chb_nmGoodName').append(checkBox);
+        $('#chb_nmGoodName').append(checkBox)
+            .slimScroll({
+                height: '250px'
+            });
     });
     // --- end สินค้า ---
 
@@ -489,61 +491,56 @@ function onSaveNotice(e) {
         // --- End location ---
 
         // noticeProductlistAll
-        var productArray = [];
+        var productArray = [],
+            checkBox = $('input[type=checkbox][name*=groupName]');
         if (modeUrl !== undefined && modeUrl == 'edit') {
             // การตรวจสอบข้อมูลสินค้าเก่า-ใหม่
             // - ตรวจสอบสินค้าใหม่ - เก่า (ถ้า ของใหม่ ไม่มีอยู่ในรายการ ของเก่า ข้อมูลจะถูกเพิ่ม)
             // - ตรวจสอบสินค้าเก่า - ใหม่ (ถ้า ของเก่า ไม่มีอยู่ในรายการ ของใหม่ ข้อมูลจะถูกลบ)
-            var checkItem = false,
-                delProduct = [],
-                insProduct = [],
-                checkBox = $('input[type=checkbox][name*=groupName]');
-            // ตรวจสอบข้อมูลสินค้าที่ถูกเพิ่มเข้าใหม่ 
+            var delProduct = [],
+                insProduct = []
+
+            // 1. ตรวจสอบข้อมูลสินค้าที่ถูกเพิ่มเข้าใหม่ 
             $(checkBox).each(function (i, el) {
-                checkItem = false;
-                // ตรวสอบข้อมูล ในรายการสินค้า 
-                $(e).find('#ul_nmGoodNameCheck li .good-name-tag').each(function (j, ele) {
-                    if ($(el).data('value') == $(ele).data('value')) {
-                        checkItem = true;
-                        return false;
-                    }
-                })
-
-                // ถ้าข้อมูลสินค้าไม่ตรงกัน จะ insert
-                if (checkItem == false) {
-                    insProduct.push
-                        ({
-                            groupCode: $(el).data('value'),
-                            noticeCode: $(e).find('#txt_nmNoticeCode').val(),
-                            groupName: $(el).text(),
-                            lwsuitCode: 1,
-                            createUser: 'User login'
-                        })
+                // ตรวสอบข้อมูล ที่ถูกเลือก
+                if ($(el).is(":checked")) {
+                    $(e).find('#ul_nmGoodNameCheck li .good-name-tag').each(function (j, ele) {
+                        // ถ้าข้อมูลสินค้าไม่ตรงกัน จะ insert
+                        if ($(el).val() !== $(ele).data('value')) {
+                            insProduct.push
+                                ({
+                                    groupCode: $(el).val(),
+                                    noticeCode: $(e).find('#txt_nmNoticeCode').val(),
+                                    groupName: $(el).next().text(),
+                                    lwsuitCode: 1,
+                                    createUser: 'User login'
+                                })
+                            return false;
+                        }
+                    })
                 }
             })
 
-            // ตรวจสอบข้อมูลสินค้าจาก ข้อมูลเดิม กับข้อมูลชุดใหม่ เพื่อลบข้อมูลที่ไม่ตรงกัน
+
+            // 2. ตรวจสอบข้อมูลสินค้าจาก ข้อมูลเดิม กับข้อมูลชุดใหม่ เพื่อลบข้อมูลที่ไม่ตรงกัน
             $(e).find('#ul_nmGoodNameCheck li .good-name-tag').each(function (i, el) {
-                checkItem = false;
-                $(e).find('#ul_nmGoodName li .good-name-tag').each(function (i, ele) {
-                    if ($(el).data('value') == $(ele).data('value')) {
-                        checkItem = true;
-                        return false;
+                $(checkBox).each(function (i, ele) {
+                    if ($(el).data('value') == $(this).val()) {
+                        // ถ้าข้อมูลสินค้าตรงกัน แต่ไม่ถูกเลือก จะ delete
+                        if ($(this).not(":checked")) {
+                            delProduct.push
+                                ({
+                                    code: ($(el).data('id') == '' ? 1 : $(el).data('id')),
+                                    groupCode: $(el).data('value'),
+                                    updateUser: 'User login'
+                                })
+                            return false;
+                        }
                     }
                 })
-
-                // ถ้าข้อมูลสินค้าไม่ตรงกัน จะ delete
-                if (checkItem == false) {
-                    delProduct.push
-                        ({
-                            code: ($(el).data('id') == '' ? 1 : $(el).data('id')),
-                            groupCode: $(el).data('value'),
-                            updateUser: 'User login'
-                        })
-                }
             })
 
-            // เพิ่มข้อมูลทั้งสอง (insProduct, delProduct) เข้าไปใน array เพื่อดำเนินการต่อ
+            // 3. เพิ่มข้อมูลทั้งสอง (insProduct, delProduct) เข้าไปใน array เพื่อดำเนินการต่อ
             productArray.push
                 ({
                     ins: insProduct,
@@ -552,17 +549,18 @@ function onSaveNotice(e) {
 
         } else {
 
-            $(e).find('#ul_nmGoodName li .good-name-tag')
-                .each(function (i, el) {
+            $(checkBox).each(function (i, el) {
+                if ($(this).is(":checked")) {
                     productArray.push
                         ({
-                            groupCode: $(el).data('value'),
+                            groupCode: $(this).val(),
                             noticeCode: $(e).find('#txt_nmNoticeCode').val(),
-                            groupName: $(el).text(),
+                            groupName: $(this).next().text(),
                             lawsuitCode: 1,
                             createUser: 'User login'
                         })
-                })
+                }
+            })
         }
         // --- End NoticeProductlistAll ---
 
@@ -572,7 +570,6 @@ function onSaveNotice(e) {
             location: noticeLocationAll,
             productlist: productArray
         }
-
         if (modeUrl !== undefined && modeUrl == 'edit') {
             updateNotice(e, objAllsave)
         } else {

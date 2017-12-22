@@ -233,7 +233,7 @@
 
                             <div class="row">
                                 <label for="txt_noticeCode" class="control-label col-lg-2 col-md-2 col-sm-2 col-xs-12">เลขที่:</label>
-                                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-12">
+                                <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
                                     <div class="input-group">
                                         <div class="form-line">
                                             <input type="text" name="noticeCode" id="txt_noticeCode" class="form-control" disabled>
@@ -241,8 +241,6 @@
                                         <span class="input-group-addon" id="spn_noticeNotice">
                                             <div class="box-group-addon">
                                                 <a href="javascript:void(0);" id="a_noticeNotice" class="toggle-popup-list" onclick="!this.disabled && $('#noticeByConModal').modal();">....</a>
-                                                <!-- onclick="$('#noticeByConModal').modal();" 
-                                                    data-toggle="modal" data-target="#noticeByConModal" -->
                                             </div>
                                         </span>
                                     </div>
@@ -313,7 +311,7 @@
                                     </div>
 
                                     <label for="" class="control-label col-lg-1 col-md-1 col-sm-3 col-xs-12">เวลา:</label>
-                                    <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" name="occurenceTime" id="txt_occurenceTime" class="time24 form-control required" required>
@@ -360,18 +358,7 @@
                                     <div class="row">
                                         <label for="sle_nmGoodName" class="control-label col-lg-5 col-md-5 col-sm-4 col-xs-12" style="right: 8px;">สินค้า:</label>
                                         <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 p-l-0 p-r-0">
-                                            <div class="form-group form-float">
-                                                <div class="form-line">
-                                                    <select name="" id="sle_nmGoodName" class="form-control" style="z-index:0;" onchange="onChangGoodName(this);"></select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <label for="ul_nmGoodName" class="control-label col-lg-5 col-md-5 col-sm-4 col-xs-12"></label>
-                                        <div class="col-lg-7 col-md-7 col-sm-8 col-xs-12 p-l-0 p-r-0">
-                                            <ul class="list-tags good-name" id="ul_nmGoodName"></ul>
+                                            <div id="chb_GoodName" class="demo-checkbox "></div>
                                         </div>
                                     </div>
                                     <!-- <div class="row">
@@ -393,7 +380,7 @@
 
                                 <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 clear-m clear-p">
                                     <label for="txt_fine" class="control-label col-lg-4 col-md-4 col-sm-6 col-xs-12">ประมาณการค่าปรับ:</label>
-                                    <div class="col-lg-ุ col-md-6 col-sm-5 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="texttxt_fine" name="" id="" class="number form-control" placeholder="0.00">
@@ -483,9 +470,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7 col-md-7 col-sm-2 col-xs-12 clear-m clear-p">
-                                    <label for="txt_building" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">อาคาร/สถานที่:</label>
-                                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 clear-m clear-p">
+                                    <label for="txt_building" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">อาคาร/สถานที่:</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" name="" id="txt_building" class="form-control">
@@ -510,9 +497,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7 col-md-7 col-sm-2 col-xs-12  clear-m clear-p">
-                                    <label for="txt_alley" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">ตรอก/ซอย:</label>
-                                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12  clear-m clear-p">
+                                    <label for="txt_alley" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ตรอก/ซอย:</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                                         <div class="form-group form-float">
                                             <div class="form-line">
                                                 <input type="text" name="" id="txt_alley" class="form-control">
@@ -531,9 +518,9 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-7 col-md-7 col-sm-2 col-xs-12 clear-m clear-p">
-                                    <label for="sle_region" class="control-label col-lg-4 col-md-4 col-sm-2 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
-                                    <div class="col-lg-6 col-md-6 col-sm-4 col-xs-12">
+                                <div class="col-lg-7 col-md-7 col-sm-6 col-xs-12 clear-m clear-p">
+                                    <label for="sle_region" class="control-label col-lg-4 col-md-4 col-sm-4 col-xs-12">ตำบล/อำเภอ/จังหวัด:</label>
+                                    <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12">
                                         <div class="form-group form-float">
                                             <select name="" id="sle_region" class="region form-control required" required></select>
                                         </div>
@@ -1013,7 +1000,7 @@
         <script src="../../ws/arrest-ws/getRaceByKeyword.js" type="text/javascript"></script>
         <script src="../../ws/arrest-ws/insArrestLawsuitAll.js" type="text/javascript"></script>
         <script src="../../ws/arrest-ws/insArrestProductlistByAll.js" type="text/javascript"></script>
-        
+
 
         <!-- Common Ws -->
         <script src="../../ws/common-ws/getSubdistrictByKeyword.js" type="text/javascript"></script>

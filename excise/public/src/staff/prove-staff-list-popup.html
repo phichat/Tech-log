@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=q, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="proveStaffList" class="prove-staff-list">
+        <br>
+        <div class="form-horizontal">
+            <div class="row form-group">
+                <label class="control-label col-lg-1 col-md-1 col-sm-1 col-xs-12" for="txt_proveStaffSearch">ค้นหา:</label>
+                <div class="col-lg-9 col-md-9 col-sm-8 col-xs-12">
+                    <div class="form-line">
+                        <input type="text" class="form-control" id="txt_proveStaffSearch" onkeypress="onkeypressSearchFormProveStaff(this);" placeholder="ชื่อ/นามสกุล/ตำแหน่ง/สังกัด">
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12">
+                    <button type="button" id="btn_nlSearch" class="btn bg-dark-blue-custom waves-effect form-control" onclick="onSearchFormProveStaff('#txt_proveStaffSearch');">
+                        <span>
+                            <i class="material-icons">search</i>
+                            ค้นหา
+                        </span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="">
+            <!-- table staff list -->
+            <div class="form-group table-responsive">
+                <table id="tableProveStaffList" class="tableProveStaffList table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th style="min-width:30px;">
+                                <input type="checkbox" id="proveStaffCheckboxTh" name="proveStaffCheckboxTh" class="filled-in" onclick="checkedBox(this, '#tableProveStaffList', 0);">
+                                <label for="staffCheckboxTh"></label>
+                            </th>
+                            <th style="min-width:70px;" class="sort" onclick="sortTable('tableProveStaffList', 1)">ลำดับ</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableProveStaffList', 2)">รหัสพนักงาน</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableProveStaffList', 3)">ชื่อ-นามสกุล</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableProveStaffList', 4)">ตำแหน่ง</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableProveStaffList', 5)">สังกัด</th>
+                            <th style="min-width:170px;" class="sort" onclick="sortTable('tableProveStaffList', 6)">ประเภทเจ้าหน้าที่</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div class="row form-group">
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="pagination-select">
+                        <span>หน้าที่ </span>
+                        <select id="proveStaffList_pagination" class="paging_listbox_select"></select>
+                        <span class="page-total"></span>
+                    </div>
+                    <!-- หน้าที่ - จาก - หน้า -->
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div id="proveStaffList_pageinfo" class="pagination-info text-right">
+                        <!-- รายการที่ 1 - 5 จาก 86 รายการ -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- button -->
+            <div class="row">
+                <div class="col-lg-8 col-md-6 col-sm-4 col-xs-12"></div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <button type="button" class="btn bg-red form-control" id="saveProveStaffList" onclick="onSelectProveStaff();">
+                        <i class="material-icons">done</i>
+                        ยืนยัน
+                    </button>
+                </div>
+                <div class="col-lg-2 col-md-3 col-sm-4 col-xs-12">
+                    <button type="button" class="btn bg-grey form-control" id="cancelProveStaffList" data-dismiss="modal" onclick="onCancelSelectProveStaff();">
+                        <i class="material-icons">close</i>
+                        ยกเลิก
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

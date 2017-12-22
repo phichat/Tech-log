@@ -40,6 +40,17 @@ function validate(e) {
         }
     })
 
+
+    $(e).find('div.demo-checkbox.required').each(function (i, el) {
+        var checkbox = $(this).find('input[type=checkbox]:checked').length;
+        if (checkbox == 0) {
+            if (!$(this).parents('.form-group').find('label.error').length) {
+                $(this).parents('.form-group').append(label);
+            }
+            isvalidate = false;
+        }
+    })
+
     $(e).find('table.required').each(function (i, el) {
         if ($(this).find('tbody tr').length == 0) {
             if (!$(this).parents('.form-group').find('label.error').length) {
@@ -92,6 +103,13 @@ function unhighlight(e) {
 
     $(e).find('ul.required').each(function (i, el) {
         if ($(this).find('li').length > 0) {
+            $(this).parents('.form-group').find('label.error').remove();
+        }
+    })
+
+    $(e).find('div.demo-checkbox .required').each(function (i, el) {
+        var checkbox = $(this).find('input[type=checkbox]:checked').length;
+        if (checkbox > 0) {
             $(this).parents('.form-group').find('label.error').remove();
         }
     })

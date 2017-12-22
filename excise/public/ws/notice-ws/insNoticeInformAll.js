@@ -32,7 +32,7 @@ function insNoticeInformAll(arr, callback) {
     xmlData += '</inf:insNoticeInformAll>'
     xmlData += '</soapenv:Body>'
     xmlData += '</soapenv:Envelope>'
-debugger
+
     var url = 'http://103.233.193.62:8080/TLEXCWeb/NoticeWS?wsdl'
     var settings = {
         "async": false,

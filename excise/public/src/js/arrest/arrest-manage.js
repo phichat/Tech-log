@@ -59,20 +59,20 @@ window.onload = function () {
     // --- end พื้นที่ ---
 
     // สินค้า
-    var sleDutyGroup = '<option value="" selected></option>';
     getDutygroupByKeyword('', function (xml) {
+        var checkBox = ''
         $(xml).find('dutygroupDTOList')
             .each(function (i, e) {
-                sleDutyGroup += '<option value="' + $(e).find('groupCode').text() + '">';
-                sleDutyGroup += $(e).find('groupNameTh').text()
-                sleDutyGroup += '</option>'
+                // checkBox += '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'
+                checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
+                checkBox += ' class="filled-in" value="' + $(e).find('groupCode').text() + '">'
+                checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupNameTh').text() + '</label>'
+                // checkBox += '</div>'
             })
 
-        $('#sle_nmGoodName')
-            .html(sleDutyGroup)
-            .selectize({
-                create: false,
-                sortField: 'text'
+        $('#chb_GoodName').html(checkBox)
+            .slimScroll({
+                height: '200px'
             });
     });
     // --- end สินค้า ---
@@ -157,7 +157,7 @@ window.onload = function () {
                         });
                     })
 
-                    getRaceByKeyword('', function(json){
+                    getRaceByKeyword('', function (json) {
                         var option = '<option selected disabled></option>'
                         for (i = 0; i < json.detail.length; i++) {
                             option += '<option value="' + json.detail[i].RaceCode + '">'
@@ -536,7 +536,7 @@ $('.arrest-manage').on('change', '.required', function () {
 })
 
 function onSaveArrest(e) {
-    insArrestProductlistByAll('', function(json){
+    insArrestProductlistByAll('', function (json) {
         console.log(json)
     });
     // จาก lib/excise-custom/js/validate.js
@@ -593,15 +593,19 @@ function onSelectNotice(table) {
             }
 
             getNoticeProductlistByCon(noticeCode, function (xml) {
-                var li = ''
+                var checkBox = ''
                 $(xml).find('productListDTO')
                     .each(function (i, e) {
-                        li += '<li><span class="good-name-tag" data-value="' + $(e).find('groupCode').text() + '">'
-                        li += $(e).find('groupName').text()
-                        li += '</span><a href="javascript:void(0);"'
-                        li += 'onclick="onDelGoodNameTag(this);">X</a></li>'
+                        checkBox += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">'
+                        checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
+                        checkBox += ' class="filled-in" value="' + $(e).find('groupCode').text() + '" checked disabled>'
+                        checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupName').text() + '</label>'
+                        checkBox += '</div>'
                     })
-                $('#ul_nmGoodName').html(li)
+                $('#chb_GoodName').append(checkBox)
+                    .slimScroll({
+                        height: '250px'
+                    });
             })
 
             var arr = {

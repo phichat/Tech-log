@@ -234,8 +234,9 @@ table tr label {
     display: none;
   }
 
-  /* #chb_nmGoodName label {
-      max-width: 100px;
+  /* #chb_nmGoodName {
+    max-height: 200px;
+    overflow-y: scroll;
   } */
 
   @media screen and (max-width: 640px) {

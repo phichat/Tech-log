@@ -593,19 +593,16 @@ function onSelectNotice(table) {
             }
 
             getNoticeProductlistByCon(noticeCode, function (xml) {
-                var checkBox = ''
+                var checkBox = $('input[type=checkbox][name*=groupName]');
                 $(xml).find('productListDTO')
                     .each(function (i, e) {
-                        checkBox += '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-6">'
-                        checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
-                        checkBox += ' class="filled-in" value="' + $(e).find('groupCode').text() + '" checked disabled>'
-                        checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupName').text() + '</label>'
-                        checkBox += '</div>'
+                        $(checkBox).each(function () {
+                            if ($(this).val() === $(e).find('groupCode').text()) {
+                                $(this).prop("checked", true);
+                                return false;
+                            }
+                        })
                     })
-                $('#chb_GoodName').append(checkBox)
-                    .slimScroll({
-                        height: '250px'
-                    });
             })
 
             var arr = {

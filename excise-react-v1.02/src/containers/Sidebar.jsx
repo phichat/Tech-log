@@ -9,56 +9,66 @@ class SidebarContainer extends Component {
     super()
     this.state = {
       categories:
-        [{
-          key: 1,
-          item: "1. งานสืบสวน",
-          icon: "announcement",
-          subItem: [{
+        [
+          {
             key: 1,
-            item: "ใบแจ้งความนำจับ",
-            url: "/notice/list"
-          }]
-        },
-        {
-          key: 2,
-          item: "2. งานจับกุม",
-          icon: "build",
-          subItem: [{
-            key: 1,
-            item: "บันทึกการจับกุม(ส.ส. 2/39)",
-            url: "/arrest/list"
-          }]
-        },
-        {
-          key: 3,
-          item: "3. งานเปรียบเทียบคดี",
-          icon: "assignment",
-          subItem: [{
-            key: 1,
-            item: "บันทึกรับคำกล่าวโทษ 1/55",
-            url: "/lawsuit/list"
+            item: "1. งานสืบสวน",
+            icon: "announcement",
+            subItem: [
+              {
+                key: 1,
+                item: "ใบแจ้งความนำจับ",
+                url: "/notice/list"
+              }
+            ]
           },
           {
             key: 2,
-            item: "เปรียบเทียบปรับและออกใบเสร็จ",
-            url: "#"
-          }]
-        },
-        {
-          key: 4,
-          item: "4. งานตรวจพิสูจน์ของกลาง",
-          icon: "desktop_mac",
-          subItem: [{
-            key: 1,
-            item: "พิสูจน์ของกลาง",
-            url: "/exhibit/list"
-          }]
-        }]
+            item: "2. งานจับกุม",
+            icon: "build",
+            subItem: [
+              {
+                key: 1,
+                item: "บันทึกการจับกุม(ส.ส. 2/39)",
+                url: "/arrest/list"
+              }
+            ]
+          },
+          {
+            key: 3,
+            item: "3. งานเปรียบเทียบคดี",
+            icon: "assignment",
+            subItem: [
+              {
+                key: 1,
+                item: "บันทึกรับคำกล่าวโทษ 1/55",
+                url: "/lawsuit/list"
+              },
+              {
+                key: 2,
+                item: "เปรียบเทียบปรับและออกใบเสร็จ",
+                url: "#"
+              }
+            ]
+          },
+          {
+            key: 4,
+            item: "4. งานตรวจพิสูจน์ของกลาง",
+            icon: "desktop_mac",
+            subItem: [
+              {
+                key: 1,
+                item: "พิสูจน์ของกลาง",
+                url: "/exhibit/list"
+              }
+            ]
+          }
+        ]
     }
   }
 
   componentDidMount() {
-  
+
   }
 
   render() {

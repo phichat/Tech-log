@@ -1,28 +1,58 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Home } from './'
-import '../theme/navbar.css'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import { withStyles } from 'material-ui/styles';
+import AppBar from 'material-ui/AppBar';
+import Toolbar from 'material-ui/Toolbar';
+import Typography from 'material-ui/Typography';
+import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import MenuIcon from 'material-ui-icons/Menu';
+import AccountCircle from 'material-ui-icons/AccountCircle';
 
-import logo from './logo.svg'
+const styles = {
+    root: {
+        width: '100%',
+    },
+    flex: {
+        flex: 1,
+    },
+    menuButton: {
+        marginLeft: -12,
+        marginRight: 20,
+    },
+};
 
-const Header = () => {
+function Header(props) {
+    const { classes } = props;
     return (
-        <nav className="navbar">
-            <div className="container-fluid">
-                <div id="navheader" className="navbar-header">
-                    <Link to={Home} className="navbar-brand index">
-                        <img src={logo} alt="excise" className="logo" />
-                    </Link>
-                    <Link to={Home} className="title">
-                        <h4 className="main">กรมสรรพสามิต</h4>
-                        <p className="detail">ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560</p>
-                    </Link>
-
-                </div>
-            </div>
-        </nav>
-    )
+        <div className={classes.root}>
+            <AppBar position="static">
+                <Toolbar>
+                    <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+                        <MenuIcon />
+                    </IconButton>
+                    <Typography type="title" color="inherit" className={classes.flex}>
+                        Title
+          </Typography>
+                    <div>
+                        <IconButton
+                            aria-owns='menu-appbar'
+                            aria-haspopup="true"
+                            color="contrast"
+                        >
+                            <AccountCircle />
+                        </IconButton>
+                    </div>
+                </Toolbar>
+            </AppBar>
+        </div>
+    );
 }
 
-export default Header
+Header.propTypes = {
+    classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Header);

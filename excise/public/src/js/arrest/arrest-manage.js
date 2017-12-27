@@ -79,9 +79,6 @@ window.onload = function () {
 
     var loadMultiFile = {
         // // โหลดเฉพาะ tag id และ element ที่อยู่ภายใน
-        // 'section.header': '../navbar.html #topheader',
-        // 'section.sidebar': '../sidebar.html #leftsidebar',
-        // // โหลดเฉพาะ tag class และ element ที่อยู่ภายใน
         '#noticeByConModal .card .body': '../notice/notice-list-popup.html .notice-list-popup',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html .staff-list',
         '#arrestTeamModal .card .body': '../staff/arrest-team-list-popup.html .arrest-team-list-popup',

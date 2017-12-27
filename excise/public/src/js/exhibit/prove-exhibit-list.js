@@ -1,9 +1,5 @@
 $(document).ready(function () {
-    // var loadMultifile = {
-    //     'section.header': '../navbar.html #topheader',
-    //     'section.sidebar': '../sidebar.html #leftsidebar'
-    // }
-
+    
     $(".datepicker").datepicker("setDate", "0")
 
     //โหลดข้อมูล ตำบล/อำเภอ/จังหวัด

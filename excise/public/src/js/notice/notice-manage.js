@@ -14,32 +14,11 @@ window.onload = function () {
     }
 
     var loadMultifile = {
-        // 'section.header': '../navbar.html #topheader',
-        // 'section.sidebar': '../sidebar.html #leftsidebar',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html'
     }
 
     $.each(loadMultifile, function (tag, url) {
-        $(tag).load(url, function () {
-            // var ele = $('.menu .list > li');
-            // $(ele).each(function (i, s) {
-            //     if ($(s).data('page') == 'notice') {
-            //         $(this).addClass('active')
-            //     }
-            // })
-            // // จาก lib/exicse-custom/js/main.js
-            // // กำหนดเส้นทาง link ใหม่ให้กับเมนู
-            // switch (tag) {
-            //     case 'section.header':
-            //         $('img.logo').attr('src', leaveSrcPathUri($('img.logo').attr('src'), '../../'))
-            //         $('a.index').attr('href', leaveSrcPathUri($('a.index').attr('href'), '../../'))
-            //         break;
-            //     case 'section.sidebar':
-            //         srcPathUri($('.ml-menu'));
-            //         $('img.userImg').attr('src', leaveSrcPathUri($('img.userImg').attr('src'), '../../'))
-            //         break;
-            // }
-        });
+        $(tag).load(url);
     })
 
     $.getScript('../../lib/adminbsb-materialdesign/js/admin.js')
@@ -396,7 +375,6 @@ function loadFormEdit(noticeCodeUrl) {
                 liCheck += '<li><span class="good-name-tag" data-id="' + $(e).find('productListID').text() + '"'
                 liCheck += ' data-value="' + $(e).find('groupCode').text() + '"></span></li>'
             })
-        // $('#chb_nmGoodName').html(checkBox)
         $('#ul_nmGoodNameCheck').html(liCheck)
 
     })
@@ -434,8 +412,8 @@ function onSaveNotice(e) {
             noticeCode: $(e).find('#txt_nmNoticeCode').val(),                               // เลขที่แจ้งความ
             noticeDate: $(e).find('#txt_nmNoticeDate').val(),                               // วันที่แจ้งความ
             noticeDueDate: $(e).find('#txt_nmDueDate').val(),                               // สินสุดใบแจ้งความ
-            noticeStation: $(e).find('#sle_nmNoticeStation option:selected').text(),         // เขียนที่
-            noticeStationCode: $(e).find('#sle_nmNoticeStation option:selected').val(),    // รหัส เขียนที่
+            noticeStation: $(e).find('#sle_nmNoticeStation option:selected').text(),        // เขียนที่
+            noticeStationCode: $(e).find('#sle_nmNoticeStation option:selected').val(),     // รหัส เขียนที่
             noticeTime: $(e).find('#txt_nmNoticeTime').val(),                               // เวลา
             positionNameReceive: $(e).find('#txt_nmPosition').val(),                        // ตำแหน่ง
             remarks: '',

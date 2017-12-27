@@ -6,8 +6,6 @@ $(document).ready(function () {
 
     var loadMultiFile = {
         // โหลดไฟล์ .html
-        // 'section.header': '../navbar.html #topheader',
-        // 'section.sidebar': '../sidebar.html #leftsidebar',
         '#noticeByConModal .card .body': '../notice/notice-list-popup.html .notice-list-popup',
         '#listStaffModal .card .body': '../staff/staff-list-popup.html .staff-list',
         '#proveNameModal .card .body': '../staff/prove-staff-list-popup.html .prove-staff-list',

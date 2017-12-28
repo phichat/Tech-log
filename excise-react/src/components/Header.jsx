@@ -10,6 +10,7 @@ import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
+import logo from './logo.svg';
 
 const styles = {
     root: {
@@ -22,6 +23,10 @@ const styles = {
         marginLeft: -12,
         marginRight: 20,
     },
+    logoButton:{
+        padding:30,
+        height: '3rem'
+    },
 };
 
 function Header(props) {
@@ -33,18 +38,20 @@ function Header(props) {
                     <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
                         <MenuIcon />
                     </IconButton>
+                    <IconButton
+                        aria-owns='menu-appbar'
+                        aria-haspopup="true"
+                        color="contrast"
+                    >
+                        <img src={logo} alt="" className={classes.logoButton} />
+                    </IconButton>
                     <Typography type="title" color="inherit" className={classes.flex}>
-                        Title
-          </Typography>
-                    <div>
-                        <IconButton
-                            aria-owns='menu-appbar'
-                            aria-haspopup="true"
-                            color="contrast"
-                        >
-                            <AccountCircle />
-                        </IconButton>
-                    </div>
+                        กรมสรรพสามิต
+                        <Typography type="subheading" color="inherit">
+                            ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560
+                        </Typography>
+                    </Typography>
+
                 </Toolbar>
             </AppBar>
         </div>

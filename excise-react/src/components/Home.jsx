@@ -44,7 +44,7 @@ function Home(props) {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button dense>Learn More</Button>
+                    <Button raised color="primary">Learn More</Button>
                 </CardActions>
             </Card>
         </div>

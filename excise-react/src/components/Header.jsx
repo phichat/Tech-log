@@ -24,8 +24,9 @@ const styles = {
         marginRight: 20,
     },
     logoButton:{
-        padding:30,
-        height: '3rem'
+        height: '3rem',
+        paddingLeft: 16,
+        paddingRight: 16
     },
 };
 
@@ -35,9 +36,9 @@ function Header(props) {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
+                    {/* <IconButton className={classes.menuButton} color="contrast" aria-label="Menu">
                         <MenuIcon />
-                    </IconButton>
+                    </IconButton> */}
                     <IconButton
                         aria-owns='menu-appbar'
                         aria-haspopup="true"
@@ -45,7 +46,7 @@ function Header(props) {
                     >
                         <img src={logo} alt="" className={classes.logoButton} />
                     </IconButton>
-                    <Typography type="title" color="inherit" className={classes.flex}>
+                    <Typography type="subheading" color="inherit" className={classes.flex}>
                         กรมสรรพสามิต
                         <Typography type="subheading" color="inherit">
                             ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560

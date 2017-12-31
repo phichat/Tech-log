@@ -22,7 +22,6 @@ function onSearchNoticeList(boxSearch, advSearch) {
         }
 
         getNoticeListNoticeByKeyword(arr, function callback(xmlDoc) {
-            debugger
             $(xmlDoc).find('noticeList')
                 .each(function (i, el) {
                     array.push({

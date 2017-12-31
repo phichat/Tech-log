@@ -408,6 +408,7 @@ function onSaveNotice(e) {
             departmentNameCommander: ' ',
             departmentCodeReceive: ' ',
             departmentNameReceive: $(e).find('#txt_nmDepartment').val(),                    // สังกัด
+            // groupName: '',                                                                  // สินค้า
             informType: $(e).find('#sle_nmInformType option:selected').val(),               // ผู้แจ้งความ
             noticeCode: $(e).find('#txt_nmNoticeCode').val(),                               // เลขที่แจ้งความ
             noticeDate: $(e).find('#txt_nmNoticeDate').val(),                               // วันที่แจ้งความ
@@ -542,6 +543,15 @@ function onSaveNotice(e) {
         }
         // --- End NoticeProductlistAll ---
 
+        var noticeGroupName = (modeUrl == 'edit' ? productArray[0].ins : productArray),
+            arrayGroupName = []
+        // ถอด groupName ออกจาก object และเพิ่มเข้าไปใน Array
+        for (item in noticeGroupName) {
+            arrayGroupName.push(noticeGroupName[item].groupName)
+        }
+        // เพิ่มสินค้าเข้าไปใน NoticeNoticeAll
+        noticeNoticeAll.groupName = arrayGroupName.join(', ');
+        
         var objAllsave = {
             notice: noticeNoticeAll,
             inform: noticeInformAll,

@@ -23,7 +23,7 @@ const styles = {
         marginLeft: -12,
         marginRight: 20,
     },
-    logoButton:{
+    logoButton: {
         height: '3rem',
         paddingLeft: 16,
         paddingRight: 16
@@ -46,12 +46,15 @@ function Header(props) {
                     >
                         <img src={logo} alt="" className={classes.logoButton} />
                     </IconButton>
-                    <Typography type="subheading" color="inherit" className={classes.flex}>
-                        กรมสรรพสามิต
+                    <div>
+                        <Typography type="subheading" color="inherit" className={classes.flex}>
+                            กรมสรรพสามิต
+                        </Typography>
                         <Typography type="subheading" color="inherit">
                             ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560
                         </Typography>
-                    </Typography>
+                    </div>
+
 
                 </Toolbar>
             </AppBar>

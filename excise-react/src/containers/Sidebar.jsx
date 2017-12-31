@@ -63,10 +63,115 @@ class SidebarContainer extends Component {
                             }
                         ]
                     }
-                ]
+                ],
+            menuToggled: false
+
         }
+        this.menuToggle = this.menuToggle.bind(this)
+
     }
+
+    activate() {
+        // const _this = this;
+        // const _body = document.getElementsByTagName("BODY");
+        // const _overlay = document.getElementsByClassName('.overlay');
+
+        // //Close sidebar
+        // $(window).click(function (e) {
+        //     var $target = $(e.target);
+        //     if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
+
+        //     if (!$target.hasClass('bars') && _this.isOpen() && $target.parents('#leftsidebar').length === 0) {
+        //         if (!$target.hasClass('js-right-sidebar')) $overlay.fadeOut();
+        //         $body.removeClass('overlay-open');
+        //     }
+        // });
+
+        // $.each($('.menu-toggle.toggled'), function (i, val) {
+        //     $(val).next().slideToggle(0);
+        // });
+
+        // const _menuToggle = document.querySelectorAll("li.active");
+        // for (let i = 0; i < _menuToggle.length; i++) {
+        //     if (i === 0) {
+        //         let activeAnchors = _menuToggle[i].getElementsByTagName("a")
+        //         activeAnchors.className = "toggled"
+        //     }
+        // }
+
+
+        // //When page load
+        // $.each($('.menu .list li.active'), function (i, val) {
+        //     var $activeAnchors = $(val).find('a:eq(0)');
+
+        //     $activeAnchors.addClass('toggled');
+        //     $activeAnchors.next().show();
+        // });
+
+        //Collapse or Expand Menu
+        // $('.menu-toggle').on('click', function (e) {
+        //     var $this = $(this);
+        //     var $content = $this.next();
+
+        //     if ($($this.parents('ul')[0]).hasClass('list')) {
+        //         var $not = $(e.target).hasClass('menu-toggle') ? e.target : $(e.target).parents('.menu-toggle');
+
+        //         $.each($('.menu-toggle.toggled').not($not).next(), function (i, val) {
+        //             if ($(val).is(':visible')) {
+        //                 $(val).prev().toggleClass('toggled');
+        //                 $(val).slideUp();
+        //             }
+        //         });
+        //     }
+
+        //     _this.toggleClass('toggled');
+        //     $content.slideToggle(320);
+        // });
+
+        // //Set menu height
+        // _this.setMenuHeight();
+        // _this.checkStatuForResize(true);
+        // $(window).resize(function () {
+        //     _this.setMenuHeight();
+        //     _this.checkStatuForResize(false);
+        // });
+
+        // //Set Waves
+        // Waves.attach('.menu .list a', ['waves-block']);
+        // Waves.init();
+    }
+
+    menuToggle(e) {
+        e.preventDefault();
+
+        const _this = e.target.closest("a"),
+            _content = _this.nextSibling
+        if (_this.closest('ul').classList.contains('list')) {
+            // document.getElementsByClassName("menu-toggle toggled")
+        }
+        //     if ($($this.parents('ul')[0]).hasClass('list')) {
+        //         var $not = $(e.target).hasClass('menu-toggle') ? e.target : $(e.target).parents('.menu-toggle');
+
+        //         $.each($('.menu-toggle.toggled').not($not).next(), function (i, val) {
+        //             if ($(val).is(':visible')) {
+        //                 $(val).prev().toggleClass('toggled');
+        //                 $(val).slideUp();
+        //             }
+        //         });
+        //     }
+
+            _this.classList.toggle('toggled');
+            // this.setState(prevState => ({
+            //     menuToggled: !prevState.menuToggled
+            // }));
+    }
+
+    componentDidMount() {
+        this.activate()
+    }
+
     render() {
+
         return (
             <div>
                 {/* <!-- Overlay For Sidebars --> */}
@@ -91,8 +196,8 @@ class SidebarContainer extends Component {
                             <li className="header">เมนู</li>
                             {
                                 this.state.categories.map(({ key, item, icon, subItem }) =>
-                                    <li key={key}>
-                                        <Link to="" className="menu-toggle">
+                                    <li key={key} className={key === 1 ? "active" : ""}>
+                                        <Link to="" className="menu-toggle" onClick={this.menuToggle}>
                                             <i className="material-icons">{icon}</i>
                                             <span>{key + '. ' + item}</span>
                                         </Link>
@@ -100,7 +205,7 @@ class SidebarContainer extends Component {
                                             {
                                                 subItem.map(({ key, item, url }) =>
                                                     <li key={key}>
-                                                        <NavLink to={url} activeClassName="active">
+                                                        <NavLink to={url}>
                                                             <span>{item}</span>
                                                         </NavLink>
                                                     </li>
@@ -111,6 +216,7 @@ class SidebarContainer extends Component {
                                 )
                             }
                         </ul>
+
                     </div>
                     {/* <!-- #Menu --> */}
                     {/* <!-- Footer --> */}

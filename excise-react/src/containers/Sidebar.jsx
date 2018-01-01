@@ -254,22 +254,29 @@ import Typography from 'material-ui/Typography';
 import Hidden from 'material-ui/Hidden';
 import Divider from 'material-ui/Divider';
 import { NavLink, Link } from 'react-router-dom';
+import { grey, teal } from 'material-ui/colors';
 
 const drawerWidth = 300;
 
 const styles = theme => ({
     root: {
-        width: '100%',
-        height: 430,
-        marginTop: theme.spacing.unit * 3,
-        zIndex: 1,
-        overflow: 'hidden',
+        // width: '100%',
+        // height: 430,
+        // marginTop: theme.spacing.unit * 3,
+        // zIndex: 1,
+        // overflow: 'hidden',
+        width: "300px",
+        overflow: "hidden",
+        display: "inline-block",
+        height: "calc(100vh - 70px)",
+        position: "fixed",
+        top: "64px",
     },
     appFrame: {
         position: 'relative',
         display: 'flex',
-        width: '100%',
-        height: '100%',
+        // width: '100%',
+        // height: '100%',
     },
     appBar: {
         position: 'absolute',
@@ -287,13 +294,14 @@ const styles = theme => ({
         padding: "13px 15px 12px 15px",
         position: "relative",
         // borderBottom: "1px solid #e9e9e9",
-        backgroundColor: "#9E9E9E",
+        backgroundColor: grey[500],
         height: "135px"
     },
     drawerLeftSidebar: {
         position: "relative",
         overflow: "auto",
-        height: "90vh"
+        height: "90vh",
+        backgroundColor: teal[500]
     },
     drawerPaper: {
         width: 300,
@@ -442,39 +450,39 @@ class ResponsiveDrawer extends React.Component {
 
         return (
             <div className={classes.root}>
-                <div className={classes.appFrame}>
+                {/* <div className={classes.appFrame}> */}
 
-                    <Hidden mdUp>
-                        <Drawer
-                            type="temporary"
-                            anchor={theme.direction === 'rtl' ? 'right' : 'left'}
-                            open={this.state.mobileOpen}
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                            onClose={this.handleDrawerToggle}
-                            ModalProps={{
-                                keepMounted: true, // Better open performance on mobile.
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                    <Hidden smDown implementation="css">
-                        <Drawer
-                            type="permanent"
-                            open
-                            classes={{
-                                paper: classes.drawerPaper,
-                            }}
-                        >
-                            {drawer}
-                        </Drawer>
-                    </Hidden>
-                    <main className={classes.content}>
+                <Hidden mdUp>
+                    <Drawer
+                        type="temporary"
+                        anchor={theme.direction === 'rtl' ? 'right' : 'left'}
+                        open={this.state.mobileOpen}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                        onClose={this.handleDrawerToggle}
+                        ModalProps={{
+                            keepMounted: true, // Better open performance on mobile.
+                        }}
+                    >
+                        {drawer}
+                    </Drawer>
+                </Hidden>
+                <Hidden smDown implementation="css">
+                    <Drawer
+                        type="permanent"
+                        open
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        {drawer}
+                    </Drawer>
+                </Hidden>
+                {/* <main className={classes.content}>
                         <Typography noWrap>{'You think water moves fast? You should see ice.'}</Typography>
-                    </main>
-                </div>
+                    </main> */}
+                {/* </div> */}
             </div>
         );
     }

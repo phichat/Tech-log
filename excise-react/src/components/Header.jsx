@@ -12,9 +12,10 @@ import MenuIcon from 'material-ui-icons/Menu';
 import AccountCircle from 'material-ui-icons/AccountCircle';
 import logo from './logo.svg';
 
-const styles = {
+const styles = theme => ({
     root: {
         width: '100%',
+        zIndex: theme.zIndex.drawer + 1000
     },
     flex: {
         flex: 1,
@@ -28,7 +29,7 @@ const styles = {
         paddingLeft: 16,
         paddingRight: 16
     },
-};
+});
 
 function Header(props) {
     const { classes } = props;

@@ -241,20 +241,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from 'material-ui/styles';
-import Avatar from 'material-ui/Avatar';
-import Drawer from 'material-ui/Drawer';
-import ListSubheader from 'material-ui/List/ListSubheader';
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
-import Collapse from 'material-ui/transitions/Collapse';
-import Announcement from 'material-ui-icons/Announcement';
-import Add from 'material-ui-icons/Add';
-import Remove from 'material-ui-icons/Remove';
-import Typography from 'material-ui/Typography';
-import Hidden from 'material-ui/Hidden';
-import Divider from 'material-ui/Divider';
-import { NavLink, Link } from 'react-router-dom';
+import {Avatar, Drawer, Typography, Hidden, Divider} from 'material-ui';
 import { grey, teal } from 'material-ui/colors';
+import { withStyles } from 'material-ui/styles';
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
+import ListSubheader from 'material-ui/List/ListSubheader';
+import Collapse from 'material-ui/transitions/Collapse';
+import {Announcement,  Build, Assignment, DesktopMac, Add, Remove}from 'material-ui-icons';
+import { NavLink, Link } from 'react-router-dom';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 const drawerWidth = 300;
 
@@ -266,42 +261,49 @@ const styles = theme => ({
         // zIndex: 1,
         // overflow: 'hidden',
         width: "300px",
-        overflow: "hidden",
         display: "inline-block",
-        height: "calc(100vh - 70px)",
+        height: "calc(100vh - 64px)",
         position: "fixed",
         top: "64px",
-    },
-    appFrame: {
-        position: 'relative',
-        display: 'flex',
-        // width: '100%',
-        // height: '100%',
-    },
-    appBar: {
-        position: 'absolute',
-        marginLeft: drawerWidth,
-        [theme.breakpoints.up('md')]: {
-            width: `calc(100% - ${drawerWidth}px)`,
-        },
+        boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
+        color: grey[200],
+        fontSize: "0.85rem",
     },
     navIconHide: {
         [theme.breakpoints.up('md')]: {
             display: 'none',
         },
     },
+    divider: {
+        backgroundColor: grey[200],
+    },
     drawerHeader: {
         padding: "13px 15px 12px 15px",
         position: "relative",
-        // borderBottom: "1px solid #e9e9e9",
+        borderBottom: "1px solid #eee",
         backgroundColor: grey[500],
         height: "135px"
     },
-    drawerLeftSidebar: {
+    drawerSubheader: {
+        backgroundColor: teal[800], 
+        color: grey[200],
+        lineHeight: "initial",
+        padding: "8px 16px",
+    },
+    drawerList: {
         position: "relative",
-        overflow: "auto",
-        height: "90vh",
-        backgroundColor: teal[500]
+        height: "71vh",
+        backgroundColor: teal[500],
+        color: grey[200],
+    },
+    drawerLegal: {
+        position: "absolute",
+        bottom: "0",
+        width: "calc(100% - 30px)",
+        borderTop: "1px solid #eee",
+        padding: "15px",
+        overflow: "hidden",
+        backgroundColor: grey[500],
     },
     drawerPaper: {
         width: 300,
@@ -311,20 +313,20 @@ const styles = theme => ({
             height: '100%',
         },
     },
-    content: {
-        backgroundColor: theme.palette.background.default,
-        width: '100%',
-        padding: theme.spacing.unit * 3,
-        height: 'calc(100% - 56px)',
-        marginTop: 56,
-        [theme.breakpoints.up('sm')]: {
-            height: 'calc(100% - 64px)',
-            marginTop: 64,
-        },
-    },
+    // content: {
+    //     backgroundColor: theme.palette.background.default,
+    //     width: '100%',
+    //     padding: theme.spacing.unit * 3,
+    //     height: 'calc(100% - 56px)',
+    //     marginTop: 56,
+    //     [theme.breakpoints.up('sm')]: {
+    //         height: 'calc(100% - 64px)',
+    //         marginTop: 64,
+    //     },
+    // },
 });
 
-class ResponsiveDrawer extends React.Component {
+class SidebarContainer extends React.Component {
     state = {
         noticeOpen: false,
         arrestOpen: false,
@@ -354,7 +356,7 @@ class ResponsiveDrawer extends React.Component {
     };
 
     render() {
-        const { classes, theme } = this.props;
+        const { classes } = this.props;
 
         const drawer = (
             <div>
@@ -367,83 +369,79 @@ class ResponsiveDrawer extends React.Component {
                         <div className="email">admin.doe@example.com</div>
                     </div>
                 </div>
-                <Divider />
-                <List className={classes.drawerLeftSidebar} subheader={<ListSubheader>เมนู</ListSubheader>}>
-                    <div>
+                <List className={classes.drawerList} subheader={<ListSubheader className={classes.drawerSubheader}>เมนู</ListSubheader>}>
+                    <Scrollbars style={{ height: "58vh" }}>
                         <ListItem button onClick={this.handleClick} data-list="notice">
-                            <ListItemIcon>
-                                <Announcement />
-                            </ListItemIcon>
-                            <ListItemText inset primary="1. งานสืบสวน" />
+                            <Announcement />
+                            <ListItemText inset secondary="1. งานสืบสวน" />
                             {this.state.noticeOpen ? <Remove /> : <Add />}
                         </ListItem>
                         <Collapse component="li" in={this.state.noticeOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
                                 <ListItem button className={classes.nested}>
-                                    <ListItemText inset primary="ใบแจ้งความนำจับ" />
+                                    <ListItemText inset secondary="ใบแจ้งความนำจับ" />
                                 </ListItem>
                             </List>
                         </Collapse>
-                    </div>
-                    <div>
+
                         <ListItem button onClick={this.handleClick} data-list="arrest">
-                            <ListItemIcon>
-                                <Announcement />
-                            </ListItemIcon>
-                            <ListItemText inset primary="2. งานจับกุม" />
+                            <Build />
+                            <ListItemText inset secondary="2. งานจับกุม" />
                             {this.state.arrestOpen ? <Remove /> : <Add />}
                         </ListItem>
                         <Collapse component="li" in={this.state.arrestOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
                                 <ListItem button className={classes.nested}>
-                                    <ListItemText inset primary="บันทึกการจับกุม" />
+                                    <ListItemText inset secondary="บันทึกการจับกุม" />
                                 </ListItem>
                             </List>
                         </Collapse>
-                    </div>
-                    <div>
+
                         <ListItem button onClick={this.handleClick} data-list="lawsuit">
-                            <ListItemIcon>
-                                <Announcement />
-                            </ListItemIcon>
-                            <ListItemText inset primary="3. งานเปรียบเทียบคดี" />
+                            <Assignment />
+                            <ListItemText inset secondary="3. งานเปรียบเทียบคดี" />
                             {this.state.lawsuitOpen ? <Remove /> : <Add />}
                         </ListItem>
                         <Collapse component="li" in={this.state.lawsuitOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
                                 <ListItem button className={classes.nested}>
-                                    <ListItemText inset primary="บันทึกรับคำกล่าวโทษ 1/55" />
+                                    <ListItemText inset secondary="บันทึกรับคำกล่าวโทษ 1/55" />
                                 </ListItem>
                                 <ListItem button className={classes.nested}>
-                                    <ListItemText inset primary="เปรียบเทียบปรับและออกใบเสร็จ" />
+                                    <ListItemText inset secondary="เปรียบเทียบปรับและออกใบเสร็จ" />
+                                </ListItem>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset secondary="บันทึกรับคำกล่าวโทษ 1/55" />
+                                </ListItem>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset secondary="เปรียบเทียบปรับและออกใบเสร็จ" />
+                                </ListItem>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset secondary="บันทึกรับคำกล่าวโทษ 1/55" />
+                                </ListItem>
+                                <ListItem button className={classes.nested}>
+                                    <ListItemText inset secondary="เปรียบเทียบปรับและออกใบเสร็จ" />
                                 </ListItem>
                             </List>
                         </Collapse>
-                    </div>
-                    <div>
+
                         <ListItem button onClick={this.handleClick} data-list="exhibit">
-                            <ListItemIcon>
-                                <Announcement />
-                            </ListItemIcon>
-                            <ListItemText inset primary="4. งานตรวจพิสูจน​์ของกลาง" />
+                            <DesktopMac />
+                            <ListItemText inset secondary="4. งานตรวจพิสูจน​์ของกลาง" />
                             {this.state.exhibitOpen ? <Remove /> : <Add />}
                         </ListItem>
                         <Collapse component="li" in={this.state.exhibitOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
                                 <ListItem button className={classes.nested}>
-                                    <ListItemText inset primary="พิสูจน​์ของกลาง" />
+                                    <ListItemText inset secondary="พิสูจน​์ของกลาง" />
                                 </ListItem>
                             </List>
                         </Collapse>
-                    </div>
-
+                    </Scrollbars>
                 </List>
-                <Divider />
-                <div className={classes.drawerFooter}>
-                    <div className="legal bg-grey">
-                        <div className="copyright">&copy; 2016 - 2017<Link to=""> ผู้ดูแลระบบ</Link></div>
-                        <div className="version"><b>เวอร์ชั่น: </b> 1.0.5</div>
-                    </div>
+                <div className={classes.drawerLegal}>
+                    <div className="copyright">&copy; 2016 - 2017<Link to=""> ผู้ดูแลระบบ</Link></div>
+                    <div className="version"><b>เวอร์ชั่น: </b> 1.0.5</div>
                 </div>
             </div>
         );
@@ -452,7 +450,7 @@ class ResponsiveDrawer extends React.Component {
             <div className={classes.root}>
                 {/* <div className={classes.appFrame}> */}
 
-                <Hidden mdUp>
+                {/* <Hidden mdUp>
                     <Drawer
                         type="temporary"
                         anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -467,7 +465,7 @@ class ResponsiveDrawer extends React.Component {
                     >
                         {drawer}
                     </Drawer>
-                </Hidden>
+                </Hidden> */}
                 <Hidden smDown implementation="css">
                     <Drawer
                         type="permanent"
@@ -488,9 +486,8 @@ class ResponsiveDrawer extends React.Component {
     }
 }
 
-ResponsiveDrawer.propTypes = {
+SidebarContainer.propTypes = {
     classes: PropTypes.object.isRequired,
-    theme: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles, { withTheme: true })(ResponsiveDrawer);
+export default withStyles(styles, { withTheme: true })(SidebarContainer);

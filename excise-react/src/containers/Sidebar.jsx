@@ -71,43 +71,6 @@
 
 //     }
 
-//     // activate() {
-//     //     // const _this = this;
-//     //     // const _body = document.getElementsByTagName("BODY");
-//     //     // const _overlay = document.getElementsByClassName('.overlay');
-
-//     //     // //Close sidebar
-//     //     // $(window).click(function (e) {
-//     //     //     var $target = $(e.target);
-//     //     //     if (e.target.nodeName.toLowerCase() === 'i') { $target = $(e.target).parent(); }
-
-//     //     //     if (!$target.hasClass('bars') && _this.isOpen() && $target.parents('#leftsidebar').length === 0) {
-//     //     //         if (!$target.hasClass('js-right-sidebar')) $overlay.fadeOut();
-//     //     //         $body.removeClass('overlay-open');
-//     //     //     }
-//     //     // });
-
-//     //     // $.each($('.menu-toggle.toggled'), function (i, val) {
-//     //     //     $(val).next().slideToggle(0);
-//     //     // });
-
-//     //     // const _menuToggle = document.querySelectorAll("li.active");
-//     //     // for (let i = 0; i < _menuToggle.length; i++) {
-//     //     //     if (i === 0) {
-//     //     //         let activeAnchors = _menuToggle[i].getElementsByTagName("a")
-//     //     //         activeAnchors.className = "toggled"
-//     //     //     }
-//     //     // }
-
-
-//     //     // //When page load
-//     //     // $.each($('.menu .list li.active'), function (i, val) {
-//     //     //     var $activeAnchors = $(val).find('a:eq(0)');
-
-//     //     //     $activeAnchors.addClass('toggled');
-//     //     //     $activeAnchors.next().show();
-//     //     // });
-
 //     //     //Collapse or Expand Menu
 //     //     // $('.menu-toggle').on('click', function (e) {
 //     //     //     var $this = $(this);
@@ -241,13 +204,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Avatar, Drawer, Typography, Hidden, Divider} from 'material-ui';
+import { Avatar, Drawer, Typography, Hidden, Divider } from 'material-ui';
 import { grey, teal } from 'material-ui/colors';
 import { withStyles } from 'material-ui/styles';
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List';
 import ListSubheader from 'material-ui/List/ListSubheader';
 import Collapse from 'material-ui/transitions/Collapse';
-import {Announcement,  Build, Assignment, DesktopMac, Add, Remove}from 'material-ui-icons';
+import { Announcement, Build, Assignment, DesktopMac, Add, Remove } from 'material-ui-icons';
 import { NavLink, Link } from 'react-router-dom';
 import { Scrollbars } from 'react-custom-scrollbars';
 
@@ -262,9 +225,9 @@ const styles = theme => ({
         // overflow: 'hidden',
         width: "300px",
         display: "inline-block",
-        height: "calc(100vh - 64px)",
+        // height: "100vh",
         position: "fixed",
-        top: "64px",
+        // top: "64px",
         boxShadow: "2px 2px 5px rgba(0, 0, 0, 0.1)",
         color: grey[200],
         fontSize: "0.85rem",
@@ -282,17 +245,17 @@ const styles = theme => ({
         position: "relative",
         borderBottom: "1px solid #eee",
         backgroundColor: grey[500],
-        height: "135px"
+        height: "100px"
     },
     drawerSubheader: {
-        backgroundColor: teal[800], 
+        backgroundColor: teal[800],
         color: grey[200],
         lineHeight: "initial",
         padding: "8px 16px",
     },
     drawerList: {
         position: "relative",
-        height: "71vh",
+        height: "calc(100vh - 50px)",
         backgroundColor: teal[500],
         color: grey[200],
     },
@@ -307,12 +270,25 @@ const styles = theme => ({
     },
     drawerPaper: {
         width: 300,
+        position: 'relative',
+        height: 'calc(100vh - 64px)',
+        overflow: 'hidden',
         [theme.breakpoints.up('md')]: {
             width: drawerWidth,
-            position: 'relative',
-            height: '100%',
         },
     },
+    nested: {
+        color: grey[200],
+    }, 
+    list:{
+        color: grey[200],
+    },
+    listItem:{
+        fontWeight: 550
+    },
+    listItemText: {        
+        
+    }
     // content: {
     //     backgroundColor: theme.palette.background.default,
     //     width: '100%',
@@ -370,16 +346,16 @@ class SidebarContainer extends React.Component {
                     </div>
                 </div>
                 <List className={classes.drawerList} subheader={<ListSubheader className={classes.drawerSubheader}>เมนู</ListSubheader>}>
-                    <Scrollbars style={{ height: "58vh" }}>
+                    <Scrollbars style={{ height: "calc(63vh - 50px)" }}>
                         <ListItem button onClick={this.handleClick} data-list="notice">
                             <Announcement />
-                            <ListItemText inset secondary="1. งานสืบสวน" />
+                            <ListItemText inset secondary={<span className={classes.listItemText}>1. งานสืบสวน</span>} />
                             {this.state.noticeOpen ? <Remove /> : <Add />}
                         </ListItem>
                         <Collapse component="li" in={this.state.noticeOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset secondary="ใบแจ้งความนำจับ" />
+                                <ListItem button>
+                                    <ListItemText inset secondary={<span className={classes.listItemText}>ใบแจ้งความนำจับ</span>} />
                                 </ListItem>
                             </List>
                         </Collapse>
@@ -391,8 +367,8 @@ class SidebarContainer extends React.Component {
                         </ListItem>
                         <Collapse component="li" in={this.state.arrestOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset secondary="บันทึกการจับกุม" />
+                                <ListItem button component="a" href="#">
+                                    <ListItemText inset secondary="บันทึกการจับกุม" className={classes.nested} />
                                 </ListItem>
                             </List>
                         </Collapse>
@@ -404,22 +380,10 @@ class SidebarContainer extends React.Component {
                         </ListItem>
                         <Collapse component="li" in={this.state.lawsuitOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
-                                <ListItem button className={classes.nested}>
+                                <ListItem button className={classes.nested} component="a" href="#">
                                     <ListItemText inset secondary="บันทึกรับคำกล่าวโทษ 1/55" />
                                 </ListItem>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset secondary="เปรียบเทียบปรับและออกใบเสร็จ" />
-                                </ListItem>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset secondary="บันทึกรับคำกล่าวโทษ 1/55" />
-                                </ListItem>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset secondary="เปรียบเทียบปรับและออกใบเสร็จ" />
-                                </ListItem>
-                                <ListItem button className={classes.nested}>
-                                    <ListItemText inset secondary="บันทึกรับคำกล่าวโทษ 1/55" />
-                                </ListItem>
-                                <ListItem button className={classes.nested}>
+                                <ListItem button className={classes.nested} component="a" href="#">
                                     <ListItemText inset secondary="เปรียบเทียบปรับและออกใบเสร็จ" />
                                 </ListItem>
                             </List>
@@ -432,7 +396,7 @@ class SidebarContainer extends React.Component {
                         </ListItem>
                         <Collapse component="li" in={this.state.exhibitOpen} timeout="auto" unmountOnExit>
                             <List disablePadding>
-                                <ListItem button className={classes.nested}>
+                                <ListItem button className={classes.nested} component="a" href="#">
                                     <ListItemText inset secondary="พิสูจน​์ของกลาง" />
                                 </ListItem>
                             </List>

@@ -6,7 +6,7 @@ import '../theme/content.css'
 
 const Content = () => {
     return (
-        <div style={{position: "absolute", zIndex: "-1", width: "100%"}}>
+        <div style={{position: "absolute", zIndex: "-1", width: "100%", top: "64px", }}>
             <section>
                 <Sidebar />
             </section>

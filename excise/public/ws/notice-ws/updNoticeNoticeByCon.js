@@ -14,6 +14,7 @@ function updNoticeNoticeByCon(arr, callback) {
     xmlData += '<departmentName>'+ arr.departmentName +'</departmentName>'
     xmlData += '<departmentNameCommander>' + arr.departmentNameCommander + '</departmentNameCommander>'
     xmlData += '<departmentNameReceive>' + arr.departmentNameReceive + '</departmentNameReceive>'
+    xmlData += '<groupName>' + arr.groupName + '</groupName>'
     xmlData += '<informType>' + arr.informType + '</informType>'
     xmlData += '<noticeCode>' + arr.noticeCode + '</noticeCode>'
     xmlData += '<noticeDate>' + arr.noticeDate + '</noticeDate>'

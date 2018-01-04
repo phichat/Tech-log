@@ -73,7 +73,7 @@ window.onload = function () {
 
         $('#chb_nmGoodName').append(checkBox)
             .slimScroll({
-                height: '250px'
+                height: '200px'
             });
     });
     // --- end สินค้า ---

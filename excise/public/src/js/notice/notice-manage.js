@@ -64,7 +64,7 @@ window.onload = function () {
         var checkBox = '';
         $(xml).find('dutygroupDTOList')
             .each(function (i, e) {
-                checkBox += '<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">'
+                checkBox += '<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">'
                 checkBox += '<input type="checkbox" id="chb_groupName' + i + '" name="groupName' + i + '"'
                 checkBox += ' class="filled-in" value="' + $(e).find('groupCode').text() + '">'
                 checkBox += '<label for="chb_groupName' + i + '">' + $(e).find('groupNameTh').text() + '</label>'

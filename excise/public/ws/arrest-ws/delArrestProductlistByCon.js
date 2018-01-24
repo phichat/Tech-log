@@ -1,17 +1,16 @@
-
-function getReligionByKeyword(key, callback) {
+function delArrestProductlistByCon(arg, callback) {
     var settings = {
         "async": false,
         "crossDomain": true,
-        "url": "http://103.233.193.62/GetReligion/getReligionByKeyword",
+        "url": "http://103.233.193.62/ManageProductlist/delArrestProductlistByCon",
         "method": "POST",
         "headers": {
             "Content-Type": "application/x-www-form-urlencoded",
             "Cache-Control": "no-cache",
-            'X-HTTP-Method-Override': "GET"
+            'X-HTTP-Method-Override': "DELETE"
         },
         "data": {
-            "KeyWord": key
+            "LawsuitCode": arg.LawsuitCode
         }
     }
 

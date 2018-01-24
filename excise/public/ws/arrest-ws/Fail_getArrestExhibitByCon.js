@@ -1,8 +1,8 @@
-function getArrestLawbreakerByKeyword(key, callback) {
+function getArrestExhibitByCon(arg, callback) {
   var settings = {
     "async": false,
     "crossDomain": true,
-    "url": "http://103.233.193.62/ManageLawbreaker/getArrestLawbreakerByKeyword",
+    "url": "http://103.233.193.62/ManageExhibit/getArrestExhibitByCon",
     "method": "POST",
     "headers": {
       "Content-Type": "application/x-www-form-urlencoded",
@@ -10,7 +10,9 @@ function getArrestLawbreakerByKeyword(key, callback) {
       'X-HTTP-Method-Override': "GET"
     },
     "data": {
-      "KeyWord": key
+      "ExhibitID": arg.ExhibitID,
+      "LawsuiteCode": arg.LawsuiteCode,
+      "IsArrest": arg.IsArrest,
     }
   }
 

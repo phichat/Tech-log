@@ -1,17 +1,16 @@
 function getTitleByKeyword(key, callback) {
-    var url = 'http://103.233.193.62/gettitle/getTitleByKeyword'
     var settings = {
         "async": false,
         "crossDomain": true,
-        "url": url + "?Keyword=" + key,
+        "url": "http://103.233.193.62/GetTitle/getTitleByKeyword",
         "method": "POST",
-        "data":{
-            "Keyword": key
-        },
         "headers": {
-            "content-type": "application/x-www-form-urlencoded",
-            "cache-control": "no-cache",
+            "Content-Type": "application/x-www-form-urlencoded",
+            "Cache-Control": "no-cache",
             'X-HTTP-Method-Override': "GET"
+        },
+        "data": {
+            "KeyWord": key
         }
     }
 

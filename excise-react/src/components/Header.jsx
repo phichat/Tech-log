@@ -51,7 +51,7 @@ function Header(props) {
                         <Typography type="subheading" color="inherit" className={classes.flex}>
                             กรมสรรพสามิต
                         </Typography>
-                        <Typography type="subheading" color="inherit">
+                        <Typography type="caption" color="inherit">
                             ระบบผู้กระทำผิดกฏหมายพระราชบัญญัติ พ.ศ.2560
                         </Typography>
                     </div>

@@ -1,5 +1,0 @@
-export { default as About } from './About'
-export { default as Home } from './Home'
-export { default as NoticeList } from './notice-list'
-export { default as NoticeManage } from './notice-manage'
-export { default as StaffList } from './staff-list'

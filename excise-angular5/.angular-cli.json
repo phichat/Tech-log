@@ -25,7 +25,11 @@
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.js",
-        "../node_modules/node-waves/dist/waves.js"
+        "../node_modules/bootstrap/dist/js/bootstrap.js",
+        "../node_modules/node-waves/dist/waves.js",
+        "../node_modules/jquery-validation/dist/jquery.validate.js",
+        "../node_modules/jquery-validation/dist/localization/messages_th.js",
+        "../node_modules/jquery-slimscroll/jquery.slimscroll.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

@@ -1,0 +1,25 @@
+.sidebar  {
+    .user-info {
+        .image i{
+            font-size: 35px;
+            color: #9E9E9E;
+        }
+    }
+
+    .menu {
+        background-color: #009688;
+        .list * {
+            color: #fff !important;
+        }
+        .list .header {
+            background-color: #00695C !important;
+        }
+        .list a {
+            font-size: 85% !important;
+        }
+    }
+
+    .legal{
+        background-color: #9E9E9E !important;
+    }
+}

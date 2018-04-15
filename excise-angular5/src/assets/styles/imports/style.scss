@@ -61,6 +61,9 @@
 /* DateTime Picker ============================= */
 @import '_datetimepicker.scss';
 
+/* Bootstrap DateTime Picker ============================= */
+@import '_bootstrap-datepicker.scss';
+
 /* Bootstrap Select ============================ */
 @import '_bootstrapselect.scss';
 
@@ -165,6 +168,9 @@
 
 /* Searchbar =================================== */
 @import '_searchbar.scss';
+
+/* Selectize ==================================== */
+@import '_selectize.scss';
 
 /* Jquery DataTable ============================ */
 @import '_jquerydatatable.scss';

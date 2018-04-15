@@ -98,7 +98,7 @@
 
         h2 {
             margin: 0;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: normal;
             color: #111;
 
@@ -128,12 +128,35 @@
         color: #555;
         padding: 20px;
 
+        .form-group{
+            margin-bottom: 0px !important;
+            .form-line{
+                .icon-link{
+                    color: unset !important;
+                    position: absolute !important;
+                    top:0px !important;
+                    right: 0px !important;
+                }
+    
+                .icon-link.more{
+                    right: -50px !important;
+                }
+                .icon-link.more i {
+                    background-color: teal !important;
+                    color: #fff !important;
+                    border-radius: 12px !important;
+                    padding: 0 5px !important;
+                }
+            }
+        }
+
         @for $i from 1 through 12 {
             .col-xs-#{$i},
             .col-sm-#{$i},
             .col-md-#{$i},
             .col-lg-#{$i} {
-                margin-bottom: 20px;
+                // margin-bottom: 20px;
+                margin-bottom: 16px;
             }
         }
     }

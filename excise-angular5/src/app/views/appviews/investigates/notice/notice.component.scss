@@ -1,0 +1,31 @@
+.create-new {
+    position: fixed;
+    bottom: 20px;
+    right: 26px;
+    
+    a {
+        position: relative;
+        
+        i {
+            background-color: teal !important;
+            color: #fff !important;
+            border-radius: 50px !important;
+            padding: 6px !important;
+            font-size: 40px;
+            font-weight: 900;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
+
+            -ms-transform: rotate(45deg); /* IE 9 */
+            -webkit-transform: rotate(45deg); /* Safari 3-8 */
+            transform: rotate(45deg);
+        }
+
+    }
+
+}
+
+
+table.dataTable {
+    border-collapse: none !important;
+}

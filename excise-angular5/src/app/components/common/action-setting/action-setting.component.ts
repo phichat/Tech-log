@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 declare var jQuery: any;
 
 @Component({
@@ -8,14 +9,29 @@ declare var jQuery: any;
 })
 export class ActionSettingComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   jQuery: any = jQuery;
 
   ngOnInit() {
   }
 
-  slideToggle(el) {
-    this.jQuery(el).slideToggle();
+  edit() {
+    this._router.navigate(['/investigate/notice-manage'], { queryParams: { U: true, NoticeCode: '' } });
+  }
+
+  print() {
+    this._router.navigate(['/investigate/notice-manage'], { queryParams: { P: true, NoticeCode: '' } });
+  }
+
+  delete() {
+    this._router.navigate(['/investigate/notice-manage'], { queryParams: { D: true, NoticeCode: '' } });
+  }
+
+  slideToggle(e) {
+    const action = jQuery(e.target).closest('div.action-setting');
+    const button = jQuery(e.target).closest('i');
+    action.find('ul.tools').slideToggle();
+    button.toggleClass('i-rotate');
   }
 }

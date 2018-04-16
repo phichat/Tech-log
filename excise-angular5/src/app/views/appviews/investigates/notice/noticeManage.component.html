@@ -11,13 +11,8 @@
     <div class="card">
         <div class="header bg-teal">
             <h2>ผู้รับแจ้ง</h2>
-            <ul class="header-dropdown m-r--5">
-                <li class="dropdown open">
-                    <a href="javascript:void(0);" class="dropdown-toggle" role="button" aria-haspopup="true" aria-expanded="true">
-                        
-                    </a>
-                </li>
-            </ul>
+
+            <app-header-dropdown></app-header-dropdown>
         </div>
         <div class="body">
 
@@ -123,6 +118,8 @@
     <div class="card">
         <div class="header bg-teal">
             <h2>รายละเอียดผู้แจ้งความ</h2>
+
+            <app-header-dropdown></app-header-dropdown>
         </div>
         <div class="body">
             <div class="row">
@@ -229,10 +226,7 @@
                 <label for="" class="col-md-2 form-control-label">ตำบล/อำเภอ/จังหวัด :</label>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select name="" id="" class="form-control form-control-sm" appSelectize>
-                            <option value="" selected disabled></option>
-                            <option value="">s</option>
-                        </select>
+                        <app-selectize-province></app-selectize-province>
                     </div>
                 </div>
             </div>
@@ -242,6 +236,7 @@
     <div class="card">
         <div class="header bg-teal">
             <h2>รายละเอียดการกระทำความผิด</h2>
+            <app-header-dropdown></app-header-dropdown>
         </div>
         <div class="body">
             <div class="row">
@@ -318,14 +313,7 @@
                 <label for="" class="col-md-2 form-control-label">ตำบล/อำเภอ/จังหวัด :</label>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <select name="" id="" class="form-control control-sm" appSelectize>
-                            <option value="" selected disabled></option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
-                            <option value="">5</option>
-                        </select>
+                        <app-selectize-province></app-selectize-province>
                     </div>
                 </div>
             </div>
@@ -365,7 +353,7 @@
         </div>
     </div>
 
-    <div class="form-group row">
+    <div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
         <div class="col-sm-8"></div>
         <div class="col-sm-2">
             <button type="submit" class="btn btn-danger form-control">บันทึก</button>
@@ -375,6 +363,6 @@
         </div>
     </div>
 
-    <app-action-setting *ngIf="mode == 'r'"></app-action-setting>
+    <app-action-setting *ngIf="mode == 'r' || mode == 'u'"></app-action-setting>
 
 </form>

@@ -1,21 +1,21 @@
 <div class="action-setting">
-  <a href="javaScript:void(0)" (click)="slideToggle(tools)">
+  <a href="javaScript:void(0)" (click)="slideToggle($event)">
     <i class="material-icons">settings</i>
   </a>
 
   <ul #tools class="tools">
     <li>
-      <a href="javaScript:void(0);">
+      <a href="javaScript:void(0);" (click)="edit()">
         <i class="material-icons">edit</i>
       </a>
     </li>
     <li>
-      <a href="javaScript:void(0);">
+      <a href="javaScript:void(0);" (click)="print()">
         <i class="material-icons">print</i>
       </a>
     </li>
     <li>
-      <a href="javaScript:void(0);">
+      <a href="javaScript:void(0);" (click)="delete()">
         <i class="material-icons">delete</i>
       </a>
     </li>

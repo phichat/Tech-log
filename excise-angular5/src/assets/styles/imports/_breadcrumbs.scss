@@ -24,17 +24,15 @@
     }
 
     > li + li:before {
-        content: '>\00a0';
+        content: '\00a0>\00a0';
     }
 }
 
 @each $key, $val in $colors {
     .breadcrumb-col-#{$key} {
-        li {
-            a {
-                color: $val !important;
-                font-weight: bold;
-            }
+        li.active span {
+            color: $val !important;
+            font-weight: bold; 
         }
     }
 

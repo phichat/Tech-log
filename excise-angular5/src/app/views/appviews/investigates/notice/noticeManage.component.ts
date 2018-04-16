@@ -24,6 +24,8 @@ export class NoticeManageComponent implements OnInit {
                     this.mode = 'c';
                 } else if (param && param.R) {
                     this.mode = 'r';
+                } else if (param && param.U) {
+                    this.mode = 'u';
                 }
             });
     }

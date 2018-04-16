@@ -6,19 +6,19 @@ import { AppComponent } from './app.component';
 
 // Modules
 import { AppviewsModule } from './views/appviews/appviews.module';
-import { LayoutsModule } from './components/common/layouts/layouts.module';
 import { RouterModule } from '@angular/router';
 import { ROUTE } from './app.roots';
+import { CommonsModule } from './components/common/commons.module';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
     AppviewsModule,
-    LayoutsModule,
+    CommonsModule,
     RouterModule.forRoot(ROUTE)
   ],
   providers: [],

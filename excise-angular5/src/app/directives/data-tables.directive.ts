@@ -19,7 +19,7 @@ export class DataTablesDirective {
     this.table = document.querySelector('table');
     jQuery(this.table).DataTable({
       'searching': false,
-      // 'ordering': false,
+      // "scrollX": true,
       'sDom': 'rt<"row"<"col-md-6"i><"col-md-6"fp>>',
       'language': {
         'sProcessing': 'กำลังดำเนินการ...',

@@ -11,6 +11,17 @@
 
     .navbar-brand {
         @include three-dots-overflow();
+        display: inline;
+        img {
+            position: absolute;
+            height: 90%;
+            top: 6px;
+        }
+
+        .title{
+            position: relative;
+            left: 90px;
+        }
     }
 
     .navbar-custom-right-menu {

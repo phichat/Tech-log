@@ -5,6 +5,8 @@ import { HeaderDropdownComponent } from './header-dropdown/header-dropdown.compo
 import { LayoutsModule } from './layouts/layouts.module';
 import { SelectizeProvinceComponent } from './selectize-province/selectize-province.component';
 import { SelectizeDirective } from '../../directives/selectize.directive';
+import { ModalConfirmComponent } from './modal-confirm/modal-confirm.component';
+import { ModalStaffComponent } from './modal-staff/modal-staff.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,12 @@ import { SelectizeDirective } from '../../directives/selectize.directive';
     SelectizeProvinceComponent,
 
     // Directives
-    SelectizeDirective
+    SelectizeDirective,
+
+    ModalConfirmComponent,
+
+    ModalStaffComponent
+
   ],
   exports: [
     ActionSettingComponent,

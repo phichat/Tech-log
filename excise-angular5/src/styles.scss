@@ -6,6 +6,12 @@
 
 @import "assets/styles/style.scss";
 
+.navbar-brand {
+    img{
+        content: url('assets/images/logo-excise.png');
+    }
+}
+
 .user-info {
     background: url('assets/styles/patterns/shattered.png');
 }

@@ -17,19 +17,19 @@ import { ModalStaffComponent } from './modal-staff/modal-staff.component';
     ActionSettingComponent,
     HeaderDropdownComponent,
     SelectizeProvinceComponent,
+    ModalConfirmComponent,
+    ModalStaffComponent,
 
     // Directives
     SelectizeDirective,
-
-    ModalConfirmComponent,
-
-    ModalStaffComponent
 
   ],
   exports: [
     ActionSettingComponent,
     HeaderDropdownComponent,
     SelectizeProvinceComponent,
+    ModalConfirmComponent,
+    ModalStaffComponent,
 
     // Directives
     SelectizeDirective

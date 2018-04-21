@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import 'selectize';
-import { ActivatedRoute } from '@angular/router';
 
 declare var jQuery: any;
 @Component({
@@ -10,7 +10,10 @@ declare var jQuery: any;
 })
 
 export class NoticeManageComponent implements OnInit {
-    constructor(private _route: ActivatedRoute) { }
+    constructor(
+        private _route: ActivatedRoute,
+        private _router: Router
+    ) { }
     private mode: string;
     select: any;
 
@@ -26,11 +29,30 @@ export class NoticeManageComponent implements OnInit {
                     this.mode = 'r';
                 } else if (param && param.U) {
                     this.mode = 'u';
+                } else if (param && param.D) {
+                    this.mode = 'd';
+                    if (confirm('ยืนยันการทำรายการหรือไม่?')) {
+
+                    } else {
+                        this._router.navigate(['/investigate/notice-manage'], { queryParams: { R: true, NoticeCode: '' } });
+                    }
                 }
             });
     }
 
     ngAfterViewInit() {
         // jQuery('.action-setting').slideToggle();
+    }
+
+    cancel() {
+        if (confirm('ยืนยันการทำรายการหรือไม่?')) {
+
+        }
+    }
+
+    save() {
+        if (confirm('ยืนยันการทำรายการหรือไม่?')) {
+
+        }
     }
 }

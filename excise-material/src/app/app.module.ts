@@ -10,7 +10,9 @@ import { ROUTE } from './app.roots';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
+  ],
+  exports: [
   ],
   imports: [
     BrowserModule,

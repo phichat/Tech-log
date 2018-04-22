@@ -19,8 +19,8 @@ export class NoticeComponent implements OnInit {
     jQuery(el).slideToggle();
   }
 
-  openNoticeManage() {
-    // this._router.navigate(['/investigate/notice-manage'], { queryParams: { C: true } });
+  createNew() {
+    this._router.navigate(['/investigate/notice-manage'], { queryParams: { C: true, noticeCode: 'NEW' } });
   }
 
 }

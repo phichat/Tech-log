@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "assets/scss/datepicker.scss";
-
 $fontSize: 14px;
 body {
     font-size: $fontSize;
@@ -13,11 +11,14 @@ body {
 
 .card {
     .card-body{
-        .form-horizontal label{
-            margin-top: 5px;
+        .form-horizontal {
+            label, .input-group-append{
+                margin-top: 5px;
+            }
         }
         .form-group{
             margin-bottom: .75rem !important;
+            overflow: unset !important;
         }
         .form-control{
             min-height: unset !important;

@@ -7,8 +7,12 @@ import { DatepickerDirective } from '../directives/datepicker.directive';
 import { DataTableDirective } from '../directives/data-table.directive';
 import { RouterModule } from '@angular/router';
 import { ProvincesDirective } from '../directives/provinces.directive';
-import { ActionSettingComponent } from './investigates/action-setting/action-setting.component';
 import { HeaderDropdownComponent } from '../components/common/header-dropdown/header-dropdown.component';
+import { InvestigateReportComponent } from './investigates/investigate-report/investigate-report.component';
+import { InvestigateReportManageComponent } from './investigates/investigate-report-manage/investigate-report-manage.component';
+import { ActionAddComponent } from '../components/common/action-add/action-add.component';
+import { ActionSettingComponent } from '../components/common/action-setting/action-setting.component';
+import { SelectizeDirective } from '../directives/selectize.directive';
 
 @NgModule({
   imports: [
@@ -19,18 +23,18 @@ import { HeaderDropdownComponent } from '../components/common/header-dropdown/he
     DatepickerDirective,
     DataTableDirective,
     ProvincesDirective,
+    SelectizeDirective,
+
+    ActionAddComponent,
+    ActionSettingComponent,
 
     NoticeComponent,
     NoticeManageComponent,
     HomeComponent,
-    ActionSettingComponent,
-    HeaderDropdownComponent
+    HeaderDropdownComponent,
+    InvestigateReportComponent,
+    InvestigateReportManageComponent
   ],
-  exports: [
-    // DatepickerDirective,
-    // ProvincesDirective,
-    // NoticeComponent,
-    // NoticeManageComponent
-  ]
+  exports: []
 })
 export class ViewsModule { }

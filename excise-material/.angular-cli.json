@@ -20,11 +20,13 @@
       "prefix": "app",
       "styles": [
         "../src/assets/plugins/bootstrap/css/bootstrap.min.css",
-        "../src/assets/css/style.css",
-        "../src/assets/css/colors/blue.css",
+        "../src/assets/scss/style.scss",
+        "../src/assets/scss/colors/blue.scss",
         "../src/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css",
         "../src/assets/plugins/bootstrap-daterangepicker/daterangepicker.css",
         "../src/assets/plugins/typeahead.js-master/dist/typehead-min.css",
+        "../src/assets/plugins/icheck/skins/square/_all.css",
+        "../src/assets/plugins/selectize/dist/css/selectize.bootstrap3.css",
         "styles.scss"
       ],
       "scripts": [
@@ -43,7 +45,9 @@
         "../src/assets/plugins/datatables/dataTables.bootstrap.js",
         "../src/assets/plugins/styleswitcher/jQuery.style.switcher.js",
         "../src/assets/plugins/typeahead.js-master/dist/typeahead.bundle.min.js",
-        "../src/assets/plugins/typeahead.js-master/dist/bloodhound.min.js"
+        "../src/assets/plugins/typeahead.js-master/dist/bloodhound.min.js",
+        "../src/assets/plugins/icheck/icheck.js",
+        "../src/assets/plugins/selectize/dist/js/standalone/selectize.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

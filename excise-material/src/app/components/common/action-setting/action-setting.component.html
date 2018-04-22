@@ -1,0 +1,23 @@
+<div class="action-setting">
+    <button type="button" class="btn btn-circle btn-lg btn-success" (click)="slideToggle($event)">
+      <i class="ti-settings"></i>
+    </button>
+  
+    <ul #tools class="tools">
+      <li>
+        <a href="javaScript:void(0);" (click)="edit($event)">
+          <i class="ti-pencil-alt"></i>
+        </a>
+      </li>
+      <li>
+        <a href="javaScript:void(0);" (click)="print($event)">
+          <i class="ti-printer"></i>
+        </a>
+      </li>
+      <li>
+        <a href="javaScript:void(0);" (click)="delete($event)">
+          <i class="ti-trash"></i>
+        </a>
+      </li>
+    </ul>
+  </div>

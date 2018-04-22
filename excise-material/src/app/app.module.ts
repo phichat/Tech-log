@@ -1,3 +1,4 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,6 +7,7 @@ import { LayoutsModule } from './components/layouts/layouts.module';
 import { ViewsModule } from './views/views.module';
 import { RouterModule } from '@angular/router';
 import { ROUTE } from './app.roots';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 
 @NgModule({
@@ -20,7 +22,6 @@ import { ROUTE } from './app.roots';
     LayoutsModule,
     ViewsModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

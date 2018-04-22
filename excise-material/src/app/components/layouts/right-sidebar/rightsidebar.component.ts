@@ -1,12 +1,12 @@
-import { Component, OnInit  } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ma-rightsidebar',
-  templateUrl: './rightsidebar.component.html'
+	selector: 'ma-rightsidebar',
+	templateUrl: './rightsidebar.component.html'
 })
-export class RightSidebarComponent {
-	constructor() {}
+export class RightSidebarComponent implements OnInit {
+	constructor() { }
+
 	ngOnInit() {
-		
 	}
 }

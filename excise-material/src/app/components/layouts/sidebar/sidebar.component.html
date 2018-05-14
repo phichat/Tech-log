@@ -35,16 +35,15 @@
         <nav class="sidebar-nav">
             <ul id="sidebarnav">
                 <li class="nav-small-cap">เมนูหลัก</li>
-                <li >
+                <!-- <li >
                     <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/home']">
                         <i class="mdi mdi-home"></i>
                         <span class="hide-menu">หน้าหลัก</span>
                     </a>
-                </li>
-                
+                </li> -->
+
                 <li [ngClass]="{active: activeRoute('investigate')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
-                        <i class="mdi mdi-message-processing"></i>
                         <span class="hide-menu">1. งานสืบสวนข้อมูล</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
@@ -63,6 +62,51 @@
                         <li>
                             <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/investigate/notice']">1.5 ใบแจ้งความนำจับ</a>
                         </li>
+                    </ul>
+                </li>
+
+                <li [ngClass]="{active: activeRoute('arrest')}">
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="hide-menu">2. งานจับกุม</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li></li>
+                    </ul>
+                </li>
+
+                <li [ngClass]="{active: activeRoute('arrest')}">
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="hide-menu">3. งานเปรียบเที่ยบคดี</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li></li>
+                    </ul>
+                </li>
+
+                <li [ngClass]="{active: activeRoute('arrest')}">
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="hide-menu">4. เงินนำส่งไปยังระบบรายได้</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li></li>
+                    </ul>
+                </li>
+
+                <li [ngClass]="{active: activeRoute('arrest')}">
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="hide-menu">5. งานพิสูจน์ของกลาง</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li></li>
+                    </ul>
+                </li>
+
+                <li [ngClass]="{active: activeRoute('arrest')}">
+                    <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
+                        <span class="hide-menu">ผู้ดูแลระบบ</span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li></li>
                     </ul>
                 </li>
 

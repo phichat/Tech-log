@@ -15,6 +15,7 @@ import { ActionSettingComponent } from '../components/common/action-setting/acti
 import { SelectizeDirective } from '../directives/selectize.directive';
 import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
 import { ModalsModule } from './modals/modals.module';
+import { StaffComponent } from './modals/staff/staff.component';
 
 @NgModule({
   imports: [

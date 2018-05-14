@@ -1,34 +1,90 @@
-<div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-   <div class="modal-dialog" role="document">
-      <div class="modal-content">
-         <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLongTitle">รายชื่อเจ้าหน้าที่</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-            </button>
-         </div>
-         <div class="modal-body">
-
-         </div>
-         <div class="modal-footer">
-            <div class="row">
-               <div class="col-md-8 col-sm-4"></div>
-               <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-success waves-effect waves-light form-control" type="button">
-                     <span class="btn-label pull-left">
-                        <i class="fa fa-check"></i>
-                     </span>ยืนยัน
-                  </button>
-               </div>
-               <div class="col-md-2 col-sm-4">
-                  <button class="btn btn-secondary waves-effect waves-light form-control" type="button">
-                     <span class="btn-label pull-left">
-                        <i class="fa fa-close"></i>
-                     </span>ยกเลิก
-                  </button>
+<div class="modal-content">
+   <div class="modal-header bg-success">
+      <h5 class="modal-title text-white" id="exampleModalLongTitle">รายชื่อเจ้าหน้าที่</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+      </button>
+   </div>
+   <div class="modal-body">
+      <form class="form-control-line form-horizontal">
+         <div class="row">
+            <label for="" class="col-lg-2 col-sm-2 control-label">ค้นหา :</label>
+            <div class="col-md-6 col-sm-10">
+               <div class="form-group form-line">
+                  <input type="search" id="" class="form-control form-control-line" placeholder="">
                </div>
             </div>
+            <div class="col-md-2 form-group">
+               <button type="button" class="btn btn-block btn-info">
+                  <i class="mdi mdi-magnify"></i>
+                  ค้นหา</button>
+            </div>
+            <div class="col-md-2 form-group">
+               <button type="reset" class="btn btn-block btn-secondary">
+                  <i class="mdi mdi-window-close"></i>
+                  เคลียร์</button>
+            </div>
          </div>
-      </div>
+
+         <br>
+
+         <div class="table-responsive">
+            <table appDataTable class="dataTable table table-sm table-striped table-hover ">
+               <thead>
+                  <tr>
+                     <th>
+                        <input type="checkbox" class="check" id="square-checkbox-th" data-checkbox="checkbox_square-green">
+                        <label for="square-checkbox-th"></label>
+                     </th>
+                     <th>ลำดับ</th>
+                     <th>รหัสพนักงาน</th>
+                     <th>ชื่อ-นามสกุล</th>
+                     <th>ตำแหน่ง</th>
+                     <th>สังกัด</th>
+                     <th>ประเภทเจ้าหน้าที่</th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td>
+                        <input type="checkbox" class="check" id="square-checkbox-td-1" data-checkbox="checkbox_square-green">
+                        <label for="square-checkbox-td-1"></label>
+                     </td>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                     <td>1</td>
+                  </tr>
+                  <tr>
+                     <td>
+                        <input type="checkbox" class="check" id="square-checkbox-td-2" data-checkbox="checkbox_square-green">
+                        <label for="square-checkbox-td-2"></label>
+                     </td>
+                     <td>2</td>
+                     <td>3</td>
+                     <td>2</td>
+                     <td>2</td>
+                     <td>2</td>
+                     <td>2</td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+      </form>
+   </div>
+   <div class="modal-footer">
+      <button class="btn btn-success waves-effect waves-light" type="button">
+         <span class="btn-label pull-left">
+            <i class="fa fa-check"></i>
+         </span>ยืนยัน
+      </button>
+
+      <button class="btn btn-secondary waves-effect waves-light" type="button">
+         <span class="btn-label pull-left">
+            <i class="fa fa-close"></i>
+         </span>ยกเลิก
+      </button>
    </div>
 </div>

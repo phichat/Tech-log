@@ -1,297 +1,310 @@
 <app-horizontal-timeline></app-horizontal-timeline>
 
 <div class="card card-outline-success">
-   <div class="card-header">
-      <h4 class="m-b-0 text-white">รายงานการสืบส่วน</h4>
-   </div>
-   <div class="card-body">
-      <form action="" class="form-control-line form-horizontal">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">รายงานการสืบส่วน</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
 
-         <div>
-            <div class="row form-group">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">เลขที่งาน :</label>
-               <div class="col-lg-4 col-md-7 form-group form-line">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
+            <div>
+                <div class="row form-group">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">เลขที่งาน :</label>
+                    <div class="col-lg-4 col-md-7 form-group form-line">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
 
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">วันที่รายงาน :</label>
-               <div class="form-group input-group form-line col-lg-4 col-md-7">
-                  <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
-                  <div class="input-group-append">
-                     <span class="input-group-text">
-                        <i class="mdi mdi-calendar"></i>
-                     </span>
-                  </div>
-               </div>
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">วันที่รายงาน :</label>
+                    <div class="form-group input-group form-line col-lg-4 col-md-7">
+                        <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">คดีสืบสวนที่ :
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-4 col-md-7 form-group input-group form-line">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                        <label for="">&nbsp;&nbsp; / &nbsp;&nbsp;</label>
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">แบบ สส. ครั้งที่ :
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="form-group form-line col-lg-4 col-md-7">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ผู้สืบสวน :
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-4 col-md-7 form-group input-group form-line">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                        <button type="button" class="btn btn-xs btn-rounded btn-success" data-toggle="modal" data-target="#staff1">
+                            &nbsp;&nbsp;
+                            <i class="ti-more-alt"></i>
+                            &nbsp;&nbsp;
+                        </button>
+                    </div>
+
+                    <div class="modal fade" id="staff1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <app-staff></app-staff>
+                        </div>
+                    </div>
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ผู้สั่งการให้สืบสวน :
+                        <span class="text-danger">*</span>
+                    </label>
+                    <div class="col-lg-4 col-md-7 form-group input-group form-line">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                        <button type="button" class="btn btn-xs btn-rounded btn-success" data-toggle="modal" data-target="#staff2">
+                            &nbsp;&nbsp;
+                            <i class="ti-more-alt"></i>
+                            &nbsp;&nbsp;
+                        </button>
+                    </div>
+
+
+                    <div class="modal fade" id="staff2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <app-staff></app-staff>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ตำแหน่ง :</label>
+                    <div class="form-group form-line col-lg-4 col-md-7">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ตำแหน่ง :</label>
+                    <div class="form-group form-line col-lg-4 col-md-7">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+                </div>
             </div>
 
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">คดีสืบสวนที่ :
-                  <span class="text-danger">*</span>
-               </label>
-               <div class="col-lg-4 col-md-7 form-group input-group form-line">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-                  <label for="">&nbsp;&nbsp; / &nbsp;&nbsp;</label>
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
+            <div class="m-t-40">
+                <div class="row form-group">
+                    <div class="col-md-2 text-right">
+                        <label for="">สถานที่ทำการสืบสวน</label>
+                    </div>
+                </div>
 
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">แบบ สส. ครั้งที่ :
-                  <span class="text-danger">*</span>
-               </label>
-               <div class="form-group form-line col-lg-4 col-md-7">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">สินค้า :</label>
+                    <div class="form-group col-lg-10 col-md-9">
+                        <div class="row">
+                            <div class="col-md-4" *ngFor="let item of good; let i=index;">
+                                <input type="checkbox" class="check" id="square-checkbox-{{i}}" data-checkbox="checkbox_square-green">
+                                <label for="square-checkbox-{{i}}">{{item.goodName}}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">วันที่เริ่มสืบสวน :</label>
+                    <div class="form-group input-group form-line col-lg-4 col-md-7">
+                        <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-calendar"></i>
+                            </span>
+                        </div>
+
+                        <label for="" class="">&nbsp; เวลา : &nbsp;</label>
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">วันที่สินสุดการสืบสวน :</label>
+                    <div class="form-group input-group form-line col-lg-4 col-md-7">
+                        <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                        <div class="input-group-append">
+                            <span class="input-group-text">
+                                <i class="mdi mdi-calendar"></i>
+                            </span>
+                        </div>
+
+                        <label for="" class="">&nbsp; เวลา : &nbsp;</label>
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">มาตราความเชื่อมั่นของแหล่งข่าว :</label>
+                    <div class="col-lg-4 col-md-7 form-group form-line">
+                        <select name="" id="" class="form-control form-control-line" appSelectize>
+                            <option value="" selected disabled></option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ค่าของเนื้อข่าว :</label>
+                    <div class="col-lg-4 col-md-7 form-group form-line">
+                        <select name="" id="" class="form-control form-control-line" appSelectize>
+                            <option value="" selected disabled></option>
+                        </select>
+                    </div>
+                </div>
             </div>
 
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ผู้สืบสวน :
-                  <span class="text-danger">*</span>
-               </label>
-               <div class="col-lg-4 col-md-7 form-group input-group form-line">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-                  <button type="button" class="btn btn-xs btn-rounded btn-success">
-                     &nbsp;&nbsp;
-                     <i class="ti-more-alt"></i>
-                     &nbsp;&nbsp;
-                  </button>
-               </div>
+            <div class="m-t-40">
+                <div class="row form-group">
+                    <div class="col-md-2 text-right">
+                        <label for="">สถานที่ทำการสืบสวน</label>
+                    </div>
+                </div>
 
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ผู้สั่งการให้สืบสวน :
-                  <span class="text-danger">*</span>
-               </label>
-               <div class="col-lg-4 col-md-7 form-group input-group form-line">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-                  <button type="button" class="btn btn-xs btn-rounded btn-success">
-                     &nbsp;&nbsp;
-                     <i class="ti-more-alt"></i>
-                     &nbsp;&nbsp;
-                  </button>
-               </div>
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ละติจูด :</label>
+                    <div class="form-group input-group form-line col-lg-4 col-md-7">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                        <label for="">&nbsp;ลองติจูด : &nbsp;</label>
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">บ้านเลขที่ :</label>
+                    <div class="form-group input-group form-line col-lg-4 col-md-7">
+                        <input type="text" class="form-control form-control-line">
+                        <label for="">&nbsp;หมู่ที่ : &nbsp;</label>
+                        <input type="text" class="form-control form-control-line">
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">อาคาร/สถานที่ :</label>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="form-group form-line">
+                            <input type="text" class="form-control form-control-line">
+                        </div>
+                    </div>
+
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ตรอง/ซอย :</label>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="form-group form-line">
+                            <input type="text" class="form-control form-control-line">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ถนน :</label>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="form-group form-line">
+                            <input type="text" name="" id="" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">ตำบล/อำเภอ/จังหวัด :</label>
+                    <div class="col-lg-4 col-md-7 form-group form-line">
+                        <select name="" id="" class="form-control form-control-line" appProvinces></select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">รหัสไปรษณีย์ :</label>
+                    <div class="col-lg-4 col-md-7">
+                        <div class="form-group form-line">
+                            <input type="text" name="" id="" class="form-control form-control-line">
+                        </div>
+                    </div>
+                    <label for="" class="col-lg-2 col-md-3 control-label text-right">โทรศัพท์ :</label>
+                    <div class="col-lg-4 col-md-7 form-group form-line">
+                        <input type="text" name="" id="" class="form-control form-control-line">
+                    </div>
+                </div>
             </div>
 
-            <div class="row">
-
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ตำแหน่ง :</label>
-               <div class="form-group form-line col-lg-4 col-md-7">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
-
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ตำแหน่ง :</label>
-               <div class="form-group form-line col-lg-4 col-md-7">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
-            </div>
-         </div>
-
-         <div class="m-t-40">
-            <div class="row form-group">
-               <div class="col-md-2 text-right">
-                  <label for="">สถานที่ทำการสืบสวน</label>
-               </div>
-            </div>
-
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">สินค้า :</label>
-               <div class="form-group col-lg-10 col-md-9">
-                  <div class="row">
-                     <div class="col-md-4" *ngFor="let item of good; let i=index;">
-                        <input type="checkbox" class="check" id="square-checkbox-{{i}}" data-checkbox="checkbox_square-green">
-                        <label for="square-checkbox-{{i}}">{{item.goodName}}</label>
-                     </div>
-                  </div>
-               </div>
-            </div>
-
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">วันที่เริ่มสืบสวน :</label>
-               <div class="form-group input-group form-line col-lg-4 col-md-7">
-                  <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
-                  <div class="input-group-append">
-                     <span class="input-group-text">
-                        <i class="mdi mdi-calendar"></i>
-                     </span>
-                  </div>
-
-                  <label for="" class="">&nbsp; เวลา : &nbsp;</label>
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
-
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">วันที่สินสุดการสืบสวน :</label>
-               <div class="form-group input-group form-line col-lg-4 col-md-7">
-                  <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
-                  <div class="input-group-append">
-                     <span class="input-group-text">
-                        <i class="mdi mdi-calendar"></i>
-                     </span>
-                  </div>
-
-                  <label for="" class="">&nbsp; เวลา : &nbsp;</label>
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
+            <div class="m-t-40">
+                <div class="row">
+                    <div class="col-md-2 form-group text-right">
+                        <label for="">ผู้ร่วมทำการสืบสวน :</label>
+                    </div>
+                    <div class="col-md-10">
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-plus-circle text-success fa-2x"></i>
+                        </a>
+                        <span>&nbsp; &nbsp;</span>
+                        <a href="javaScript:void(0)">
+                            <i class="fa fa-trash text-danger fa-2x"></i>
+                        </a>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-lg-12 form-group">
+                        <table class="table table-sm table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ลำดับที่</th>
+                                    <th>
+                                        <input type="checkbox" class="check" id="square-checkbox-th" data-checkbox="checkbox_square-green">
+                                        <label for="square-checkbox-th"></label>
+                                    </th>
+                                    <th>ชื่อ - นามสกุล</th>
+                                    <th>ตำแหน่ง</th>
+                                    <th>สังกัด</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <input type="checkbox" class="check" id="square-checkbox-td-1" data-checkbox="checkbox_square-green">
+                                        <label for="square-checkbox-td-1"></label>
+                                    </td>
+                                    <td>1</td>
+                                    <td>2</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">มาตราความเชื่อมั่นของแหล่งข่าว :</label>
-               <div class="col-lg-4 col-md-7 form-group form-line">
-                  <select name="" id="" class="form-control form-control-line" appSelectize>
-                     <option value="" selected disabled></option>
-                  </select>
-               </div>
+            <div class="row m-t-40">
+                <div class="col-md-2 text-right">
+                    <label for="">รายละเอียดที่เกิดขึ้นในการสืบสวน :</label>
+                </div>
+                <div class="col-md-10 form-group form-line">
+                    <textarea name="" id="" class="form-control form-control-line" rows="5"></textarea>
+                </div>
             </div>
-
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ค่าของเนื้อข่าว :</label>
-               <div class="col-lg-4 col-md-7 form-group form-line">
-                  <select name="" id="" class="form-control form-control-line" appSelectize>
-                     <option value="" selected disabled></option>
-                  </select>
-               </div>
-            </div>
-         </div>
-
-         <div class="m-t-40">
-            <div class="row form-group">
-               <div class="col-md-2 text-right">
-                  <label for="">สถานที่ทำการสืบสวน</label>
-               </div>
-            </div>
-
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ละติจูด :</label>
-               <div class="form-group input-group form-line col-lg-4 col-md-7">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-                  <label for="">&nbsp;ลองติจูด : &nbsp;</label>
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
-
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">บ้านเลขที่ :</label>
-               <div class="form-group input-group form-line col-lg-4 col-md-7">
-                  <input type="text" class="form-control form-control-line">
-                  <label for="">&nbsp;หมู่ที่ : &nbsp;</label>
-                  <input type="text" class="form-control form-control-line">
-               </div>
-            </div>
-
-            <div class="row">
-
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">อาคาร/สถานที่ :</label>
-               <div class="col-lg-4 col-md-7">
-                  <div class="form-group form-line">
-                     <input type="text" class="form-control form-control-line">
-                  </div>
-               </div>
-
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ตรอง/ซอย :</label>
-               <div class="col-lg-4 col-md-7">
-                  <div class="form-group form-line">
-                     <input type="text" class="form-control form-control-line">
-                  </div>
-               </div>
-            </div>
-
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ถนน :</label>
-               <div class="col-lg-4 col-md-7">
-                  <div class="form-group form-line">
-                     <input type="text" name="" id="" class="form-control form-control-line">
-                  </div>
-               </div>
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">ตำบล/อำเภอ/จังหวัด :</label>
-               <div class="col-lg-4 col-md-7 form-group form-line">
-                  <select name="" id="" class="form-control form-control-line" appProvinces></select>
-               </div>
-            </div>
-
-            <div class="row">
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">รหัสไปรษณีย์ :</label>
-               <div class="col-lg-4 col-md-7">
-                  <div class="form-group form-line">
-                     <input type="text" name="" id="" class="form-control form-control-line">
-                  </div>
-               </div>
-               <label for="" class="col-lg-2 col-md-3 control-label text-right">โทรศัพท์ :</label>
-               <div class="col-lg-4 col-md-7 form-group form-line">
-                  <input type="text" name="" id="" class="form-control form-control-line">
-               </div>
-            </div>
-         </div>
-
-         <div class="m-t-40">
-            <div class="row">
-               <div class="col-md-2 form-group text-right">
-                  <label for="">ผู้ร่วมทำการสืบสวน :</label>
-               </div>
-               <div class="col-md-10">
-                  <a href="javaScript:void(0)">
-                     <i class="fa fa-plus-circle text-success fa-2x"></i>
-                  </a>
-                  <span>&nbsp; &nbsp;</span>
-                  <a href="javaScript:void(0)">
-                     <i class="fa fa-trash text-danger fa-2x"></i>
-                  </a>
-               </div>
-            </div>
-            <hr>
-            <div class="row">
-               <div class="col-lg-12 form-group">
-                  <table class="table table-sm table-striped table-hover">
-                     <thead>
-                        <tr>
-                           <th>ลำดับที่</th>
-                           <th>
-                              <input type="checkbox" class="check" id="square-checkbox-th" data-checkbox="checkbox_square-green">
-                              <label for="square-checkbox-th"></label>
-                           </th>
-                           <th>ชื่อ - นามสกุล</th>
-                           <th>ตำแหน่ง</th>
-                           <th>สังกัด</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>1</td>
-                           <td>
-                              <input type="checkbox" class="check" id="square-checkbox-td-1" data-checkbox="checkbox_square-green">
-                              <label for="square-checkbox-td-1"></label>
-                           </td>
-                           <td>1</td>
-                           <td>2</td>
-                           <td>3</td>
-                        </tr>
-                     </tbody>
-                  </table>
-               </div>
-            </div>
-         </div>
-
-         <div class="row m-t-40">
-            <div class="col-md-2 text-right">
-               <label for="">รายละเอียดที่เกิดขึ้นในการสืบสวน :</label>
-            </div>
-            <div class="col-md-10 form-group form-line">
-               <textarea name="" id="" class="form-control form-control-line" rows="5"></textarea>
-            </div>
-         </div>
-      </form>
-   </div>
+        </form>
+    </div>
 </div>
 
 <div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
-   <div class="col-md-8 col-sm-4"></div>
-   <div class="col-md-2 col-sm-4">
-      <button class="btn btn-warning waves-effect waves-light form-control" type="button" (click)="save()">
-         <span class="btn-label pull-left">
-            <i class="fa fa-save"></i>
-         </span>บันทึก
-      </button>
-   </div>
-   <div class="col-md-2 col-sm-4">
-      <button class="btn btn-secondary waves-effect waves-light form-control" type="button" (click)="cancel()">
-         <span class="btn-label pull-left">
-            <i class="fa fa-close"></i>
-         </span>ยกเลิก
-      </button>
-   </div>
+    <div class="col-md-8 col-sm-4"></div>
+    <div class="col-md-2 col-sm-4">
+        <button class="btn btn-warning waves-effect waves-light form-control" type="button" (click)="save()">
+            <span class="btn-label pull-left">
+                <i class="fa fa-save"></i>
+            </span>บันทึก
+        </button>
+    </div>
+    <div class="col-md-2 col-sm-4">
+        <button class="btn btn-secondary waves-effect waves-light form-control" type="button" (click)="cancel()">
+            <span class="btn-label pull-left">
+                <i class="fa fa-close"></i>
+            </span>ยกเลิก
+        </button>
+    </div>
 </div>
 
 <app-action-setting *ngIf="mode == 'r' || mode == 'u'" (btnEdit)="toEdit()" (btnPrint)="toPrint()" (btnDelete)="toDelete()">

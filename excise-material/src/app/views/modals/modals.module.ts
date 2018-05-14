@@ -6,6 +6,7 @@ import { StaffComponent } from './staff/staff.component';
   imports: [
     CommonModule
   ],
-  declarations: [StaffComponent]
+  declarations: [StaffComponent],
+  exports: [StaffComponent]
 })
 export class ModalsModule { }

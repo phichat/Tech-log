@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { StaffComponent } from '../../modals/staff/staff.component';
 
 
 @Component({
@@ -11,8 +10,6 @@ import { StaffComponent } from '../../modals/staff/staff.component';
 export class NoticeManageComponent implements OnInit {
 
     constructor(private _route: ActivatedRoute, private _router: Router) { }
-
-    modalStaff: StaffComponent;
 
     good: any[];
     mode: string;

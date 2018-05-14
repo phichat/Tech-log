@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, Input } from '@angular/core';
+import { Component, OnInit, Output, Input, ViewChild, ElementRef } from '@angular/core';
 import { EventEmitter } from 'events';
 
 @Component({
@@ -7,8 +7,6 @@ import { EventEmitter } from 'events';
   styleUrls: ['./staff.component.scss']
 })
 export class StaffComponent implements OnInit {
-
-  @Input() open: boolean;
 
   constructor() { }
 

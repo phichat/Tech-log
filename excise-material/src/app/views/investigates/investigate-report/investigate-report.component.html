@@ -1,4 +1,7 @@
-<div class="card card-outline-info">
+<!-- 
+<app-horizontal-timeline></app-horizontal-timeline> -->
+
+<div class="card card-outline-success">
   <div class="card-header">
     <h4 class="m-b-0 text-white">ค้นหา</h4>
   </div>
@@ -27,8 +30,8 @@
       </div>
 
       <br>
-      <!-- style="display: none" -->
-      <div #advanceSearch>
+      
+      <div #advanceSearch style="display: none">
         <div class="row">
           <label for="" class="col-lg-2 col-md-3 control-label">วันที่รายงาน :</label>
           <div class="col-lg-4 col-md-7 input-group form-group form-line">
@@ -70,33 +73,12 @@
 
         <div class="row">
           <label for="" class="col-lg-2 col-md-3 control-label">สินค้า :</label>
-          <div class="col-lg-10 col-md-7 form-group">
-            <ul class="checkbox-inline">
-              <li>
-                <input type="checkbox" class="check" id="square-checkbox-1" data-checkbox="checkbox_square-green">
-                <label for="square-checkbox-1">สินค้าชนิดที่ 1</label>
-              </li>
-              <li>
-                <input type="checkbox" class="check" id="square-checkbox-2" data-checkbox="checkbox_square-green">
-                <label for="square-checkbox-2">สินค้าชนิดที่ 2</label>
-              </li>
-              <li>
-                <input type="checkbox" class="check" id="square-checkbox-3" data-checkbox="checkbox_square-green">
-                <label for="square-checkbox-3">สินค้าชนิดที่ 3</label>
-              </li>
-              <li>
-                <input type="checkbox" class="check" id="square-checkbox-4" data-checkbox="checkbox_square-green">
-                <label for="square-checkbox-4">สินค้าชนิดที่ 4</label>
-              </li>
-              <li>
-                <input type="checkbox" class="check" id="square-checkbox-5" data-checkbox="checkbox_square-green">
-                <label for="square-checkbox-5">สินค้าชนิดที่ 5</label>
-              </li>
-            </ul>
+          <div class="col-lg-4 col-md-7 form-group">
+              <input type="text" id="" class="form-control form-control-line" placeholder="">
           </div>
           <label for="" class="col-lg-2 col-md-3 control-label">หน่วยงาน :</label>
           <div class="col-lg-4 col-md-7 form-group form-line">
-            <select name="" id="" class="form-control form-control-line"> appSelectize>
+            <select name="" id="" class="form-control form-control-line" appSelectize> 
               <option value="" selected disabled></option>
             </select>
           </div>

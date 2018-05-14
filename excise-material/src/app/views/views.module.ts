@@ -13,6 +13,7 @@ import { InvestigateReportManageComponent } from './investigates/investigate-rep
 import { ActionAddComponent } from '../components/common/action-add/action-add.component';
 import { ActionSettingComponent } from '../components/common/action-setting/action-setting.component';
 import { SelectizeDirective } from '../directives/selectize.directive';
+import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { SelectizeDirective } from '../directives/selectize.directive';
     HomeComponent,
     HeaderDropdownComponent,
     InvestigateReportComponent,
-    InvestigateReportManageComponent
+    InvestigateReportManageComponent,
+    HorizontalTimelineComponent
   ],
   exports: []
 })

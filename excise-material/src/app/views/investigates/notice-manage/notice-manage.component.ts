@@ -10,6 +10,7 @@ export class NoticeManageComponent implements OnInit {
 
     constructor(private _route: ActivatedRoute, private _router: Router) { }
 
+    good: any[];
     mode: string;
     currentUrl: string;
     confirmMass: string;
@@ -17,6 +18,24 @@ export class NoticeManageComponent implements OnInit {
     ngOnInit() {
         this.currentUrl = '/investigate/notice-manage';
         this.confirmMass = 'ยืนยันการทำรายการหรือไม่?';
+        
+    this.good = [
+        {goodName: 'ยาสูบ'},
+        {goodName: 'เครื่องไฟฟ้า'},         
+        {goodName: 'ผลิตภัณฑ์เครื่องหอมและเครื่องสำอาง'},
+        {goodName: 'เรือ'},
+        {goodName: 'กิจการเสี่ยงโชค'},
+        {goodName: 'น้ำมันและผลิตภัณฑ์น้ำมัน'},
+        {goodName: 'ไพ่'},
+        {goodName: 'โทรคมนาคม'},
+        {goodName: 'เครื่องดื่มและเครื่องขายเครื่องดื่ม'},
+        {goodName: 'รถยนต์'},
+        {goodName: 'เบียร์และสุรา'},
+        {goodName: 'กิจการบันเทิงหรือหย่อนใจ'},
+        {goodName: 'สนามกอล์ฟ'},
+        {goodName: 'แก้วและเครื่องแก้ว'},
+        {goodName: 'สินค้าอื่นๆ'}
+     ]
 
         this._route.queryParams
             .subscribe(param => {

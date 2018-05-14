@@ -14,11 +14,13 @@ import { ActionAddComponent } from '../components/common/action-add/action-add.c
 import { ActionSettingComponent } from '../components/common/action-setting/action-setting.component';
 import { SelectizeDirective } from '../directives/selectize.directive';
 import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
+import { ModalsModule } from './modals/modals.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ModalsModule
   ],
   declarations: [
     DatepickerDirective,

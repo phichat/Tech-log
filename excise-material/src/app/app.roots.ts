@@ -1,10 +1,10 @@
-import { Routes } from "@angular/router";
-import { HomeComponent } from "./views/home/home.component";
-import { BasicLayoutComponent } from "./components/layouts/basic-layout/basic-layout.component";
-import { NoticeComponent } from "./views/investigates/notice/notice.component";
-import { NoticeManageComponent } from "./views/investigates/notice-manage/notice-manage.component";
-import { InvestigateReportComponent } from "./views/investigates/investigate-report/investigate-report.component";
-import { InvestigateReportManageComponent } from "./views/investigates/investigate-report-manage/investigate-report-manage.component";
+import { Routes } from '@angular/router';
+import { HomeComponent } from './views/home/home.component';
+import { BasicLayoutComponent } from './components/layouts/basic-layout/basic-layout.component';
+import { NoticeComponent } from './views/investigates/notice/notice.component';
+import { NoticeManageComponent } from './views/investigates/notice-manage/notice-manage.component';
+import { InvestigateReportComponent } from './views/investigates/investigate-report/investigate-report.component';
+import { InvestigateReportManageComponent } from './views/investigates/investigate-report-manage/investigate-report-manage.component';
 
 export const ROUTE: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },

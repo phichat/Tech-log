@@ -21,12 +21,13 @@
       "styles": [
         "../src/assets/plugins/bootstrap/css/bootstrap.min.css",
         "../src/assets/scss/style.scss",
-        "../src/assets/scss/colors/blue.scss",
         "../src/assets/plugins/bootstrap-datepicker/bootstrap-datepicker.min.css",
         "../src/assets/plugins/bootstrap-daterangepicker/daterangepicker.css",
         "../src/assets/plugins/typeahead.js-master/dist/typehead-min.css",
         "../src/assets/plugins/icheck/skins/square/_all.css",
         "../src/assets/plugins/selectize/dist/css/selectize.bootstrap3.css",
+        // "../src/assets/plugins/horizontal-timeline/css/rest.css",
+        // "../src/assets/plugins/horizontal-timeline/css/style.css",
         "styles.scss"
       ],
       "scripts": [
@@ -47,7 +48,10 @@
         "../src/assets/plugins/typeahead.js-master/dist/typeahead.bundle.min.js",
         "../src/assets/plugins/typeahead.js-master/dist/bloodhound.min.js",
         "../src/assets/plugins/icheck/icheck.js",
-        "../src/assets/plugins/selectize/dist/js/standalone/selectize.min.js"
+        "../src/assets/plugins/selectize/dist/js/standalone/selectize.min.js",
+        "../src/assets/plugins/horizontal-timeline/js/modernizr.js",
+        "../src/assets/plugins/horizontal-timeline/js/jquery.mobile.custom.min.js",
+        "../src/assets/plugins/horizontal-timeline/js/main.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

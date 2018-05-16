@@ -16,6 +16,8 @@ import { SelectizeDirective } from '../directives/selectize.directive';
 import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
 import { ModalsModule } from './modals/modals.module';
 import { StaffComponent } from './modals/staff/staff.component';
+import { ArrestListComponent } from './arrests/arrest-list/arrest-list.component';
+import { ArrestManageComponent } from './arrests/arrest-manage/arrest-manage.component';
 
 @NgModule({
   imports: [
@@ -38,7 +40,9 @@ import { StaffComponent } from './modals/staff/staff.component';
     HeaderDropdownComponent,
     InvestigateReportComponent,
     InvestigateReportManageComponent,
-    HorizontalTimelineComponent
+    HorizontalTimelineComponent,
+    ArrestListComponent,
+    ArrestManageComponent
   ],
   exports: []
 })

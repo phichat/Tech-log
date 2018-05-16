@@ -72,11 +72,22 @@
                         <span class="hide-menu">2. งานจับกุม</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li></li>
+                        <li>
+                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/arrest/arrest-list']">2.1 บันทึกการจับกุม(ส.ส. 2/39)</a>
+                        </li>
+                        <li>
+                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/arrest']"></a>
+                        </li>
+                        <li>
+                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/arrest']"></a>
+                        </li>
+                        <li>
+                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/arrest']"></a>
+                        </li>
                     </ul>
                 </li>
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <li [ngClass]="{active: activeRoute('0')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">3. งานเปรียบเที่ยบคดี</span>
                     </a>
@@ -85,7 +96,7 @@
                     </ul>
                 </li>
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <li [ngClass]="{active: activeRoute('1')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">4. เงินนำส่งไปยังระบบรายได้</span>
                     </a>
@@ -94,7 +105,7 @@
                     </ul>
                 </li>
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <li [ngClass]="{active: activeRoute('2')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">5. งานพิสูจน์ของกลาง</span>
                     </a>
@@ -103,7 +114,7 @@
                     </ul>
                 </li>
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <li [ngClass]="{active: activeRoute('3')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">ผู้ดูแลระบบ</span>
                     </a>

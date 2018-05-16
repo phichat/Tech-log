@@ -1,0 +1,241 @@
+<app-horizontal-timeline></app-horizontal-timeline>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">รายละเอียดใบแจ้งความนำจับ</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+         <div class="row">
+            <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+               <button type="button" class="btn btn-warning"></button>
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-2 col-sm-3 control-label text-right">ใบแจ้งความนำจับ :</label>
+            <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+               <select name="" id="" class="form-control form-control-line" appSelectize>
+                  <option value="" selected disabled></option>
+               </select>
+            </div>
+            <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่รับแจ้ง :</label>
+            <div class="form-group input-group form-line col-lg-4 col-md-7">
+               <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+               <div class="input-group-append">
+                  <span class="input-group-text">
+                     <i class="mdi mdi-calendar"></i>
+                  </span>
+               </div>
+
+               <label for="" class="">&nbsp; เวลา : &nbsp;</label>
+               <input type="text" name="" id="" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-2 col-sm-3 control-label text-right">เลขที่ :</label>
+            <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อผู้แจ้ง :</label>
+            <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">รายละเอียดบันทึกการจับกุม</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">เลขที่งาน :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">วันที่เขียนบันทึกจับกุม :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">วันที่เกิดเหตุ:</label>
+            <div class="form-group input-group form-line col-lg-4 col-md-7">
+               <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+               <div class="input-group-append">
+                  <span class="input-group-text">
+                     <i class="mdi mdi-calendar"></i>
+                  </span>
+               </div>
+
+               <label for="" class="">&nbsp; เวลา : &nbsp;</label>
+               <input type="text" name="" id="" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">เขียนที่ :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">พื้นที่ :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <select name="" id="" class="form-control form-control-line" appSelectize>
+                  <option value="" selected disabled></option>
+               </select>
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">ชื่อผู้กล่าวหา :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+               <button type="button" class="btn btn-xs btn-rounded btn-success" data-toggle="modal" data-target="#staff1">
+                  &nbsp;&nbsp;
+                  <i class="ti-more-alt"></i>
+                  &nbsp;&nbsp;
+               </button>
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">ผู้กระทำผิด :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+               <div class="col-lg-4 col-md-7 col-sm-9 form-group m-t-10">
+                  <input type="checkbox" class="check" id="square-checkbox-1" data-checkbox="checkbox_square-green">
+                  <label for="square-checkbox-1">สั่งฟ้องศาล</label>
+               </div>
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">ตำแหน่ง :</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+         <div class="row">
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+            <label for="" class="col-lg-4 col-md-7 col-sm 9">:</label>
+            <div class="col-lg-4 col-md-7 form-group">
+               <input type="text" class="form-control form-control-line">
+            </div>
+         </div>
+      </form>
+   </div>
+</div>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">ข้อกล่าวหา</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+      </form>
+   </div>
+</div>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">บัญชีสิ่งของ</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+      </form>
+   </div>
+</div>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">รายชื่อผู้กระทำผิดกฏหมาย</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+      </form>
+   </div>
+</div>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">คณะผู้จับกุม</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+      </form>
+   </div>
+</div>
+
+<div class="card card-outline-success">
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">บันทึการจับ</h4>
+   </div>
+   <div class="card-body">
+      <form action="" class="form-control-line form-horizontal">
+      </form>
+   </div>
+</div>

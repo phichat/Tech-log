@@ -1,155 +1,155 @@
-
-<app-horizontal-timeline></app-horizontal-timeline>
+<app-horizontal-timeline>
+</app-horizontal-timeline>
 
 <div class="card card-outline-success">
-  <div class="card-header">
-    <h4 class="m-b-0 text-white">ค้นหา</h4>
-  </div>
-  <div class="card-body">
-    <form class="form-control-line form-horizontal">
-      <div class="row">
-        <label for="" class="col-lg-1 col-md-2 control-label">ค้นหา :</label>
-        <div class="col-lg-5 col-md-4">
-          <div class="form-group form-line">
-              <input type="search" id="" class="form-control form-control-line" placeholder="">
-          </div>
-        </div>
-        <div class="col-md-2 text-center form-group">
-          <a href="javaScript:void(0);" (click)="slideToggle(advanceSearch)">ค้นหาขั้นสูง</a>
-        </div>
-        <div class="col-md-2 form-group">
-          <button type="button" class="btn btn-block btn-success">
-            <i class="mdi mdi-magnify"></i>
-            ค้นหา</button>
-        </div>
-        <div class="col-md-2 form-group">
-          <button type="reset" class="btn btn-block btn-secondary">
-            <i class="mdi mdi-window-close"></i>
-            เคลียร์</button>
-        </div>
-      </div>
+   <div class="card-header">
+      <h4 class="m-b-0 text-white">ค้นหา</h4>
+   </div>
+   <div class="card-body">
+      <form class="form-control-line form-horizontal">
+         <div class="row">
+            <label for="" class="col-lg-1 col-md-2 control-label">ค้นหา :</label>
+            <div class="col-lg-5 col-md-4">
+               <div class="form-group form-line">
+                  <input type="search" id="" class="form-control form-control-line" placeholder="">
+               </div>
+            </div>
+            <div class="col-md-2 text-center form-group">
+               <a href="javaScript:void(0);" (click)="slideToggle(advanceSearch)">ค้นหาขั้นสูง</a>
+            </div>
+            <div class="col-md-2 form-group">
+               <button type="button" class="btn btn-block btn-success">
+                  <i class="mdi mdi-magnify"></i>
+                  ค้นหา</button>
+            </div>
+            <div class="col-md-2 form-group">
+               <button type="reset" class="btn btn-block btn-secondary">
+                  <i class="mdi mdi-window-close"></i>
+                  เคลียร์</button>
+            </div>
+         </div>
 
-      <br>
-      
-      <div #advanceSearch style="display: none">
-        <div class="row">
-          <label for="" class="col-lg-2 col-md-3 control-label">วันที่รายงาน :</label>
-          <div class="col-lg-4 col-md-7 input-group form-group form-line">
-            <input type="text" id="" class="form-control form-control-line" placeholder="วว/ดด/ปปปป" appDatepicker>
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="mdi mdi-calendar"></i>
-              </span>
+         <br>
+
+         <div #advanceSearch style="display: none">
+            <div class="row">
+               <label for="" class="col-lg-2 col-md-3 control-label">วันที่รายงาน :</label>
+               <div class="col-lg-4 col-md-7 input-group form-group form-line">
+                  <input type="text" id="" class="form-control form-control-line" placeholder="วว/ดด/ปปปป" appDatepicker>
+                  <div class="input-group-append">
+                     <span class="input-group-text">
+                        <i class="mdi mdi-calendar"></i>
+                     </span>
+                  </div>
+
+                  <label for="">&nbsp;&nbsp; ถึง: &nbsp;&nbsp;</label>
+                  <input type="text" id="" class="form-control form-control-line" placeholder="วว/ดด/ปปปป" appDatepicker>
+                  <div class="input-group-append">
+                     <span class="input-group-text">
+                        <i class="mdi mdi-calendar"></i>
+                     </span>
+                  </div>
+               </div>
+
+               <label for="" class="col-lg-2 col-md-3 control-label">คดีสืบสวนที่ :</label>
+               <div class="col-lg-4 col-md-7 input-group form-group form-line">
+                  <input type="text" id="" class="form-control form-control-line" placeholder="">
+
+                  <label for="">&nbsp;&nbsp; ถึง: &nbsp;&nbsp;</label>
+                  <input type="text" id="" class="form-control form-control-line" placeholder="">
+               </div>
             </div>
 
-            <label for="">&nbsp;&nbsp; ถึง: &nbsp;&nbsp;</label>
-            <input type="text" id="" class="form-control form-control-line" placeholder="วว/ดด/ปปปป" appDatepicker>
-            <div class="input-group-append">
-              <span class="input-group-text">
-                <i class="mdi mdi-calendar"></i>
-              </span>
+            <div class="row">
+               <label for="" class="col-lg-2 col-md-3 control-label">ชื่อผู้สืบสวน :</label>
+               <div class="col-lg-4 col-md-7 form-group form-line">
+                  <input type="text" id="" class="form-control form-control-line" placeholder="">
+               </div>
+               <label for="" class="col-lg-2 col-md-3 control-label">ชื่อผู้สั่งการ :</label>
+               <div class="col-lg-4 col-md-7 form-group form-line">
+                  <input type="text" id="" class="form-control form-control-line" placeholder="">
+               </div>
             </div>
-          </div>
 
-          <label for="" class="col-lg-2 col-md-3 control-label">คดีสืบสวนที่ :</label>
-          <div class="col-lg-4 col-md-7 input-group form-group form-line">
-            <input type="text" id="" class="form-control form-control-line" placeholder="">
+            <div class="row">
+               <label for="" class="col-lg-2 col-md-3 control-label">สินค้า :</label>
+               <div class="col-lg-4 col-md-7 form-group">
+                  <input type="text" id="" class="form-control form-control-line" placeholder="">
+               </div>
+               <label for="" class="col-lg-2 col-md-3 control-label">หน่วยงาน :</label>
+               <div class="col-lg-4 col-md-7 form-group form-line">
+                  <select name="" id="" class="form-control form-control-line" appSelectize>
+                     <option value="" selected disabled></option>
+                  </select>
+               </div>
+            </div>
 
-            <label for="">&nbsp;&nbsp; ถึง: &nbsp;&nbsp;</label>
-            <input type="text" id="" class="form-control form-control-line" placeholder="">
-          </div>
-        </div>
+            <div class="row">
+               <label for="" class="col-lg-2 col-md-3 control-label">มาตรความเชื่อมั่นของแหล่งข่าว :</label>
+               <div class="col-lg-4 col-md-7 form-group form-line">
+                  <select name="" id="" class="form-control form-control-line" appSelectize>
+                     <option value="" selected disabled></option>
+                  </select>
+               </div>
 
-        <div class="row">
-          <label for="" class="col-lg-2 col-md-3 control-label">ชื่อผู้สืบสวน :</label>
-          <div class="col-lg-4 col-md-7 form-group form-line">
-            <input type="text" id="" class="form-control form-control-line" placeholder="">
-          </div>
-          <label for="" class="col-lg-2 col-md-3 control-label">ชื่อผู้สั่งการ :</label>
-          <div class="col-lg-4 col-md-7 form-group form-line">
-            <input type="text" id="" class="form-control form-control-line" placeholder="">
-          </div>
-        </div>
+               <label for="" class="col-lg-2 col-md-3 control-label">ค่าของเนื้อข่าว :</label>
+               <div class="col-lg-4 col-md-7 form-group form-line">
+                  <select name="" id="" class="form-control form-control-line" appSelectize>
+                     <option value="" selected disabled></option>
+                  </select>
+               </div>
+            </div>
 
-        <div class="row">
-          <label for="" class="col-lg-2 col-md-3 control-label">สินค้า :</label>
-          <div class="col-lg-4 col-md-7 form-group">
-              <input type="text" id="" class="form-control form-control-line" placeholder="">
-          </div>
-          <label for="" class="col-lg-2 col-md-3 control-label">หน่วยงาน :</label>
-          <div class="col-lg-4 col-md-7 form-group form-line">
-            <select name="" id="" class="form-control form-control-line" appSelectize> 
-              <option value="" selected disabled></option>
-            </select>
-          </div>
-        </div>
-
-        <div class="row">
-          <label for="" class="col-lg-2 col-md-3 control-label">มาตรความเชื่อมั่นของแหล่งข่าว :</label>
-          <div class="col-lg-4 col-md-7 form-group form-line">
-            <select name="" id="" class="form-control form-control-line" appSelectize>
-              <option value="" selected disabled></option>
-            </select>
-          </div>
-
-          <label for="" class="col-lg-2 col-md-3 control-label">ค่าของเนื้อข่าว :</label>
-          <div class="col-lg-4 col-md-7 form-group form-line">
-            <select name="" id="" class="form-control form-control-line" appSelectize>
-              <option value="" selected disabled></option>
-            </select>
-          </div>
-        </div>
-
-      </div>
-    </form>
-  </div>
+         </div>
+      </form>
+   </div>
 
 </div>
 
 <div class="card">
-  <div class="card-body">
-    <div class="table-responsive">
-        <table appDataTable class="dataTable table table-sm table-striped table-hover ">
-          <thead>
-            <tr>
-              <th>ลำดับ</th>
-              <th>คดีสืบสวนที่</th>
-              <th>วันที่</th>
-              <th>แบบ สส. 1 ครั้งที่</th>
-              <th>ผู้สืบสวน</th>
-              <th>สืบสวนวันที่</th>
-              <th>สถานที่ทำการสืบสวน</th>
-              <th>ผู้สั่งการ</th>
-              <th>หน่วยงาน</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>3</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-              <td>2</td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
-  </div>
+   <div class="card-body">
+      <div class="table-responsive">
+         <table appDataTable class="dataTable table table-sm table-striped table-hover ">
+            <thead>
+               <tr>
+                  <th>ลำดับ</th>
+                  <th>คดีสืบสวนที่</th>
+                  <th>วันที่</th>
+                  <th>แบบ สส. 1 ครั้งที่</th>
+                  <th>ผู้สืบสวน</th>
+                  <th>สืบสวนวันที่</th>
+                  <th>สถานที่ทำการสืบสวน</th>
+                  <th>ผู้สั่งการ</th>
+                  <th>หน่วยงาน</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+                  <td>1</td>
+               </tr>
+               <tr>
+                  <td>2</td>
+                  <td>3</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+                  <td>2</td>
+               </tr>
+            </tbody>
+         </table>
+      </div>
+   </div>
 </div>
 
 

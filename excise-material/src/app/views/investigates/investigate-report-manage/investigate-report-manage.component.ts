@@ -1,22 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { GoodsService } from '../../../services/goods.service';
+import { GoodsModel } from '../../../models/goods-model';
 
 @Component({
     selector: 'app-investigate-report-manage',
     templateUrl: './investigate-report-manage.component.html',
-    styleUrls: ['./investigate-report-manage.component.scss']
+    styleUrls: ['./investigate-report-manage.component.scss'],
+    providers: [
+        GoodsService
+    ]
 })
 export class InvestigateReportManageComponent implements OnInit {
 
-    constructor(private _route: ActivatedRoute, private _router: Router) { }
+    constructor(
+        private _route: ActivatedRoute,
+        private _router: Router,
+        private goodService: GoodsService
+    ) { }
 
     mode: string;
     currentUrl: string;
     confirmMass: string;
-    good: any[];
+    good: Array<GoodsModel>;
 
     ngOnInit() {
-        this.currentUrl = '/investigate/investigate-report-manage';
+        this.currentUrl = '/investigate/investigate-report/manage';
         this.confirmMass = 'ยืนยันการทำรายการหรือไม่?';
 
         this._route.queryParams
@@ -40,23 +49,7 @@ export class InvestigateReportManageComponent implements OnInit {
                 }
             });
 
-        this.good = [
-            { goodName: 'ยาสูบ' },
-            { goodName: 'เครื่องไฟฟ้า' },
-            { goodName: 'ผลิตภัณฑ์เครื่องหอมและเครื่องสำอาง' },
-            { goodName: 'เรือ' },
-            { goodName: 'กิจการเสี่ยงโชค' },
-            { goodName: 'น้ำมันและผลิตภัณฑ์น้ำมัน' },
-            { goodName: 'ไพ่' },
-            { goodName: 'โทรคมนาคม' },
-            { goodName: 'เครื่องดื่มและเครื่องขายเครื่องดื่ม' },
-            { goodName: 'รถยนต์' },
-            { goodName: 'เบียร์และสุรา' },
-            { goodName: 'กิจการบันเทิงหรือหย่อนใจ' },
-            { goodName: 'สนามกอล์ฟ' },
-            { goodName: 'แก้วและเครื่องแก้ว' },
-            { goodName: 'สินค้าอื่นๆ' }
-        ];
+        this.goodService.currentData.subscribe(p => this.good = p);
     }
 
     toEdit() {

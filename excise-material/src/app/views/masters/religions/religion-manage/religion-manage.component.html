@@ -1,0 +1,96 @@
+<div class="card card-outline-success m-t-40">
+    <div class="card-header">
+       <h4 class="m-b-0 text-white">{{modeTitle}}</h4>
+    </div>
+    <div class="card-body">
+       <form class="form-control-line form-horizontal">
+          <div class="row">
+             <label for="" class="col-lg-4 col-sm-3 control-label text-right">รหัสศาสนา :</label>
+             <div class="col-lg-5 col-sm-9">
+                <div class="form-group input-group form-line">
+                   <input type="text" id="" class="form-control form-control-line" placeholder="">
+                </div>
+             </div>
+          </div>
+ 
+          <div class="row">
+             <label for="" class="col-lg-4 col-sm-3 control-label text-right">ชื่อศาสนา(TH) :</label>
+             <div class="col-lg-5 col-sm-9">
+                <div class="form-group">
+                   <div class="form-line">
+                      <input type="text" id="" class="form-control form-control-line" placeholder="">
+                   </div>
+                </div>
+             </div>
+          </div>
+ 
+          <div class="row">
+             <label for="" class="col-lg-4 col-sm-3 control-label text-right">ชื่อศาสนา(EN) :</label>
+             <div class="col-lg-5 col-sm-9">
+                <div class="form-group">
+                   <div class="form-line">
+                      <input type="text" id="" class="form-control form-control-line" placeholder="">
+                   </div>
+                </div>
+             </div>
+          </div>
+ 
+          <div class="row">
+             <label for="" class="col-lg-4 col-sm-3 control-label text-right">วันที่เริ่มใช้ :</label>
+             <div class="form-group input-group form-line col-lg-5 col-sm-9">
+                <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                <div class="input-group-append">
+                   <span class="input-group-text">
+                      <i class="mdi mdi-calendar"></i>
+                   </span>
+                </div>
+ 
+                <label for="" class="">&nbsp; สิ้นสุดวันที่ : &nbsp;</label>
+                <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                <div class="input-group-append">
+                   <span class="input-group-text">
+                      <i class="mdi mdi-calendar"></i>
+                   </span>
+                </div>
+             </div>
+          </div>
+ 
+          <div class="row">
+             <label for="" class="col-lg-4 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
+             <div class="col-lg-5 col-sm-9">
+                <div class="form-group">
+                   <div class="radio">
+                      <input name="status" id="r1" type="radio" class="iradio_minimal-red" />
+                      <label for="r1"> ใช้งาน </label>
+ 
+                      <input name="status" id="r2" type="radio" class="iradio_minimal-red" />
+                      <label for="r2"> ไม่ใช้งาน </label>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </form>
+    </div>
+ </div>
+ 
+ 
+ <div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
+    <div class="col-lg-8 col-md-6 col-sm-4"></div>
+    <div class="col-lg-2 col-md-3 col-sm-4 form-group">
+       <button class="btn btn-warning waves-effect waves-light form-control" type="button" (click)="save()">
+          <span class="btn-label pull-left">
+             <i class="fa fa-save"></i>
+          </span>บันทึก
+       </button>
+    </div>
+    <div class="col-lg-2 col-md-3 col-sm-4 form-group">
+       <button class="btn btn-secondary waves-effect waves-light form-control" type="button" (click)="cancel()">
+          <span class="btn-label pull-left">
+             <i class="fa fa-close"></i>
+          </span>ยกเลิก
+       </button>
+    </div>
+ </div>
+ 
+ <app-action-setting *ngIf="mode == 'r' || mode == 'u'" (btnEdit)="toEdit()" (btnPrint)="toPrint()" (btnDelete)="toDelete()">
+ </app-action-setting>

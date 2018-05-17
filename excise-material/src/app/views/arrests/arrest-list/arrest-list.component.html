@@ -186,9 +186,9 @@
                   <input type="text" class="form-control form-control-line">
                </div>
                <label for="" class="col-lg-2 col-sm-3 control-label text-right">ลักษณะคดี :</label>
-               <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+               <div class="col-lg-4 col-sm-9 form-group">
                   <div class="row">
-                     <div class="col-md-4" *ngFor="let item of typeCase; let i=index;">
+                     <div class="col-lg-6 col-md-4" *ngFor="let item of typeCase; let i=index;">
                         <input type="checkbox" class="check" id="square-checkbox-{{item.value}}" data-checkbox="checkbox_square-green">
                         <label for="square-checkbox-{{item.value}}">{{item.text}}</label>
                      </div>
@@ -201,9 +201,9 @@
                   <input type="text" class="form-control form-control-line">
                </div>
                <label for="" class="col-lg-2 col-sm-3 control-label text-right">คดีสิ้นสุดชั้น :</label>
-               <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+               <div class="col-lg-4 col-sm-9 form-group">
                   <div class="row">
-                     <div class="col-md-4" *ngFor="let item of endCase; let i=index;">
+                     <div class="col-lg-6 col-md-4" *ngFor="let item of endCase; let i=index;">
                         <input type="checkbox" class="check" id="square-checkbox-{{item.value}}" data-checkbox="checkbox_square-green">
                         <label for="square-checkbox-{{item.value}}">{{item.text}}</label>
                      </div>
@@ -251,7 +251,7 @@
                </tr>
             </thead>
             <tbody>
-               <tr>
+               <tr (click)="gotoManage()">
                   <td>1</td>
                   <td>1</td>
                   <td>1</td>
@@ -262,7 +262,7 @@
                   <td>1</td>
                   <td>1</td>
                </tr>
-               <tr>
+               <tr (click)="gotoManage()">
                   <td>2</td>
                   <td>3</td>
                   <td>2</td>

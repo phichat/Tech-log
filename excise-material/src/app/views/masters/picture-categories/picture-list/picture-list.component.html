@@ -1,0 +1,145 @@
+<div class="card card-outline-success m-t-40">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">ค้นหา</h4>
+    </div>
+    <div class="card-body">
+        <form class="form-control-line form-horizontal">
+            <div class="row">
+                <label for="" class="col-lg-4 col-sm-3 control-label text-right">ค้นหา :</label>
+                <div class="col-lg-4 col-sm-7">
+                    <div class="form-group form-line">
+                        <input type="search" id="" class="form-control form-control-line" placeholder="ระบุหมวดภาพ">
+                    </div>
+                </div>
+
+                <div class="col-sm-2 form-group text-left">
+                    <a href="javaScript:void(0);">
+                        <i class="fa fa-search fa-2x text-success"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-sm-3"></div>
+                <div class="col-lg-4 col-sm-7 text-center form-group">
+                    <button type="button" class="btn btn-success" (click)="slideToggle(advanceSearch)">ค้นหาขั้นสูง</button>
+                </div>
+            </div>
+
+            <br>
+
+            <div style="display: none" #advanceSearch>
+                <div class="row">
+                    <label for="" class="col-lg-4 col-sm-3 control-label text-right">รหัสหมวดภาพ :</label>
+                    <div class="col-lg-4 col-sm-7">
+                        <div class="form-group input-group form-line">
+                            <input type="text" id="" class="form-control form-control-line" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-4 col-sm-3 control-label text-right">ชื่อหมวดภาพ(TH) :</label>
+                    <div class="col-lg-4 col-sm-7">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="" class="form-control form-control-line" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <label for="" class="col-lg-4 col-sm-3 control-label text-right">ชื่อหมวดภาพ(EN) :</label>
+                    <div class="col-lg-4 col-sm-7">
+                        <div class="form-group">
+                            <div class="form-line">
+                                <input type="text" id="" class="form-control form-control-line" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <label for="" class="col-lg-4 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
+                    <div class="col-lg-4 col-sm-7">
+                        <div class="form-group">
+                            <div class="radio">
+                                <input name="status" id="r1" type="radio" class="iradio_minimal-red" />
+                                <label for="r1"> ใช้งาน </label>
+
+                                <input name="status" id="r2" type="radio" class="iradio_minimal-red" />
+                                <label for="r2"> ไม่ใช้งาน </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-sm-3"></div>
+
+                    <div class="col-md-2 form-group">
+                        <button type="button" class="btn btn-block btn-success">
+                            <i class="mdi mdi-magnify"></i>
+                            ตกลง</button>
+                    </div>
+                    <div class="col-md-2 form-group">
+                        <button type="reset" class="btn btn-block btn-secondary">
+                            <i class="mdi mdi-window-close"></i>
+                            ยกเลิก</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>
+
+<div class="card">
+    <div class="card-body">
+
+        <div class="table-responsive">
+            <table appDataTable class="dataTable table table-sm table-striped table-hover ">
+                <thead>
+                    <tr>
+                        <th>ลำดับ</th>
+                        <th>รหัสหมวดภาพ</th>
+                        <th>ชื่อหมวดภาพ(TH)</th>
+                        <th>ชื่อหมวดภาพ(EN)</th>
+                        <th>วันที่เริ่มใช้งาน</th>
+                        <th>สิ้นสุดวันที่</th>
+                        <th>สถานะการใช้งาน</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr (click)="gotoManage()">
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>dd/MM/yyyy</td>
+                        <td>dd/MM/yyyy</td>
+                        <td class="text-center">
+                            <i class="fa fa-check text-success"></i>
+                        </td>
+                    </tr>
+                    <tr (click)="gotoManage()">
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>dd/MM/yyyy</td>
+                        <td>dd/MM/yyyy</td>
+                        <td class="text-center">
+                            <i class="fa fa-check text-success"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<app-action-add (click)="createNew()"></app-action-add>

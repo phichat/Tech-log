@@ -108,8 +108,8 @@
                     <div class="form-group col-lg-10 col-md-9">
                         <div class="row">
                             <div class="col-md-4" *ngFor="let item of good; let i=index;">
-                                <input type="checkbox" class="check" id="square-checkbox-{{i}}" data-checkbox="checkbox_square-green">
-                                <label for="square-checkbox-{{i}}">{{item.goodName}}</label>
+                                <input type="checkbox" class="check" id="{{item.value}}" data-checkbox="checkbox_square-green">
+                                <label for="{{item.value}}">{{item.text}}</label>
                             </div>
                         </div>
                     </div>

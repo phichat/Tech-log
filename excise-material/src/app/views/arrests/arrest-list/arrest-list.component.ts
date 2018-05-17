@@ -37,7 +37,7 @@ export class ArrestListComponent implements OnInit {
     }
 
     createNew() {
-        this._router.navigate(['/arrest/arrest-manage'], { queryParams: { C: true, InvestigationID: 'NEW' } });
+        this._router.navigate(['/arrests/arrest/manage'], { queryParams: { C: true, InvestigationID: 'NEW' } });
     }
 
     compareDate(date1, date2) {
@@ -46,5 +46,9 @@ export class ArrestListComponent implements OnInit {
         if (date1 > date2) {
             // return moment.format();
         }
+    }
+
+    gotoManage(){
+        this._router.navigate(['/arrests/arrest/manage'], { queryParams: { R: true, InvestigationID: 'XX-XXXX' } });
     }
 }

@@ -14,16 +14,26 @@ export class RelationshipListComponent implements OnInit {
 
   ngOnInit() {
   }
-  
+
   slideToggle(el) {
     jQuery(el).slideToggle();
   }
 
   createNew() {
-    this._router.navigate(['/masters/relationship/manage'], { queryParams: { C: true, goodId: 'NEW' } });
+    this._router.navigate(['/masters/relationship/manage'], { queryParams: { C: true, relationId: 'NEW' } });
   }
 
-  gotoManage(){
-    this._router.navigate(['/masters/relationship/manage'], { queryParams: { R: true, goodId: 'xx' } });
+  gotoManage() {
+    this._router.navigate(['/masters/relationship/manage'], { queryParams: { R: true, relationId: 'xx' } });
+  }
+
+
+
+  gotoEdit(id) {
+    this._router.navigate(['/masters/relationship/manage'], { queryParams: { U: true, relationId: id } });
+  }
+
+  gotoDelete(id) {
+    confirm('ต้องการลบข้อมูลหรือไม่?');
   }
 }

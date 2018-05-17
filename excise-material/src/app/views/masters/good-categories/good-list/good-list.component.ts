@@ -23,8 +23,15 @@ export class GoodListComponent implements OnInit {
     this._router.navigate(['/masters/good/manage'], { queryParams: { C: true, goodId: 'NEW' } });
   }
 
-  gotoManage(){
+  gotoManage() {
     this._router.navigate(['/masters/good/manage'], { queryParams: { R: true, goodId: 'xx' } });
   }
 
+  gotoEdit(id) {
+    this._router.navigate(['/masters/good/manage'], { queryParams: { U: true, goodId: id } });
+  }
+
+  gotoDelete(id) {
+    confirm('ต้องการลบข้อมูลหรือไม่?');
+  }
 }

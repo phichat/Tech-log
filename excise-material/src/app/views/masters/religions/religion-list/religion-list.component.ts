@@ -20,10 +20,19 @@ export class ReligionListComponent implements OnInit {
   }
 
   createNew() {
-    this._router.navigate(['/masters/religion/manage'], { queryParams: { C: true, goodId: 'NEW' } });
+    this._router.navigate(['/masters/religion/manage'], { queryParams: { C: true, religionId: 'NEW' } });
   }
 
-  gotoManage(){
-    this._router.navigate(['/masters/religion/manage'], { queryParams: { R: true, goodId: 'xx' } });
+  gotoManage() {
+    this._router.navigate(['/masters/religion/manage'], { queryParams: { R: true, religionId: 'xx' } });
   }
+
+  gotoEdit(id) {
+    this._router.navigate(['/masters/religion/manage'], { queryParams: { U: true, religionId: id } });
+  }
+
+  gotoDelete(id) {
+    confirm('ต้องการลบข้อมูลหรือไม่?');
+  }
+
 }

@@ -25,19 +25,19 @@ export class NationalityManageComponent implements OnInit {
          .subscribe(param => {
             if (param && param.C) {
                this.mode = 'c';
-               this.modeTitle = 'เพิ่มข้อมูล'
+               this.modeTitle = 'เพิ่มข้อมูล';
 
             } else if (param && param.R) {
                this.mode = 'r';
-               this.modeTitle = 'รายละเอียดข้อมูล'
+               this.modeTitle = 'รายละเอียดข้อมูล';
 
             } else if (param && param.U) {
                this.mode = 'u';
-               this.modeTitle = 'แก้ไขข้อมูล'
+               this.modeTitle = 'แก้ไขข้อมูล';
 
             } else if (param && param.D) {
                this.mode = 'd';
-               this.modeTitle = 'ลบข้อมูล'
+               this.modeTitle = 'ลบข้อมูล';
                if (confirm(this.confirmMass)) {
 
                } else {

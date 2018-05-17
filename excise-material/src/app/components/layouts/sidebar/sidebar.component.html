@@ -129,8 +129,13 @@
                             </a>
                         </li>
                         <li>
+                            <a [ngClass]="{active: activeRoute('race')}" [routerLink]="['/masters/race/list']">
+                               5. ข้อมูลเชื่อชาติ
+                            </a>
+                        </li>
+                        <li>
                             <a [ngClass]="{active: activeRoute('good')}" [routerLink]="['/masters/good/list']">
-                               5. ข้อมูลหมวดสินค้า
+                              6. ข้อมูลหมวดสินค้า
                             </a>
                         </li>
                     </ul>

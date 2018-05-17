@@ -17,6 +17,8 @@ import { PictureManageComponent } from './views/masters/picture-categories/pictu
 import { RelationshipManageComponent } from './views/masters/relationships/relationship-manage/relationship-manage.component';
 import { ReligionManageComponent } from './views/masters/religions/religion-manage/religion-manage.component';
 import { NationalityManageComponent } from './views/masters/nationalities/nationality-manage/nationality-manage.component';
+import { RaceManageComponent } from './views/masters/races/race-manage/race-manage.component';
+import { RaceListComponent } from './views/masters/races/race-list/race-list.component';
 
 export const ROUTE: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -122,6 +124,18 @@ export const ROUTE: Routes = [
                 path: 'nationality/manage', component: NationalityManageComponent,
                 data: {
                     urls: [{ title: 'Master', url: '/masters/nationality/manage' }, { title: 'ข้อมูลสัญชาติ' }]
+                }
+            },
+            {
+                path: 'race/list', component: RaceListComponent,
+                data: {
+                    urls: [{ title: 'Master', url: '/masters/race/list' }, { title: 'ข้อมูลเชื่อชาติ' }]
+                }
+            },
+            {
+                path: 'race/manage', component: RaceManageComponent,
+                data: {
+                    urls: [{ title: 'Master', url: '/masters/race/manage' }, { title: 'ข้อมูลเชื่อชาติ' }]
                 }
             },
             {

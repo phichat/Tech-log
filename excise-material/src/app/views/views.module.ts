@@ -31,12 +31,18 @@ import { ReligionListComponent } from './masters/religions/religion-list/religio
 import { ReligionManageComponent } from './masters/religions/religion-manage/religion-manage.component';
 import { RaceListComponent } from './masters/races/race-list/race-list.component';
 import { RaceManageComponent } from './masters/races/race-manage/race-manage.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpModule } from '@angular/http';
+import { BrowserModule } from '@angular/platform-browser';
 
 @NgModule({
-  
+
   imports: [
     CommonModule,
+    BrowserModule,
     RouterModule,
+    HttpModule,
+    HttpClientModule,
     HorizontalTimelineModule,
     ActionAddModule,
     ActionSettingModule,
@@ -54,7 +60,7 @@ import { RaceManageComponent } from './masters/races/race-manage/race-manage.com
     ArrestListComponent,
     ArrestManageComponent,
     // End Arrests //
-    
+
     // Begin Investigates //
     InvestigateReportComponent,
     InvestigateReportManageComponent,
@@ -75,7 +81,7 @@ import { RaceManageComponent } from './masters/races/race-manage/race-manage.com
     ReligionManageComponent,
     RaceListComponent,
     RaceManageComponent
-    // End Masters //    
+    // End Masters //
   ],
   exports: []
 })

@@ -28,7 +28,7 @@
 
             <br>
 
-            <div  style="display: none;" #advanceSearch>
+            <div style="display: none;" #advanceSearch>
                 <div class="row">
                     <label for="" class="col-lg-2 col-sm-3 control-label text-right">รหัสสินค้า :</label>
                     <div class="col-lg-4 col-md-7 col-sm-9 form-group">
@@ -102,42 +102,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                    <tr *ngFor="let item of dutyGroupModel; let i=index;">
+                        <td>{{i}}</td>
+                        <td>{{item.groupCode}}</td>
+                        <td>{{item.groupName}}</td>
+                        <td>{{item.subGroupId}}</td>
                         <td class="text-center">
-                            <i class="fa fa-check fa-lg text-success"></i>
+                            <i *ngIf="item.groupStatus == '1'; else elseBlock" class="fa fa-check fa-lg text-success"></i>
+                            <i #elseBlock class="fa fa-close fa-lg text-danger"></i>
                         </td>
-                        <td>dd/mm/yyy</td>
-                        <td>dd/mm/yyy</td>
+                        <td>{{item.effectiveDate}}</td>
+                        <td>{{item.expirationDate}}</td>
                         <td>
-                            <a href="javaScript:void(0);" (click)="gotoEdit(1)">
+                            <a href="javaScript:void(0);" (click)="gotoEdit(item.groupCode)">
                                 <i class="fa fa-pencil fa-lg text-success"></i>
                             </a>
                             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <a href="javaScript:void(0);" (click)="gotoDelete(1)">
-                                <i class="fa fa-trash fa-lg text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>1</td>
-                        <td class="text-center">
-                            <i class="fa fa-close fa-lg text-danger"></i>
-                        </td>
-                        <td>dd/mm/yyy</td>
-                        <td>dd/mm/yyy</td>
-                        <td>
-                            <a href="javaScript:void(0);" (click)="gotoEdit(1)">
-                                <i class="fa fa-pencil fa-lg text-success"></i>
-                            </a>
-                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <a href="javaScript:void(0);" (click)="gotoDelete(1)">
+                            <a href="javaScript:void(0);" (click)="gotoDelete(item.groupCode)">
                                 <i class="fa fa-trash fa-lg text-danger"></i>
                             </a>
                         </td>

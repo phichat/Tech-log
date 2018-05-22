@@ -1,6 +1,7 @@
 <div class="card card-outline-success m-t-40">
     <div class="card-header">
-        <h4 class="m-b-0 text-white">ค้นหา</h4>
+        <app-header-dropdown></app-header-dropdown>
+        <h4 class="card-title m-b-0 text-white">ค้นหา</h4>
     </div>
     <div class="card-body">
         <form class="form-control-line form-horizontal">
@@ -102,42 +103,23 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr (click)="gotoManage()">
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
-                        <td>1</td>
+                    <tr *ngFor="let item of nationalitie; let i=index">
+                        <td>{{i}}</td>
+                        <td>{{item.nationalityCode}}</td>
+                        <td>{{item.nationalityNameTh}}</td>
+                        <td>{{item.nationalityNameEn}}</td>
+                        <td>{{item.effectiveDate}}</td>
+                        <td>{{item.expirationDate}}</td>
                         <td class="text-center">
-                            <i class="fa fa-check fa-lg text-success"></i>
-                        </td>
+                                <i *ngIf="item.isActive == 1; else elseBlock" class="fa fa-check fa-lg text-success"></i>
+                                <i #elseBlock class="fa fa-close fa-lg text-danger"></i>
+                            </td>
                         <td>
-                            <a href="javaScript:void(0);" (click)="gotoEdit(1)">
+                            <a href="javaScript:void(0);" (click)="gotoEdit(item.nationalityCode)">
                                 <i class="fa fa-pencil fa-lg text-success"></i>
                             </a>
                             <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <a href="javaScript:void(0);" (click)="gotoDelete(1)">
-                                <i class="fa fa-trash fa-lg text-danger"></i>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr (click)="gotoManage()">
-                        <td>2</td>
-                        <td>3</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td>2</td>
-                        <td class="text-center">
-                            <i class="fa fa-close fa-lg text-danger"></i>
-                        </td>
-                        <td>
-                            <a href="javaScript:void(0);" (click)="gotoEdit(1)">
-                                <i class="fa fa-pencil fa-lg text-success"></i>
-                            </a>
-                            <span>&nbsp;&nbsp;|&nbsp;&nbsp;</span>
-                            <a href="javaScript:void(0);" (click)="gotoDelete(1)">
+                            <a href="javaScript:void(0);" (click)="gotoDelete(item.nationalityCode)">
                                 <i class="fa fa-trash fa-lg text-danger"></i>
                             </a>
                         </td>

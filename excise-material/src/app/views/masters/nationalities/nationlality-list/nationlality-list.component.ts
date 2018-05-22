@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NationalityModel } from '../../../../models/master';
 
 declare var jQuery;
 
@@ -9,6 +10,8 @@ declare var jQuery;
   styleUrls: ['./nationlality-list.component.scss']
 })
 export class NationlalityListComponent implements OnInit {
+
+  nationalitie = new Array<NationalityModel>();
 
   constructor(private _router: Router) { }
 

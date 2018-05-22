@@ -10,17 +10,36 @@ import { ProvincesDirective } from '../directives/provinces.directive';
 import { HeaderDropdownComponent } from '../components/common/header-dropdown/header-dropdown.component';
 import { InvestigateReportComponent } from './investigates/investigate-report/investigate-report.component';
 import { InvestigateReportManageComponent } from './investigates/investigate-report-manage/investigate-report-manage.component';
-import { ActionAddComponent } from '../components/common/action-add/action-add.component';
-import { ActionSettingComponent } from '../components/common/action-setting/action-setting.component';
 import { SelectizeDirective } from '../directives/selectize.directive';
-import { HorizontalTimelineComponent } from './horizontal-timeline/horizontal-timeline.component';
 import { ModalsModule } from './modals/modals.module';
 import { StaffComponent } from './modals/staff/staff.component';
+import { ArrestListComponent } from './arrests/arrest-list/arrest-list.component';
+import { ArrestManageComponent } from './arrests/arrest-manage/arrest-manage.component';
+import { HorizontalTimelineModule } from '../components/common/horizontal-timeline/horizontal-timeline.module';
+import { ActionAddModule } from '../components/common/action-add/action-add.module';
+import { ActionSettingModule } from '../components/common/action-setting/action-setting.module';
+import { HorizontalTimelineComponent } from '../components/common/horizontal-timeline/horizontal-timeline.component';
+import { GoodListComponent } from './masters/good-categories/good-list/good-list.component';
+import { GoodManageComponent } from './masters/good-categories/good-manage/good-manage.component';
+import { NationlalityListComponent } from './masters/nationalities/nationlality-list/nationlality-list.component';
+import { NationalityManageComponent } from './masters/nationalities/nationality-manage/nationality-manage.component';
+import { PictureListComponent } from './masters/picture-categories/picture-list/picture-list.component';
+import { PictureManageComponent } from './masters/picture-categories/picture-manage/picture-manage.component';
+import { RelationshipListComponent } from './masters/relationships/relationship-list/relationship-list.component';
+import { RelationshipManageComponent } from './masters/relationships/relationship-manage/relationship-manage.component';
+import { ReligionListComponent } from './masters/religions/religion-list/religion-list.component';
+import { ReligionManageComponent } from './masters/religions/religion-manage/religion-manage.component';
+import { RaceListComponent } from './masters/races/race-list/race-list.component';
+import { RaceManageComponent } from './masters/races/race-manage/race-manage.component';
 
 @NgModule({
+  
   imports: [
     CommonModule,
     RouterModule,
+    HorizontalTimelineModule,
+    ActionAddModule,
+    ActionSettingModule,
     ModalsModule
   ],
   declarations: [
@@ -29,16 +48,34 @@ import { StaffComponent } from './modals/staff/staff.component';
     ProvincesDirective,
     SelectizeDirective,
 
-    ActionAddComponent,
-    ActionSettingComponent,
-
-    NoticeComponent,
-    NoticeManageComponent,
     HomeComponent,
-    HeaderDropdownComponent,
+
+    // Begin Arrests //
+    ArrestListComponent,
+    ArrestManageComponent,
+    // End Arrests //
+    
+    // Begin Investigates //
     InvestigateReportComponent,
     InvestigateReportManageComponent,
-    HorizontalTimelineComponent
+    NoticeComponent,
+    NoticeManageComponent,
+    // End Investigate //
+
+    // Begin Masters //
+    GoodListComponent,
+    GoodManageComponent,
+    NationlalityListComponent,
+    NationalityManageComponent,
+    PictureListComponent,
+    PictureManageComponent,
+    RelationshipListComponent,
+    RelationshipManageComponent,
+    ReligionListComponent,
+    ReligionManageComponent,
+    RaceListComponent,
+    RaceManageComponent
+    // End Masters //    
   ],
   exports: []
 })

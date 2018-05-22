@@ -16,17 +16,3 @@ export class DatepickerDirective {
   }
 
 }
-
-@Directive({
-  selector: '[appDaterange]'
-})
-export class DaterangeDirective {
-
-
-  constructor(el: ElementRef) {
-    jQuery(el.nativeElement).datepicker({
-      toggleActive: true
-    });
-  }
-
-}

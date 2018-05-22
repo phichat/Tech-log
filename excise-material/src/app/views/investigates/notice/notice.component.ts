@@ -20,7 +20,11 @@ export class NoticeComponent implements OnInit {
   }
 
   createNew() {
-    this._router.navigate(['/investigate/notice-manage'], { queryParams: { C: true, noticeCode: 'NEW' } });
+    this._router.navigate(['/investigate/notice/manage'], { queryParams: { C: true, noticeCode: 'NEW' } });
+  }
+
+  gotoManage(){
+    this._router.navigate(['/investigate/notice/manage'], { queryParams: { R: true, noticeCode: 'XX-XXX' } });
   }
 
 }

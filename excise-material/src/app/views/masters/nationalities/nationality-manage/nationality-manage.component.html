@@ -1,0 +1,74 @@
+<div class="card card-outline-success m-t-40">
+        <div class="card-header">
+           <h4 class="m-b-0 text-white">{{modeTitle}}</h4>
+        </div>
+        <div class="card-body">
+           <form class="form-control-line form-horizontal">
+              <div class="row">
+                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">รหัสสัญชาติ :</label>
+                 <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" id="" class="form-control form-control-line" placeholder="">
+                 </div>
+     
+                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อสัญชาติ(TH) :</label>
+                 <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" id="" class="form-control form-control-line" placeholder="">
+                 </div>
+              </div>
+     
+              <div class="row">
+                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่เรียกใช้งาน :</label>
+                 <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group">
+                    <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                    <div class="input-group-append">
+                       <span class="input-group-text">
+                          <i class="fa fa-calendar-o fa-md"></i>
+                       </span>
+                    </div>
+                 </div>
+
+                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อสัญชาติ(EN) :</label>
+                 <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" id="" class="form-control form-control-line" placeholder="">
+                 </div>
+              </div>
+     
+              <div class="row">
+                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
+                 <div class="col-lg-5 col-sm-9">
+                    <div class="form-group">
+                       <input name="status" id="r1" type="radio" class="with-gap" />
+                       <label for="r1"> ใช้งาน </label>
+     
+                       <input name="status" id="r2" type="radio" class="with-gap" />
+                       <label for="r2"> ไม่ใช้งาน </label>
+                    </div>
+                 </div>
+              </div>
+     
+     
+              <div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
+                 <div class="col-lg-8 col-md-6 col-sm-4"></div>
+                 <div class="col-lg-2 col-md-3 col-sm-4 form-group">
+                    <button class="btn btn-success btn-block waves-effect waves-light" type="button" (click)="save()">
+                       <span class="btn-label pull-left">
+                          <i class="fa fa-save"></i>
+                       </span>บันทึก
+                    </button>
+                 </div>
+                 <div class="col-lg-2 col-md-3 col-sm-4 form-group">
+                    <button class="btn btn-secondary btn-block waves-effect waves-light" type="button" (click)="cancel()">
+                       <span class="btn-label pull-left">
+                          <i class="fa fa-close"></i>
+                       </span>ยกเลิก
+                    </button>
+                 </div>
+              </div>
+           </form>
+        </div>
+     </div>
+     
+     
+     
+     <app-action-setting *ngIf="mode == 'r' || mode == 'u'" (btnEdit)="toEdit()" (btnPrint)="toPrint()" (btnDelete)="toDelete()">
+     </app-action-setting>

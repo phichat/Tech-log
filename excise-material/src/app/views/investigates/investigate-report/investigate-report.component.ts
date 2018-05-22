@@ -19,7 +19,11 @@ export class InvestigateReportComponent implements OnInit {
   }
 
   createNew() {
-    this._router.navigate(['/investigate/investigate-report-manage'], { queryParams: { C: true, InvestigationID: 'NEW' } });
+    this._router.navigate(['/investigate/investigate-report/manage'], { queryParams: { C: true, InvestigationID: 'NEW' } });
+  }
+
+  gotoManage(){
+    this._router.navigate(['/investigate/investigate-report/manage'], { queryParams: { R: true, InvestigationID: 'XX-XXX' } });
   }
 
 }

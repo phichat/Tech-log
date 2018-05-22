@@ -6,10 +6,6 @@
     <div class="scroll-sidebar">
         <!-- User profile -->
         <div class="user-profile" style="background: url(assets/images/background/user-info.jpg) no-repeat;">
-            <!-- User profile image -->
-            <!-- <div class="profile-img">
-                <img src="assets/images/users/1.jpg" alt="user" /> 
-            </div> -->
             <div style="padding: 50px 0;"></div>
             <!-- User profile text-->
             <div class="profile-text">
@@ -17,13 +13,6 @@
                     <span class="caret"></span>
                 </a>
                 <div class="dropdown-menu animated fadeIn">
-                    <!-- <a href="javascript:void(0)" class="dropdown-item">
-                        <i class="ti-user"></i> My Profile</a>
-                    <a href="javascript:void(0)" class="dropdown-item">
-                        <i class="ti-wallet"></i> My Balance</a>
-                    <a href="javascript:void(0)" class="dropdown-item">
-                        <i class="ti-email"></i> Inbox</a>
-                    <div class="dropdown-divider"></div> -->
                     <a href="javascript:void(0)" class="dropdown-item">
                         <i class="ti-settings"></i> บัญชีผู้ใช้</a>
                     <div class="dropdown-divider"></div>
@@ -38,7 +27,7 @@
             <ul id="sidebarnav">
                 <!-- <li class="nav-small-cap">เมนูหลัก</li>
                 <li >
-                    <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/home']">
+                    <a [ngClass]="{active: activeRoute('religion')}" [routerLink]="['/home']">
                         <i class="mdi mdi-home"></i>
                         <span class="hide-menu">หน้าหลัก</span>
                     </a>
@@ -50,65 +39,105 @@
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li>
-                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/investigate']">1.1 ผู้ต้องสงสัย</a>
+                            <a [routerLink]="['']">1.1 ผู้ต้องสงสัย</a>
                         </li>
                         <li>
-                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/investigate/investigate-report']">1.2 รายงานการสืบสวน</a>
+                            <a [ngClass]="{active: activeRoute('investigate-report')}" [routerLink]="['/investigate/investigate-report']">1.2 รายงานการสืบสวน</a>
                         </li>
                         <li>
-                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/investigate']">1.3 จัดทำหมายค้น</a>
+                            <a [routerLink]="['']">1.3 จัดทำหมายค้น</a>
                         </li>
                         <li>
-                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/investigate']">1.4 ใบรับรองความบริสุทธิ์</a>
+                            <a [routerLink]="['']">1.4 ใบรับรองความบริสุทธิ์</a>
                         </li>
                         <li>
-                            <a [routerLinkActiveOptions]="{exact: true}" routerLinkActive="active" [routerLink]="['/investigate/notice']">1.5 ใบแจ้งความนำจับ</a>
+                            <a [ngClass]="{active: activeRoute('notice')}" [routerLink]="['/investigate/notice']">1.5 ใบแจ้งความนำจับ</a>
                         </li>
                     </ul>
                 </li>
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <li [ngClass]="{active: activeRoute('arrests')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">2. งานจับกุม</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li></li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('arrest')}" [routerLink]="['/arrests/arrest/list']">2.1 บันทึกการจับกุม(ส.ส. 2/39)</a>
+                        </li>
+                        <!-- <li>
+                            <a [ngClass]="{active: activeRoute('religion')}" [routerLink]="['/arrest']"></a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('religion')}" [routerLink]="['/arrest']"></a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('religion')}" [routerLink]="['/arrest']"></a>
+                        </li> -->
                     </ul>
                 </li>
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <!-- <li [ngClass]="{active: activeRoute('0')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">3. งานเปรียบเที่ยบคดี</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <!-- <li [ngClass]="{active: activeRoute('1')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">4. เงินนำส่งไปยังระบบรายได้</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <!-- <li [ngClass]="{active: activeRoute('2')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">5. งานพิสูจน์ของกลาง</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
                         <li></li>
                     </ul>
-                </li>
+                </li> -->
 
-                <li [ngClass]="{active: activeRoute('arrest')}">
+                <li [ngClass]="{active: activeRoute('masters')}">
                     <a class="has-arrow" href="javascript:void(0)" aria-expanded="false">
                         <span class="hide-menu">ผู้ดูแลระบบ</span>
                     </a>
                     <ul aria-expanded="false" class="collapse">
-                        <li></li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('religion')}" [routerLink]="['/masters/religion/list']">
+                               1. ข้อมูลศาสนา
+                            </a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('relationship')}" [routerLink]="['/masters/relationship/list']">
+                               2. ข้อมูลความสัมพันธ์
+                            </a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('picture')}" [routerLink]="['/masters/picture/list']">
+                               3. ข้อมูลหมวดภาพถ่าย
+                            </a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('nationality')}" [routerLink]="['/masters/nationality/list']">
+                               4. ข้อมูลสัญชาติ
+                            </a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('race')}" [routerLink]="['/masters/race/list']">
+                               5. ข้อมูลเชื่อชาติ
+                            </a>
+                        </li>
+                        <li>
+                            <a [ngClass]="{active: activeRoute('good')}" [routerLink]="['/masters/good/list']">
+                              6. ข้อมูลหมวดสินค้า
+                            </a>
+                        </li>
                     </ul>
                 </li>
 

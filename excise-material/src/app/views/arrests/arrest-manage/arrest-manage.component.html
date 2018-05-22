@@ -1,0 +1,478 @@
+<app-horizontal-timeline></app-horizontal-timeline>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">รายละเอียดใบแจ้งความนำจับ</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <!-- <div class="row">
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <button type="button" class="btn btn-warning"></button>
+                </div>
+            </div> -->
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 control-label text-right">ใบแจ้งความนำจับ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <select name="" id="" class="form-control form-control-line" appSelectize>
+                        <option value="" selected disabled></option>
+                    </select>
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่รับแจ้ง :</label>
+                <div class="form-group input-group form-line col-lg-4 col-md-7 col-sm-9">
+                    <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="mdi mdi-calendar"></i>
+                        </span>
+                    </div>
+
+                    <label for="" class="">&nbsp; เวลา : &nbsp;</label>
+                    <input type="text" name="" id="" class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 control-label text-right">เลขที่ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อผู้แจ้ง :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">รายละเอียดบันทึกการจับกุม</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">เลขที่งาน :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">วันที่เขียนบันทึกจับกุม :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">วันที่เกิดเหตุ:</label>
+                <div class="form-group input-group form-line col-lg-4 col-md-7 col-sm-9">
+                    <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                    <div class="input-group-append">
+                        <span class="input-group-text">
+                            <i class="mdi mdi-calendar"></i>
+                        </span>
+                    </div>
+
+                    <label for="" class="">&nbsp; เวลา : &nbsp;</label>
+                    <input type="text" name="" id="" class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">เขียนที่ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">พื้นที่ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <select name="" id="" class="form-control form-control-line" appSelectize>
+                        <option value="" selected disabled></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">ชื่อผู้กล่าวหา :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group form-line">
+                    <input type="text" class="form-control form-control-line">
+                    <button type="button" class="btn btn-xs btn-rounded btn-success" data-toggle="modal" data-target="#staff1">
+                        &nbsp;&nbsp;
+                        <i class="ti-more-alt"></i>
+                        &nbsp;&nbsp;
+                    </button>
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">ผู้กระทำผิด :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group">
+                    <input type="text" class="form-control form-control-line">
+                    <div class="m-t-10">
+                        <input type="checkbox" class="check" id="square-checkbox-1" data-checkbox="checkbox_square-green">
+                        <label for="square-checkbox-1">สั่งฟ้องศาล</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">ตำแหน่ง :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">ประมาณการค่าปรับ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">สังกัด :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">ประเภทผู้กล่าวหา :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <select name="" id="" class="form-control form-control-line" appSelectize>
+                        <option value="" selected disabled></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">สถานที่เกิดเหตุ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <textarea name="" id="" cols="" rows="4" class="form-control form-control-line"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">บ้านเลขที่:</label>
+                <div class="form-group input-group form-line col-lg-4 col-md-7 col-sm-9">
+                    <input type="text" class="form-control form-control-line">
+                    <label for="">&nbsp;หมู่ที่ : &nbsp;</label>
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">อาคาร/สถานที่ :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">ห้อง :</label>
+                <div class="form-group input-group col-lg-4 col-md-7 col-sm-9">
+                    <input type="text" class="form-control form-control-line">
+                    <label for="">&nbsp;ชั้น : &nbsp;</label>
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">ตรอก/ซอย :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">ถนน :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <input type="text" class="form-control form-control-line">
+                </div>
+                <label for="" class="col-lg-2 col-sm-3 text-right">ตำบล/อำเภอ/จังหวัด :</label>
+                <div class="col-lg-4 col-md-7 col-sm-9 form-group">
+                    <select name="" id="" class="form-control form-control-line" appSelectize>
+                        <option value="" selected disabled></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">สถานีตำรวจท้องที่เกิดเหตุ :</label>
+                <div class="form-group input-group col-lg-4 col-md-7 col-sm-9">
+                    <input type="text" class="form-control form-control-line">
+                    <label for="">&nbsp;(ส.ส. 2/54)</label>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">สินค้า :</label>
+                <div class="col-lg-10 col-sm-9 form-group">
+                    <div class="row">
+                        <div class="col-md-4" *ngFor="let item of good; let i=index;">
+                            <input type="checkbox" class="check" id="{{item.value}}" data-checkbox="checkbox_square-green">
+                            <label for="{{item.value}}">{{item.text}}</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">ข้อกล่าวหา</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <div class="row">
+                <div class="col-sm-12">
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-plus-circle text-success fa-2x"></i>
+                    </a>
+                    <span>&nbsp; &nbsp;</span>
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-trash text-danger fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12 form-group table-responsive">
+                    <table #allegation class="table table-sm table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="check" id="allegation-th-1" data-checkbox="checkbox_square-green">
+                                    <label for="allegation-th-1"></label>
+                                </th>
+                                <th>ลำดับที่</th>
+                                <th>มาตรา</th>
+                                <th>บทกำหนดโทษ</th>
+                                <th>ข้อกล่าวหา</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="check" id="allegation-td-1" data-checkbox="checkbox_square-green">
+                                    <label for="allegation-td-1"></label>
+                                </td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">บัญชีสิ่งของ</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-plus-circle text-success fa-2x"></i>
+                    </a>
+                    <span>&nbsp; &nbsp;</span>
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-trash text-danger fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12 form-group table-responsive">
+                    <table #object class="table table-sm table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="check" id="object-th-1" data-checkbox="checkbox_square-green">
+                                    <label for="object-th-1"></label>
+                                </th>
+                                <th>ลำดับที่</th>
+                                <th>สินค้า</th>
+                                <th>จำนวน</th>
+                                <th>ปริมาณสุทธิ</th>
+                                <th>ทะเบียนรถ</th>
+                                <th>ในประเทศ/ต่างประเทศ</th>
+                                <th>สถานะของกลาง</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="check" id="object-td-1" data-checkbox="checkbox_square-green">
+                                    <label for="object-td-1"></label>
+                                </td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">รายชื่อผู้กระทำผิดกฏหมาย</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-plus-circle text-success fa-2x"></i>
+                    </a>
+                    <span>&nbsp; &nbsp;</span>
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-trash text-danger fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12 form-group table-responsive">
+                    <table #lawbreaker class="table table-sm table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="check" id="lawbreaker-th-1" data-checkbox="checkbox_square-green">
+                                    <label for="lawbreaker-th-1"></label>
+                                </th>
+                                <th>ลำดับที่</th>
+                                <th>ชื่อผู้กระทำผิด</th>
+                                <th>ประเภทผู้กระทำผิด</th>
+                                <th>อาชีพ</th>
+                                <th>วันเกิด</th>
+                                <th>เลขบัตร ปชช.</th>
+                                <th>เลขที่หนังสือเดินทาง</th>
+                                <th>เชื่อชาติ</th>
+                                <th>สัญชาติ</th>
+                                <th>ที่อยู่</th>
+                                <th>ชื่อบิดา</th>
+                                <th>ชื่อมารดา</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="check" id="lawbreaker-td-1" data-checkbox="checkbox_square-green">
+                                    <label for="lawbreaker-td-1"></label>
+                                </td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                                <td>6</td>
+                                <td>7</td>
+                                <td>8</td>
+                                <td>9</td>
+                                <td>10</td>
+                                <td>11</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">คณะผู้จับกุม</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-plus-circle text-success fa-2x"></i>
+                    </a>
+                    <span>&nbsp; &nbsp;</span>
+                    <a href="javaScript:void(0)">
+                        <i class="fa fa-trash text-danger fa-2x"></i>
+                    </a>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-lg-12 form-group table-responsive">
+                    <table #arrestteam class="table table-sm table-striped table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="check" id="arrest-team-th-1" data-checkbox="checkbox_square-green">
+                                    <label for="arrest-team-th-1"></label>
+                                </th>
+                                <th>ลำดับที่</th>
+                                <th>ชื่อ</th>
+                                <th>ตำแหน่ง</th>
+                                <th>ชื่อสังกัด</th>
+                                <th>ในฐานะ</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="check" id="arrest-team-td-1" data-checkbox="checkbox_square-green">
+                                    <label for="arrest-team-td-1"></label>
+                                </td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>
+                                    <select name="" id="" class="form-control form-control-line" appSelectize>
+                                        <option value="" selected disabled></option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="card card-outline-success">
+    <div class="card-header">
+        <h4 class="m-b-0 text-white">บันทึการจับ</h4>
+    </div>
+    <div class="card-body">
+        <form action="" class="form-control-line form-horizontal">
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">พฤติกรรมในการจับ :</label>
+                <div class="form-group input-group col-lg-8 col-md-7 col-sm-9">
+                    <textarea name="" id="" cols="" rows="4" class="form-control form-control-line"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">คำให้การของผู้ต้องหา :</label>
+                <div class="form-group input-group col-lg-8 col-md-7 col-sm-9">
+                    <textarea name="" id="" cols="" rows="4" class="form-control form-control-line"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <label for="" class="col-lg-2 col-sm-3 text-right">การแจ้งสิทธิ :</label>
+                <div class="form-group input-group col-lg-8 col-md-7 col-sm-9">
+                    <textarea name="" id="" cols="" rows="4" class="form-control form-control-line"></textarea>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
+    <div class="col-md-8 col-sm-4"></div>
+    <div class="col-md-2 col-sm-4 form-group">
+        <button class="btn btn-warning waves-effect waves-light form-control" type="button" (click)="save()">
+            <span class="btn-label pull-left">
+                <i class="fa fa-save"></i>
+            </span>บันทึก
+        </button>
+    </div>
+    <div class="col-md-2 col-sm-4 form-group">
+        <button class="btn btn-secondary waves-effect waves-light form-control" type="button" (click)="cancel()">
+            <span class="btn-label pull-left">
+                <i class="fa fa-close"></i>
+            </span>ยกเลิก
+        </button>
+    </div>
+</div>
+
+<app-action-setting *ngIf="mode == 'r' || mode == 'u'" (btnEdit)="toEdit()" (btnPrint)="toPrint()" (btnDelete)="toDelete()">
+</app-action-setting>

@@ -1,0 +1,27 @@
+$font-size: 14px;
+
+.selectize-input {
+    width: 100% !important;
+    position: relative !important;
+    border: unset !important;
+    border-radius: unset !important;
+    border-bottom: 1px solid #ddd !important;
+    padding: 6px 0px !important;
+    min-height: unset !important;
+    font-size: $font-size !important;
+}
+
+.selectize-input.focus {
+    box-shadow: unset !important;
+    
+}
+
+.selectize-dropdown{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 5px, rgba(0, 0, 0, 0.12) 0px 2px 10px !important;
+    border-radius: unset !important;
+    font-size: $font-size !important;
+}
+
+.selectize-dropdown.single.form-control.form-control-line{
+    padding-right: 0px !important;
+}

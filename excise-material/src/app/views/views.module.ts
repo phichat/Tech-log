@@ -54,6 +54,8 @@ import { BrowserModule } from '@angular/platform-browser';
     ProvincesDirective,
     SelectizeDirective,
 
+    HeaderDropdownComponent,
+
     HomeComponent,
 
     // Begin Arrests //

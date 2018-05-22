@@ -15,13 +15,18 @@ export class HeaderDropdownComponent implements OnInit {
   ngOnInit() {
   }
 
-  slideToggle(e) {
-    const card = jQuery(e.target).closest('div.card');
+  collapse(e): void {
+    e.preventDefault();
+    const ibox = jQuery(e.target).closest('div.card');
     const button = jQuery(e.target).closest('i');
-    const content = card.children('div.card-body');
+    const content = ibox.children('.card-body');
     content.slideToggle(200);
-    button.toggleClass('i-rotate');
-    card.toggleClass('').toggleClass('border-bottom');
+    button.toggleClass('fa-chevron-down').toggleClass('fa-chevron-up');
+    ibox.toggleClass('').toggleClass('border-bottom');
+    setTimeout(function () {
+      ibox.resize();
+      ibox.find('[id^=map-]').resize();
+    }, 50);
 
   }
 

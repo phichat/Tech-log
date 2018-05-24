@@ -8,7 +8,7 @@ export class RelationshipsService {
 
   constructor(private http: HttpClient) { }
 
-  private url = `${appConfig.apiUrl}/race`;
+  private url = `${appConfig.apiUrl}/relation`;
 
   private httpOptions = {
     headers: new HttpHeaders(
@@ -20,7 +20,7 @@ export class RelationshipsService {
 
   getByKeyWord(keyword: string) {
     const apiURL = `${this.url}/getRelationByKeyword`;
-    const param = JSON.stringify({ keyword });
+    // const param = JSON.stringify({ keyword });
     return this.http.post<RelationModel[]>(apiURL, { keyword }, this.httpOptions);
   }
 

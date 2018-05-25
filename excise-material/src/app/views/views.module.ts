@@ -34,6 +34,7 @@ import { RaceManageComponent } from './masters/races/race-manage/race-manage.com
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReligionsService } from '../services/master/religions.service';
 
 @NgModule({
 
@@ -85,6 +86,9 @@ import { BrowserModule } from '@angular/platform-browser';
     RaceManageComponent
     // End Masters //
   ],
-  exports: []
+  exports: [],
+  providers: [
+    ReligionsService
+  ]
 })
 export class ViewsModule { }

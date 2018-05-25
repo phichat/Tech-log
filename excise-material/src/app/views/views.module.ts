@@ -34,6 +34,8 @@ import { RaceManageComponent } from './masters/races/race-manage/race-manage.com
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule, FormControl, FormControlName } from '@angular/forms';
+import { NgbDateAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
 
@@ -41,12 +43,15 @@ import { BrowserModule } from '@angular/platform-browser';
     CommonModule,
     BrowserModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     HorizontalTimelineModule,
     ActionAddModule,
     ActionSettingModule,
-    ModalsModule
+    ModalsModule,
+    NgbModule.forRoot()
   ],
   declarations: [
     DatepickerDirective,
@@ -85,6 +90,7 @@ import { BrowserModule } from '@angular/platform-browser';
     RaceManageComponent
     // End Masters //
   ],
-  exports: []
+  exports: [],
+  // providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
 export class ViewsModule { }

@@ -1,51 +1,124 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { NgForm } from '@angular/forms';
 import { RelationshipsService } from '../../../../services/master';
+import { RelationModel } from '../../../../models/master';
 
-declare var jQuery;
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs';
 
 @Component({
-   selector: 'app-relationship-list',
-   templateUrl: './relationship-list.component.html',
-   styleUrls: ['./relationship-list.component.scss'],
-   providers: [
-      RelationshipsService
-   ]
+    selector: 'app-relationship-list',
+    templateUrl: './relationship-list.component.html',
+    styleUrls: ['./relationship-list.component.scss'],
+    providers: [
+        RelationshipsService
+    ]
 })
 export class RelationshipListComponent implements OnInit {
 
-   constructor(
-      private _router: Router,
-      private _relationService: RelationshipsService
-   ) { }
+    listRelation: Array<RelationModel>;
+    keySearch: string;
+    conSearch: RelationModel;
+    dataTable: any;
 
-   ngOnInit() {
-      this._relationService
-         .getByKeyWord('')
-         .subscribe(p => {
-            console.log(p)
-         });
-   }
+    constructor(
+        private _router: Router,
+        private _route: ActivatedRoute,
+        private chRef: ChangeDetectorRef,
+        private _relationService: RelationshipsService
+    ) { }
 
-   slideToggle(el) {
-      jQuery(el).slideToggle();
-   }
+    ngOnInit() {
+        this._relationService
+            .getByKeyWord({ 'keyword': '' })
+            .subscribe(p => {
+                this.listRelation = p;
 
-   createNew() {
-      this._router.navigate(['/masters/relationship/manage'], { queryParams: { C: true, relationId: 'NEW' } });
-   }
+                this.onDetactTable();
+            });
+    }
 
-   gotoManage() {
-      this._router.navigate(['/masters/relationship/manage'], { queryParams: { R: true, relationId: 'xx' } });
-   }
+    onSearchByKey(key: any) {
+        this.listRelation = [];
+
+        this._relationService
+            .getByKeyWord(key)
+            .subscribe(p => {
+                this.listRelation = p;
+
+                this.onDetactTable();
+            });
+    }
+
+    onSearchByCon(con: any) {
+        this.listRelation = [];
+
+        this._relationService.getByCon(con)
+            .subscribe(p => {
+                this.listRelation = p;
+
+                this.onDetactTable();
+            });
+    }
+
+    onDetactTable() {
+        const table: any = $('#tableRelation');
+
+        this.chRef.detectChanges();
+
+        if ($.fn.dataTable.isDataTable('#tableRelation')) {
+
+            this.dataTable = table.DataTable();
+
+        } else {
+
+            this.dataTable = table.DataTable({
+                'searching': false,
+                'sDom': 'rt<"row"<"col-md-6"i><"col-md-6"fp>>',
+                'language': {
+                    'sProcessing': 'กำลังดำเนินการ...',
+                    'sLengthMenu': 'แสดง _MENU_ แถว',
+                    'sZeroRecords': 'ไม่พบข้อมูล',
+                    'sInfo': 'รายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ',
+                    'sInfoEmpty': 'แสดง 0 ถึง 0 จาก 0 แถว',
+                    'sInfoFiltered': '(กรองข้อมูล _MAX_ ทุกแถว)',
+                    'sInfoPostFix': '',
+                    'sSearch': 'ค้นหา: ',
+                    'sUrl': '',
+                    'oPaginate': {
+                        'sFirst': 'หน้าแรก',
+                        'sPrevious': 'ก่อนหน้า',
+                        'sNext': 'ถัดไป',
+                        'sLast': 'หน้าสุดท้าย'
+                    }
+                }
+            });
+        }
+
+
+    }
+
+    slideToggle(el) {
+        $(el).slideToggle();
+    }
+
+    createNew() {
+        this._router.navigate(['/masters/relationship/manage'], { queryParams: { C: true, relationId: 'NEW' } });
+    }
+
+    gotoManage() {
+        this._router.navigate(['/masters/relationship/manage'], { queryParams: { R: true, relationId: 'xx' } });
+    }
 
 
 
-   gotoEdit(id) {
-      this._router.navigate(['/masters/relationship/manage'], { queryParams: { U: true, relationId: id } });
-   }
+    gotoEdit(id) {
+        this._router.navigate(['/masters/relationship/manage'], { queryParams: { U: true, relationId: id } });
+    }
 
-   gotoDelete(id) {
-      confirm('ต้องการลบข้อมูลหรือไม่?');
-   }
+    gotoDelete(id) {
+        confirm('ต้องการลบข้อมูลหรือไม่?');
+    }
 }

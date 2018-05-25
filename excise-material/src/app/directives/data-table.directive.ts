@@ -1,17 +1,19 @@
-import { Directive, AfterViewInit } from '@angular/core';
-declare var jQuery: any;
+import { Directive, AfterViewInit, OnInit } from '@angular/core';
+import * as $ from 'jquery';
+import 'datatables.net';
+import 'datatables.net-bs';
+
 @Directive({
   selector: '[appDataTable]'
 })
-export class DataTableDirective implements AfterViewInit {
+export class DataTableDirective implements OnInit {
 
   constructor() { }
 
-  ngAfterViewInit() {
+  ngOnInit() {
     const table = document.querySelector('table');
-    jQuery(table).DataTable({
+    $(table).DataTable({
       'searching': false,
-      // 'ordering': false,
       'sDom': 'rt<"row"<"col-md-6"i><"col-md-6"fp>>',
       'language': {
         'sProcessing': 'กำลังดำเนินการ...',
@@ -29,8 +31,7 @@ export class DataTableDirective implements AfterViewInit {
           'sNext': 'ถัดไป',
           'sLast': 'หน้าสุดท้าย'
         }
-      },
-      // 'scrollX': true
+      }
     });
   }
 

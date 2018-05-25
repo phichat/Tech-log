@@ -40,8 +40,7 @@
         "../src/assets/plugins/sparkline/jquery.sparkline.min.js",
         "../src/assets/js/custom.js",
         "../src/assets/js/pace.min.js",
-        "../src/assets/plugins/datatables/jquery.dataTables.min.js",
-        "../src/assets/plugins/datatables/dataTables.bootstrap.js",
+       
         "../src/assets/plugins/styleswitcher/jQuery.style.switcher.js",
         "../src/assets/plugins/typeahead.js-master/dist/typeahead.bundle.min.js",
         "../src/assets/plugins/typeahead.js-master/dist/bloodhound.min.js",

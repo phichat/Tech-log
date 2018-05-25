@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { appConfig } from '../../config/app.config';
 import { RelationModel } from '../../models/master';
+import { NgForm } from '@angular/forms';
 
 @Injectable()
 export class RelationshipsService {
@@ -18,15 +19,14 @@ export class RelationshipsService {
       })
   };
 
-  getByKeyWord(keyword: string) {
+  getByKeyWord(keyword: any) {
     const apiURL = `${this.url}/getRelationByKeyword`;
-    // const param = JSON.stringify({ keyword });
-    return this.http.post<RelationModel[]>(apiURL, { keyword }, this.httpOptions);
+    return this.http.post<RelationModel[]>(apiURL, keyword, this.httpOptions);
   }
 
-  getByCon(relationId: number, relationName: string) {
+  getByCon(con: any) {
     const apiURL = `${this.url}/getRelationByKeyCon`;
-    return this.http.post<RelationModel[]>(apiURL, { relationId, relationName }, this.httpOptions);
+    return this.http.post<RelationModel[]>(apiURL, con, this.httpOptions);
   }
 
   insByCon(race: RelationModel) {

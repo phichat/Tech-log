@@ -4,29 +4,42 @@
         <h4 class="card-title m-b-0 text-white">{{modeTitle}}</h4>
     </div>
     <div class="card-body">
-        <form class="form-control-line form-horizontal">
+        <form autocomplete="off" class="form-control-line form-horizontal" [formGroup]="Form">
             <div class="row">
                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">รหัสความสัมพันธ์ :</label>
                 <div class="col-lg-4 col-md-7 col-sm-9 form-group">
                     <div class="form-group input-group form-line">
-                        <input type="text" id="" class="form-control form-control-line" placeholder="">
+                        <input type="text" id="" name="relationId" formControlName="relationId" class="form-control form-control-line" placeholder="">
                     </div>
                 </div>
 
                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">ความสัมพันธ์ :</label>
                 <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                    <input type="text" id="" class="form-control form-control-line" placeholder="">
+                    <input type="text" id="" name="relationName" formControlName="relationName" class="form-control form-control-line" placeholder="">
                 </div>
             </div>
 
             <div class="row">
                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่เรียกใช้ข้อมูล :</label>
                 <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group">
-                    <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
+                    <!-- <input type="text" class="form-control form-control-line" id="" name="eventDateTime" formControlName="eventDateTime" placeholder="วว/ดด/ปปปป">
                     <div class="input-group-append">
                         <span class="input-group-text">
                             <i class="fa fa-calendar-o fa-md"></i>
                         </span>
+                    </div> -->
+                    <div class="input-group">
+                        <input class="form-control" placeholder="yyyy-mm-dd" name="eventDateTime"
+                        formControlName="eventDateTime" ngbDatepicker #d2="ngbDatepicker">
+                        <div class="input-group-append">
+                            <a href="javaScript:void(0);" class="input-group-text" (click)="d2.toggle()">
+                                <i class="fa fa-calendar-o fa-lg" ></i>
+                            </a>
+                            <!-- <button class="btn btn-outline-secondary" type="button"> -->
+
+                            <!-- <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/> -->
+                            <!-- </button> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -34,10 +47,10 @@
             <div class="row">
                 <label for="" class="col-lg-2 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
                 <div class="col-lg-5 col-sm-9 form-group">
-                    <input name="status" id="r1" type="radio" class="with-gap" />
+                    <input name="status" id="r1" type="radio" name="isActive" value="1" formControlName="isActive" class="with-gap" />
                     <label for="r1"> ใช้งาน </label>
 
-                    <input name="status" id="r2" type="radio" class="with-gap" />
+                    <input name="status" id="r2" type="radio" name="isActive" value="0" formControlName="isActive" class="with-gap" />
                     <label for="r2"> ไม่ใช้งาน </label>
                 </div>
             </div>

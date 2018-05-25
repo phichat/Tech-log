@@ -34,7 +34,12 @@ import { RaceManageComponent } from './masters/races/race-manage/race-manage.com
 import { HttpClientModule } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 import { BrowserModule } from '@angular/platform-browser';
+<<<<<<< HEAD
 import { ReligionsService } from '../services/master/religions.service';
+=======
+import { FormsModule, ReactiveFormsModule, FormControl, FormControlName } from '@angular/forms';
+import { NgbDateAdapter, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+>>>>>>> 862dbc175fa1e0de5fa4e9cdca9b43f7c82f8770
 
 @NgModule({
 
@@ -42,12 +47,15 @@ import { ReligionsService } from '../services/master/religions.service';
     CommonModule,
     BrowserModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     HttpClientModule,
     HorizontalTimelineModule,
     ActionAddModule,
     ActionSettingModule,
-    ModalsModule
+    ModalsModule,
+    NgbModule.forRoot()
   ],
   declarations: [
     DatepickerDirective,
@@ -87,8 +95,12 @@ import { ReligionsService } from '../services/master/religions.service';
     // End Masters //
   ],
   exports: [],
+<<<<<<< HEAD
   providers: [
     ReligionsService
   ]
+=======
+  // providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
+>>>>>>> 862dbc175fa1e0de5fa4e9cdca9b43f7c82f8770
 })
 export class ViewsModule { }

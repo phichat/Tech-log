@@ -8,6 +8,7 @@ import { ViewsModule } from './views/views.module';
 import { RouterModule } from '@angular/router';
 import { ROUTE } from './app.roots';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     RouterModule.forRoot(ROUTE),
     LayoutsModule,
     ViewsModule

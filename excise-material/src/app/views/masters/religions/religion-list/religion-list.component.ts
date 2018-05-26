@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ReligionsService } from '../../../../services/master/religions.service';
+import { ReligionModel } from '../../../../models/master';
 
 declare var jQuery;
 
@@ -10,9 +12,19 @@ declare var jQuery;
 })
 export class ReligionListComponent implements OnInit {
 
-  constructor(private _router: Router) { }
+  listReligion: Array<ReligionModel>;
+
+  constructor(
+    private _router: Router,
+    private _religion: ReligionsService
+  ) { }
 
   ngOnInit() {
+    this._religion
+      .getByKeyWord('')
+      .subscribe(p =>  {
+        this.listReligion = p
+      });
   }
 
   slideToggle(el) {

@@ -8,7 +8,7 @@ export class ReligionsService {
 
   constructor(private http: HttpClient) { }
 
-  private url = `${appConfig.apiUrl}/race`;
+  private url = `${appConfig.apiUrl}/religion`;
 
   private httpOptions = {
     headers: new HttpHeaders(

@@ -20,22 +20,31 @@ export class NationalitiesService {
 
   getByKeyWord(keyword: string) {
     const apiURL = `${this.url}/getNationalityByKeyword`;
-    const param = JSON.stringify({ keyword });
-    return this.http.post<NationalityModel[]>(apiURL, { keyword }, this.httpOptions);
+    const params = JSON.stringify(keyword);
+    return this.http.post<NationalityModel[]>(apiURL, params, this.httpOptions);
   }
 
-  getByCon(nationalityCode: string, nationalityTH: string, nationalityEN: string) {
+  getByCon(con: any) {
     const apiURL = `${this.url}/getNationalityByKeyCon`;
-    return this.http.post<NationalityModel[]>(apiURL, { nationalityCode, nationalityTH, nationalityEN }, this.httpOptions);
+    const params = JSON.stringify(con);
+    return this.http.post<NationalityModel>(apiURL, params, this.httpOptions);
   }
 
   insByCon(nationality: NationalityModel) {
     const apiURL = `${this.url}/insNationalityByKeyCon`;
-    return this.http.post(apiURL, nationality, this.httpOptions);
+    const params = JSON.stringify(nationality);
+    return this.http.post(apiURL, params, this.httpOptions);
   }
 
   updByCon(nationality: NationalityModel) {
     const apiURL = `${this.url}/updNationalityByCon`;
-    return this.http.post(apiURL, nationality, this.httpOptions);
+    const params = JSON.stringify(nationality);
+    return this.http.post(apiURL, params, this.httpOptions);
+  }
+
+  delByCon(nationality: NationalityModel) {
+    const apiUrl = `${this.url}/delNationalityByCon`;
+    const params = JSON.stringify(nationality);
+    return this.http.post(apiUrl, params, this.httpOptions);
   }
 }

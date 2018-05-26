@@ -63,7 +63,7 @@ export class RaceManageComponent implements OnInit {
         this._raceService.getByCon({ raceId })
             .subscribe(p => {
                 this.model = p;
-                this.model.eventDatetime = moment().format('YYYY-MM-DD');
+                this.model.eventDatetime = moment(p.eventDatetime).format('YYYY-MM-DD');
                 this.model.isActive = p.isActive.toString();
             }, (err: HttpErrorResponse) => {
                 alert(err.message);

@@ -65,7 +65,7 @@ export class ReligionManageComponent implements OnInit {
             .subscribe(
                 p => {
                     this.model = p;
-                    this.model.eventDatetime = moment().format('YYYY-MM-DD');
+                    this.model.eventDatetime = moment(p.eventDatetime).format('YYYY-MM-DD');
                     this.model.isActive = p.isActive.toString();
 
                 }, (err: HttpErrorResponse) => {

@@ -23,19 +23,19 @@ export class NationlalityListComponent implements OnInit {
   }
 
   createNew() {
-    this._router.navigate(['/masters/race/manage'], { queryParams: { C: true, raceId: 'NEW' } });
+    this._router.navigate(['/masters/nationality/manage'], { queryParams: { C: true, nationalityCode: 'NEW' } });
   }
 
   gotoManage() {
-    this._router.navigate(['/masters/race/manage'], { queryParams: { R: true, raceId: 'xx' } });
+    this._router.navigate(['/masters/nationality/manage'], { queryParams: { R: true, nationalityCode: 'xx' } });
   }
 
   gotoEdit(id) {
-    this._router.navigate(['/masters/race/manage'], { queryParams: { U: true, raceId: id } });
+    this._router.navigate(['/masters/nationality/manage'], { queryParams: { U: true, nationalityCode: id } });
   }
 
   gotoDelete(id) {
-    alert('ต้องการลบข้อมูลหรือไม่?');
+    this._router.navigate(['/masters/nationality/manage'], { queryParams: { D: true, nationalityCode: id } });
   }
 
 }

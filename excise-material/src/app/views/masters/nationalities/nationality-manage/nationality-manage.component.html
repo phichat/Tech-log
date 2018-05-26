@@ -4,33 +4,28 @@
       <h4 class="card-title m-b-0 text-white">{{modeTitle}}</h4>
    </div>
    <div class="card-body">
-      <form class="form-control-line form-horizontal">
+      <form class="form-control-line form-horizontal" autocomplete="off" #f="ngForm" (ngSubmit)="onSave()">
          <div class="row">
             <label for="" class="col-lg-2 col-sm-3 control-label text-right">รหัสสัญชาติ :</label>
             <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-               <input type="text" id="" class="form-control form-control-line" placeholder="">
+               <input type="text" id="" name="nationalityCode" [(ngModel)]="model.nationalityCode" required class="form-control form-control-line" placeholder="">
             </div>
 
             <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อสัญชาติ(TH) :</label>
             <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-               <input type="text" id="" class="form-control form-control-line" placeholder="">
+               <input type="text" id="" name="nationalityNameTh" [(ngModel)]="model.nationalityNameTh" required class="form-control form-control-line" placeholder="">
             </div>
          </div>
 
          <div class="row">
             <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่เรียกใช้งาน :</label>
             <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group">
-               <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
-               <div class="input-group-append">
-                  <span class="input-group-text">
-                     <i class="fa fa-calendar-o fa-md"></i>
-                  </span>
-               </div>
+               <input type="date" class="form-control form-control-line" id="" name="eventDatetime" [(ngModel)]="model.eventDatetime" required placeholder="วว/ดด/ปปปป">
             </div>
 
             <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อสัญชาติ(EN) :</label>
             <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-               <input type="text" id="" class="form-control form-control-line" placeholder="">
+               <input type="text" id="" name="nationalityNameEn" [(ngModel)]="model.nationalityNameEn" required class="form-control form-control-line" placeholder="">
             </div>
          </div>
 
@@ -38,10 +33,10 @@
             <label for="" class="col-lg-2 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
             <div class="col-lg-5 col-sm-9">
                <div class="form-group">
-                  <input name="status" id="r1" type="radio" class="with-gap" />
+                  <input name="isActive" [(ngModel)]="model.isActive" id="r1" value="1" type="radio" required class="with-gap" />
                   <label for="r1"> ใช้งาน </label>
 
-                  <input name="status" id="r2" type="radio" class="with-gap" />
+                  <input name="isActive" [(ngModel)]="model.isActive" id="r2" value="0" type="radio" required class="with-gap" />
                   <label for="r2"> ไม่ใช้งาน </label>
                </div>
             </div>
@@ -51,7 +46,7 @@
          <div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
             <div class="col-lg-8 col-md-6 col-sm-4"></div>
             <div class="col-lg-2 col-md-3 col-sm-4 form-group">
-               <button class="btn btn-success btn-block waves-effect waves-light" type="button" (click)="save()">
+               <button class="btn btn-success btn-block waves-effect waves-light" type="submit" [disabled]="!f.valid">
                   <span class="btn-label pull-left">
                      <i class="fa fa-save"></i>
                   </span>บันทึก

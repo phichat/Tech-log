@@ -67,7 +67,7 @@ export class RelationshipManageComponent implements OnInit {
         this._relationService.getByCon({ relationId })
             .subscribe(p => {
                 this.model = p;
-                this.model.eventDateTime = moment().format('YYYY-MM-DD');
+                this.model.eventDateTime = moment(p.eventDateTime).format('YYYY-MM-DD');
                 this.model.isActive = p.isActive.toString();
             });
 

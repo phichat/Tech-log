@@ -42,11 +42,11 @@ export class RelationshipListComponent implements OnInit {
     }
 
     onSearchByKey(key: any) {
-        this.listRelation = [];
 
         this._relationService
             .getByKeyWord(key)
             .subscribe(p => {
+                this.listRelation = new Array<RelationModel>();
                 this.listRelation = p;
 
                 this.onDetactTable();
@@ -54,49 +54,48 @@ export class RelationshipListComponent implements OnInit {
     }
 
     onSearchByCon(con: any) {
-        // this.listRelation = [];
 
-        // this._relationService.getByCon(con)
-        //     .subscribe(p => {
-        //         this.listRelation = p;
+        this._relationService.getByCon(con)
+            .subscribe(p => {
+                this.listRelation = new Array<RelationModel>();
+                this.listRelation.push(p);
 
-        //         this.onDetactTable();
-        //     });
+                this.onDetactTable();
+            });
     }
 
     onDetactTable() {
         const table: any = $('#tableRelation');
 
-        this.chRef.detectChanges();
-
         if ($.fn.dataTable.isDataTable('#tableRelation')) {
 
             this.dataTable = table.DataTable();
-
-        } else {
-
-            this.dataTable = table.DataTable({
-                'searching': false,
-                'sDom': 'rt<"row"<"col-md-6"i><"col-md-6"fp>>',
-                'language': {
-                    'sProcessing': 'กำลังดำเนินการ...',
-                    'sLengthMenu': 'แสดง _MENU_ แถว',
-                    'sZeroRecords': 'ไม่พบข้อมูล',
-                    'sInfo': 'รายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ',
-                    'sInfoEmpty': 'แสดง 0 ถึง 0 จาก 0 แถว',
-                    'sInfoFiltered': '(กรองข้อมูล _MAX_ ทุกแถว)',
-                    'sInfoPostFix': '',
-                    'sSearch': 'ค้นหา: ',
-                    'sUrl': '',
-                    'oPaginate': {
-                        'sFirst': 'หน้าแรก',
-                        'sPrevious': 'ก่อนหน้า',
-                        'sNext': 'ถัดไป',
-                        'sLast': 'หน้าสุดท้าย'
-                    }
-                }
-            });
+            this.dataTable.destroy();
         }
+
+        this.chRef.detectChanges();
+
+        this.dataTable = $('#tableRelation').DataTable({
+            'searching': false,
+            'sDom': 'rt<"row"<"col-md-6"i><"col-md-6"fp>>',
+            'language': {
+                'sProcessing': 'กำลังดำเนินการ...',
+                'sLengthMenu': 'แสดง _MENU_ แถว',
+                'sZeroRecords': 'ไม่พบข้อมูล',
+                'sInfo': 'รายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ',
+                'sInfoEmpty': 'แสดง 0 ถึง 0 จาก 0 แถว',
+                'sInfoFiltered': '(กรองข้อมูล _MAX_ ทุกแถว)',
+                'sInfoPostFix': '',
+                'sSearch': 'ค้นหา: ',
+                'sUrl': '',
+                'oPaginate': {
+                    'sFirst': 'หน้าแรก',
+                    'sPrevious': 'ก่อนหน้า',
+                    'sNext': 'ถัดไป',
+                    'sLast': 'หน้าสุดท้าย'
+                }
+            }
+        });
 
 
     }
@@ -120,15 +119,6 @@ export class RelationshipListComponent implements OnInit {
     }
 
     gotoDelete(id) {
-        if (confirm('ต้องการลบข้อมูลหรือไม่?')) {
-            this._relationService.delByCon(id)
-                .subscribe(
-                    p => {
-                        alert('บันทึกสำเร็จ');
-                    }, (err: HttpErrorResponse) => {
-                        alert(err.message);
-                    }
-                );
-        }
+        this._router.navigate(['/masters/relationship/manage'], { queryParams: { D: true, relationId: id } });
     }
 }

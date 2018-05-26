@@ -9,25 +9,45 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class DutyGroupService {
 
-   constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-   private url = `${appConfig.apiUrl}/dutyGroup`;
+    private url = `${appConfig.apiUrl}/dutyGroup`;
 
-   private httpOptions = {
-      headers: new HttpHeaders(
-         {
-            'Content-Type': 'application/json'
-         })
-   };
+    private httpOptions = {
+        headers: new HttpHeaders(
+            {
+                'Content-Type': 'application/json'
+            })
+    };
 
-   getByKeyWord(keyword: string) {
-      const apiURL = `${this.url}/getDutygroupByKeyword`;
-      const param = JSON.stringify({ keyword });
-      return this.http.post(apiURL, param, this.httpOptions);
-   }
+    getByKeyWord(keyword: any) {
+        const apiURL = `${this.url}/getDutygroupByKeyword`;
+        const param = JSON.stringify(keyword);
+        return this.http.post<DutyGroupModel[]>(apiURL, param, this.httpOptions);
+    }
 
-   getByCon(groupCode: string) {
-      const apiURL = `${this.url}/getDutygroupByCon`;
-      return this.http.post<DutyGroupModel[]>(apiURL, { groupCode });
-   }
+    getByCon(con: any) {
+        const apiURL = `${this.url}/getDutygroupByCon`;
+        const param = JSON.stringify(con);
+        return this.http.post<DutyGroupModel>(apiURL, param, this.httpOptions);
+    }
+
+    insByCon(Dutygroup: DutyGroupModel) {
+        const apiURL = `${this.url}/insDutygroupByKeyCon`;
+        const params = JSON.stringify(Dutygroup);
+        return this.http.post(apiURL, Dutygroup, this.httpOptions);
+    }
+
+    updByCon(Dutygroup: DutyGroupModel) {
+        const apiURL = `${this.url}/updDutygroupByCon`;
+        const params = JSON.stringify(Dutygroup);
+        return this.http.post(apiURL, Dutygroup, this.httpOptions);
+    }
+
+    delByCon(Dutygroup: DutyGroupModel) {
+        const apiURL = `${this.url}/delDutygroupByCon`;
+        const params = JSON.stringify(Dutygroup);
+        return this.http.post(apiURL, params, this.httpOptions);
+    }
+
 }

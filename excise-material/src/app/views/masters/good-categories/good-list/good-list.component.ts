@@ -5,6 +5,7 @@ import { DutyGroupModel } from '../../../../models/master';
 
 import 'datatables.net';
 import 'datatables.net-bs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 declare var $;
 
@@ -18,7 +19,7 @@ declare var $;
 })
 export class GoodListComponent implements OnInit {
 
-  dutyGroupModel: DutyGroupModel[];
+  dutyGroupModel = new Array<DutyGroupModel>();
   dataTable: any;
   constructor(
     private _router: Router,
@@ -27,37 +28,73 @@ export class GoodListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._dutyGroupService.getByKeyWord('')
-      .subscribe(p => {
-        console.log(p);
-        // this.dutyGroupModel = p;
+    // this._dutyGroupService.getByKeyWord({ 'keyword': '' })
+    //     .subscribe(p => {
+    //         this.dutyGroupModel = p;
+    //     }, (err: HttpErrorResponse) => {
+    //         alert(err.message);
+    //     });
+}
 
-        // this.chRef.detectChanges();
+onSearchByKey(key: any) {
+    this._dutyGroupService.getByKeyWord(key)
+        .subscribe(p => {
+            this.dutyGroupModel = new Array<DutyGroupModel>();
+            this.dutyGroupModel = p;
 
-        //  const table: any = $('table');
-        //  this.dataTable = table.DataTable();
-      });
-  }
+            this.onDetactTable();
+        }, (err: HttpErrorResponse) => {
+            alert(err.message);
+        });
+}
 
-  onSearchByKey() {
-    this._dutyGroupService.getByKeyWord('')
-      .subscribe(p => {
-        console.log(p);
-        // this.dutyGroupModel = p;
+onSearchByCon(con: any) {
+    this._dutyGroupService.getByCon(con)
+        .subscribe(p => {
+            this.dutyGroupModel = new Array<DutyGroupModel>();
+            this.dutyGroupModel.push(p);
 
-        // this.chRef.detectChanges();
+            this.onDetactTable();
+        }, (err: HttpErrorResponse) => {
+            alert(err.message);
+        });
+}
 
-        //  const table: any = $('table');
-        //  this.dataTable = table.DataTable();
-      });
-  }
+onDetactTable() {
+    const table: any = $('table');
 
-  onSearchByCon() {
-    this._dutyGroupService.getByCon('')
-      .subscribe(p => {
-        console.log(p);
-      });
-  }
+    if ($.fn.dataTable.isDataTable('table')) {
+
+        this.dataTable = table.DataTable();
+        this.dataTable.destroy();
+    }
+
+    this.chRef.detectChanges();
+
+    this.dataTable = table.DataTable({
+        'searching': false,
+        saveState: false,
+        'sDom': 'rt<"row"<"col-md-6"i><"col-md-6"fp>>',
+        'language': {
+            'sProcessing': 'กำลังดำเนินการ...',
+            'sLengthMenu': 'แสดง _MENU_ แถว',
+            'sZeroRecords': 'ไม่พบข้อมูล',
+            'sInfo': 'รายการที่ _START_ ถึง _END_ จาก _TOTAL_ รายการ',
+            'sInfoEmpty': 'แสดง 0 ถึง 0 จาก 0 แถว',
+            'sInfoFiltered': '(กรองข้อมูล _MAX_ ทุกแถว)',
+            'sInfoPostFix': '',
+            'sSearch': 'ค้นหา: ',
+            'sUrl': '',
+            'oPaginate': {
+                'sFirst': 'หน้าแรก',
+                'sPrevious': 'ก่อนหน้า',
+                'sNext': 'ถัดไป',
+                'sLast': 'หน้าสุดท้าย'
+            }
+        }
+    });
+
+}
 
   slideToggle(el) {
     $(el).slideToggle();

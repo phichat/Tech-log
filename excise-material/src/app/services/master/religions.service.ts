@@ -18,26 +18,34 @@ export class ReligionsService {
       })
   };
 
-  getByKeyWord(keyword: string) {
+  getByKeyWord(keyword: any) {
     const apiURL = `${this.url}/getReligionbyKeyword`;
-    const param = JSON.stringify({ keyword });
-    return this.http.post<ReligionModel[]>(apiURL, { keyword }, this.httpOptions);
+    const params = JSON.stringify(keyword);
+    return this.http.post<ReligionModel[]>(apiURL, params, this.httpOptions);
   }
 
-  getByCon(religionId: number, religionNameTh: string, religionNameEn: string) {
+  getByCon(con: any) {
     const apiURL = `${this.url}/getReligionnByKeyCon`;
-    return this.http.post<ReligionModel[]>(apiURL, { religionId, religionNameTh, religionNameEn }, this.httpOptions);
+    const params = JSON.stringify(con);
+    return this.http.post<ReligionModel>(apiURL, params, this.httpOptions);
   }
 
-  insByCon(race: ReligionModel) {
+  insByCon(religion: ReligionModel) {
     const apiURL = `${this.url}/insReligionByKeyCon`;
-    return this.http.post(apiURL, race, this.httpOptions);
+    const params = JSON.stringify(religion);
+    return this.http.post(apiURL, params, this.httpOptions);
   }
 
-  updByCon(race: ReligionModel) {
+  updByCon(religion: ReligionModel) {
     const apiURL = `${this.url}/updReligionByCon`;
-    return this.http.post(apiURL, race, this.httpOptions);
+    const params = JSON.stringify(religion);
+    return this.http.post(apiURL, params, this.httpOptions);
   }
 
+  delByCon(religion: ReligionModel) {
+    const apiURL = `${this.url}/delReligionByCon`;
+    const params = JSON.stringify(religion);
+    return this.http.post(apiURL, params, this.httpOptions);
+  }
 
 }

@@ -18,24 +18,33 @@ export class RacesService {
       })
   };
 
-  getByKeyWord(keyword: string) {
+  getByKeyWord(keyword: any) {
     const apiURL = `${this.url}/getRaceByKeyword`;
-    const param = JSON.stringify({ keyword });
-    return this.http.post<RaceModel[]>(apiURL, { keyword }, this.httpOptions);
+    const params = JSON.stringify(keyword);
+    return this.http.post<RaceModel[]>(apiURL, params, this.httpOptions);
   }
 
-  getByCon(raceId: number, raceNameTh: string) {
+  getByCon(con: any) {
     const apiURL = `${this.url}/getRaceByKeyCon`;
-    return this.http.post<RaceModel[]>(apiURL, { raceId, raceNameTh }, this.httpOptions);
+    const params = JSON.stringify(con);
+    return this.http.post<RaceModel>(apiURL, params, this.httpOptions);
   }
 
   insByCon(race: RaceModel) {
     const apiURL = `${this.url}/insRaceByKeyCon`;
+    const params = JSON.stringify(race);
     return this.http.post(apiURL, race, this.httpOptions);
   }
 
   updByCon(race: RaceModel) {
     const apiURL = `${this.url}/updRaceByCon`;
+    const params = JSON.stringify(race);
     return this.http.post(apiURL, race, this.httpOptions);
+  }
+
+  delByCon(race: RaceModel) {
+    const apiURL = `${this.url}/delRaceByCon`;
+    const params = JSON.stringify(race);
+    return this.http.post(apiURL, params, this.httpOptions);
   }
 }

@@ -4,33 +4,29 @@
        <h4 class="card-title m-b-0 text-white">{{modeTitle}}</h4>
     </div>
     <div class="card-body">
-       <form class="form-control-line form-horizontal">
+       <form class="form-control-line form-horizontal" #frm="ngForm" (ngSubmit)="save()">
           <div class="row">
              <label for="" class="col-lg-2 col-sm-3 control-label text-right">รหัสเชื่อชาติ :</label>
              <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                <input type="text" id="" class="form-control form-control-line" placeholder="">
+                <input type="text" id="" name="raceId" [(ngModel)]="model.raceId" class="form-control form-control-line" placeholder="">
              </div>
  
              <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อเชื่อชาติ(TH) :</label>
              <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                <input type="text" id="" class="form-control form-control-line" placeholder="">
+                <input type="text" id="" name="raceNameTh" [(ngModel)]="model.raceNameTh" class="form-control form-control-line" placeholder="">
              </div>
           </div>
  
           <div class="row">
              <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่เรียกใช้งาน :</label>
              <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group">
-                <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
-                <div class="input-group-append">
-                   <span class="input-group-text">
-                      <i class="fa fa-calendar-o fa-md"></i>
-                   </span>
-                </div>
+                <input type="date" class="form-control form-control-line" id="" name="eventDatetime" [(ngModel)]="model.eventDatetime" placeholder="วว/ดด/ปปปป">
+                
              </div>
 
              <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อเชื่อชาติ(EN) :</label>
              <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                <input type="text" id="" class="form-control form-control-line" placeholder="">
+                <input type="text" id="" name="raceNameEn" [(ngModel)]="model.raceNameEn" class="form-control form-control-line" placeholder="">
              </div>
           </div>
  
@@ -38,10 +34,10 @@
              <label for="" class="col-lg-2 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
              <div class="col-lg-5 col-sm-9">
                 <div class="form-group">
-                   <input name="status" id="r1" type="radio" class="with-gap" />
+                   <input name="isActive" [(ngModel)]="model.isActive" value="1" id="r1" type="radio" class="with-gap" />
                    <label for="r1"> ใช้งาน </label>
  
-                   <input name="status" id="r2" type="radio" class="with-gap" />
+                   <input name="isActive" [(ngModel)]="model.isActive" value="0" id="r2" type="radio" class="with-gap" />
                    <label for="r2"> ไม่ใช้งาน </label>
                 </div>
              </div>
@@ -51,7 +47,7 @@
           <div class="form-group row" *ngIf="mode == 'u' || mode == 'c'">
              <div class="col-lg-8 col-md-6 col-sm-4"></div>
              <div class="col-lg-2 col-md-3 col-sm-4 form-group">
-                <button class="btn btn-success btn-block waves-effect waves-light" type="button" (click)="save()">
+                <button class="btn btn-success btn-block waves-effect waves-light" [disabled]="!frm.valid" type="submit">
                    <span class="btn-label pull-left">
                       <i class="fa fa-save"></i>
                    </span>บันทึก
@@ -71,5 +67,5 @@
  
  
  
- <app-action-setting *ngIf="mode == 'r' || mode == 'u'" (btnEdit)="toEdit()" (btnPrint)="toPrint()" (btnDelete)="toDelete()">
+ <app-action-setting *ngIf="mode == 'r' || mode == 'u' || mode == 'd'" (btnEdit)="toEdit()" (btnPrint)="toPrint()" (btnDelete)="toDelete()">
  </app-action-setting>

@@ -41,9 +41,9 @@ export class RelationshipsService {
     return this.http.post(apiURL, params, this.httpOptions);
   }
 
-  delByCon(relationId: number) {
+  delByCon(relation: RelationModel) {
     const apiURL = `${this.url}/delRelationByCon`;
-    const params = JSON.stringify({ relationId });
+    const params = JSON.stringify(relation);
     return this.http.post(apiURL, params, this.httpOptions);
   }
 

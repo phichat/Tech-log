@@ -47,6 +47,7 @@ export class RelationshipManageComponent implements OnInit {
                 } else if (param && param.R) {
                     this.mode = 'r';
                     this.modeTitle = 'รายละเอียดข้อมูล';
+                    this.onLoadData(param.relationId);
 
                 } else if (param && param.U) {
                     this.mode = 'u';
@@ -56,24 +57,15 @@ export class RelationshipManageComponent implements OnInit {
                 } else if (param && param.D) {
                     this.mode = 'd';
                     this.modeTitle = 'ลบข้อมูล';
-                    if (confirm(this.confirmMass)) {
-                        this.onDelete(param.relationId);
-                    } else {
-                        this._router.navigate([this.currentUrl], { queryParams: { R: true, relationId: this.model.relationId } });
-                    }
+                    this.onLoadData(param.relationId);
                 }
             });
 
     }
 
-    onSubmit(form) {
-        console.log(form);
-    }
-
     onLoadData(relationId: string) {
         this._relationService.getByCon({ relationId })
             .subscribe(p => {
-                const n = new Date(p.eventDateTime);
                 this.model = p;
                 this.model.eventDateTime = moment().format('YYYY-MM-DD');
                 this.model.isActive = p.isActive.toString();
@@ -90,7 +82,9 @@ export class RelationshipManageComponent implements OnInit {
     }
 
     toDelete() {
-        this._router.navigate([this.currentUrl], { queryParams: { D: true, relationId: this.model.relationId } });
+        if (confirm(this.confirmMass)) {
+            this.onDelete();
+        }
     }
 
     cancel() {
@@ -126,8 +120,8 @@ export class RelationshipManageComponent implements OnInit {
         }
     }
 
-    onDelete(relationId: number) {
-        this._relationService.delByCon(relationId)
+    onDelete() {
+        this._relationService.delByCon(this.model)
             .subscribe(
                 p => {
                     alert(this.completeMass);

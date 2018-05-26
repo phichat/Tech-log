@@ -4,19 +4,19 @@
         <h4 class="card-title m-b-0 text-white">ค้นหา</h4>
     </div>
     <div class="card-body">
-        <form class="form-control-line form-horizontal">
+        <form autocomplete="off" class="form-control-line form-horizontal" #formBasic="ngForm" (ngSubmit)="onSearchByKey(formBasic.value)">
             <div class="row">
                 <label for="" class="col-md-1 col-sm-2 control-label text-right">ค้นหา</label>
                 <div class="col-md-5 col-sm-10">
                     <div class="form-group form-line">
-                        <input type="search" id="" class="form-control form-control-line" placeholder="">
+                        <input type="search" id="" name="keyword" ngModel class="form-control form-control-line" placeholder="">
                     </div>
                 </div>
                 <div class="col-md-2 text-center form-group">
                     <a href="javaScript:void(0);" (click)="slideToggle(advanceSearch)">ค้นหาขั้นสูง</a>
                 </div>
                 <div class="col-md-2 form-group">
-                    <button type="button" class="btn btn-block btn-success">
+                    <button type="submit" class="btn btn-block btn-success">
                         <i class="fa fa-search"></i>
                         ค้นหา</button>
                 </div>
@@ -29,41 +29,43 @@
 
             <br>
 
+        </form>
+        <form autocomplete="off" class="form-control-line form-horizontal" #formAdv="ngForm" (ngSubmit)="onSearchByCon(formAdv.value)">
             <div style="display: none" #advanceSearch>
                 <div class="row">
                     <label for="" class="col-lg-2 col-sm-3 control-label text-right">รหัสศาสนา :</label>
                     <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                        <input type="text" id="" class="form-control form-control-line" placeholder="">
+                        <input type="text" id="" name="religionId" ngModel class="form-control form-control-line" placeholder="">
                     </div>
                     <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อศาสนา(TH) :</label>
                     <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                        <input type="text" id="" class="form-control form-control-line" placeholder="">
+                        <input type="text" id="" name="religionNameTh" ngModel class="form-control form-control-line" placeholder="">
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="" class="col-lg-2 col-sm-3 control-label text-right">วันที่เรียกใช้ข้อมูล :</label>
                     <div class="col-lg-4 col-md-7 col-sm-9 form-group input-group">
-                        <input type="text" class="form-control form-control-line" id="" placeholder="วว/ดด/ปปปป" appDatepicker>
-                        <div class="input-group-append">
+                        <input type="date" class="form-control form-control-line" id="" name="eventDatetime" ngModel placeholder="วว/ดด/ปปปป">
+                        <!-- <div class="input-group-append">
                             <span class="input-group-text">
                                 <i class="fa fa-calendar-o fa-md"></i>
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                     <label for="" class="col-lg-2 col-sm-3 control-label text-right">ชื่อศาสนา(EN) :</label>
                     <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                        <input type="text" id="" class="form-control form-control-line" placeholder="">
+                        <input type="text" id="" name="religionNameEn" ngModel class="form-control form-control-line" placeholder="">
                     </div>
                 </div>
 
                 <div class="row">
                     <label for="" class="col-lg-2 col-sm-3 control-label text-right">สถานะการใช้งาน :</label>
                     <div class="col-lg-4 col-md-7 col-sm-9 form-group">
-                        <input name="status" id="r1" type="radio" class="with-gap" />
+                        <input id="r1" type="radio" name="isActive" value=1 ngModel class="with-gap" />
                         <label for="r1"> ใช้งาน </label>
 
-                        <input name="status" id="r2" type="radio" class="with-gap" />
+                        <input id="r2" type="radio" name="isActive" value=0 ngModel class="with-gap" />
                         <label for="r2"> ไม่ใช้งาน </label>
                     </div>
                 </div>
@@ -72,7 +74,7 @@
                     <div class="col-lg-8 col-sm-6"></div>
 
                     <div class="col-lg-2 col-sm-3 form-group">
-                        <button class="btn btn-success btn-block waves-effect waves-light text-left" type="button">
+                        <button class="btn btn-success btn-block waves-effect waves-light text-left" type="submit">
                             <span class="btn-label">
                                 <i class="fa fa-check"></i>
                             </span>ตกลง</button>
@@ -96,7 +98,7 @@
     <div class="card-body">
 
         <div class="table-responsive">
-            <table appDataTable class="dataTable table table-sm table-striped table-hover ">
+            <table id="religion" class="dataTable table table-sm table-striped table-hover ">
                 <thead>
                     <tr>
                         <th>ลำดับ</th>

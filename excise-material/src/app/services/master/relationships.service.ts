@@ -26,17 +26,25 @@ export class RelationshipsService {
 
   getByCon(con: any) {
     const apiURL = `${this.url}/getRelationByKeyCon`;
-    return this.http.post<RelationModel[]>(apiURL, con, this.httpOptions);
+    return this.http.post<RelationModel>(apiURL, con, this.httpOptions);
   }
 
-  insByCon(race: RelationModel) {
+  insByCon(relation: RelationModel) {
     const apiURL = `${this.url}/insRelationByKeyCon`;
-    return this.http.post(apiURL, race, this.httpOptions);
+    const params = JSON.stringify(relation);
+    return this.http.post(apiURL, relation, this.httpOptions);
   }
 
-  updByCon(race: RelationModel) {
+  updByCon(relation: RelationModel) {
     const apiURL = `${this.url}/updRelationByCon`;
-    return this.http.post(apiURL, race, this.httpOptions);
+    const params = JSON.stringify(relation);
+    return this.http.post(apiURL, params, this.httpOptions);
+  }
+
+  delByCon(relationId: number) {
+    const apiURL = `${this.url}/delRelationByCon`;
+    const params = JSON.stringify({ relationId });
+    return this.http.post(apiURL, params, this.httpOptions);
   }
 
 }

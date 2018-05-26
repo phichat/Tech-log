@@ -7,6 +7,7 @@ import { RelationModel } from '../../../../models/master';
 import * as $ from 'jquery';
 import 'datatables.net';
 import 'datatables.net-bs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
     selector: 'app-relationship-list',
@@ -53,14 +54,14 @@ export class RelationshipListComponent implements OnInit {
     }
 
     onSearchByCon(con: any) {
-        this.listRelation = [];
+        // this.listRelation = [];
 
-        this._relationService.getByCon(con)
-            .subscribe(p => {
-                this.listRelation = p;
+        // this._relationService.getByCon(con)
+        //     .subscribe(p => {
+        //         this.listRelation = p;
 
-                this.onDetactTable();
-            });
+        //         this.onDetactTable();
+        //     });
     }
 
     onDetactTable() {
@@ -119,6 +120,15 @@ export class RelationshipListComponent implements OnInit {
     }
 
     gotoDelete(id) {
-        confirm('ต้องการลบข้อมูลหรือไม่?');
+        if (confirm('ต้องการลบข้อมูลหรือไม่?')) {
+            this._relationService.delByCon(id)
+                .subscribe(
+                    p => {
+                        alert('บันทึกสำเร็จ');
+                    }, (err: HttpErrorResponse) => {
+                        alert(err.message);
+                    }
+                );
+        }
     }
 }
